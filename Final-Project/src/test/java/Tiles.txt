@@ -1,0 +1,153 @@
+**Spring + Tiles 연동**
+ Tiles :  웹페이지 템플릿을 위한 프레임워크
+ 반복적으로 jsp include or jstl c import로 처리되었던 view layout을  효과적으로 개발하고
+ 유지보수하기 위한  프레임워크 
+
+**tiles 적용단계**
+1. Maven : pom.xml  
+ tiles dependency 추가 
+
+  <dependency>
+        <groupId>org.apache.tiles</groupId>
+        <artifactId>tiles-jsp</artifactId>
+        <version>3.0.3</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.tiles</groupId>
+        <artifactId>tiles-core</artifactId>
+        <version>3.0.3</version>
+    </dependency>
+
+
+2. template jsp 작성 :  layout.jsp 
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%-- tiles framework 선언부 --%>
+<%@taglib prefix="tiles"  uri="http://tiles.apache.org/tags-tiles" %>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- title이 null인 경우는 무시된다 -->
+  <title>
+  	<tiles:insertAttribute name="title" ignore="true" />	
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+   <!--
+  <link rel="stylesheet"  type="text/css" 
+  href="${pageContext.request.contextPath}/resources/css/home2.css" >  
+   -->
+</head>
+<body>
+	<div id="header">
+	<!-- Tiles header 영역 -->
+		<tiles:insertAttribute name="header" />
+	</div>
+	<div class="container-fluid text-center">    
+     <div class="row content">
+    <div id="left" class="col-sm-3 sidenav" >
+    <!-- Tiles left 영역 -->
+ 		<tiles:insertAttribute name="left" />
+    </div>
+	<div id="main" class="col-sm-7 text-left">
+	<!-- Tiles main 영역 -->
+		<tiles:insertAttribute name="main" />
+	</div>
+	<div id="right" class="col-sm-2 sidenav">
+	<!-- Tiles right 영역 -->
+		<tiles:insertAttribute name="right" />
+	</div>
+	</div>
+	</div>
+	<div id="footer">
+	<!-- Tiles footer 영역 -->
+		<tiles:insertAttribute name="footer" />
+	</div>
+</body>
+</html>   
+
+3.  tiles 설정 파일 정의 : tiles-config.xml  
+    <?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE tiles-definitions PUBLIC 
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" 
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">  
+ <tiles-definitions>  
+ <definition name="home.tiles" 
+ 	template="/WEB-INF/views/templates/layout.jsp">
+ 		<put-attribute name="title"  value="kosta" />
+ 		<put-attribute name="header" 
+ 		value="/WEB-INF/views/templates/header.jsp"/>
+ 		<put-attribute name="left" 
+ 		value="/WEB-INF/views/templates/left.jsp"/>
+ 		<put-attribute name="right" 
+ 		value="/WEB-INF/views/templates/right.jsp"/>
+ 		<put-attribute name="footer" 
+ 		value="/WEB-INF/views/templates/footer.jsp"/>
+ 		<put-attribute name="main" 
+ 		value="/WEB-INF/views/home.jsp"/>
+ 	</definition>      
+ </tiles-definitions>   
+
+
+if( Spring Legacy 인 경우에는  아래와 같이 설정 ) 
+4. spring web config xml  :
+InternalResourceViewResolver 에 아래 order를 설정 
+<property name="order" value="1"/>
+<!-- TilesViewResolver 설정
+	  : 일반 JSP 응답이 아니라 Tiles Layout이 적용된 화면으로 응답하기 위해 설정 	
+ -->
+
+<bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
+<property name="order" value="0"/>
+</bean>
+
+<!--  Tiles Framework 설정
+	   : spring framework에서 Tiles Config xml 을 로딩하기 위한 설정 
+ -->
+
+<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer" >
+<property name="definitions">
+<list> <value>/WEB-INF/tiles-config.xml</value></list> 
+</property>
+</bean>
+
+if(SpringBoot 인  경우에는 아래외 같이 설정) 
+
+	@Configuration 
+public class TilesConfiguration {
+	@Bean
+	public UrlBasedViewResolver tilesViewResolver() {
+		UrlBasedViewResolver tilesViewResolver = new UrlBasedViewResolver();
+		tilesViewResolver.setViewClass(TilesView.class);
+		return tilesViewResolver;
+	}
+	@Bean
+	public TilesConfigurer tilesConfigurer() {
+		TilesConfigurer tilesConfigurer = new TilesConfigurer();
+		String[] defs = { "WEB-INF/tiles-config.xml" };
+		tilesConfigurer.setDefinitions(defs);
+		return tilesConfigurer;
+	}
+}
+
+
+5. Controller에 적용해 본다 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
