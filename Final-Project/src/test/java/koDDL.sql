@@ -69,6 +69,11 @@ CREATE TABLE ko_restaurant(
 )
 CREATE sequence ko_restaurant_no_seq;
 
+alter table ko_restaurant drop column res_time;
+alter table ko_restaurant add start_time;
+alter table ko_restaurant add end_time;
+
+
 select * from ko_restaurant
 --6. 찜 테이블
 CREATE TABLE ko_my_pick(
