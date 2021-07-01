@@ -53,6 +53,8 @@ CREATE TABLE ko_board_comment(
    CONSTRAINT fk_ko_board_comment foreign key(board_no) references ko_board(board_no) on delete cascade,
    CONSTRAINT fk_ko_member_id foreign key(id) references ko_member(id) on delete cascade
 )
+
+select * from ko_restaurant
 CREATE sequence ko_board_comment_seq;
 
 --5. 레스토랑 테이블
@@ -67,6 +69,11 @@ CREATE TABLE ko_restaurant(
 	end_time varchar2(100) not null,
 	start_time varchar2(100) not null
 )
+alter table ko_restaurant drop column res_time;
+alter table ko_restaurant add start_time;
+alter table ko_restaurant add end_time;
+
+
 CREATE sequence ko_restaurant_no_seq;
 
 select * from ko_restaurant
@@ -106,7 +113,7 @@ CREATE TABLE ko_review(
 	CONSTRAINT ko_review_id foreign key(id) references ko_member(id) on delete cascade
 )
 CREATE sequence ko_review_seq;
-
+''
 --select
 SELECT * FROM ko_member;
 
