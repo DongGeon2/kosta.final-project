@@ -53,24 +53,52 @@ commit
 
 create table star_member(
 	id varchar(100) primary key,
-	name varchar(100) not null,
-	content clob not null,
-	time_posted date not null
+	name varchar(100) not null
 )
+
 create sequence star_member_seq;
 
-insert into star_member(id,name,content,time_posted) values(star_member_seq.nextval, '동건','김동건이 씁니다 리뷰를',sysdate);
-insert into star_member(id,name,content,time_posted) values(star_member_seq.nextval, '지훈','도라에몽 주머니 갖고싶어 ',sysdate);
-insert into star_member(id,name,content,time_posted) values(star_member_seq.nextval, '경성','인생의 쓴맛을 느껴보고싶은 중2병',sysdate);
-insert into star_member(id,name,content,time_posted) values(star_member_seq.nextval, '진솔','오늘은 뭘하고 놀지 머릿속에 가득차있음',sysdate);
-insert into star_member(id,name,content,time_posted) values(star_member_seq.nextval, '민수','내일은 무슨 가방을 갖고올지 애기들 상상중',sysdate);
+insert into star_member(id,name) values(star_member_seq.nextval, '동건');
+insert into star_member(id,name) values(star_member_seq.nextval, '지훈');
+insert into star_member(id,name) values(star_member_seq.nextval, '경성');
+insert into star_member(id,name) values(star_member_seq.nextval, '진솔');
+insert into star_member(id,name) values(star_member_seq.nextval, '민수');
 
 drop table star_member;
 drop sequence star_member_seq;
+drop table star_board;
+drop sequence star_board_seq;
 
 select * from star_member;
+select * from star_board;
 select count(*) from star_member;
 
+create table star_board(
+	no number primary key,
+	title varchar2(100) not null,
+	content clob not null,
+	id varchar2(100) not null,
+	constraint star_board_fk foreign key(id) references star_member(id)
+)
 
+create sequence star_board_seq;
 
+insert into star_board(no,title,content,id) 
+values(star_board_seq.nextval,'방가','ㅋㅋ',1);
 
+insert into star_board(no,title,content,id) 
+values(star_board_seq.nextval,'안녕','치맥',2);
+
+insert into star_board(no,title,content,id) 
+values(star_board_seq.nextval,'즐연휴','추석 연휴 잘보내세요^^',3);
+
+SELECT B.no,B.title,B.content,M.name
+FROM 
+	(select row_number() over(order by no desc) as rnum, no,title,content,id
+	from star_board) B, star_member M
+WHERE B.id=M.id AND B.rnum
+
+	   select b.no,b.title,b.content,b.id 
+       from (select row_number() over(order by no desc) as rnum,
+       no,title,content,id from star_board) b, star_member m
+       where b.id=m.id and b.rnum between #{getStartRowNumber} and #{getEndRowNumber}
