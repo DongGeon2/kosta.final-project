@@ -64,7 +64,8 @@ CREATE TABLE ko_restaurant(
 	res_loc varchar2(100) not null,
 	res_image varchar2(100) not null,
 	food_type varchar2(100) not null,
-	res_time varchar2(100) not null
+	end_time varchar2(100) not null,
+	start_time varchar2(100) not null
 )
 CREATE sequence ko_restaurant_no_seq;
 
