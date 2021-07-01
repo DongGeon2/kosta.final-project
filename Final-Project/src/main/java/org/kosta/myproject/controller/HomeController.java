@@ -37,7 +37,10 @@ public class HomeController {
 	public String recommend() {
 		return "recommend.tiles";
 	}
-	
+	@RequestMapping("about")
+	public String getPost() {
+		return "about.tiles";
+	}
 	/**
 	 * 동건
 	 * singlePage Test
