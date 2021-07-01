@@ -92,62 +92,6 @@
 	</div>
 </section>
 <!-- //about section -->
-<!----------------------------------------------------------------------- 리뷰 쓰는지역(양옆) ----------------------------------------------------------------------->
-
-<!-- <section class="w3l-blog-single">
-<div class="testi-top mt-5 pt-4 float-left">
-<h3 class="post-content-title">Leave a message</h3>
-	<div class="form-commets mt-4">
-		<form action="#" method="post">
-			<div class="media-form">
-				<input type="text" name="Name" required="required" placeholder="Your Name">
-				<input type="email" name="Email" required="re" placeholder="Your Email">
-			</div>
-			<textarea name="Message" required="required" placeholder="Write your comments here"></textarea>
-			<div class="text-right">
-				<button class="btn btn-primary btn-style" type="submit">Post comment</button>
-			</div>
-		</form>
-	</div>
-</div>
-<div class="single-left">
-<div class="comments2 mt-5 pt-4">
-	<h3 class="post-content-title">Comments</h3>
-	<div class="media mt-4 bod-1">
-	<div class="media-body">
-	
-		<div class="medi-top mb-2">
-			<a href="#URL" class="name mt-3">이름</a>
-				<span>날짜</span>
-		</div>
-		<p align="justify">내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용
-		내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용 p태그 상위에 jstl로 반복문 돌려서 리뷰내용 갖고온다</p>
-		<!-- <a href="#reply" class="rep mt-1">Reply</a> -->
-		<!-- ----------------------여기서 주석이 위아래로 두개로 나뉨-------------------------- -->
-		<!--
-		<div class="medi-top mb-2">
-			<a href="#URL" class="name mt-3">상관없조</a>
-				<span>06 Jan, 2021 </span>
-		</div>
-		<p align="justify">문장 정렬이 됐으면 좋겠다문장 정렬이 됐으면 좋겠다문장 정렬이 됐으면 좋겠다문장 정렬이 됐으면 좋겠다
-		문장 정렬이 됐으면 좋겠다문장문장 정렬이 됐으면 좋겠다문장 정렬이 됐으면 좋겠다</p>
-		<a href="#reply" class="rep mt-1">Reply</a>
-		
-		<div class="medi-top mb-2">
-			<a href="#URL" class="name mt-3">야호~~~~</a>
-				<span>06 Jan, 2021 </span>
-		</div>
-		<p align="justify">문장 정렬이 됐으면 좋겠다문장 정렬이 됐으면 좋겠다문장 정렬이 됐으면 좋겠다문장 정렬이 됐으면 좋겠다
-		문장 정렬이 됐으면 좋겠다문장문장 정렬이 됐으면 좋겠다문장 정렬이 됐으면 좋겠다</p>
-		<a href="#reply" class="rep mt-1">Reply</a>
-		
-	</div>
-	</div>
-</div>
-</div>
-</section>
- -->
-<!-------------------------------------------------------------------------------------------------------------------------------------------------------->
 
 <!----------------------------------------------------------------------- 리뷰 쓰는지역(위아래) ----------------------------------------------------------------------->
 <section class="w3l-blog-single">
@@ -205,23 +149,53 @@
                         </div>
                     </div>
                 </div>
-
+                
+                
+                
+                
+                
+				<c:forEach var="list" items="${requestScope.list }">
 				<div class="media bod-3">
                 	<div class="img-circle">
                     	<img src="assets/images/team3.jpg" class="img-fluid" alt="...">
                     </div>
                     <div class="media-body">
                     	<div class="medi-top mb-2">
-                        	<a href="#URL" class="name mt-0">Elizabeth</a>
+                        	<a href="#URL" class="name mt-0">${list.smVO.name}</a>
                         	<span>14 Jan, 2021 </span>
                         </div>
-                        <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante
-                        sollicitudin. Cras purus odio, in vulputate at, viverra turpis, ac.</p>
+                        <p>${list.content }</p>
                         <a href="#reply" class="rep mt-3">Reply</a>
                     </div>
                </div>
-          </div>
-		<!-- ------------------------------------------------------------------------------------ -->
+               </c:forEach>
+               </div>
+               
+        
+        <%-- 페이징 처리 --%>
+		<c:set var="pb" value="${requestScope.pagingBean}"></c:set>
+		<div class="pagination-style text-center mt-5 pt-5">
+			<ul>
+			<c:if test="${pb.previousPageGroup}">
+			<li><a disabled="" class="not-allowed" href="about?pageNo=${pb.startPageOfPageGroup-1}">&laquo;</a></li>
+			</c:if>
+				<c:forEach var="page" begin="${pb.startPageOfPageGroup}" end="${pb.endPageOfPageGroup}">
+				<c:choose>
+					<c:when test="${pb.nowPage==page}">
+					<li ><a class="active" href="about?pageNo=${page}">${page}</a></li>
+					</c:when>
+					<c:otherwise>
+					<li><a href="about?pageNo=${page}">${page}</a></li>
+					</c:otherwise>
+				</c:choose>		
+				</c:forEach>
+			<c:if test="${pb.nextPageGroup}">
+			<li><a href="about?pageNo=${pb.endPageOfPageGroup+1}">&raquo;</a></li>
+			</c:if>	
+			</ul>
+		</div>
+     	<!-- pagination -->
+		<!-- ------------------------------------------------------------------------------------- -->
 	</div>
 </div>
 </section>
@@ -510,3 +484,63 @@
 	</div>
 </section>
 <!-- //call section -->
+
+
+
+
+<!----------------------------------------------------------------------- 리뷰 쓰는지역(양옆) ----------------------------------------------------------------------->
+
+<!-- <section class="w3l-blog-single">
+<div class="testi-top mt-5 pt-4 float-left">
+<h3 class="post-content-title">Leave a message</h3>
+	<div class="form-commets mt-4">
+		<form action="#" method="post">
+			<div class="media-form">
+				<input type="text" name="Name" required="required" placeholder="Your Name">
+				<input type="email" name="Email" required="re" placeholder="Your Email">
+			</div>
+			<textarea name="Message" required="required" placeholder="Write your comments here"></textarea>
+			<div class="text-right">
+				<button class="btn btn-primary btn-style" type="submit">Post comment</button>
+			</div>
+		</form>
+	</div>
+</div>
+<div class="single-left">
+<div class="comments2 mt-5 pt-4">
+	<h3 class="post-content-title">Comments</h3>
+	<div class="media mt-4 bod-1">
+	<div class="media-body">
+	
+		<div class="medi-top mb-2">
+			<a href="#URL" class="name mt-3">이름</a>
+				<span>날짜</span>
+		</div>
+		<p align="justify">내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용
+		내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용 p태그 상위에 jstl로 반복문 돌려서 리뷰내용 갖고온다</p>
+		<!-- <a href="#reply" class="rep mt-1">Reply</a> -->
+		<!-- ----------------------여기서 주석이 위아래로 두개로 나뉨-------------------------- -->
+		<!--
+		<div class="medi-top mb-2">
+			<a href="#URL" class="name mt-3">상관없조</a>
+				<span>06 Jan, 2021 </span>
+		</div>
+		<p align="justify">문장 정렬이 됐으면 좋겠다문장 정렬이 됐으면 좋겠다문장 정렬이 됐으면 좋겠다문장 정렬이 됐으면 좋겠다
+		문장 정렬이 됐으면 좋겠다문장문장 정렬이 됐으면 좋겠다문장 정렬이 됐으면 좋겠다</p>
+		<a href="#reply" class="rep mt-1">Reply</a>
+		
+		<div class="medi-top mb-2">
+			<a href="#URL" class="name mt-3">야호~~~~</a>
+				<span>06 Jan, 2021 </span>
+		</div>
+		<p align="justify">문장 정렬이 됐으면 좋겠다문장 정렬이 됐으면 좋겠다문장 정렬이 됐으면 좋겠다문장 정렬이 됐으면 좋겠다
+		문장 정렬이 됐으면 좋겠다문장문장 정렬이 됐으면 좋겠다문장 정렬이 됐으면 좋겠다</p>
+		<a href="#reply" class="rep mt-1">Reply</a>
+		
+	</div>
+	</div>
+</div>
+</div>
+</section>
+ -->
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------->

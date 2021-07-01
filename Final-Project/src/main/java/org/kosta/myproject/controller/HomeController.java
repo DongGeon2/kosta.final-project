@@ -12,10 +12,6 @@ public class HomeController {
 		// view를 제공 
 		return "home.tiles";
 	}
-	@RequestMapping("about")
-	public String about() {
-		return "about.tiles";
-	}
 	@RequestMapping("event")
 	public String event() {
 		return "event.tiles";
