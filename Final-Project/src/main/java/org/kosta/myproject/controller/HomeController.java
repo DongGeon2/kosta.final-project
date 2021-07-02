@@ -1,6 +1,12 @@
 package org.kosta.myproject.controller;
 
+import java.util.ArrayList;
+
+import org.kosta.myproject.model.service.RestaurantService;
+import org.kosta.myproject.model.vo.PagingBean;
+import org.kosta.myproject.model.vo.RestaurantVO;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -34,7 +40,18 @@ public class HomeController {
 		return "mypage.tiles";
 	}
 	@RequestMapping("recommend")
-	public String recommend() {
+	public String recommend(Model model, String pageNo) {
+		int totalPostcount = RestaurantService.getTotalCount();
+
+		PagingBean pagingBean = null;
+		if (pageNo == null) {
+			pagingBean = new PagingBean(totalPostcount);
+		} else {
+			pagingBean = new PagingBean(totalPostcount, Integer.parseInt(pageNo));
+		}
+		model.addAttribute("pagingBean", pagingBean);
+		ArrayList<RestaurantVO> list = RestaurantService.getList(pagingBean);
+		model.addAttribute("list", list);
 		return "recommend.tiles";
 	}
 	@RequestMapping("about")
@@ -50,6 +67,7 @@ public class HomeController {
 		return "single.tiles";
 	}
 }
+
 
 
 
