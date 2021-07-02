@@ -101,7 +101,7 @@ body {
     font-size: 16px;
     font-weight: 400;
     text-transform: capitalize;
-     height: calc(3rem + 2px) !important;
+     /*height: calc(3rem + 2px) !important;*/
      border-radius:0;
 }
 
@@ -17454,6 +17454,13 @@ section.w3l-text-7 {
 }
 .w3l-features-photo-9-box img {
   width: 20px;
+}
+
+#star a { 
+	text-decoration: none; color: gray;
+} 
+#star a.on { 
+	color: red;
 }
 
 /*****/
