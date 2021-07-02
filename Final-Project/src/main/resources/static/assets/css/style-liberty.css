@@ -17456,6 +17456,13 @@ section.w3l-text-7 {
   width: 20px;
 }
 
+#star a { 
+	text-decoration: none; color: gray;
+} 
+#star a.on { 
+	color: red;
+}
+
 /*****/
 
 .w3l-features-photo-7 h5.w3l-feature-text {
