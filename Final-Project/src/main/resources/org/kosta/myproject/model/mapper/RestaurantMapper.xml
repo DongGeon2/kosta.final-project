@@ -3,8 +3,25 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<<<<<<< HEAD
 <mapper namespace="org.kosta.myproject.model.mapper.MemberMapper">
 
+=======
+
+<mapper namespace="org.kosta.myproject.model.mapper.RestaurantMapper">
+	<select id="getTotalCount" resultType="int">
+		select count(*) from ko_restaurant
+	</select>
+	<select id="getRestaurantList" resultType="restaurantVO" parameterType="int">
+		select r.res_no,r.res_name,r.res_info,r.res_tel,r.res_loc,res_image,r.start_time,r.end_time 
+ 		from (select row_number() over(order by no desc) as res_no,res_name,res_info,res_tel,
+ 		res_loc,res_image,start_time,end_time from ko_restaurant) r, ko_member m
+ 		where r.id=m.id and r.res_no between #{getStartRowNumber} and #{getEndRowNumber}
+	</select>
+	
+
+	
+>>>>>>> refs/heads/BKS
 </mapper>
  
  

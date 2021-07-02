@@ -3,8 +3,15 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<<<<<<< HEAD
 <mapper namespace="org.kosta.myproject.model.mapper.MemberMapper">
 
+=======
+<mapper namespace="org.kosta.myproject.model.mapper.BoardMapper">
+	<select id="getTotalCount" resultType="int">
+	select count(*) from star_board
+</select>
+>>>>>>> refs/heads/BKS
 </mapper>
  
  
