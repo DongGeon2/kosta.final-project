@@ -130,7 +130,7 @@
     font-size: 16px;
     font-weight: 400;
     text-transform: capitalize;
-     height: calc(3rem + 5px) !important;
+     height: calc(3rem + 2px) !important;
      border-radius:0;
 }
 </style>
