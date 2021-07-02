@@ -4,20 +4,20 @@ public class BoardVO {
 	private String boardNo;
 	private String boardTitle;
 	private String boardContent;
-	private UserVO userVO;
+	private MemberVO memberVO;
 	private int hits;
 	private String boardRegdate;
 	public BoardVO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public BoardVO(String boardNo, String boardTitle, String boardContent, UserVO userVO, int hits,
+	public BoardVO(String boardNo, String boardTitle, String boardContent, MemberVO memberVO, int hits,
 			String boardRegdate) {
 		super();
 		this.boardNo = boardNo;
 		this.boardTitle = boardTitle;
 		this.boardContent = boardContent;
-		this.userVO = userVO;
+		this.memberVO = memberVO;
 		this.hits = hits;
 		this.boardRegdate = boardRegdate;
 	}
@@ -39,11 +39,11 @@ public class BoardVO {
 	public void setBoardContent(String boardContent) {
 		this.boardContent = boardContent;
 	}
-	public UserVO getUserVO() {
-		return userVO;
+	public MemberVO getMemberVO() {
+		return memberVO;
 	}
-	public void setUserVO(UserVO userVO) {
-		this.userVO = userVO;
+	public void setMemberVO(MemberVO memberVO) {
+		this.memberVO = memberVO;
 	}
 	public int getHits() {
 		return hits;
@@ -60,7 +60,7 @@ public class BoardVO {
 	@Override
 	public String toString() {
 		return "BoardVO [boardNo=" + boardNo + ", boardTitle=" + boardTitle + ", boardContent=" + boardContent
-				+ ", userVO=" + userVO + ", hits=" + hits + ", boardRegdate=" + boardRegdate + "]";
+				+ ", memberVO=" + memberVO + ", hits=" + hits + ", boardRegdate=" + boardRegdate + "]";
 	}
-	
+
 }

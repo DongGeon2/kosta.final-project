@@ -59,26 +59,24 @@ CREATE sequence ko_board_comment_seq;
 
 --5. 레스토랑 테이블
 CREATE TABLE ko_restaurant(
-	res_no number primary key,
+	res_no number not null,
+	id varchar2(100) not null,
 	res_name varchar2(100) not null,
 	res_info varchar2(100) not null,
 	res_tel varchar2(100) not null,
 	res_loc varchar2(100) not null,
 	res_image varchar2(100) not null,
 	food_type varchar2(100) not null,
+	start_time varchar2(100) not null,
 	end_time varchar2(100) not null,
-	start_time varchar2(100) not null
+	CONSTRAINT ko_member_restaurant primary key(id,res_no),
+	CONSTRAINT fk_ko_restaurant_id foreign key(id) references ko_member(id) on delete cascade
 )
-alter table ko_restaurant drop column res_time;
-alter table ko_restaurant add start_time;
-alter table ko_restaurant add end_time;
-
-
 CREATE sequence ko_restaurant_no_seq;
 
-alter table ko_restaurant drop column res_time;
-alter table ko_restaurant add start_time;
-alter table ko_restaurant add end_time;
+--alter table ko_restaurant drop column res_time;
+--alter table ko_restaurant add start_time;
+--alter table ko_restaurant add end_time;
 
 
 select * from ko_restaurant

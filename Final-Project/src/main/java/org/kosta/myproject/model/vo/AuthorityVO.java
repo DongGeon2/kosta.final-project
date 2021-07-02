@@ -2,15 +2,15 @@ package org.kosta.myproject.model.vo;
 
 public class AuthorityVO {
 	private String authName;
-	private UserVO userVO;
+	private MemberVO memberVO;
 	public AuthorityVO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public AuthorityVO(String authName, UserVO userVO) {
+	public AuthorityVO(String authName, MemberVO memberVO) {
 		super();
 		this.authName = authName;
-		this.userVO = userVO;
+		this.memberVO = memberVO;
 	}
 	public String getAuthName() {
 		return authName;
@@ -18,15 +18,15 @@ public class AuthorityVO {
 	public void setAuthName(String authName) {
 		this.authName = authName;
 	}
-	public UserVO getUserVO() {
-		return userVO;
+	public MemberVO getUserVO() {
+		return memberVO;
 	}
-	public void setUserVO(UserVO userVO) {
-		this.userVO = userVO;
+	public void setUserVO(MemberVO userVO) {
+		this.memberVO = userVO;
 	}
 	@Override
 	public String toString() {
-		return "AuthorityVO [authName=" + authName + ", userVO=" + userVO + "]";
+		return "AuthorityVO [authName=" + authName + ", userVO=" + memberVO + "]";
 	}
 	
 	

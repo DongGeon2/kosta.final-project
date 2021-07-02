@@ -46,8 +46,6 @@
 						</div></li>
 					<li class="nav-item"><a class="nav-link" href="contact">Contact
 							Us</a></li>
-					<li class="nav-item"><a class="nav-link" href="login">login
-							</a></li>
 					<!-- search button -->
 					<div class="search-right ml-lg-3">
 						<form action="error.html" method="GET"

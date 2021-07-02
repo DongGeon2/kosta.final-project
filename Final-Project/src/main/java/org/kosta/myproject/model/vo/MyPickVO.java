@@ -2,16 +2,16 @@ package org.kosta.myproject.model.vo;
 
 public class MyPickVO {
 	private String myRegdate;
-	private UserVO userVO;
+	private MemberVO memberVO;
 	private RestaurantVO restaurantVO;
 	public MyPickVO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public MyPickVO(String myRegdate, UserVO userVO, RestaurantVO restaurantVO) {
+	public MyPickVO(String myRegdate, MemberVO memberVO, RestaurantVO restaurantVO) {
 		super();
 		this.myRegdate = myRegdate;
-		this.userVO = userVO;
+		this.memberVO = memberVO;
 		this.restaurantVO = restaurantVO;
 	}
 	public String getMyRegdate() {
@@ -20,11 +20,11 @@ public class MyPickVO {
 	public void setMyRegdate(String myRegdate) {
 		this.myRegdate = myRegdate;
 	}
-	public UserVO getUserVO() {
-		return userVO;
+	public MemberVO getMemberVO() {
+		return memberVO;
 	}
-	public void setUserVO(UserVO userVO) {
-		this.userVO = userVO;
+	public void setMemberVO(MemberVO memberVO) {
+		this.memberVO = memberVO;
 	}
 	public RestaurantVO getRestaurantVO() {
 		return restaurantVO;
@@ -34,7 +34,8 @@ public class MyPickVO {
 	}
 	@Override
 	public String toString() {
-		return "MyPickVO [myRegdate=" + myRegdate + ", userVO=" + userVO + ", restaurantVO=" + restaurantVO + "]";
+		return "MyPickVO [myRegdate=" + myRegdate + ", memberVO=" + memberVO + ", restaurantVO=" + restaurantVO + "]";
 	}
+
 	
 }

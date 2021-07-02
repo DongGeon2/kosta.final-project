@@ -4,18 +4,18 @@ public class ReservationVO {
 	private String revNo;
 	private String revTime;
 	private int headCount;
-	private UserVO userVO;
+	private MemberVO memberVO;
 	private RestaurantVO restaurantVO;
 	public ReservationVO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public ReservationVO(String revNo, String revTime, int headCount, UserVO userVO, RestaurantVO restaurantVO) {
+	public ReservationVO(String revNo, String revTime, int headCount, MemberVO memberVO, RestaurantVO restaurantVO) {
 		super();
 		this.revNo = revNo;
 		this.revTime = revTime;
 		this.headCount = headCount;
-		this.userVO = userVO;
+		this.memberVO = memberVO;
 		this.restaurantVO = restaurantVO;
 	}
 	public String getRevNo() {
@@ -36,11 +36,11 @@ public class ReservationVO {
 	public void setHeadCount(int headCount) {
 		this.headCount = headCount;
 	}
-	public UserVO getUserVO() {
-		return userVO;
+	public MemberVO getMemberVO() {
+		return memberVO;
 	}
-	public void setUserVO(UserVO userVO) {
-		this.userVO = userVO;
+	public void setMemberVO(MemberVO memberVO) {
+		this.memberVO = memberVO;
 	}
 	public RestaurantVO getRestaurantVO() {
 		return restaurantVO;
@@ -50,8 +50,9 @@ public class ReservationVO {
 	}
 	@Override
 	public String toString() {
-		return "ReservationVO [revNo=" + revNo + ", revTime=" + revTime + ", headCount=" + headCount + ", userVO="
-				+ userVO + ", restaurantVO=" + restaurantVO + "]";
+		return "ReservationVO [revNo=" + revNo + ", revTime=" + revTime + ", headCount=" + headCount + ", memberVO="
+				+ memberVO + ", restaurantVO=" + restaurantVO + "]";
 	}
+
 	
 }

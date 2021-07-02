@@ -4,18 +4,18 @@ public class CommentVO {
 	private String comNo;
 	private String comContent;
 	private String comRegdate;
-	private UserVO userVO;
+	private MemberVO memberVO;
 	private BoardVO boardVO;
 	public CommentVO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public CommentVO(String comNo, String comContent, String comRegdate, UserVO userVO, BoardVO boardVO) {
+	public CommentVO(String comNo, String comContent, String comRegdate, MemberVO memberVO, BoardVO boardVO) {
 		super();
 		this.comNo = comNo;
 		this.comContent = comContent;
 		this.comRegdate = comRegdate;
-		this.userVO = userVO;
+		this.memberVO = memberVO;
 		this.boardVO = boardVO;
 	}
 	public String getComNo() {
@@ -36,11 +36,11 @@ public class CommentVO {
 	public void setComRegdate(String comRegdate) {
 		this.comRegdate = comRegdate;
 	}
-	public UserVO getUserVO() {
-		return userVO;
+	public MemberVO getMemberVO() {
+		return memberVO;
 	}
-	public void setUserVO(UserVO userVO) {
-		this.userVO = userVO;
+	public void setMemberVO(MemberVO memberVO) {
+		this.memberVO = memberVO;
 	}
 	public BoardVO getBoardVO() {
 		return boardVO;
@@ -50,8 +50,9 @@ public class CommentVO {
 	}
 	@Override
 	public String toString() {
-		return "CommentVO [comNo=" + comNo + ", comContent=" + comContent + ", comRegdate=" + comRegdate + ", userVO="
-				+ userVO + ", boardVO=" + boardVO + "]";
+		return "CommentVO [comNo=" + comNo + ", comContent=" + comContent + ", comRegdate=" + comRegdate + ", memberVO="
+				+ memberVO + ", boardVO=" + boardVO + "]";
 	}
+
 	
 }

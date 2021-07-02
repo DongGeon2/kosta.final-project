@@ -6,21 +6,21 @@ public class ReviewVO {
 	private String reviewContent;
 	private String reviewRegdate;
 	private int resGrade;
-	private UserVO userVO;
+	private MemberVO memberVO;
 	private RestaurantVO restaurantVO;
 	public ReviewVO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public ReviewVO(String reviewNo, String reviewTitle, String reviewContent, String reviewRegdate, int resGrade,
-			UserVO userVO, RestaurantVO restaurantVO) {
+			MemberVO memberVO, RestaurantVO restaurantVO) {
 		super();
 		this.reviewNo = reviewNo;
 		this.reviewTitle = reviewTitle;
 		this.reviewContent = reviewContent;
 		this.reviewRegdate = reviewRegdate;
 		this.resGrade = resGrade;
-		this.userVO = userVO;
+		this.memberVO = memberVO;
 		this.restaurantVO = restaurantVO;
 	}
 	public String getReviewNo() {
@@ -53,11 +53,11 @@ public class ReviewVO {
 	public void setResGrade(int resGrade) {
 		this.resGrade = resGrade;
 	}
-	public UserVO getUserVO() {
-		return userVO;
+	public MemberVO getMemberVO() {
+		return memberVO;
 	}
-	public void setUserVO(UserVO userVO) {
-		this.userVO = userVO;
+	public void setMemberVO(MemberVO memberVO) {
+		this.memberVO = memberVO;
 	}
 	public RestaurantVO getRestaurantVO() {
 		return restaurantVO;
@@ -68,7 +68,7 @@ public class ReviewVO {
 	@Override
 	public String toString() {
 		return "ReviewVO [reviewNo=" + reviewNo + ", reviewTitle=" + reviewTitle + ", reviewContent=" + reviewContent
-				+ ", reviewRegdate=" + reviewRegdate + ", resGrade=" + resGrade + ", userVO=" + userVO
+				+ ", reviewRegdate=" + reviewRegdate + ", resGrade=" + resGrade + ", memberVO=" + memberVO
 				+ ", restaurantVO=" + restaurantVO + "]";
 	}
 	

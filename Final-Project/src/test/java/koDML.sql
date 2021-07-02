@@ -22,17 +22,36 @@ insert into ko_authorities(id,authority) values('KJS','ROLE_MEMBER');
 
 select * from ko_authorities
 
+CREATE TABLE ko_restaurant(
+	res_no number not null,
+	id varchar2(100) not null,
+	res_name varchar2(100) not null,
+	res_info varchar2(100) not null,
+	res_tel varchar2(100) not null,
+	res_loc varchar2(100) not null,
+	res_image varchar2(100) not null,
+	food_type varchar2(100) not null,
+	start_time varchar2(100) not null,
+	end_time varchar2(100) not null,
+	CONSTRAINT ko_member_restaurant primary key(id,res_no),
+	CONSTRAINT fk_ko_restaurant_id foreign key(id) references ko_member(id) on delete cascade
+)
 
 --레스토랑
-insert into ko_restaurant(res_no,res_name,res_info,res_tel,res_loc,res_image,food_type,end_time,start_time)
-values(ko_restaurant_no_seq.nextval,'김가네','분식집소개','031-123','오리','경로','한식','22','9');
-insert into ko_restaurant(res_no,res_name,res_info,res_tel,res_loc,res_image,food_type,end_time,start_time)
-values(ko_restaurant_no_seq.nextval,'미정국수','국수집소개','031-222','동탄','경로','한식','20','10');
-insert into ko_restaurant(res_no,res_name,res_info,res_tel,res_loc,res_image,food_type,end_time,start_time)
-values(ko_restaurant_no_seq.nextval,'맥도날드','햄버거소개','02-123','서울','경로','양식','19','12');
-insert into ko_restaurant(res_no,res_name,res_info,res_tel,res_loc,res_image,food_type,end_time,start_time)
-values(ko_restaurant_no_seq.nextval,'짬뽕집','중식소개','051-777','부산','경로','중식','18','11');
-insert into ko_restaurant(res_no,res_name,res_info,res_tel,res_loc,res_image,food_type,end_time,start_time)
-values(ko_restaurant_no_seq.nextval,'고앤스시','스시소개','033-445','강릉','경로','일식','17','13');
+insert into ko_restaurant(res_no,id,res_name,res_info,res_tel,res_loc,res_image,food_type,start_time,end_time)
+values(ko_restaurant_no_seq.nextval,'KDG','김가네','분식집소개','031-123','오리','경로','한식','9','22');
+insert into ko_restaurant(res_no,id,res_name,res_info,res_tel,res_loc,res_image,food_type,start_time,end_time)
+values(ko_restaurant_no_seq.nextval,'JJH','맥도날드','햄버거소개','02-123','서울','경로','양식','12','19');
+insert into ko_restaurant(res_no,id,res_name,res_info,res_tel,res_loc,res_image,food_type,start_time,end_time)
+values(ko_restaurant_no_seq.nextval,'BKS','짬뽕집','중식소개','051-777','부산','경로','중식','11','18');
+insert into ko_restaurant(res_no,id,res_name,res_info,res_tel,res_loc,res_image,food_type,start_time,end_time)
+values(ko_restaurant_no_seq.nextval,'KJS','미정국수','국수집소개','031-222','동탄','경로','한식','10','20');
+insert into ko_restaurant(res_no,id,res_name,res_info,res_tel,res_loc,res_image,food_type,start_time,end_time)
+values(ko_restaurant_no_seq.nextval,'JYJ','고앤스시','스시소개','033-445','강릉','경로','일식','13','17');
 
+select b.no,b.title,b.content,b.id 
+from (select row_number() over(order by no desc) as rnum,
+no,title,content,id from star_board) b, ko_member m
+where b.id=m.id and b.rnum between #{getStartRowNumber} and #{getEndRowNumber}
+ 		
 select * from ko_restaurant
