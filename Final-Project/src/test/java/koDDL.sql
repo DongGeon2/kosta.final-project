@@ -1,4 +1,3 @@
---drop--
 DROP TABLE ko_member cascade constraint;
 DROP TABLE ko_authorities;
 DROP TABLE ko_board;
@@ -14,16 +13,6 @@ DROP sequence ko_review_seq;
 DROP TABLE ko_reservation;
 DROP sequence ko_reservation_seq;
 
---select--
-SELECT * FROM ko_member;
-SELECT * FROM ko_authorities;
-SELECT * FROM ko_board;
-SELECT * FROM ko_board_comment;
-SELECT * FROM ko_restaurant;
-SELECT * FROM ko_my_pick;
-SELECT * FROM ko_reservation;
-SELECT * FROM ko_review;
-
 --1. 회원 테이블
 CREATE TABLE ko_member(
    id varchar2(100) primary key,
@@ -33,8 +22,6 @@ CREATE TABLE ko_member(
    tel varchar2(10) not null,
    enabled int default 1 not null 
 )
-SELECT * FROM ko_member;
-
 
 --2. 권한 테이블
 CREATE TABLE ko_authorities(
@@ -43,8 +30,6 @@ CREATE TABLE ko_authorities(
    CONSTRAINT fk_ko_authorities foreign key(id) references ko_member(id) on delete cascade,
    CONSTRAINT ko_member_authorities primary key(id,authority)
 )
-SELECT * FROM ko_authorities;
-
 
 --3.자유 게시판 테이블
 CREATE TABLE ko_board(
@@ -57,8 +42,6 @@ CREATE TABLE ko_board(
    CONSTRAINT ko_board_fk foreign key(id) references ko_member(id) on delete cascade
 )
 CREATE sequence ko_board_seq;
-SELECT * FROM ko_board;
-
 
 --4. 자유 게시판 댓글 
 CREATE TABLE ko_board_comment(
@@ -70,9 +53,9 @@ CREATE TABLE ko_board_comment(
    CONSTRAINT fk_ko_board_comment foreign key(board_no) references ko_board(board_no) on delete cascade,
    CONSTRAINT fk_ko_member_id foreign key(id) references ko_member(id) on delete cascade
 )
-CREATE sequence ko_board_comment_seq;
-SELECT * FROM ko_board_comment;
 
+select * from ko_restaurant
+CREATE sequence ko_board_comment_seq;
 
 --5. 레스토랑 테이블
 CREATE TABLE ko_restaurant(
@@ -86,14 +69,19 @@ CREATE TABLE ko_restaurant(
 	end_time varchar2(100) not null,
 	start_time varchar2(100) not null
 )
+alter table ko_restaurant drop column res_time;
+alter table ko_restaurant add start_time;
+alter table ko_restaurant add end_time;
+
+
 CREATE sequence ko_restaurant_no_seq;
-SELECT * FROM ko_restaurant;
 
 alter table ko_restaurant drop column res_time;
-alter table ko_restaurant ADD start_time varchar2(100);
-alter table ko_restaurant ADD end_time varchar2(100);
+alter table ko_restaurant add start_time;
+alter table ko_restaurant add end_time;
 
 
+select * from ko_restaurant
 --6. 찜 테이블
 CREATE TABLE ko_my_pick(
    id VARCHAR2(100) not null,
@@ -103,7 +91,6 @@ CREATE TABLE ko_my_pick(
    CONSTRAINT ko_pick_id foreign key(id) references ko_member(id) on delete cascade,
    CONSTRAINT ko_pick_resno foreign key(res_no) references ko_restaurant(res_no) on delete cascade
 )
-SELECT * FROM ko_my_pick;
 
 --7. 예약 테이블
 CREATE TABLE ko_reservation(
@@ -116,7 +103,6 @@ CREATE TABLE ko_reservation(
 	CONSTRAINT ko_rev_id foreign key(id) references ko_member(id) on delete cascade
 )
 CREATE sequence ko_reservation_seq;
-SELECT * FROM ko_reservation;
 
 --8. 예약 리뷰 테이블
 CREATE TABLE ko_review(
@@ -132,5 +118,7 @@ CREATE TABLE ko_review(
 	CONSTRAINT ko_review_id foreign key(id) references ko_member(id) on delete cascade
 )
 CREATE sequence ko_review_seq;
-SELECT * FROM ko_review;
+''
+--select
+SELECT * FROM ko_member;
 
