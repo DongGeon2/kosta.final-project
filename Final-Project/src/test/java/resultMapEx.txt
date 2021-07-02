@@ -1,0 +1,84 @@
+
+	<insert id="registerDirector" parameterType="directorVO">
+		<selectKey keyProperty="directorId" resultType="string"
+			order="BEFORE">
+			select director_seq.nextval from dual
+		</selectKey>
+		insert into director(director_id,director_name,intro)
+		values(#{directorId},#{directorName},#{intro})
+	</insert>
+	<select id="findD
+	
+	
+	irectorById" parameterType="string"
+		resultType="directorVO">
+		select director_id as directorId,director_name as directorName,intro from
+		director where director_id=#{value}
+	</select>
+	
+	
+	
+	<select id="findDirectorByIdVer2" parameterType="string"
+		resultType="directorVO">
+		select director_id,director_name,intro from director where
+		director_id=#{value}
+	</select>
+	
+	
+	
+	<select id="getAllDirectorListOrderByIdDesc"
+		resultType="directorVO">
+		select director_id,director_name,intro from director order by director_id
+		desc
+	</select>
+	
+	
+	<!-- movieVO has a directorVO : #{directorVO.directorId} -->
+	<insert id="registerMovie" parameterType="movieVO">
+		insert into movie(movie_id,title,genre,attendance,director_id)
+		values(movie_seq.nextval,#{title},#{genre},#{attendance},#{directorVO.directorId})
+	</insert>
+	
+	
+	
+	<select id="getAllMovieMapList" resultType="map">
+		select m.title,d.director_name
+		from director d,movie m
+		where d.director_id=m.director_id
+	</select>
+	
+	
+	
+	<!-- resultMap을 이용해 MovieVO has a DirectorVO 형식으로 결과값이 조회되도록 처리  -->
+	<resultMap type="movieVO" id="movieListRM">
+		<result column="director_name"  property="directorVO.directorName"/>
+	</resultMap>
+	<select id="getAllMovieVOList" resultMap="movieListRM">
+		select m.title,d.director_name
+		from director d,movie m
+		where d.director_id=m.director_id
+	</select>	
+	
+	
+	
+	<!-- 영화상세정보(영화와 감독정보의 모든 컬럼을 조회)
+		  MovieVO has a DirectorVO 즉 MovieVO를 생성할 때 MovieVO의 인스턴스 변수인 directorVO 에 
+		  객체를 생성하고 directorVO의 인스턴스 변수 directorId, directorName, intro 를 할당하기 위해서 
+		  resultMap을 이용해야 한다. MyBatis 에서 제공하는 resultMap은 extends 가 가능하다 
+		  위에서 정의한 movieListRM resultmap 을 상속받아 더 확장해야할 설정만  작성해서 사용하면 된다. 
+	 -->
+	<resultMap type="movieVO" id="detailMovieRM" extends="movieListRM">
+		<result column="director_id" property="directorVO.directorId"/>
+		<result column="intro" property="directorVO.intro"/>
+	</resultMap>
+	<select id="findMovieAndDirectorVOByMovieId" parameterType="string"  resultMap="detailMovieRM">
+	select m.movie_id,m.title,m.genre,m.attendance,d.director_id,d.director_name,d.intro
+	from movie m,director d
+	where m.director_id=d.director_id and m.movie_id=#{value}
+	</select>
+</mapper>
+
+
+
+
+
