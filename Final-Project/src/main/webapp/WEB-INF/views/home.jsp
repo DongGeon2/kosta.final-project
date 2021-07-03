@@ -27,8 +27,8 @@
                                     <span> </span> <span>T</span> <span>i</span> <span>m</span>
                                     <span>e</span> <span> </span> <span>T</span> <span>o</span>
                                     <span> </span> <span>K</span> <span>o</span> <span>s</span>
-                                    <span>h</span> <span>u</span> <span>l</span> <span>a</span>
-                                    <span>n</span> <span>g</span>
+                                    <span>h</span> <span>e</span> <span>l</span> <span>i</span>
+                                    <span>n</span>
                                  </h1>
                               </div>
                            </section>
