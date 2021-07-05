@@ -12,43 +12,24 @@ public class HomeController {
 		// view를 제공 
 		return "home.tiles";
 	}
-	@RequestMapping("event")
-	public String event() {
-		return "event.tiles";
+	@RequestMapping("restaurant")
+	public String restaurant() {
+		return "restaurant.tiles";
 	}
 	
-	@RequestMapping("contact")
-	public String contact() {
-		return "contact.tiles";
+	@RequestMapping("recommend")
+	public String recommend() {
+		return "recommend.tiles";
 	}
-	@RequestMapping("services")
-	public String services() {
-		return "services.tiles";
-	}
-	@RequestMapping("landing-single")
-	public String landingServices() {
-		return "landing-single.tiles";
+	@RequestMapping("login")
+	public String login() {
+		return "login.tiles";
 	}
 	@RequestMapping("mypage")
 	public String mypage() {
 		return "mypage.tiles";
 	}
-	@RequestMapping("recommend")
-	public String recommend() {
-		return "recommend.tiles";
-	}
-	@RequestMapping("about")
-	public String getPost() {
-		return "about.tiles";
-	}
-	/**
-	 * 동건
-	 * singlePage Test
-	 */
-	@RequestMapping("single")
-	public String single() {
-		return "single.tiles";
-	}
+
 }
 
 

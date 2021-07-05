@@ -23,6 +23,7 @@ CREATE TABLE ko_member(
    enabled int default 1 not null 
 )
 
+select * from ko_member
 --2. 권한 테이블
 CREATE TABLE ko_authorities(
    id varchar(100) not null,

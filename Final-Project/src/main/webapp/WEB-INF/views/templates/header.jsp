@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%-- spring security custom tag를 사용하기 위한 선언 --%>
+<%@taglib prefix="sec"
+   uri="http://www.springframework.org/security/tags"%>
 <!--header-->
 <header id="site-header" class="fixed-top">
 	<div class="container-fluid">
@@ -30,8 +33,34 @@
 							<span class="sr-only">(current)</span></a></li>
 					<li class="nav-item"><a class="nav-link" href="restaurant ">restaurant</a></li>
 					<li class="nav-item"><a class="nav-link" href="recommend">recommend</a></li>
-					<li class="nav-item"><a class="nav-link" href="login">login</a></li>
-					<li class="nav-item"><a class="nav-link" href="mypage">mypage</a></li>
+					<sec:authorize access="isAuthenticated()==false">
+                  <li class="nav-item"><a class="nav-link" href="login">Login
+                  </a></li>
+                  <sec:csrfInput />
+               </sec:authorize>
+               <sec:authorize access="isAuthenticated()">
+           		<!-- <div style="color:white"> --><div class="nav-item nav-link">
+           			<sec:authentication property="principal.name" />님 
+           		</div>
+                   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                  <script type="text/javascript">
+                  $(document).ready(function() {
+                     $("#logoutAction").click(function() {                        
+                        $("#logoutForm").submit();
+                     });
+                  });
+                     
+                  </script>
+                  <li class="nav-item"><a class="nav-link" href="mypage">mypage</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#"
+                     id="logoutAction">Logout</a></li>
+                  <form id="logoutForm"
+                     action="${pageContext.request.contextPath}/logout" method="post"
+                     style="display: none">
+                     <sec:csrfInput />
+                  </form>
+               </sec:authorize>
+					
 					<!-- search button -->
 					<div class="search-right ml-lg-3">
 						<form action="error.html" method="GET"

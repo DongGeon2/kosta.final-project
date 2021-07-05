@@ -27,7 +27,6 @@ public class TilesConfiguration {
 		tilesConfigurer.setDefinitions(defs);
 		return tilesConfigurer;
 	}
-
 }
 
 
