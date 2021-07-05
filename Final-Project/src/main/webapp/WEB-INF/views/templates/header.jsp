@@ -4,10 +4,10 @@
 <header id="site-header" class="fixed-top">
 	<div class="container-fluid">
 		<nav class="navbar navbar-expand-lg stroke">
-	<a class="navbar-brand d-flex align-items-center" href="home"> 
-				<img src="assets/images/Koshelin_logo.png" alt="Your logo"
-				title="Your logo" style="height: 300px;" />
-			</a>
+			<a class="navbar-brand d-flex align-items-center" href="home"> 
+					<img src="assets/images/Koshelin_logo.png" alt="Your logo"
+					title="Your logo" style="height: 300px;" />
+				</a>
 			<button class="navbar-toggler  collapsed bg-gradient" type="button"
 				data-toggle="collapse" data-target="#navbarTogglerDemo02"
 				aria-controls="navbarTogglerDemo02" aria-expanded="false"
@@ -27,26 +27,11 @@
 			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 				<ul class="navbar-nav ml-lg-auto">
 					<li class="nav-item"><a class="nav-link" href="home">Home
-							<span class="sr-only">(current)</span>
-					</a></li>
-					<li class="nav-item"><a class="nav-link" href="about">About
-							Us</a></li>
-					<li class="nav-item"><a class="nav-link" href="event">Events</a>
-					</li>
-					<li class="nav-item"><a class="nav-link" href="recommend">Recommend</a>
-					</li>
-					<li class="nav-item"><a class="nav-link dropdown-toggle"
-						href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-						aria-haspopup="true" aria-expanded="false"> Pages <span
-							class="fa fa-angle-down"></span>
-					</a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="services">Services</a> <a
-								class="dropdown-item" href="single">Single Page</a> <a
-								class="dropdown-item" href="landing-single">Landing Page</a>
-						</div></li>
-					<li class="nav-item"><a class="nav-link" href="contact">Contact
-							Us</a></li>
+							<span class="sr-only">(current)</span></a></li>
+					<li class="nav-item"><a class="nav-link" href="restaurant ">restaurant</a></li>
+					<li class="nav-item"><a class="nav-link" href="recommend">recommend</a></li>
+					<li class="nav-item"><a class="nav-link" href="login">login</a></li>
+					<li class="nav-item"><a class="nav-link" href="mypage">mypage</a></li>
 					<!-- search button -->
 					<div class="search-right ml-lg-3">
 						<form action="error.html" method="GET"
