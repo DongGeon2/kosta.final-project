@@ -5,9 +5,9 @@
 	<div class="container-fluid">
 		<nav class="navbar navbar-expand-lg stroke">
 			<a class="navbar-brand d-flex align-items-center" href="home"> 
-				<img src="assets/images/Koshelin_logo.png" alt="Your logo"
-				title="Your logo" style="height: 300px;" />
-			</a>
+					<img src="assets/images/Koshelin_logo.png" alt="Your logo"
+					title="Your logo" style="height: 300px;" />
+				</a>
 			<button class="navbar-toggler  collapsed bg-gradient" type="button"
 				data-toggle="collapse" data-target="#navbarTogglerDemo02"
 				aria-controls="navbarTogglerDemo02" aria-expanded="false"
