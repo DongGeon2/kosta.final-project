@@ -1,9 +1,11 @@
 package org.kosta.myproject.controller;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.kosta.myproject.model.vo.MemberVO;
 import org.kosta.myproject.service.MemberService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,6 +38,12 @@ public class MemberController {
 	public String registerForm() {
 		return "member/registerForm.tiles";
 	}
+	
+	@RequestMapping("updateMemberForm")
+	public String updateMemberForm() {
+		return "member/updateMemberForm.tiles";
+	}
+	
 	@RequestMapping(value = "user/registerMember", method = RequestMethod.POST)
 	public String register(MemberVO vo) {
 		memberService.registerMember(vo);
@@ -59,4 +67,31 @@ public class MemberController {
 	public int getMemberTotalCount() {
 		return memberService.getMemberCount();
 	}
+	//@Secured("ROLE_MEMBER")
+		@RequestMapping("updateMemberAction")
+		public String updateMemberAction(HttpServletRequest request, MemberVO memberVO) {
+			// 1 회원정보 수정시 권한까지 수정해야 할 경우에는 아래처럼 코딩하면 된다
+		/*	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+			List<GrantedAuthority> updatedAuthorities = new ArrayList<>(auth.getAuthorities());
+			updatedAuthorities.add(new SimpleGrantedAuthority("ROLE_ADMIN")); 																		
+			Authentication newAuth = new UsernamePasswordAuthenticationToken(auth.getPrincipal(), auth.getCredentials(),
+					updatedAuthorities);
+			SecurityContextHolder.getContext().setAuthentication(newAuth);*/
+			////////////////////////////////////////////////////////////////////////////
+
+			// 회원정보 수정위해 Spring Security 세션 회원정보를 반환받는다
+			MemberVO pvo = (MemberVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			System.out.println("Spring Security 세션 수정 전 회원정보:" + pvo);		
+			memberService.updateMember(memberVO);//service에서 변경될 비밀번호를 암호화한다 
+			
+			// 수정한 회원정보로 Spring Security 세션 회원정보를 업데이트한다
+			pvo.setPassword(memberVO.getPassword());
+			pvo.setName(memberVO.getName());
+			pvo.setEmail(memberVO.getEmail());
+			pvo.setTel(memberVO.getTel());
+			System.out.println(pvo);
+			System.out.println("Spring Security 세션 수정 후 회원정보:" + pvo);
+			return "member/update_member_result.tiles";
+		}
+	
 }
