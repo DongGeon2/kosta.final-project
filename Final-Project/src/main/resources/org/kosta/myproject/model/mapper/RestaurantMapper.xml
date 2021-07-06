@@ -4,7 +4,22 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.kosta.myproject.model.mapper.RestaurantMapper">
-
+	<!-- 검색 -->
+<select id="findRestaurantByName" resultType="restaurantVO">
+	SELECT res_no,res_name,res_info,res_tel,res_loc,res_image,food_type
+	FROM ko_restaurant 
+	WHERE res_name=#{value}
+</select>
+ 	<!-- 검색 -->
+ 	
+	<!-- 메인바검색 -->
+<select id="findRestaurantByMainBar" resultType="restaurantVO">
+	SELECT res_no,res_name,res_info,res_tel,res_loc,res_image,food_type
+	FROM ko_restaurant 
+	WHERE food_type=#{foodType} AND res_loc=#{resLoc}
+</select>
+ 	<!-- 메인바검색 -->
+ 	 	
 </mapper>
  
  
