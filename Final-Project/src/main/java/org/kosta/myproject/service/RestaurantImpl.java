@@ -1,10 +1,12 @@
 package org.kosta.myproject.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
 
 import org.kosta.myproject.model.mapper.RestaurantMapper;
+import org.kosta.myproject.model.vo.PagingBean;
 import org.kosta.myproject.model.vo.RestaurantVO;
 import org.springframework.stereotype.Service;
 
@@ -33,6 +35,19 @@ public class RestaurantImpl implements RestaurantService {
 		return restaurantMapper.findRestaurantByMainBar(foodType, resLoc);
 	}
 /** 메인바검색 **/
+	
+/** 추천상세 **/	
+	@Override
+	public int getTotalCount() {
+		return restaurantMapper.getTotalList();
+	}
 
+	@Override
+	public ArrayList<RestaurantVO> getRestaurantList(PagingBean pagingBean) {
+		int getStartRowNumber = pagingBean.getStartRowNumber();
+		int getEndRowNumber = pagingBean.getEndRowNumber();
+		return restaurantMapper.getRestaurantList(getStartRowNumber, getEndRowNumber);
+	}
+/** 추천상세 **/
 	
 }

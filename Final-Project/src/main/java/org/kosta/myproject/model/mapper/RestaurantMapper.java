@@ -15,6 +15,10 @@ public interface RestaurantMapper {
 	RestaurantVO findRestaurantByName(String resName);
 
 	List<RestaurantVO> findRestaurantByMainBar(String foodType, String resLoc);
+	
+	public int getTotalList();
+	
+	public ArrayList<RestaurantVO> getRestaurantList(int getStartRowNumber, int getEndRowNumber);
 
 }
 

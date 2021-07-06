@@ -34,169 +34,75 @@
                     <div class="before"></div>
                     <div class="after"></div>
                 </div>
-                <div class="row top-cont-grid align-items-center">
+                
+									 <!-- 식당1 -->
+            <%-- ${restaurantList} --%>  
+			<div class="row top-cont-grid align-items-center">
+                <c:forEach items="${restaurantList}" var="restaurant">
+                <div class="col-lg-4 col-md-6 item">
+                    <div class="card">
+                        <div class="card-header p-0 position-relative">
+                            <a href="single.html">
+                                <img class="card-img-bottom d-block radius-image-full" src="assets/images/restaurant1.jpg"
+                                    alt="Card image cap">
+                            </a>
+                        </div>
+                        <div class="card-body blog-details">
+                            <span class="label-blue">${restaurant.resName}</span>
+                            <a href="single.html" class="blog-desc">
+								${restaurant.memberVO.id}<br>
+                            </a>
+                            <div class="author align-items-center mt-3 mb-1">
+                                <img src="assets/images/testi1.jpg" alt="" class="img-fluid rounded-circle" />
+                                <ul class="blog-meta">
+                                    <li>
+                                        <a href="single.html">
+											${restaurant.memberVO.name}<br>
+										</a>
+                                    </li>
+                                    <li class="meta-item blog-lesson">
+                                        <span class="meta-value">게시날짜</span>. <span
+                                            class="meta-value ml-2"><span class="fa fa-clock-o"></span> 2021/07/05</span>
+                                    </li>
+                                    <li class="meta-item blog-lesson">
+                                    tel. <span class="meta-value">${restaurant.memberVO.tel}</span> 
+                                    </li>
+                                    <li class="meta-item blog-lesson">
+                                    email. <span class="meta-value">${restaurant.memberVO.email}</span> 
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 식당 하나자리 -->
+                    <br><br><br><br>
+                </div>
+                    <div class="col-lg-1">
+                    </div>
+                    <div class="col-lg-6 left-cont mb-lg-0 mb-5">
+						<h4>
+								${restaurant.resName}<br>
+						</h4>
+						<div class="d-flex align-items-center mt-3">
+                            <h6><i class="fa fa-clock-o mr-1" aria-hidden="true"></i>
+								영업시간: ${restaurant.startTime} ~ ${restaurant.endTime}<br>
+							</h6>
+                            <h6 class="ml-3"><i class="fa fa-calendar mr-2" aria-hidden="true"></i>날짜</h6>
+                        </div>
+                        <p class="mt-3 mb-2">
+								${restaurant.resInfo}<br>
+							</p>
+                        <a href="single.html" class="btn btn-style mt-4">Restaurant Details</a>
+                    </div>
+                    </c:forEach>
+                </div>    
                 <!-- 식당1 -->
-                <div class="row">
-                <div class="col-lg-4 col-md-6 item">
-                    <div class="card">
-                        <div class="card-header p-0 position-relative">
-                            <a href="single.html">
-                                <img class="card-img-bottom d-block radius-image-full" src="assets/images/s1.png"
-                                    alt="Card image cap">
-                            </a>
-                        </div>
-                        <div class="card-body blog-details">
-                            <span class="label-blue">코스타소고기</span>
-                            <a href="single.html" class="blog-desc">24시간 영업, 회식 30자리까지 환영합니다. 예약 많이 해주세요
-                            </a>
-                            <div class="author align-items-center mt-3 mb-1">
-                                <img src="assets/images/testi1.jpg" alt="" class="img-fluid rounded-circle" />
-                                <ul class="blog-meta">
-                                    <li>
-                                        <a href="single.html">Isabella ava</a> </a>
-                                    </li>
-                                    <li class="meta-item blog-lesson">
-                                        <span class="meta-value"> Jan 28 2021 </span>. <span
-                                            class="meta-value ml-2"><span class="fa fa-clock-o"></span> 1 min</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                    
-                    
-                    <div class="col-lg-1">
-
-                    </div>
-                    <div class="col-lg-6 left-cont mb-lg-0 mb-5">
-                        <h4>Restaurant Name</h4>
-                        <div class="d-flex align-items-center mt-3">
-                            <h6><i class="fa fa-clock-o mr-1" aria-hidden="true"></i> 7:00 pm - 8:00 pm</h6>
-                            <h6 class="ml-3"><i class="fa fa-calendar mr-2" aria-hidden="true"></i>Dec 31</h6>
-                        </div>
-                        <p class="mt-3 mb-2">Sed luctus orci sit amet tempor luctus. Nullam non felis massa. Phasellus
-                            vitae fringilla
-                            sapien,
-                            quis dictum mi. Quisque consectetur egestas.Lorem ipsum dolor sit amet, consectetur
-                            adipiscing
-                            elit.</p>
-                        <a href="single.html" class="btn btn-style mt-4">Restaurant Details</a>
-                    </div>
-                </div>
-                <br><br><br>
-                <!-- 식당1 -->
-				<br><br><br>
-                
-                <!-- 식당2 -->
-                <div class="row">
-                <div class="col-lg-4 col-md-6 item">
-                    <div class="card">
-                        <div class="card-header p-0 position-relative">
-                            <a href="single.html">
-                                <img class="card-img-bottom d-block radius-image-full" src="assets/images/s1.png"
-                                    alt="Card image cap">
-                            </a>
-                        </div>
-                        <div class="card-body blog-details">
-                            <span class="label-blue">코스타소고기</span>
-                            <a href="single.html" class="blog-desc">24시간 영업, 회식 30자리까지 환영합니다. 예약 많이 해주세요
-                            </a>
-                            <div class="author align-items-center mt-3 mb-1">
-                                <img src="assets/images/testi1.jpg" alt="" class="img-fluid rounded-circle" />
-                                <ul class="blog-meta">
-                                    <li>
-                                        <a href="single.html">Isabella ava</a> </a>
-                                    </li>
-                                    <li class="meta-item blog-lesson">
-                                        <span class="meta-value"> Jan 28 2021 </span>. <span
-                                            class="meta-value ml-2"><span class="fa fa-clock-o"></span> 1 min</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                    
-                    
-                    <div class="col-lg-1">
-
-                    </div>
-                    <div class="col-lg-6 left-cont mb-lg-0 mb-5">
-                        <h4>Restaurant Name</h4>
-                        <div class="d-flex align-items-center mt-3">
-                            <h6><i class="fa fa-clock-o mr-1" aria-hidden="true"></i> 7:00 pm - 8:00 pm</h6>
-                            <h6 class="ml-3"><i class="fa fa-calendar mr-2" aria-hidden="true"></i>Dec 31</h6>
-                        </div>
-                        <p class="mt-3 mb-2">Sed luctus orci sit amet tempor luctus. Nullam non felis massa. Phasellus
-                            vitae fringilla
-                            sapien,
-                            quis dictum mi. Quisque consectetur egestas.Lorem ipsum dolor sit amet, consectetur
-                            adipiscing
-                            elit.</p>
-                        <a href="single.html" class="btn btn-style mt-4">Restaurant Details</a>
-                    </div>
-                </div>
-                <br><br><br>
-                <!-- 식당2 -->
-                
-                <!-- 식당3 -->
-                <div class="row">
-                <div class="col-lg-4 col-md-6 item">
-                    <div class="card">
-                        <div class="card-header p-0 position-relative">
-                            <a href="single.html">
-                                <img class="card-img-bottom d-block radius-image-full" src="assets/images/s1.png"
-                                    alt="Card image cap">
-                            </a>
-                        </div>
-                        <div class="card-body blog-details">
-                            <span class="label-blue">코스타소고기</span>
-                            <a href="single.html" class="blog-desc">24시간 영업, 회식 30자리까지 환영합니다. 예약 많이 해주세요
-                            </a>
-                            <div class="author align-items-center mt-3 mb-1">
-                                <img src="assets/images/testi1.jpg" alt="" class="img-fluid rounded-circle" />
-                                <ul class="blog-meta">
-                                    <li>
-                                        <a href="single.html">Isabella ava</a> </a>
-                                    </li>
-                                    <li class="meta-item blog-lesson">
-                                        <span class="meta-value"> Jan 28 2021 </span>. <span
-                                            class="meta-value ml-2"><span class="fa fa-clock-o"></span> 1 min</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                    
-                    
-                    <div class="col-lg-1">
-
-                    </div>
-                    <div class="col-lg-6 left-cont mb-lg-0 mb-5">
-                        <h4>Restaurant Name</h4>
-                        <div class="d-flex align-items-center mt-3">
-                            <h6><i class="fa fa-clock-o mr-1" aria-hidden="true"></i> 7:00 pm - 8:00 pm</h6>
-                            <h6 class="ml-3"><i class="fa fa-calendar mr-2" aria-hidden="true"></i>Dec 31</h6>
-                        </div>
-                        <p class="mt-3 mb-2">Sed luctus orci sit amet tempor luctus. Nullam non felis massa. Phasellus
-                            vitae fringilla
-                            sapien,
-                            quis dictum mi. Quisque consectetur egestas.Lorem ipsum dolor sit amet, consectetur
-                            adipiscing
-                            elit.</p>
-                        <a href="single.html" class="btn btn-style mt-4">Restaurant Details</a>
-                    </div>
-                </div>
-                <br><br><br>
-                <!-- 식당3 -->
-                
-
+ 
                 <!-- pagination -->
                 <c:set var="pb" value="${requestScope.pagingBean}"></c:set>
                 <div class="pagination-style text-center mt-5 pt-5">
                     <ul>
+                    							<!-- 이전 그룹일때 -->
                     <c:if test="${pb.previousPageGroup }">
                         <li> 
                         	<a href="countPage?pageNo=${pb.startPageOfPageGroup-1 }" class="not-allowed">
@@ -204,16 +110,18 @@
                             </a>
                         </li>
                     </c:if>
+                        
                     <c:forEach var="page" begin="${pb.startPageOfPageGroup}" end="${pb.endPageOfPageGroup}">
                     <c:choose>
                     	<c:when test="${pb.nowPage==page }">
-                        <li><a class="active" href="countPage?pageNo=${page }">${page }</a></li>
+                        	<li><a class="active" href="countPage?pageNo=${page }">${page }</a></li>
                         </c:when>
                         <c:otherwise>
-                        <li><a href="countPage?pageNo=${page }">${page }</a></li>
+                        	<li><a href="countPage?pageNo=${page }">${page }</a></li>
                         </c:otherwise>
                     </c:choose>
 					</c:forEach>
+                								<!-- 다음 그룹일때 -->
 					<c:if test="${pb.nextPageGroup }">
                         <li>
                             <a href="countPage?pageNo=${pb.endPageOfPageGroup+1 }">
@@ -226,7 +134,6 @@
                 <!-- //pagination -->
                 
                 
-            </div>
         </div>
     </section>
     <!-- image with text section -->
