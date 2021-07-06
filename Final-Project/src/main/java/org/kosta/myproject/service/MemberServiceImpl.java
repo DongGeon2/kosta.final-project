@@ -61,4 +61,9 @@ public class MemberServiceImpl implements MemberService {
 		int count = memberMapper.idcheck(id);
 		return (count == 0) ? "ok" : "fail";
 	}
+
+	@Override
+	public void deleteMember(String id) {
+		memberMapper.deleteMember(id);
+	}
 }

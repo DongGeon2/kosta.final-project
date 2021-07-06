@@ -13,6 +13,13 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	function Unsubscribe() {
+		if (confirm("회원 탈퇴하시겠습니까?")) 
+		document.Unsubscribe.submit();
+		
+}
+</script>
 <section class="w3l-bottom-grids-6 w3l-services py-5" id="services">
 	<div class="container py-md-5 py-4">
 		<div class="waviy text-center mb-md-5 mb-4">
@@ -81,7 +88,7 @@
                 <div class="col-lg-4 col-md-6 grids-feature mt-lg-5 mt-4">
                     <div class="area-box">
                         <img src="assets/images/Unsubscribe.png" alt="" class="img-fluid">
-                        <h4><a href="#feature" class="title-head">Unsubscribe account</a></h4>
+                        <h4><a href="deleteMember" class="title-head" onclick="Unsubscribe()">Unsubscribe account</a></h4>
                         <p class="">Don't Unsubscribe Our Website</p>
                     </div>
                 </div>
