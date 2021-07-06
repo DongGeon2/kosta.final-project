@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <script type="text/javascript">
 	$(document).ready(function() {
 		//alert(1);
@@ -86,7 +87,7 @@
 					</div>
 					<span class="mb-5" style="margin-top: 5px; font-size: 15px">저녁7만원</span>
 				</div>
-				<a href="/user/doReservation" class="btn btn-style mt-5 ml-5">예약하러 가기</a>
+				<a href="doReservation" class="btn btn-style mt-5 ml-5">예약하러 가기</a>
 			</div>
 		</div>
 	</div>
@@ -102,9 +103,10 @@
         	<h3 class="post-content-title">Leave a review</h3>
             <div class="form-commets mt-4">
             	<!-- ----------------------------리뷰 작성 폼---------------------------- -->
-            	<form action="/user/registerReview" method="post">
+            	<form action="registerReview" method="post">
+            	<sec:csrfInput/>
                 	<div class="media-form">
-                    	<input type="hidden" name="id" value="KDG">
+                    	<input type="hidden" name="id" value="${mvo.id }">
                         <input type="text" name="title" required="required" placeholder="Title">
 					</div>
                     <textarea name="message" required="required" placeholder="Write your comments here"></textarea>
@@ -125,12 +127,10 @@
                     </div>
                     <div class="media-body">
                     	<div class="medi-top mb-2">
-                        	<a href="#URL" class="name mt-0">Johnson smith</a>
-                            <span>06 Jan, 2021 </span>
+                        	<a href="#URL" class="name mt-0">${reviewVO.memberVO.id }</a>
+                            <span>${reviewVO.reviewRegdate }</span>
                         </div>
-                        <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante
-                        sollicitudin. Cras purus tempus viverra turpis. Fusce nunc ac in vulputate
-                        odio, in vulputate at, nunc ac.</p>
+                        <p>${reviewVO.reviewContent }</p>
                         <a href="#reply" class="rep mt-3">Reply</a>
                         <div class="media mt-4 bod-2 mb-0 pb-0 px-0">
                         	<a class="img-circle img-circle-sm" href="#">

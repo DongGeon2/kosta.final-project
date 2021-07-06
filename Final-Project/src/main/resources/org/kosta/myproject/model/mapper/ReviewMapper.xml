@@ -8,8 +8,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into ko_review(review_no, review_title, review_content, review_image, review_regdate, review_grade, res_no, id)
 		values(ko_review_seq.nextval, #{reviewTitle}, #{reviewContent}, #{reviewImage}, sysdate, #{reviewGrade}, #{restaurantVO.resNo}, #{memberVO.id})
 	</insert>
-	<select id="getAllReview" resultType="reviewVO">
+	<select id="getAllReviewByResNo" resultType="reviewVO" parameterType="string">
 		select * from ko_review
+		where res_no=#{value}
 	</select>
 </mapper>
  

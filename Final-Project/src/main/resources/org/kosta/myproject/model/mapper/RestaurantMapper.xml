@@ -4,7 +4,42 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.kosta.myproject.model.mapper.RestaurantMapper">
-
+	<!-- 검색 -->
+<select id="findRestaurantByName" resultType="restaurantVO">
+	SELECT res_no,res_name,res_info,res_tel,res_loc,res_image,food_type
+	FROM ko_restaurant 
+	WHERE res_name=#{value}
+</select>
+ 	<!-- 검색 -->
+ 	
+	<!-- 메인바검색 -->
+<select id="findRestaurantByMainBar" resultType="restaurantVO">
+	SELECT res_no,res_name,res_info,res_tel,res_loc,res_image,food_type
+	FROM ko_restaurant 
+	WHERE food_type=#{foodType} AND res_loc=#{resLoc}
+</select>
+ 	<!-- 메인바검색 -->
+ 	 	
+ 	<!-- 추천상세 --> 	
+ 	<select id="getTotalList" resultType="int">
+		select count(*) from ko_restaurant
+	</select>
+	
+	<resultMap type='restaurantVO' id='restaurantList'>
+		<result column="id" property="memberVO.id"/>
+	    <result column="email" property="memberVO.email"/>
+	    <result column="name" property="memberVO.name"/>
+	    <result column="tel" property="memberVO.tel"/>
+	</resultMap>
+	<select id="getRestaurantList" resultType="restaurantVO" parameterType="int" resultMap='restaurantList'> 		
+		select r.res_no,r.res_name,r.res_info,r.res_tel,r.res_loc,r.res_image,r.food_type,
+		r.end_time,r.start_time,m.id,m.password,m.email,m.name,m.tel,m.enabled
+		from (select row_number() over(order by res_no desc) as res_no,id,
+		res_name,res_info,res_tel,res_loc,res_image,food_type,end_time,start_time from ko_restaurant) r, ko_member m 
+		where r.id=m.id and r.res_no between #{getStartRowNumber} and #{getEndRowNumber}
+		order by res_no asc
+	</select>
+	<!-- 추천상세 --> 
 </mapper>
  
  

@@ -8,6 +8,6 @@ public interface ReviewService {
 
 	void registerReview(ReviewVO reviewVO);
 
-	List<ReviewVO> getAllReview();
+	List<ReviewVO> getAllReviewByResNo(String resNo);
 	
 }

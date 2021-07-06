@@ -18,26 +18,25 @@ public class ReviewController {
 	@Resource
 	private ReviewService reviewService;
 	
-	@PostMapping("/user/registerReview")
+	@PostMapping("registerReview")
 	public String registerReview(String message, String id, String title) {
 		ReviewVO reviewVO = new ReviewVO();
 		MemberVO memberVO = new MemberVO();
 		RestaurantVO restaurantVO = new RestaurantVO();
-		restaurantVO.setResNo("3");
+		restaurantVO.setResNo("1");
 		memberVO.setId(id);
 		reviewVO.setMemberVO(memberVO);
 		reviewVO.setRestaurantVO(restaurantVO);
 		reviewVO.setReviewImage("이미지경로");
-		reviewVO.setResGrade(3);
 		reviewVO.setReviewGrade("4");
 		reviewVO.setReviewContent(message);
 		reviewVO.setReviewTitle(title);
 		reviewService.registerReview(reviewVO);
-		return "redirect:resultReview";
+		return "redirect:resultReview?resNo="+restaurantVO.getResNo();
 	}
 	@RequestMapping("resultReview")
-	public String resultReview(Model model) {
-		List<ReviewVO> reviewList = reviewService.getAllReview();
+	public String resultReview(Model model, String resNo) {
+		List<ReviewVO> reviewList = reviewService.getAllReviewByResNo(resNo);
 		model.addAttribute("reviewVO", reviewList);
 		System.out.println(reviewList);
 		return "restaurant.tiles";
