@@ -36,7 +36,7 @@
 			<div class="col-lg-6 w3l-features-photo-7_top-right mt-lg-0 mt-sm-5 mt-4">
 				<img src="assets/images/blog1.jpg" class="img-responsive" alt="" />
 				
-				<div style="float: left; width: 25%">
+			<!-- 	<div style="float: left; width: 25%">
 					<img src="assets/images/blog1.jpg" class="img-responsive" alt="" />
 				</div>
 				<div style="float: left; width: 25%">
@@ -47,7 +47,7 @@
 				</div>
 				<div style="float: left; width: 25%">
 					<img src="assets/images/blog1.jpg" class="img-responsive" alt="" />
-				</div>
+				</div> -->
 				
 			</div>
 			<div class="col-lg-6 w3l-features-photo-7_top-left pl-lg-4">
@@ -86,7 +86,7 @@
 					</div>
 					<span class="mb-5" style="margin-top: 5px; font-size: 15px">저녁7만원</span>
 				</div>
-				<a href="" class="btn btn-style mt-5 ml-5">예약가능 날짜 확인</a>
+				<a href="/user/doReservation" class="btn btn-style mt-5 ml-5">예약하러 가기</a>
 			</div>
 		</div>
 	</div>
@@ -99,27 +99,26 @@
 	<div class="container py-md-5 py-4">
 		
 		<div class="testi-top mt-5 pt-4">
-        	<h3 class="post-content-title">Leave a message</h3>
+        	<h3 class="post-content-title">Leave a review</h3>
             <div class="form-commets mt-4">
             	<!-- ----------------------------리뷰 작성 폼---------------------------- -->
-            	<form action="#" method="post">
+            	<form action="/user/registerReview" method="post">
                 	<div class="media-form">
-                    	<input type="text" name="Name" required="required" placeholder="Your Name">
-                        <input type="email" name="Email" required="required" placeholder="Your Email">
+                    	<input type="hidden" name="id" value="KDG">
+                        <input type="text" name="title" required="required" placeholder="Title">
 					</div>
-                    <textarea name="Message" required="required" placeholder="Write your comments here"></textarea>
+                    <textarea name="message" required="required" placeholder="Write your comments here"></textarea>
                     <div class="text-right">
-                    	<button class="btn btn-primary btn-style" type="submit">Post comment</button>
+                    	<button class="btn btn-primary btn-style" type="submit">Post review</button>
 					</div>
 				</form>
             </div>
 		</div>
 		<!-- -------------------------------------------------------------------------------------- -->
 		<!-- ----------------------------리뷰 작성된거 보는 곳---------------------------- -->
+		
 		<div class="comments">
 			<h3 class="post-content-title">Review</h3>
-			
-			
 				<div class="media mt-4 bod-1">
                 	<div class="img-circle">
                     	<img src="assets/images/team1.jpg" class="img-fluid" alt="...">

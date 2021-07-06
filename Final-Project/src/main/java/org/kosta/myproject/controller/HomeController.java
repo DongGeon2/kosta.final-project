@@ -12,7 +12,7 @@ public class HomeController {
 		// view를 제공 
 		return "home.tiles";
 	}
-	@RequestMapping("restaurant")
+	@RequestMapping("/user/restaurant")
 	public String restaurant() {
 		return "restaurant.tiles";
 	}

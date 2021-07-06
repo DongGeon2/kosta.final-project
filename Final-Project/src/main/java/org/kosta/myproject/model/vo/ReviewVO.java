@@ -5,20 +5,23 @@ public class ReviewVO {
 	private String reviewTitle;
 	private String reviewContent;
 	private String reviewRegdate;
+	private String reviewImage;
+	private String reviewGrade;
 	private int resGrade;
 	private MemberVO memberVO;
 	private RestaurantVO restaurantVO;
 	public ReviewVO() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-	public ReviewVO(String reviewNo, String reviewTitle, String reviewContent, String reviewRegdate, int resGrade,
-			MemberVO memberVO, RestaurantVO restaurantVO) {
+	public ReviewVO(String reviewNo, String reviewTitle, String reviewContent, String reviewRegdate, String reviewImage,
+			String reviewGrade, int resGrade, MemberVO memberVO, RestaurantVO restaurantVO) {
 		super();
 		this.reviewNo = reviewNo;
 		this.reviewTitle = reviewTitle;
 		this.reviewContent = reviewContent;
 		this.reviewRegdate = reviewRegdate;
+		this.reviewImage = reviewImage;
+		this.reviewGrade = reviewGrade;
 		this.resGrade = resGrade;
 		this.memberVO = memberVO;
 		this.restaurantVO = restaurantVO;
@@ -47,6 +50,18 @@ public class ReviewVO {
 	public void setReviewRegdate(String reviewRegdate) {
 		this.reviewRegdate = reviewRegdate;
 	}
+	public String getReviewImage() {
+		return reviewImage;
+	}
+	public void setReviewImage(String reviewImage) {
+		this.reviewImage = reviewImage;
+	}
+	public String getReviewGrade() {
+		return reviewGrade;
+	}
+	public void setReviewGrade(String reviewGrade) {
+		this.reviewGrade = reviewGrade;
+	}
 	public int getResGrade() {
 		return resGrade;
 	}
@@ -68,8 +83,8 @@ public class ReviewVO {
 	@Override
 	public String toString() {
 		return "ReviewVO [reviewNo=" + reviewNo + ", reviewTitle=" + reviewTitle + ", reviewContent=" + reviewContent
-				+ ", reviewRegdate=" + reviewRegdate + ", resGrade=" + resGrade + ", memberVO=" + memberVO
-				+ ", restaurantVO=" + restaurantVO + "]";
+				+ ", reviewRegdate=" + reviewRegdate + ", reviewImage=" + reviewImage + ", reviewGrade=" + reviewGrade
+				+ ", resGrade=" + resGrade + ", memberVO=" + memberVO + ", restaurantVO=" + restaurantVO + "]";
 	}
 	
 }
