@@ -7,9 +7,10 @@
 <header id="site-header" class="fixed-top">
 	<div class="container-fluid">
 		<nav class="navbar navbar-expand-lg stroke">
-			<a class="navbar-brand d-flex align-items-center" href="${pageContext.request.contextPath}/home"> <img
-				src="${pageContext.request.contextPath}/assets/images/Koshelin_logo.png" alt="Your logo"
-				title="Your logo" style="height: 300px;" />
+			<a class="navbar-brand d-flex align-items-center"
+				href="${pageContext.request.contextPath}/home"> <img
+				src="${pageContext.request.contextPath}/assets/images/Koshelin_logo.png"
+				alt="Your logo" title="Your logo" style="height: 300px;" />
 			</a>
 			<button class="navbar-toggler  collapsed bg-gradient" type="button"
 				data-toggle="collapse" data-target="#navbarTogglerDemo02"
@@ -19,36 +20,46 @@
 					class="navbar-toggler-icon fa icon-close fa-times"></span>
 			</button>
 			<script type="text/javascript">
-				$(document).ready(function() {
-					$("#navbarTogglerDemo02 :li[class=nav-item]").click(function() {
-						$(this).addClass("active");
-					})
-				})
+				$(document).ready(
+						function() {
+							$("#navbarTogglerDemo02 :li[class=nav-item]")
+									.click(function() {
+										$(this).addClass("active");
+									})
+						})
 			</script>
+			ㄴ
 			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 				<ul class="navbar-nav ml-lg-auto">
-					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/home">Home
-							<span class="sr-only">(current)</span>
+					<li class="nav-item"><a class="nav-link"
+						href="${pageContext.request.contextPath}/home">Home <span
+							class="sr-only">(current)</span>
 					</a></li>
-					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/restaurant ">restaurant</a></li>
-					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/recommend">recommend</a></li>
+					<li class="nav-item"><a class="nav-link" href="board">Board</a></li>
+
+					<li class="nav-item"><a class="nav-link"
+						href="${pageContext.request.contextPath}/restaurant ">restaurant</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="${pageContext.request.contextPath}/recommend">recommend</a></li>
 					<sec:authorize access="isAuthenticated()==false">
-						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/login">Login</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="${pageContext.request.contextPath}/login">Login</a></li>
 						<sec:csrfInput />
 					</sec:authorize>
 					<sec:authorize access="isAuthenticated()">
 						<div class="nav-item nav-link">
-							<sec:authentication property="principal.name" />님
+							<sec:authentication property="principal.name" />
+							님
 						</div>
 						<script
 							src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 						<script type="text/javascript">
-		                  $(document).ready(function() {
-		                     $("#logoutAction").click(function() {                        
-		                        $("#logoutForm").submit();
-		                     });
-		                  });
-		                  </script>
+							$(document).ready(function() {
+								$("#logoutAction").click(function() {
+									$("#logoutForm").submit();
+								});
+							});
+						</script>
 						<li class="nav-item"><a class="nav-link" href="mypage">mypage</a></li>
 						<li class="nav-item"><a class="nav-link" href="#"
 							id="logoutAction">Logout</a></li>
@@ -57,7 +68,7 @@
 							style="display: none">
 							<sec:csrfInput />
 						</form>
-	
+
 					</sec:authorize>
 					<!-- 
 					<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
@@ -102,10 +113,11 @@
 		                  -->
 					<!-- search button -->
 					<div class="search-right ml-lg-3">
-						<form action="error.html" method="GET"
-							class="search-box position-relative">
+						<form
+							action="${pageContext.request.contextPath}/user/findRestaurantByName"
+							method="GET" class="search-box position-relative">
 							<div class="input-search">
-								<input type="search" placeholder="Enter Keyword" name="search"
+								<input type="search" placeholder="Enter Keyword" name="resName"
 									required="required" autofocus="" class="search-popup">
 							</div>
 							<button type="submit" class="btn search-btn">

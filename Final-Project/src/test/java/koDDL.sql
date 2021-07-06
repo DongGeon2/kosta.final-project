@@ -5,7 +5,7 @@ DROP sequence ko_board_seq;
 DROP TABLE ko_board_comment
 DROP sequence ko_board_comment_seq;
 
-DROP TABLE ko_restaurant;
+DROP TABLE ko_restaurant cascade constraint;
 DROP sequence ko_restaurant_no_seq;
 DROP TABLE ko_my_pick;
 DROP TABLE ko_review;
@@ -60,7 +60,7 @@ CREATE sequence ko_board_comment_seq;
 
 --5. 레스토랑 테이블
 CREATE TABLE ko_restaurant(
-	res_no number primary key not null,
+	res_no number not null primary key,
 	id varchar2(100) not null,
 	res_name varchar2(100) not null,
 	res_info varchar2(100) not null,
@@ -107,7 +107,7 @@ select * from ko_reservation
 CREATE TABLE ko_review(
 	review_no number primary key,
 	review_title varchar2(100) not null,
-	review_content clob not null,
+	review_content varchar2(100) not null,
 	review_image varchar2(100) not null,
 	review_regdate date not null,
 	review_grade number not null,
@@ -117,7 +117,7 @@ CREATE TABLE ko_review(
 	CONSTRAINT ko_review_id foreign key(id) references ko_member(id) on delete cascade
 )
 CREATE sequence ko_review_seq;
-select * from ko_review where res_no='1'
+
 --select
 SELECT * FROM ko_member;
 

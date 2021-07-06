@@ -34,7 +34,26 @@ public class HomeController {
 	public String mypage() {
 		return "mypage.tiles";
 	}
+	
+	@RequestMapping("board")
+	public String board() {
+		return "board.tiles";
+	}
+	
+	@RequestMapping("boardpost")
+	public String boardpost() {
+		return "boardpost.tiles";
+	}
+	
+	@RequestMapping("findRestaurantByNameOk")
+	public String findRestaurantByNameOk() {
+		return "findRestaurantByNameOk.tiles";
+	}
 
+	@RequestMapping("restaurantjinsol")
+	public String restaurantjinsol() {
+		return "restaurantjinsol.tiles";
+	}
 }
 
 
