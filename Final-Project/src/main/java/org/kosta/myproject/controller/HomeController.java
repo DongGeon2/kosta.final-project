@@ -1,6 +1,9 @@
 package org.kosta.myproject.controller;
 
+import org.kosta.myproject.model.vo.MemberVO;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -12,8 +15,10 @@ public class HomeController {
 		// view를 제공 
 		return "home.tiles";
 	}
-	@RequestMapping("user/restaurant")
-	public String restaurant() {
+	@RequestMapping("restaurant")
+	public String restaurant(Model model) {
+		MemberVO mvo = (MemberVO)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		model.addAttribute("mvo", mvo);
 		return "restaurant.tiles";
 	}
 	

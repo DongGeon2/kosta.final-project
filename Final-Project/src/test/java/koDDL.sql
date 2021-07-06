@@ -60,7 +60,7 @@ CREATE sequence ko_board_comment_seq;
 
 --5. 레스토랑 테이블
 CREATE TABLE ko_restaurant(
-	res_no number not null,
+	res_no number primary key not null,
 	id varchar2(100) not null,
 	res_name varchar2(100) not null,
 	res_info varchar2(100) not null,
@@ -70,7 +70,6 @@ CREATE TABLE ko_restaurant(
 	food_type varchar2(100) not null,
 	start_time varchar2(100) not null,
 	end_time varchar2(100) not null,
-	CONSTRAINT ko_member_restaurant primary key(id,res_no),
 	CONSTRAINT fk_ko_restaurant_id foreign key(id) references ko_member(id) on delete cascade
 )
 CREATE sequence ko_restaurant_no_seq;
@@ -108,7 +107,7 @@ select * from ko_reservation
 CREATE TABLE ko_review(
 	review_no number primary key,
 	review_title varchar2(100) not null,
-	review_content varchar2(100) not null,
+	review_content clob not null,
 	review_image varchar2(100) not null,
 	review_regdate date not null,
 	review_grade number not null,
@@ -118,7 +117,7 @@ CREATE TABLE ko_review(
 	CONSTRAINT ko_review_id foreign key(id) references ko_member(id) on delete cascade
 )
 CREATE sequence ko_review_seq;
-''
+select * from ko_review where res_no='1'
 --select
 SELECT * FROM ko_member;
 

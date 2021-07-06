@@ -6,6 +6,7 @@ import org.kosta.myproject.model.vo.MemberVO;
 import org.kosta.myproject.model.vo.ReservationVO;
 import org.kosta.myproject.model.vo.RestaurantVO;
 import org.kosta.myproject.service.ReservationService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,13 +17,15 @@ public class ReservationController {
 	@Resource
 	private ReservationService reservationService;
 
-	@RequestMapping("/user/doReservation")
-	public String doReservation() {
+	@RequestMapping("doReservation")
+	public String doReservation(Model model) {
+		MemberVO pvo = (MemberVO)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		model.addAttribute("memberVO", pvo);
 		return "reservation-form";
 	}
 
-	@PostMapping("/user/doReservation2")
-	public String doReservation2(String revTime, int headCount, String id, String resNo, Model model) {
+	@PostMapping("doReservation2")
+	public String doReservation2(String id, String revTime, int headCount, String resNo, Model model) {
 		MemberVO mvo = new MemberVO();
 		RestaurantVO resVO = new RestaurantVO();
 		resVO.setResNo(resNo);
@@ -33,11 +36,21 @@ public class ReservationController {
 		revVO.setMemberVO(mvo);
 		revVO.setRestaurantVO(resVO);
 		reservationService.registerReservation(revVO);
-		return "redirect:registerReservationResult";
+		return "redirect:registerReservationResult?memberId="+id+"&resNo="+resVO.getResNo()+"&revTime="+revVO.getRevTime()+"&headCount="+revVO.getHeadCount();
 	}
 
 	@RequestMapping("registerReservationResult")
-	public String registerReservationResult() {
+	public String registerReservationResult(String memberId, String resNo, String revTime, int headCount, Model model) {
+		RestaurantVO restaurantVO = new RestaurantVO();
+		MemberVO memberVO = new MemberVO();
+		memberVO.setId(memberId);
+		restaurantVO.setResNo(resNo);
+		ReservationVO reservationVO = new ReservationVO();
+		reservationVO.setHeadCount(headCount);
+		reservationVO.setRevTime(revTime);
+		reservationVO.setMemberVO(memberVO);
+		reservationVO.setRestaurantVO(restaurantVO);
+		model.addAttribute("reservation", reservationVO);
 		return "reservation-result.tiles";
 	}
 

@@ -7,14 +7,13 @@ public class ReviewVO {
 	private String reviewRegdate;
 	private String reviewImage;
 	private String reviewGrade;
-	private int resGrade;
 	private MemberVO memberVO;
 	private RestaurantVO restaurantVO;
 	public ReviewVO() {
 		super();
 	}
 	public ReviewVO(String reviewNo, String reviewTitle, String reviewContent, String reviewRegdate, String reviewImage,
-			String reviewGrade, int resGrade, MemberVO memberVO, RestaurantVO restaurantVO) {
+			String reviewGrade, MemberVO memberVO, RestaurantVO restaurantVO) {
 		super();
 		this.reviewNo = reviewNo;
 		this.reviewTitle = reviewTitle;
@@ -22,7 +21,6 @@ public class ReviewVO {
 		this.reviewRegdate = reviewRegdate;
 		this.reviewImage = reviewImage;
 		this.reviewGrade = reviewGrade;
-		this.resGrade = resGrade;
 		this.memberVO = memberVO;
 		this.restaurantVO = restaurantVO;
 	}
@@ -62,12 +60,6 @@ public class ReviewVO {
 	public void setReviewGrade(String reviewGrade) {
 		this.reviewGrade = reviewGrade;
 	}
-	public int getResGrade() {
-		return resGrade;
-	}
-	public void setResGrade(int resGrade) {
-		this.resGrade = resGrade;
-	}
 	public MemberVO getMemberVO() {
 		return memberVO;
 	}
@@ -84,7 +76,7 @@ public class ReviewVO {
 	public String toString() {
 		return "ReviewVO [reviewNo=" + reviewNo + ", reviewTitle=" + reviewTitle + ", reviewContent=" + reviewContent
 				+ ", reviewRegdate=" + reviewRegdate + ", reviewImage=" + reviewImage + ", reviewGrade=" + reviewGrade
-				+ ", resGrade=" + resGrade + ", memberVO=" + memberVO + ", restaurantVO=" + restaurantVO + "]";
+				+ ", memberVO=" + memberVO + ", restaurantVO=" + restaurantVO + "]";
 	}
 	
 }

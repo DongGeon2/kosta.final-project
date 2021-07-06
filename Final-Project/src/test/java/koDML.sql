@@ -39,7 +39,7 @@ CREATE TABLE ko_restaurant(
 
 --레스토랑
 insert into ko_restaurant(res_no,id,res_name,res_info,res_tel,res_loc,res_image,food_type,start_time,end_time)
-values(ko_restaurant_no_seq.nextval,'KDG','김가네','분식집소개','031-123','오리','경로','한식','9','22');
+values(ko_restaurant_no_seq.nextval,'java','김가네','분식집소개','031-123','오리','경로','한식','9','22');
 insert into ko_restaurant(res_no,id,res_name,res_info,res_tel,res_loc,res_image,food_type,start_time,end_time)
 values(ko_restaurant_no_seq.nextval,'JJH','맥도날드','햄버거소개','02-123','서울','경로','양식','12','19');
 insert into ko_restaurant(res_no,id,res_name,res_info,res_tel,res_loc,res_image,food_type,start_time,end_time)

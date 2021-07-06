@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,9 +32,11 @@ href="${pageContext.request.contextPath}/resources/css/home2.css" > --%>
         	<h3 class="post-content-title">Reservation</h3>
             <div class="form-commets mt-4">
             	<!-- ----------------------------리뷰 작성 폼---------------------------- -->
-            	<form action="/user/doReservation2" method="post">
+            	<form action="doReservation2" method="post">
+            	<sec:csrfInput />
                 	<div class="media-form">
-                        <input type="text" name="id" required="required" placeholder="아이디">
+                		<input type="hidden" name="id" value="${memberVO.id}">
+                        <input type="text" value="${memberVO.id}" readonly="readonly">
                         <input type="text" name="resNo" required="required" placeholder="식당번호">
                         <input type="text" name="revTime" required="required" placeholder="예약날짜">
                         <input type="text" name="headCount" required="required" placeholder="인원수">

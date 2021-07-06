@@ -19,7 +19,7 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public List<ReviewVO> getAllReview() {
-		return reviewMapper.getAllReview();
+	public List<ReviewVO> getAllReviewByResNo(String resNo) {
+		return reviewMapper.getAllReviewByResNo(resNo);
 	}
 }

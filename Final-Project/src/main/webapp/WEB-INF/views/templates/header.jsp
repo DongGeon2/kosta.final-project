@@ -24,7 +24,7 @@
 						$(this).addClass("active");
 					})
 				})
-			</script>ㄴ
+			</script>
 			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 				<ul class="navbar-nav ml-lg-auto">
 					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/home">Home
