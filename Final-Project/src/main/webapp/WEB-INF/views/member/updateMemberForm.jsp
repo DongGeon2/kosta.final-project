@@ -19,8 +19,21 @@
 	<div class="contact-top py-md-5 py-4">
 		<div class="container">
 			<div class="waviy text-center mb-md-5 mb-4">
-				<span style="-i: 1">정</span> <span style="-i: 2">보</span> <span
-					style="-i: 3">수</span> <span style="-i: 4">정</span>
+				<span style="--i: 1">E</span> 
+				<span style="--i: 2">d</span> 
+				<span style="--i: 3">i</span> 
+				<span style="--i: 4">t</span>
+				<span style="--i: 5"></span> 
+				<span style="--i: 6">m</span> 
+				<span style="--i: 7">y</span> 
+				<span style="--i: 8"></span>
+				<span style="--i: 9">p</span> 
+				<span style="--i: 10">r</span> 
+				<span style="--i: 11">o</span> 
+				<span style="--i: 12">f</span>
+				<span style="--i: 13">i</span> 
+				<span style="--i: 14">l</span> 
+				<span style="--i: 15">e</span> 
 			</div>
 			<!-- fireworks effect -->
 			<div class="pyro">
