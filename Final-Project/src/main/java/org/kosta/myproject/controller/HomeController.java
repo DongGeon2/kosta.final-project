@@ -23,10 +23,6 @@ public class HomeController {
 		return "restaurant.tiles";
 	}
 
-	@RequestMapping("user/recommend")
-	public String recommend() {
-		return "recommend.tiles";
-	}
 
 	@RequestMapping("login")
 	public String login() {

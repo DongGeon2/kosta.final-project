@@ -1,8 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
 <%-- spring security custom tag를 사용하기 위한 선언 --%>
 <%@taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+
 <!--header-->
 <header id="site-header" class="fixed-top">
 	<div class="container-fluid">
@@ -28,7 +32,7 @@
 									})
 						})
 			</script>
-			ㄴ
+
 			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 				<ul class="navbar-nav ml-lg-auto">
 					<li class="nav-item"><a class="nav-link"
@@ -40,7 +44,7 @@
 					<li class="nav-item"><a class="nav-link"
 						href="${pageContext.request.contextPath}/restaurant ">restaurant</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="${pageContext.request.contextPath}/recommend">recommend</a></li>
+						href="user/recommend">recommend</a></li>
 					<sec:authorize access="isAuthenticated()==false">
 						<li class="nav-item"><a class="nav-link"
 							href="${pageContext.request.contextPath}/login">Login</a></li>
@@ -68,8 +72,11 @@
 							style="display: none">
 							<sec:csrfInput />
 						</form>
-
+					<sec:authorize access="hasRole('ROLE_ADMIN')">
+					<li class="nav-item"><a class="nav-link" href="admin/mypage">Admin</a></li>
 					</sec:authorize>
+					</sec:authorize>
+					
 					<!-- 
 					<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 				<ul class="navbar-nav ml-lg-auto">

@@ -48,7 +48,7 @@ public class RestaurantController {
 	
 	
 	/**추천상세**/
-	@RequestMapping("recommend")
+	@RequestMapping("user/recommend")
 	public String recommend(Model model,String pageNo) {
 		int totalPostcount = restaurantService.getTotalCount();
 		PagingBean pagingBean = null;
@@ -64,7 +64,7 @@ public class RestaurantController {
 		return "recommend.tiles";
 	}
 	
-	@RequestMapping("countPage")
+	@RequestMapping("user/countPage")
 	public String countPage(Model model,String pageNo) {
 		int totalPostcount = restaurantService.getTotalCount();
 		PagingBean pagingBean = null;
