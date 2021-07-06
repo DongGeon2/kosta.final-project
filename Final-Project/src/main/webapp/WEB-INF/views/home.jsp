@@ -135,51 +135,51 @@
 }
 </style>
    <!-- css적용 -->                              
-                     
+                        
 <div class="container">
 
-        <form action="#" method="post" novalidate="novalidate">
+        <form action="${pageContext.request.contextPath}/user/findRestaurantByMainBar" method="get"">
         
             <div class="row">
                 <div class="col-lg-12">
                     <div class="row">
                         <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                            <select class="form-control search-slt" id="exampleFormControlSelect1">
-                                <option>Select Pickup City</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
+                            <select name="foodType" class="form-control search-slt" id="exampleFormControlSelect1">
+                                <option>Food Type</option>
+                                <option>한식</option>
+                                <option>중식</option>
+                                <option>일식</option>
+                                <option>양식</option>
+                                <option>아시안</option>
+                                <option>디저트</option>
                             </select> 
                         </div>
                          <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                            <select class="form-control search-slt" id="exampleFormControlSelect1">
-                                <option>Select Drop City</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
+                            <select name="resLoc" class="form-control search-slt" id="exampleFormControlSelect1">
+                                <option>Location</option>
+                                <option>서울</option>
+                                <option>경기</option>
+                                <option>강원</option>
+                                <option>부산</option>
+                                <option>전라도</option>
+                                <option>제주도</option>
                             </select>
                         </div>
                                         
                           <div class="col-lg-3 col-md-3 col-sm-12 p-0">
                             <select class="form-control search-slt" id="exampleFormControlSelect1">
-                                <option>Select Vehicle</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
+                                <option>날짜</option>
+                                <option>7/2(금)</option>
+                                <option>7/3(토)</option>
+                                <option>7/4(일)</option>
+                                <option>7/5(월)</option>
+                                <option>7/6(화)</option>
+                                <option>7/7(수)</option>
                                 
                             </select>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                            <button type="button" class="btn btn-primary wrn-btn">Search</button>
+                            <button type="submit" class="btn btn-primary wrn-btn">Search</button>
                         </div>
                     </div>
                 </div>
@@ -187,7 +187,6 @@
         </form>
     </div>
 </section>
-
 
 
                             <!-- fireworks effect -->
