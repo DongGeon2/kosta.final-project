@@ -1,16 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%-- spring security custom tag를 사용하기 위한 선언 --%>
+<%-- spring security custom tag를 사용하기 위한 선언 --%>
 <%@taglib prefix="sec"
-   uri="http://www.springframework.org/security/tags"%>
+	uri="http://www.springframework.org/security/tags"%>
 <!--header-->
 <header id="site-header" class="fixed-top">
 	<div class="container-fluid">
 		<nav class="navbar navbar-expand-lg stroke">
-			<a class="navbar-brand d-flex align-items-center" href="home"> 
-					<img src="assets/images/Koshelin_logo.png" alt="Your logo"
-					title="Your logo" style="height: 300px;" />
-				</a>
+			<a class="navbar-brand d-flex align-items-center" href="${pageContext.request.contextPath}/home"> <img
+				src="${pageContext.request.contextPath}/assets/images/Koshelin_logo.png" alt="Your logo"
+				title="Your logo" style="height: 300px;" />
+			</a>
 			<button class="navbar-toggler  collapsed bg-gradient" type="button"
 				data-toggle="collapse" data-target="#navbarTogglerDemo02"
 				aria-controls="navbarTogglerDemo02" aria-expanded="false"
@@ -19,48 +19,87 @@
 					class="navbar-toggler-icon fa icon-close fa-times"></span>
 			</button>
 			<script type="text/javascript">
-				$(document).ready(
-						function() {
-							$("#navbarTogglerDemo02 :li[class=nav-item]")
-									.click(function() {
-										$(this).addClass("active");
-									})
-						})
-			</script>
+				$(document).ready(function() {
+					$("#navbarTogglerDemo02 :li[class=nav-item]").click(function() {
+						$(this).addClass("active");
+					})
+				})
+			</script>ㄴ
 			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 				<ul class="navbar-nav ml-lg-auto">
-					<li class="nav-item"><a class="nav-link" href="home">Home
-							<span class="sr-only">(current)</span></a></li>
+					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/home">Home
+							<span class="sr-only">(current)</span>
+					</a></li>
+					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/restaurant ">restaurant</a></li>
+					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/recommend">recommend</a></li>
+					<sec:authorize access="isAuthenticated()==false">
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/login">Login</a></li>
+						<sec:csrfInput />
+					</sec:authorize>
+					<sec:authorize access="isAuthenticated()">
+						<div class="nav-item nav-link">
+							<sec:authentication property="principal.name" />님
+						</div>
+						<script
+							src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+						<script type="text/javascript">
+		                  $(document).ready(function() {
+		                     $("#logoutAction").click(function() {                        
+		                        $("#logoutForm").submit();
+		                     });
+		                  });
+		                  </script>
+						<li class="nav-item"><a class="nav-link" href="mypage">mypage</a></li>
+						<li class="nav-item"><a class="nav-link" href="#"
+							id="logoutAction">Logout</a></li>
+						<form id="logoutForm"
+							action="${pageContext.request.contextPath}/logout" method="post"
+							style="display: none">
+							<sec:csrfInput />
+						</form>
+	
+					</sec:authorize>
+					<!-- 
+					<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+				<ul class="navbar-nav ml-lg-auto">
+					
+					<sec:authorize access="isAuthenticated()==false">
+						<li class="nav-item"><a class="nav-link" href="home">Home
+								<span class="sr-only">(current)</span>
+						</a></li>
+						<li class="nav-item"><a class="nav-link" href="restaurant ">restaurant</a></li>
+						<li class="nav-item"><a class="nav-link" href="recommend">recommend</a></li>
+						<li class="nav-item"><a class="nav-link" href="login">Login</a></li>
+						<sec:csrfInput />
+					</sec:authorize>
+					<sec:authorize access="isAuthenticated()">
+						<li class="nav-item"><a class="nav-link" href="home">Home
+							<span class="sr-only">(current)</span>
+					</a></li>
 					<li class="nav-item"><a class="nav-link" href="restaurant ">restaurant</a></li>
 					<li class="nav-item"><a class="nav-link" href="recommend">recommend</a></li>
-					<sec:authorize access="isAuthenticated()==false">
-                  <li class="nav-item"><a class="nav-link" href="login">Login
-                  </a></li>
-                  <sec:csrfInput />
-               </sec:authorize>
-               <sec:authorize access="isAuthenticated()">
-           		<!-- <div style="color:white"> --><div class="nav-item nav-link">
-           			<sec:authentication property="principal.name" />님 
-           		</div>
-                   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-                  <script type="text/javascript">
-                  $(document).ready(function() {
-                     $("#logoutAction").click(function() {                        
-                        $("#logoutForm").submit();
-                     });
-                  });
-                     
-                  </script>
-                  <li class="nav-item"><a class="nav-link" href="mypage">mypage</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#"
-                     id="logoutAction">Logout</a></li>
-                  <form id="logoutForm"
-                     action="${pageContext.request.contextPath}/logout" method="post"
-                     style="display: none">
-                     <sec:csrfInput />
-                  </form>
-               </sec:authorize>
-					
+						<div class="nav-item nav-link">
+							<sec:authentication property="principal.name" />님
+						</div>
+						<script
+							src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+						<script type="text/javascript">
+		                  $(document).ready(function() {
+		                     $("#logoutAction").click(function() {                        
+		                        $("#logoutForm").submit();
+		                     });
+		                  });
+		                  </script>
+						<li class="nav-item"><a class="nav-link" href="mypage">mypage</a></li>
+						<li class="nav-item"><a class="nav-link" href="#"
+							id="logoutAction">Logout</a></li>
+						<form id="logoutForm"
+							action="${pageContext.request.contextPath}/logout" method="post"
+							style="display: none">
+							<sec:csrfInput />
+						</form>
+					</sec:authorize>
+		                  -->
 					<!-- search button -->
 					<div class="search-right ml-lg-3">
 						<form action="error.html" method="GET"

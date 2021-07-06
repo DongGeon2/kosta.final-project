@@ -18,6 +18,7 @@ href="${pageContext.request.contextPath}/resources/css/home2.css" > --%>
         rel="stylesheet">
     <link href="//fonts.googleapis.com/css2?family=Sail&display=swap" rel="stylesheet">
     <!-- //google-fonts -->
+    
     <!-- Template CSS Style link -->
     <link rel="stylesheet"   href="${pageContext.request.contextPath}/assets/css/style-liberty.css">
 	   <!-- Js scripts -->
@@ -168,33 +169,19 @@ href="${pageContext.request.contextPath}/resources/css/home2.css" > --%>
     <!--bootstrap-->
     <script src="assets/js/bootstrap.min.js"></script>
     <!-- //bootstrap-->
-    <!-- //Js scripts -->
+
 </head>
 <body>
 	<div id="header">
 	<!-- Tiles header 영역 -->
 	<tiles:insertAttribute name="header" />
 	</div>
-	<%--  <div class="container-fluid text-center">    
-     <div class="row content">
-    <div id="left" class="col-sm-3 sidenav" >
-    <!-- Tiles left 영역 -->
-    <tiles:insertAttribute name="left" /> 
-    </div> --%>
+	
 	<div id="main" >
 	<!-- Tiles main 영역 -->
 	<tiles:insertAttribute name="main" />
 	</div>
-	<%-- <div id="right" class="col-sm-2 sidenav">
-	<!-- Tiles right 영역 -->
-	<tiles:insertAttribute name="right" /> --%>
-	<!-- </div>
-	</div> -->
 	
-	<%-- <div id="bannersection">
-	<!-- Tiles header 영역 -->
-	<tiles:insertAttribute name="bannersection" />
-	</div> --%>
 	<div id="footer">
 	<!-- Tiles footer 영역 -->
 	<tiles:insertAttribute name="footer" />
