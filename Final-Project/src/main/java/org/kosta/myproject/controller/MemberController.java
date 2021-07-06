@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+
 @Controller
 public class MemberController {
 	@Resource
@@ -93,5 +94,12 @@ public class MemberController {
 			System.out.println("Spring Security 세션 수정 후 회원정보:" + pvo);
 			return "member/update_member_result.tiles";
 		}
+	@RequestMapping("deleteMember")	
+	public String deleteMember() {
+		MemberVO pvo = (MemberVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String id=pvo.getId();
+		memberService.deleteMember(id);
+		return "member/logout";
+	}
 	
 }

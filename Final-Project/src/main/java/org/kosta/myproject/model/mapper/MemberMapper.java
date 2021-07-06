@@ -22,5 +22,6 @@ public interface MemberMapper {
 	List<Authority> selectAuthorityByUsername(String id);
 
 	void updateMember(MemberVO memberVO);
-
+	
+	void deleteMember(String id); 
 }

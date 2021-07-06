@@ -32,6 +32,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update ko_member set password=#{password},name=#{name},email=#{email},tel=#{tel}
 		where id=#{id}
 	</update>
+	<update id="deleteMember" parameterType="memberVO">
+		update ko_member set enabled=0
+		where id=#{value}
+	</update>
 </mapper>
  
  
