@@ -49,5 +49,11 @@ public class RestaurantImpl implements RestaurantService {
 		return restaurantMapper.getRestaurantList(getStartRowNumber, getEndRowNumber);
 	}
 /** 추천상세 **/
+
+	/** 식당상세 **/
+	@Override
+	public RestaurantVO findRestaurantByResNo(String resNo) {
+		return restaurantMapper.findRestaurantByResNo(resNo);
+	}
 	
 }

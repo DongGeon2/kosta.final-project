@@ -63,6 +63,7 @@ public class RestaurantController {
 		model.addAttribute("restaurantList", restaurantList);
 		return "recommend.tiles";
 	}
+
 	
 	@RequestMapping("user/countPage")
 	public String countPage(Model model,String pageNo) {

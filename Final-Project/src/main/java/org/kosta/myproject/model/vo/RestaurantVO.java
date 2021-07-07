@@ -28,6 +28,8 @@ public class RestaurantVO {
 		this.endTime = endTime;
 		this.memberVO = memberVO;
 		this.foodType = foodType;
+		this.startTime = startTime;
+		this.endTime = endTime;
 	}
 	public String getResNo() {
 		return resNo;
@@ -89,12 +91,11 @@ public class RestaurantVO {
 	public void setFoodType(String foodType) {
 		this.foodType = foodType;
 	}
+
 	@Override
 	public String toString() {
 		return "RestaurantVO [resNo=" + resNo + ", resName=" + resName + ", resLoc=" + resLoc + ", resImage=" + resImage
 				+ ", resInfo=" + resInfo + ", resTel=" + resTel + ", startTime=" + startTime + ", endTime=" + endTime
 				+ ", memberVO=" + memberVO + ", foodType=" + foodType + "]";
 	}
-
-
 }

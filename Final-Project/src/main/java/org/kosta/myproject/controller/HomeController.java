@@ -17,9 +17,7 @@ public class HomeController {
 	}
 
 	@RequestMapping("restaurant")
-	public String restaurant(Model model) {
-		MemberVO mvo = (MemberVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		model.addAttribute("mvo", mvo);
+	public String restaurant() {
 		return "restaurant.tiles";
 	}
 
