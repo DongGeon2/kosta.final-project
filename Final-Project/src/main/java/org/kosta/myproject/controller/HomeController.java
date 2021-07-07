@@ -17,16 +17,10 @@ public class HomeController {
 	}
 
 	@RequestMapping("restaurant")
-	public String restaurant(Model model) {
-		MemberVO mvo = (MemberVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		model.addAttribute("mvo", mvo);
+	public String restaurant() {
 		return "restaurant.tiles";
 	}
 
-	@RequestMapping("user/recommend")
-	public String recommend() {
-		return "recommend.tiles";
-	}
 
 	@RequestMapping("login")
 	public String login() {

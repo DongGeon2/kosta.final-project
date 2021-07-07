@@ -8,7 +8,7 @@
 <head>
   <meta charset="utf-8">
   <!-- title이 null인 경우는 무시된다 -->
-  <title><tiles:insertAttribute name="title" ignore="true" /></title>
+  <title>예약하기</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -37,7 +37,7 @@ href="${pageContext.request.contextPath}/resources/css/home2.css" > --%>
                 	<div class="media-form">
                 		<input type="hidden" name="id" value="${memberVO.id}">
                         <input type="text" value="${memberVO.id}" readonly="readonly">
-                        <input type="text" name="resNo" required="required" placeholder="식당번호">
+                        <input type="text" value="${resName}" readonly="readonly">
                         <input type="text" name="revTime" required="required" placeholder="예약날짜">
                         <input type="text" name="headCount" required="required" placeholder="인원수">
                         <button class="btn btn-primary btn-style" type="submit">예약하기</button>

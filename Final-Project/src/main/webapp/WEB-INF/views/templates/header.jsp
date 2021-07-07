@@ -40,7 +40,7 @@
 					<li class="nav-item"><a class="nav-link"
 						href="${pageContext.request.contextPath}/restaurant ">restaurant</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="${pageContext.request.contextPath}/recommend">recommend</a></li>
+						href="user/recommend">recommend</a></li>
 					<sec:authorize access="isAuthenticated()==false">
 						<li class="nav-item"><a class="nav-link"
 							href="${pageContext.request.contextPath}/login">Login</a></li>

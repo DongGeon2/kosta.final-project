@@ -117,7 +117,7 @@ CREATE TABLE ko_review(
 	CONSTRAINT ko_review_id foreign key(id) references ko_member(id) on delete cascade
 )
 CREATE sequence ko_review_seq;
-
+select * from ko_review
 --select
 SELECT * FROM ko_member;
 

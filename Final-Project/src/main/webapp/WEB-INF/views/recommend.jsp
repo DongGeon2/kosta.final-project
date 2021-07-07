@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
   <!-- inner banner -->
     <div class="inner-banner">
         <section class="w3l-breadcrumb">
@@ -92,7 +93,7 @@
                         <p class="mt-3 mb-2">
 								${restaurant.resInfo}<br>
 							</p>
-                        <a href="single.html" class="btn btn-style mt-4">Restaurant Details</a>
+                        <a href="/user/detailRestaurant?resNo=${restaurant.resNo}" class="btn btn-style mt-4">Restaurant Details</a>
                     </div>
                     </c:forEach>
                 </div>    
@@ -105,7 +106,7 @@
                     							<!-- 이전 그룹일때 -->
                     <c:if test="${pb.previousPageGroup }">
                         <li> 
-                        	<a href="countPage?pageNo=${pb.startPageOfPageGroup-1 }" class="not-allowed">
+                        	<a href="user/recommend?pageNo=${pb.startPageOfPageGroup-1 }" class="not-allowed">
                                 <span class="fa fa-angle-double-left" aria-hidden="true"></span>
                             </a>
                         </li>
@@ -114,17 +115,17 @@
                     <c:forEach var="page" begin="${pb.startPageOfPageGroup}" end="${pb.endPageOfPageGroup}">
                     <c:choose>
                     	<c:when test="${pb.nowPage==page }">
-                        	<li><a class="active" href="countPage?pageNo=${page }">${page }</a></li>
+                        	<li><a class="active" href="user/recommend?pageNo=${page }">${page }</a></li>
                         </c:when>
                         <c:otherwise>
-                        	<li><a href="countPage?pageNo=${page }">${page }</a></li>
+                        	<li><a href="user/recommend?pageNo=${page }">${page }</a></li>
                         </c:otherwise>
                     </c:choose>
 					</c:forEach>
                 								<!-- 다음 그룹일때 -->
 					<c:if test="${pb.nextPageGroup }">
                         <li>
-                            <a href="countPage?pageNo=${pb.endPageOfPageGroup+1 }">
+                            <a href="user/recommend?pageNo=${pb.endPageOfPageGroup+1 }">
                            		<span class="fa fa-angle-double-right" aria-hidden="true"></span>
                             </a>
                         </li>
@@ -133,7 +134,7 @@
                 </div>
                 <!-- //pagination -->
                 
-                
+        	</div>
         </div>
     </section>
     <!-- image with text section -->

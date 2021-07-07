@@ -48,24 +48,8 @@ public class RestaurantController {
 	
 	
 	/**추천상세**/
-	@RequestMapping("recommend")
+	@RequestMapping("user/recommend")
 	public String recommend(Model model,String pageNo) {
-		int totalPostcount = restaurantService.getTotalCount();
-		PagingBean pagingBean = null;
-		
-		if (pageNo == null) {
-			pagingBean = new PagingBean(totalPostcount);
-		} else {
-			pagingBean = new PagingBean(totalPostcount, Integer.parseInt(pageNo));
-		}
-		model.addAttribute("pagingBean", pagingBean);
-		ArrayList<RestaurantVO> restaurantList = restaurantService.getRestaurantList(pagingBean);
-		model.addAttribute("restaurantList", restaurantList);
-		return "recommend.tiles";
-	}
-	
-	@RequestMapping("countPage")
-	public String countPage(Model model,String pageNo) {
 		int totalPostcount = restaurantService.getTotalCount();
 		PagingBean pagingBean = null;
 		

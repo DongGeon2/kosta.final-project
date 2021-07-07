@@ -6,6 +6,8 @@ import org.kosta.myproject.model.vo.MemberVO;
 import org.kosta.myproject.model.vo.ReservationVO;
 import org.kosta.myproject.model.vo.RestaurantVO;
 import org.kosta.myproject.service.ReservationService;
+import org.kosta.myproject.service.RestaurantService;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,10 +18,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ReservationController {
 	@Resource
 	private ReservationService reservationService;
+	@Resource
+	private RestaurantService restaurantService;
 
-	@RequestMapping("doReservation")
-	public String doReservation(Model model) {
-		MemberVO pvo = (MemberVO)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	@RequestMapping("/user/detailRestaurant")
+	public String detailRestaurant(Model model, String resNo) {
+		Authentication aut = SecurityContextHolder.getContext().getAuthentication();
+		System.out.println(aut.getName());
+		if (!aut.getName().equals("anonymousUser")) {
+			MemberVO mvo = (MemberVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			model.addAttribute("mvo", mvo);
+			RestaurantVO restaurantVO = restaurantService.findRestaurantByResNo(resNo);
+			model.addAttribute("restaurant", restaurantVO);
+		}
+		return "detailRestaurant.tiles";
+	}
+
+	@RequestMapping("/member/doReservation")
+	public String doReservation(Model model, String resName) {
+		MemberVO pvo = (MemberVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		model.addAttribute("resName", resName);
 		model.addAttribute("memberVO", pvo);
 		return "reservation-form";
 	}
@@ -36,7 +54,8 @@ public class ReservationController {
 		revVO.setMemberVO(mvo);
 		revVO.setRestaurantVO(resVO);
 		reservationService.registerReservation(revVO);
-		return "redirect:registerReservationResult?memberId="+id+"&resNo="+resVO.getResNo()+"&revTime="+revVO.getRevTime()+"&headCount="+revVO.getHeadCount();
+		return "redirect:registerReservationResult?memberId=" + id + "&resNo=" + resVO.getResNo() + "&revTime="
+				+ revVO.getRevTime() + "&headCount=" + revVO.getHeadCount();
 	}
 
 	@RequestMapping("registerReservationResult")

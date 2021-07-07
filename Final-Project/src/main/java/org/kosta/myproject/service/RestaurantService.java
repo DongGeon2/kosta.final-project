@@ -19,6 +19,9 @@ public interface RestaurantService {
 
 	/** 추천상세 **/
 	ArrayList<RestaurantVO> getRestaurantList(PagingBean pagingBean);
+	
+	/** 식당상세 **/
+	RestaurantVO findRestaurantByResNo(String resNo);
 
 
 

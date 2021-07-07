@@ -18,18 +18,18 @@
 <div class="inner-banner">
 	<section class="w3l-breadcrumb">
 		<div class="container">
-			<h4 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2">About
-				Us</h4>
+			<h4 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2">Detail Restaurant</h4>
 			<ul class="breadcrumbs-custom-path">
 				<li><a href="index.html">Home</a></li>
 				<li class="active"><span class="fa fa-chevron-right mx-2"
-					aria-hidden="true"></span>About Us</li>
+					aria-hidden="true"></span>Detail Restaurant</li>
 			</ul>
 		</div>
 	</section>
 </div>
 <!-- //inner banner -->
 
+<c:set var="restaurant" value="${restaurant}"></c:set>
 <!-- about section -->
 <section class="w3l-features-photo-7 py-5">
 	<div class="container py-md-5 py-4">
@@ -87,7 +87,7 @@
 					</div>
 					<span class="mb-5" style="margin-top: 5px; font-size: 15px">저녁7만원</span>
 				</div>
-				<a href="doReservation" class="btn btn-style mt-5 ml-5">예약하러 가기</a>
+				<a href="/member/doReservation?resName=${restaurant.resName}" class="btn btn-style mt-5 ml-5">예약하러 가기</a>
 			</div>
 		</div>
 	</div>

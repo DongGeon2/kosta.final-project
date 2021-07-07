@@ -40,6 +40,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		order by res_no asc
 	</select>
 	<!-- 추천상세 --> 
+	
+	<!-- 식당상세 동건 -->
+	<select id="findRestaurantByResNo" resultType="restaurantVO">
+		SELECT res_no,res_name,res_info,res_tel,res_loc,res_image,food_type
+		FROM ko_restaurant
+		WHERE res_no=#{value}
+	</select>
 </mapper>
  
  
