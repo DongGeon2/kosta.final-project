@@ -2,6 +2,7 @@ package org.kosta.myproject.controller;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.kosta.myproject.model.vo.MemberVO;
 import org.kosta.myproject.service.MemberService;
@@ -95,11 +96,15 @@ public class MemberController {
 			return "member/update_member_result.tiles";
 		}
 	@RequestMapping("deleteMember")	
-	public String deleteMember() {
+	public String deleteMember(HttpServletRequest request) {
 		MemberVO pvo = (MemberVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		System.out.println(pvo);
 		String id=pvo.getId();
 		memberService.deleteMember(id);
-		return "member/logout";
+		HttpSession session = request.getSession(false);   
+		session.invalidate();
+		SecurityContextHolder.getContext().setAuthentication(null);
+		return "redirect:/member/logout";
 	}
 	
 }
