@@ -49,6 +49,7 @@
                             </a>
                         </div>
                         <div class="card-body blog-details" style="font-size: 15px;">
+                       		 <a href="/user/detailRestaurant?resNo=${restaurant.resNo}">
                             <span class="label-blue">${restaurant.resName}</span>
                             <%-- <a href="/user/detailRestaurant?resNo=${restaurant.resNo}" class="blog-desc">
 								${restaurant.memberVO.id}<br> --%>
