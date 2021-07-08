@@ -45,6 +45,10 @@ values(ko_restaurant_no_seq.nextval,'BKS','홍콩반점','중식소개','031-445
 insert into ko_restaurant(res_no,id,res_name,res_info,res_tel,res_loc,res_image,food_type,end_time,start_time)
 values(ko_restaurant_no_seq.nextval,'BKS','쓰리팝','라면소개','031-234','구리','경로','분식','23','9');
 
+	SELECT res_no,res_name,res_info,res_tel,res_loc,res_image,food_type
+	FROM ko_restaurant 
+	WHERE res_name LIKE '%김가%';
+
 select b.no,b.title,b.content,b.id 
 from (select row_number() over(order by no desc) as rnum,
 no,title,content,id from star_board) b, ko_member m

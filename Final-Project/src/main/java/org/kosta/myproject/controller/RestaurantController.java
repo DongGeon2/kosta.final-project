@@ -23,13 +23,13 @@ public class RestaurantController {
 	/** 검색 **/
 	@RequestMapping("user/findRestaurantByName")
 	public String findRestaurantByName(String resName, Model model) {
-		RestaurantVO vo = restaurantService.findRestaurantByName(resName);
-		// System.out.println(vo);
-		if (vo == null)
-			return "findRestaurantByName_fail";
+		List<RestaurantVO> list = restaurantService.findRestaurantByName(resName);
+		System.out.println(list);
+		if (list == null)
+			return "restaurant/findRestaurantByName_fail.tiles";
 		else {
-			model.addAttribute("restaurantVO", vo);
-			return "findRestaurantByName_ok";
+			model.addAttribute("restaurantVOList", list);
+			return "restaurant/findRestaurantByName_ok.tiles";
 		}
 	}
 
@@ -41,10 +41,10 @@ public class RestaurantController {
 		List<RestaurantVO> list = restaurantService.findRestaurantByMainBar(foodType, resLoc);
 		System.out.println(list);
 		if (list == null)
-			return "findRestaurantByMainBar_fail";
+			return "restaurant/findRestaurantByMainBar_fail.tiles";
 		else {
 			model.addAttribute("restaurantVOList", list);
-			return "restaurantjinsol";
+			return "restaurant/findRestaurantByMainBar_ok.tiles";
 		}
 	}
 
@@ -106,4 +106,5 @@ public class RestaurantController {
 	public String registerRes() {
 		return "restaurant/registerResResult";
 	}
+	/** 사장 식당 등록 **/
 }

@@ -12,7 +12,7 @@ public interface RestaurantMapper {
 
 	ArrayList<RestaurantVO> getReataurantList(int getStartRowNumber, int getEndRowNumber);
 
-	RestaurantVO findRestaurantByName(String resName);
+	List<RestaurantVO> findRestaurantByName(String resName);
 
 	List<RestaurantVO> findRestaurantByMainBar(String foodType, String resLoc);
 	

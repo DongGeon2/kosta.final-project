@@ -26,11 +26,11 @@ href="${pageContext.request.contextPath}/resources/css/home2.css" > --%>
 <div class="inner-banner">
 	<section class="w3l-breadcrumb">
 		<div class="container">
-			<h4 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2">Restaurant</h4>
+			<h4 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2">식당추천</h4>
 			<ul class="breadcrumbs-custom-path">
 				<li><a href="index.html">Home</a></li>
 				<li class="active"><span class="fa fa-chevron-right mx-2"
-					aria-hidden="true"></span>Restaurant</li>
+					aria-hidden="true"></span>식당추천</li>
 			</ul>
 		</div>
 	</section>
@@ -55,7 +55,7 @@ href="${pageContext.request.contextPath}/resources/css/home2.css" > --%>
 			</div>
 			<div class="row top-cont-grid align-items-center">
 
-				<c:forEach items="${requestScope.restaurantVOList}" var="rvo"
+				<c:forEach items="${requestScope.restaurantVOList}" var="vo"
 					varStatus="status">
 
 					<!-- 식당1 -->
@@ -63,18 +63,19 @@ href="${pageContext.request.contextPath}/resources/css/home2.css" > --%>
 						<div class="col-lg-4 col-md-6 item">
 							<div class="card">
 								<div class="card-header p-0 position-relative">
-									<a href="restaurant/detailRestaurant"> <img
+									<a href="single.html"> <img
 										class="card-img-bottom d-block radius-image-full"
 										src="assets/images/s1.png" alt="Card image cap">
 									</a>
 								</div>
 								<div class="card-body blog-details">
-									<span class="label-blue">${rvo.resName}</span> 
-									<a href="restaurant/detailRestaurant" class="blog-desc">${rvo.resInfo}</a>
+									<span class="label-blue">${vo.resName}</span> <a
+										href="single.html" class="blog-desc">${vo.resInfo} </a>
 									<div class="author align-items-center mt-3 mb-1">
-										<img src="assets/images/testi1.jpg" alt=""	class="img-fluid rounded-circle" />
+										<img src="assets/images/testi1.jpg" alt=""
+											class="img-fluid rounded-circle" />
 										<ul class="blog-meta">
-											<li><a href="restaurant/detailRestaurant">kk</a> </a></li>
+											<li><a href="single.html">kk</a> </a></li>
 											<li class="meta-item blog-lesson"><span
 												class="meta-value"> Jan 28 2021 </span>. <span
 												class="meta-value ml-2"><span class="fa fa-clock-o"></span>
@@ -86,16 +87,18 @@ href="${pageContext.request.contextPath}/resources/css/home2.css" > --%>
 						</div>
 						<div class="col-lg-1"></div>
 						<div class="col-lg-6 left-cont mb-lg-0 mb-5">
-							<h4>${rvo.resName}</h4>
+							<h4>${vo.resName}</h4>
 							<div class="d-flex align-items-center mt-3">
-								<h6><i class="fa fa-clock-o mr-1" aria-hidden="true"></i> ${rvo.startTime} ~ ${rvo.endTime}
+								<h6>
+									<i class="fa fa-clock-o mr-1" aria-hidden="true"></i> 7:00 pm -
+									8:00 pm
 								</h6>
 								<h6 class="ml-3">
 									<i class="fa fa-calendar mr-2" aria-hidden="true"></i>Dec 31
 								</h6>
 							</div>
-							<p class="mt-3 mb-2">${rvo.resInfo}</p>
-							<a href="restaurant/detailRestaurant" class="btn btn-style mt-4">Restaurant
+							<p class="mt-3 mb-2">${vo.resInfo}</p>
+							<a href="single.html" class="btn btn-style mt-4">Restaurant
 								Details</a>
 						</div>
 					</div>
@@ -104,6 +107,7 @@ href="${pageContext.request.contextPath}/resources/css/home2.css" > --%>
 					<br>
 					<!-- 식당1 -->
 				</c:forEach>
+
 
 
 

@@ -59,4 +59,9 @@ public class HomeController {
 	public String accessDeniedView() {
 		return "auth/accessDeniedView";
 	}
+	//@PreAuthorize("hasRole('ROLE_OWNER')")
+	@RequestMapping("/owner")
+	public String owner() {
+		return "owner.tiles";
+	}
 }

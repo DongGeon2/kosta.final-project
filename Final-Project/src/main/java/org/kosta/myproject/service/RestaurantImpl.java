@@ -22,7 +22,7 @@ public class RestaurantImpl implements RestaurantService {
 	
 /** 검색 **/
 	@Override
-	public RestaurantVO findRestaurantByName(String resName) {
+	public List<RestaurantVO> findRestaurantByName(String resName) {
 		System.out.println(restaurantMapper.findRestaurantByName(resName));
 		return restaurantMapper.findRestaurantByName(resName);
 	}
