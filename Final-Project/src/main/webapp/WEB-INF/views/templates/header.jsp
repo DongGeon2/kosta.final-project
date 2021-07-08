@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
+
 <%-- spring security custom tag를 사용하기 위한 선언 --%>
 <%@taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!--header-->
 <header id="site-header" class="fixed-top">
@@ -35,16 +35,10 @@
 
 			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 				<ul class="navbar-nav ml-lg-auto">
-					<li class="nav-item"><a class="nav-link"
-						href="${pageContext.request.contextPath}/home">Home <span
-							class="sr-only">(current)</span>
-					</a></li>
-					<li class="nav-item"><a class="nav-link" href="board">Board</a></li>
-
-					<li class="nav-item"><a class="nav-link"
-						href="${pageContext.request.contextPath}/restaurant ">restaurant</a></li>
-					<li class="nav-item"><a class="nav-link"
-						href="user/recommend">recommend</a></li>
+					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/user/restaurant ">restaurant</a></li>
+               <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/user/recommend">recommend</a></li>
+               <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/owner/owner">사장권한</a></li>
+               <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/admin">관리자권한</a></li>
 					<sec:authorize access="isAuthenticated()==false">
 						<li class="nav-item"><a class="nav-link"
 							href="${pageContext.request.contextPath}/login">Login</a></li>
@@ -72,11 +66,16 @@
 							style="display: none">
 							<sec:csrfInput />
 						</form>
-					<sec:authorize access="hasRole('ROLE_ADMIN')">
-					<li class="nav-item"><a class="nav-link" href="admin/mypage">Admin</a></li>
+						<sec:authorize access="hasRole('ROLE_ADMIN')">
+							<li class="nav-item"><a class="nav-link" href="admin/mypage">Admin</a></li>
+						</sec:authorize>
+						<sec:authorize access="hasRole('ROLE_OWNER')">
+							<li class="nav-item">
+								<a class="nav-link" href="restaurant/registerRestaurantForm">register</a>
+							</li>
+						</sec:authorize>
 					</sec:authorize>
-					</sec:authorize>
-					
+
 					<!-- 
 					<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 				<ul class="navbar-nav ml-lg-auto">

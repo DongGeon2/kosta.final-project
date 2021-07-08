@@ -21,6 +21,8 @@ public interface RestaurantMapper {
 	public ArrayList<RestaurantVO> getRestaurantList(int getStartRowNumber, int getEndRowNumber);
 
 	RestaurantVO findRestaurantByResNo(String resNo);
+	
+	void registerResForm(RestaurantVO rvo);
 
 }
 

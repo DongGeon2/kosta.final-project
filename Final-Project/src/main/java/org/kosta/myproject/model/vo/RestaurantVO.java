@@ -31,6 +31,19 @@ public class RestaurantVO {
 		this.startTime = startTime;
 		this.endTime = endTime;
 	}
+	
+	public RestaurantVO(String resName, String resLoc, String resImage, String resInfo, String resTel, String startTime,
+			String endTime, String foodType) {
+		super();
+		this.resName = resName;
+		this.resLoc = resLoc;
+		this.resImage = resImage;
+		this.resInfo = resInfo;
+		this.resTel = resTel;
+		this.startTime = startTime;
+		this.endTime = endTime;
+		this.foodType = foodType;
+	}
 	public String getResNo() {
 		return resNo;
 	}

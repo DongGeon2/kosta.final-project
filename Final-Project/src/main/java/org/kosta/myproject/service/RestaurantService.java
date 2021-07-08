@@ -22,6 +22,9 @@ public interface RestaurantService {
 	
 	/** 식당상세 **/
 	RestaurantVO findRestaurantByResNo(String resNo);
+	
+	/** 식당등록 **/
+	void registerResForm(RestaurantVO rvo);
 
 
 

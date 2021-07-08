@@ -55,5 +55,10 @@ public class RestaurantImpl implements RestaurantService {
 	public RestaurantVO findRestaurantByResNo(String resNo) {
 		return restaurantMapper.findRestaurantByResNo(resNo);
 	}
+
+	@Override
+	public void registerResForm(RestaurantVO rvo) {
+		restaurantMapper.registerResForm(rvo);
+	}
 	
 }

@@ -15,13 +15,12 @@ public class HomeController {
 		// view를 제공
 		return "home.tiles";
 	}
-
-	@RequestMapping("restaurant")
+	
+	@RequestMapping("user/restaurant")
 	public String restaurant() {
-		return "restaurant.tiles";
+		return "restaurant/restaurant.tiles";
 	}
-
-
+	
 	@RequestMapping("login")
 	public String login() {
 		return "login.tiles";

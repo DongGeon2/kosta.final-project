@@ -7,9 +7,36 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
  
-   #jangwrapper {
+#jangwrapper {
 	width: auto;
 	margin: auto;
+}
+/* 예진 */
+.yejin_ResSearch{
+	display: inline-block;
+    width: 100%;
+    font-size: 16px;
+    line-height: 1.5;
+    height: 52.4px;
+    border: 1px solid var(- -border-color-light);
+    border: none;
+    padding: 14px;
+    border-radius: 4px;
+    border-width: 2px;
+    border-style: inset;
+/*     border-color: -internal-light-dark(rgb(118, 118, 118),
+		rgb(133, 133, 133)); */
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    text-align: start;
+    appearance: auto;
+    cursor: text;
+    -webkit-rtl-ordering: logical;
+
 }
 
 :root {
