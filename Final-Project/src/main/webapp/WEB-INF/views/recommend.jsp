@@ -42,38 +42,35 @@
                 <c:forEach items="${restaurantList}" var="restaurant">
                 <div class="col-lg-4 col-md-6 item">
                     <div class="card">
-                        <div class="card-header p-0 position-relative" >
-                            <a href="/user/detailRestaurant?resNo=${restaurant.resNo}">
+                        <div class="card-header p-0 position-relative">
+                            <a href="single.html">
                                 <img class="card-img-bottom d-block radius-image-full" src="assets/images/restaurant1.jpg"
                                     alt="Card image cap">
                             </a>
                         </div>
-                        <div class="card-body blog-details" style="font-size: 15px;">
+                        <div class="card-body blog-details">
                             <span class="label-blue">${restaurant.resName}</span>
-                            <%-- <a href="/user/detailRestaurant?resNo=${restaurant.resNo}" class="blog-desc">
-								${restaurant.memberVO.id}<br> --%>
+                            <a href="single.html" class="blog-desc">
+								${restaurant.memberVO.id}<br>
                             </a>
                             <div class="author align-items-center mt-3 mb-1">
                                 <img src="assets/images/testi1.jpg" alt="" class="img-fluid rounded-circle" />
                                 <ul class="blog-meta">
                                     <li>
-                                        <a href="/user/detailRestaurant?resNo=${restaurant.resNo}">
+                                        <a href="single.html">
 											${restaurant.memberVO.name}<br>
 										</a>
                                     </li>
-                                    
                                     <li class="meta-item blog-lesson">
-                                    Location. <span class="meta-value">${restaurant.resLoc}</span> 
+                                        <span class="meta-value">게시날짜</span>. <span
+                                            class="meta-value ml-2"><span class="fa fa-clock-o"></span> 2021/07/05</span>
                                     </li>
                                     <li class="meta-item blog-lesson">
-                                    Tel. <span class="meta-value">${restaurant.memberVO.tel}</span> 
+                                    tel. <span class="meta-value">${restaurant.memberVO.tel}</span> 
                                     </li>
                                     <li class="meta-item blog-lesson">
-                                      <!--   <span class="meta-value">게시날짜</span>. <span
-                                            class="meta-value ml-2"><span class="fa fa-clock-o"></span> 2021/07/05</span> -->
-                                    	<span class="meta-value">Operating Time : ${restaurant.startTime} ~ ${restaurant.endTime}</span>
+                                    email. <span class="meta-value">${restaurant.memberVO.email}</span> 
                                     </li>
-                                    
                                 </ul>
                             </div>
                         </div>
@@ -83,7 +80,7 @@
                 </div>
                     <div class="col-lg-1">
                     </div>
-                   <%--  <div class="col-lg-6 left-cont mb-lg-0 mb-5">
+                    <div class="col-lg-6 left-cont mb-lg-0 mb-5">
 						<h4>
 								${restaurant.resName}<br>
 						</h4>
@@ -97,7 +94,7 @@
 								${restaurant.resInfo}<br>
 							</p>
                         <a href="single.html" class="btn btn-style mt-4">Restaurant Details</a>
-                    </div> --%>
+                    </div>
                     </c:forEach>
                 </div>    
                 <!-- 식당1 -->
