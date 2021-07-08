@@ -93,7 +93,9 @@
                         <p class="mt-3 mb-2">
 								${restaurant.resInfo}<br>
 							</p>
-                        <a href="/user/detailRestaurant?resNo=${restaurant.resNo}" class="btn btn-style mt-4">Restaurant Details</a>
+                        	<a href="/user/detailRestaurant?resNo=${restaurant.resNo}" 
+                        	class="btn btn-style mt-4">Restaurant Details</a>
+
                     </div>
                     </c:forEach>
                 </div>    

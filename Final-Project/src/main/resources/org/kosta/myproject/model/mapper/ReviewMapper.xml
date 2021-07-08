@@ -8,10 +8,51 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into ko_review(review_no, review_title, review_content, review_image, review_regdate, review_grade, res_no, id)
 		values(ko_review_seq.nextval, #{reviewTitle}, #{reviewContent}, #{reviewImage}, sysdate, #{reviewGrade}, #{restaurantVO.resNo}, #{memberVO.id})
 	</insert>
-	<select id="getAllReviewByResNo" resultType="reviewVO" parameterType="string">
-		select * from ko_review
-		where res_no=#{value}
+	
+	<resultMap type="reviewVO" id="reviewRM">
+		<result column="res_no"  property="restaurantVO.resNo"/>
+		<result column="res_name" property="restaurantVO.resName"/>
+		<result column="id" property="memberVO.id"/>
+	</resultMap>
+	<select id="getAllReviewByResNo" resultMap="reviewRM" parameterType="string">
+		select *
+		from ko_review a, ko_restaurant b
+		where a.res_no=b.res_no and b.res_no=#{value}
 	</select>
+	
+	<select id="getAllReviewList" resultMap="reviewRM">
+		select a.* , b.res_no
+		from 
+			(select row_number() over(order by review_no desc) as rnum, review_no, review_title,
+			review_content, review_image, review_regdate, review_grade, res_no, id
+			from KO_REVIEW
+			where res_no=#{resNo}) a, ko_restaurant b
+		where a.res_no = b.res_no and rnum between #{getStartRowNumber} and #{getEndRowNumber}
+	</select> 
+	
+	<select id="getTotalReviewCount" resultType="int">
+		select count(*) 
+		from ko_review a, ko_restaurant b 
+		where a.res_no = b.res_no and a.res_no=#{value}
+	</select>
+	
+	<!-- 
+	<resultMap type='restaurantVO' id='restaurantList'>
+		<result column="id" property="memberVO.id"/>
+	    <result column="email" property="memberVO.email"/>
+	    <result column="name" property="memberVO.name"/>
+	    <result column="tel" property="memberVO.tel"/>
+	</resultMap>
+	<select id="getRestaurantList" resultType="restaurantVO" parameterType="int" resultMap='restaurantList'> 		
+		select r.res_no,r.res_name,r.res_info,r.res_tel,r.res_loc,r.res_image,r.food_type,
+		r.end_time,r.start_time,m.id,m.password,m.email,m.name,m.tel,m.enabled
+		from 
+			(select row_number() over(order by res_no desc) as rnum, id, res_no,
+			res_name,res_info,res_tel,res_loc,res_image,food_type,end_time,start_time
+			from ko_restaurant) r, ko_member m 
+		where r.id=m.id and rnum between #{getStartRowNumber} and #{getEndRowNumber}
+	</select>
+	 -->
 </mapper>
  
  

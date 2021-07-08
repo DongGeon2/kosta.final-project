@@ -61,6 +61,12 @@ public class RestaurantController {
 		model.addAttribute("pagingBean", pagingBean);
 		ArrayList<RestaurantVO> restaurantList = restaurantService.getRestaurantList(pagingBean);
 		model.addAttribute("restaurantList", restaurantList);
+		for(int i=0; i<restaurantList.size(); i++) {
+			System.out.println(restaurantList.get(i));
+		}
+		/** 동건 **/
+		//List<RestaurantVO> detailRes = restaurantService.getDetailRestaurant();
+		//model.addAttribute("detailRes", detailRes);
 		return "recommend.tiles";
 	}
 	/**추천상세**/

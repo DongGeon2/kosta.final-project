@@ -22,20 +22,22 @@
 			<ul class="breadcrumbs-custom-path">
 				<li><a href="index.html">Home</a></li>
 				<li class="active"><span class="fa fa-chevron-right mx-2"
-					aria-hidden="true"></span>Detail Restaurant</li>
+					aria-hidden="true"></span>Recommend</li>
+				<li class="active"><span class="fa fa-chevron-right mx-2"
+				aria-hidden="true"></span>Detail Restaurant</li>
 			</ul>
 		</div>
 	</section>
 </div>
 <!-- //inner banner -->
 
-<c:set var="restaurant" value="${restaurant}"></c:set>
+<c:set var="restaurant" value="${restaurantVO}"></c:set>
 <!-- about section -->
 <section class="w3l-features-photo-7 py-5">
 	<div class="container py-md-5 py-4">
 		<div class="row w3l-features-photo-7_top align-items-start">
 			<div class="col-lg-6 w3l-features-photo-7_top-right mt-lg-0 mt-sm-5 mt-4">
-				<img src="assets/images/blog1.jpg" class="img-responsive" alt="" />
+				<img src="${pageContext.request.contextPath}/assets/images/blog1.jpg" class="img-responsive" alt="" />
 				
 			<!-- 	<div style="float: left; width: 25%">
 					<img src="assets/images/blog1.jpg" class="img-responsive" alt="" />
@@ -53,41 +55,35 @@
 			</div>
 			<div class="col-lg-6 w3l-features-photo-7_top-left pl-lg-4">
 				<div class="waviy">
-					<span style="-i: 1">B</span>
-					<span style="-i: 2">e</span> 
-					<span style="-i: 3">s</span> 
-					<span style="-i: 4">t</span> 
-					<span style="-i: 5"></span>
-					<span style="-i: 6">P</span> 
-					<span style="-i: 7">i</span>
-					<span style="-i: 8">c</span>
-					<span style="-i: 9">k</span>
+					<span style="-i: 1">${restaurant.resName }</span>
 				</div>
 				<div class="d-flex align-items-center mt-3">
-                	<h6 style="font-size: 20px;"><i class="fa fa-clock-o mr-1" aria-hidden="true"></i> 7:00 pm - 8:00 pm</h6>
+                	<h6 style="font-size: 20px;"><i class="fa fa-clock-o mr-1" aria-hidden="true"></i> ${restaurant.startTime} pm - ${restaurant.endTime} pm</h6>
                     <h6 class="ml-5" style="font-size: 20px;"><i class="fa fa-calendar mr-2" aria-hidden="true"></i>Dec 31</h6>
                 </div>
-				<p class="pt-lg-4" style="font-weight: bold; font-size: 25px;" align="justify">신라호텔 출신 쉐프가 운영하는 이탈리안 연남동 맛집</p>
-				<p style="font-size: 15px; font-weight: bold;">이탈리아 || 신사</p>
+				<p class="pt-lg-4" style="font-weight: bold; font-size: 25px;" align="justify">${restaurant.resInfo}</p>
+				<p style="font-size: 15px; font-weight: bold;">${restaurant.foodType} || ${restaurant.resTel}</p>
 				<div class="row feat_top">
 					<div class="col-auto w3l-features-photo-8-box pt-lg-4">
-						<img src="assets/images/별.png" alt="" class="img-fluid pt-5 pb-5 pr-sm-0">
+						<img src="${pageContext.request.contextPath}/assets/images/별.png" alt="" class="img-fluid pt-5 pb-5 pr-sm-0">
 						<!-- <p>In a diam et dui, orci urna. Donec sed tempus enims.</p> -->
 					</div>
+												<!-- 별점 -->
 					<span style="margin-top: 32px; font-size: 30px; color: orange">4.8</span>
-					<span style="margin-top: 45px; font-size: 15px">(10)</span>
+					<span style="margin-top: 45px; font-size: 15px">(${totalReviewCount })</span>
+												<!-- -- -->
 				</div>
 				<div class="row feat_top">
 					<div class="col-auto w3l-features-photo-9-box">
-						<img src="assets/images/해.png" alt="" class="img-fluid">
+						<img src="${pageContext.request.contextPath}/assets/images/해.png" alt="" class="img-fluid">
 					</div>
 					<span style="margin-top: 5px; font-size: 15px" >점심3만원</span>
 					<div class="col-auto w3l-features-photo-9-box">
-						<img src="assets/images/달.png" alt="" class="img-fluid">
+						<img src="${pageContext.request.contextPath}/assets/images/달.png" alt="" class="img-fluid">
 					</div>
 					<span class="mb-5" style="margin-top: 5px; font-size: 15px">저녁7만원</span>
 				</div>
-				<a href="/member/doReservation?resName=${restaurant.resName}" class="btn btn-style mt-5 ml-5">예약하러 가기</a>
+				<a href="/member/doReservation?resName=${restaurantVO.resName}&resNo=${restaurantVO.resNo}" class="btn btn-style mt-5 ml-5">예약하러 가기</a>
 			</div>
 		</div>
 	</div>
@@ -103,9 +99,10 @@
         	<h3 class="post-content-title">Leave a review</h3>
             <div class="form-commets mt-4">
             	<!-- ----------------------------리뷰 작성 폼---------------------------- -->
-            	<form action="registerReview" method="post">
+            	<form action="/member/registerReview" method="post">
             	<sec:csrfInput/>
                 	<div class="media-form">
+                		<input type="hidden" name="resNo" value="${restaurant.resNo }">
                     	<input type="hidden" name="id" value="${mvo.id }">
                         <input type="text" name="title" required="required" placeholder="Title">
 					</div>
@@ -117,22 +114,7 @@
             </div>
 		</div>
 		<!-- -------------------------------------------------------------------------------------- -->
-		<!-- ----------------------------리뷰 작성된거 보는 곳---------------------------- -->
-		
-		<div class="comments">
-			<h3 class="post-content-title">Review</h3>
-				<div class="media mt-4 bod-1">
-                	<div class="img-circle">
-                    	<img src="assets/images/team1.jpg" class="img-fluid" alt="...">
-                    </div>
-                    <div class="media-body">
-                    	<div class="medi-top mb-2">
-                        	<a href="#URL" class="name mt-0">${reviewVO.memberVO.id }</a>
-                            <span>${reviewVO.reviewRegdate }</span>
-                        </div>
-                        <p>${reviewVO.reviewContent }</p>
-                        <a href="#reply" class="rep mt-3">Reply</a>
-                        <div class="media mt-4 bod-2 mb-0 pb-0 px-0">
+		         <!--  <div class="media mt-4 bod-2 mb-0 pb-0 px-0">
                         	<a class="img-circle img-circle-sm" href="#">
                             	<img src="assets/images/team2.jpg" class="img-fluid" alt="...">
                             </a>
@@ -145,55 +127,69 @@
                                 ante sollicitudin. Cras purus odio, vestibulum at.</p>
                                 <a href="#reply" class="rep mt-3">Reply</a>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                
-                
-                
-                
-                
-				<c:forEach var="list" items="${requestScope.list }">
-				<div class="media bod-3">
+                        </div> -->
+		<!-- ----------------------------리뷰 작성된거 보는 곳---------------------------- -->
+		
+		<div class="comments">
+			<h3 class="post-content-title">Review</h3>
+				<c:forEach var="review" items="${reviewList }">
+				<div class="media mt-4 bod-1">
                 	<div class="img-circle">
-                    	<img src="assets/images/team3.jpg" class="img-fluid" alt="...">
+                    	<img src="${pageContext.request.contextPath}/assets/images/team1.jpg" class="img-fluid" alt="...">
                     </div>
                     <div class="media-body">
                     	<div class="medi-top mb-2">
-                        	<a href="#URL" class="name mt-0">${list.smVO.name}</a>
-                        	<span>14 Jan, 2021 </span>
+                        	<a href="#URL" class="name mt-0">${review.memberVO.id }
+                        		<span>${review.reviewTitle }</span>
+                        	</a>
+                            <span>${review.reviewRegdate }</span>
                         </div>
-                        <p>${list.content }</p>
+                        <p>${review.reviewContent }</p>
                         <a href="#reply" class="rep mt-3">Reply</a>
-                    </div>
-               </div>
-               </c:forEach>
-               </div>
-               
-        
-        <%-- 페이징 처리 --%>
+					</div>
+                </div>
+				</c:forEach>
+                 <%-- 페이징 처리 --%>
 		<c:set var="pb" value="${requestScope.pagingBean}"></c:set>
 		<div class="pagination-style text-center mt-5 pt-5">
 			<ul>
+			
 			<c:if test="${pb.previousPageGroup}">
-			<li><a disabled="" class="not-allowed" href="about?pageNo=${pb.startPageOfPageGroup-1}">&laquo;</a></li>
+			<li>
+				<a disabled="" class="not-allowed" href="/user/detailRestaurant?pageNo=${pb.startPageOfPageGroup-1}&resNo=${restaurantVO.resNo}">
+				<span class="fa fa-angle-double-left" aria-hidden="true"></span>
+				</a>
+			</li>
 			</c:if>
+				
 				<c:forEach var="page" begin="${pb.startPageOfPageGroup}" end="${pb.endPageOfPageGroup}">
 				<c:choose>
 					<c:when test="${pb.nowPage==page}">
-					<li ><a class="active" href="about?pageNo=${page}">${page}</a></li>
+					<li ><a class="active" href="/user/detailRestaurant?pageNo=${page}&resNo=${restaurantVO.resNo}">${page}</a></li>
 					</c:when>
 					<c:otherwise>
-					<li><a href="about?pageNo=${page}">${page}</a></li>
+					<li><a href="/user/detailRestaurant?pageNo=${page}&resNo=${restaurantVO.resNo}">${page}</a></li>
 					</c:otherwise>
 				</c:choose>		
 				</c:forEach>
+			
 			<c:if test="${pb.nextPageGroup}">
-			<li><a href="about?pageNo=${pb.endPageOfPageGroup+1}">&raquo;</a></li>
+			<li>
+				<a href="/user/detailRestaurant?pageNo=${pb.endPageOfPageGroup+1}&resNo=${restaurantVO.resNo}">
+				<span class="fa fa-angle-double-right" aria-hidden="true"></span>
+				</a>
+			</li>
 			</c:if>	
+			
 			</ul>
 		</div>
+		
      	<!-- pagination -->
+             
+        </div>
+               
+        
+       
 		<!-- ------------------------------------------------------------------------------------- -->
 	</div>
 </div>

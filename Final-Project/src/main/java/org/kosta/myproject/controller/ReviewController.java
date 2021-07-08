@@ -18,12 +18,12 @@ public class ReviewController {
 	@Resource
 	private ReviewService reviewService;
 	
-	@PostMapping("registerReview")
-	public String registerReview(String message, String id, String title) {
+	@PostMapping("/member/registerReview")
+	public String registerReview(String message, String id, String title, String resNo) {
 		ReviewVO reviewVO = new ReviewVO();
 		MemberVO memberVO = new MemberVO();
 		RestaurantVO restaurantVO = new RestaurantVO();
-		restaurantVO.setResNo("1");
+		restaurantVO.setResNo(resNo);
 		memberVO.setId(id);
 		reviewVO.setMemberVO(memberVO);
 		reviewVO.setRestaurantVO(restaurantVO);
@@ -32,13 +32,13 @@ public class ReviewController {
 		reviewVO.setReviewContent(message);
 		reviewVO.setReviewTitle(title);
 		reviewService.registerReview(reviewVO);
-		return "redirect:resultReview?resNo="+restaurantVO.getResNo();
+		return "redirect:/user/detailRestaurant?resNo="+resNo;
 	}
-	@RequestMapping("resultReview")
-	public String resultReview(Model model, String resNo) {
-		List<ReviewVO> reviewList = reviewService.getAllReviewByResNo(resNo);
-		model.addAttribute("reviewVO", reviewList);
-		System.out.println(reviewList);
-		return "restaurant.tiles";
-	}
+	/*
+	 * @RequestMapping("/member/resultReview") public String resultReview(Model
+	 * model, String resNo) { List<ReviewVO> reviewList =
+	 * reviewService.getAllReviewByResNo(resNo); model.addAttribute("reviewVO",
+	 * reviewList); System.out.println(reviewList); return "detailRestaurant.tiles";
+	 * }
+	 */
 }
