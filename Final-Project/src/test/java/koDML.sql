@@ -54,4 +54,20 @@ from (select row_number() over(order by no desc) as rnum,
 no,title,content,id from star_board) b, ko_member m
 where b.id=m.id and b.rnum between #{getStartRowNumber} and #{getEndRowNumber}
  		
+--------------------------------------------------------동건
 select * from ko_restaurant
+select * from ko_review
+		select * 
+		from ko_review a, ko_restaurant b
+		where a.res_no=b.res_no and b.res_no=3
+		
+delete from ko_review where review_grade='4'
+
+		select r.res_no,r.res_name,r.res_info,r.res_tel,r.res_loc,r.res_image,r.food_type,
+		r.end_time,r.start_time,m.id,m.password,m.email,m.name,m.tel,m.enabled
+		from 
+			(select row_number() over(order by res_no desc) as rnum, id, res_no,
+			res_name,res_info,res_tel,res_loc,res_image,food_type,end_time,start_time
+			from ko_restaurant) r, ko_member m 
+		where r.id=m.id and rnum between 1 and 5
+--------------------------------------------------------------------	

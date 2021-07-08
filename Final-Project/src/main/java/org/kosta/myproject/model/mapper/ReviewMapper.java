@@ -12,4 +12,8 @@ public interface ReviewMapper {
 
 	List<ReviewVO> getAllReviewByResNo(String resNo);
 
+	List<ReviewVO> getAllReviewList(int getStartRowNumber,int getEndRowNumber, String resNo);
+
+	int getTotalReviewCount(String resNo);
+
 }

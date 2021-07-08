@@ -3,29 +3,22 @@ package org.kosta.myproject;
 import javax.annotation.Resource;
 
 import org.junit.jupiter.api.Test;
-import org.kosta.myproject.model.vo.MemberVO;
-import org.kosta.myproject.model.vo.ReservationVO;
 import org.kosta.myproject.model.vo.RestaurantVO;
-import org.kosta.myproject.service.ReservationService;
+import org.kosta.myproject.service.RestaurantService;
+import org.kosta.myproject.service.ReviewService;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.core.context.SecurityContextHolder;
 
 @SpringBootTest
 class FinalProjectApplicationTests {
 	@Resource
-	ReservationService reservationService;
+	ReviewService reviewService;
+	@Resource
+	RestaurantService restaurantService;
+	
 	@Test
 	void contextLoads() {
-		MemberVO mvo = new MemberVO();
-		RestaurantVO resVO = new RestaurantVO();
-		resVO.setResNo("1");
-		mvo.setId("java");
-		ReservationVO revVO = new ReservationVO();
-		revVO.setRevTime("11");
-		revVO.setHeadCount(3);
-		revVO.setMemberVO(mvo);
-		revVO.setRestaurantVO(resVO);
-		reservationService.registerReservation(revVO);
+		RestaurantVO restaurantVO = restaurantService.findRestaurantByResNo("4");
+		System.out.println(restaurantVO);
 	}
 	/* tettstets */
 }
