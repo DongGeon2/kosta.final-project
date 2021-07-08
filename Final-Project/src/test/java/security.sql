@@ -102,3 +102,4 @@ WHERE B.id=M.id AND B.rnum
        from (select row_number() over(order by no desc) as rnum,
        no,title,content,id from star_board) b, star_member m
        where b.id=m.id and b.rnum between #{getStartRowNumber} and #{getEndRowNumber}
+
