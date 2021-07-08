@@ -26,7 +26,7 @@ public class ReservationController {
 		model.addAttribute("resName", resName);
 		model.addAttribute("resNo", resNo);
 		model.addAttribute("memberVO", pvo);
-		return "reservation/reservation-form";
+		return "reservation/reservation-form.tiles";
 	}
 
 	@PostMapping("/member/doReservation2")
