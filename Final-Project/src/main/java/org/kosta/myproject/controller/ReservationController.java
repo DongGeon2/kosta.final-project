@@ -25,6 +25,8 @@ public class ReservationController {
 		MemberVO pvo = (MemberVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		model.addAttribute("resName", resName);
 		model.addAttribute("resNo", resNo);
+		System.out.println("");
+		System.out.println(resNo);
 		model.addAttribute("memberVO", pvo);
 		return "reservation/reservation-form.tiles";
 	}
@@ -34,6 +36,8 @@ public class ReservationController {
 		MemberVO mvo = new MemberVO();
 		RestaurantVO resVO = new RestaurantVO();
 		resVO.setResNo(resNo);
+		System.out.println("");
+		System.out.println(resNo);
 		mvo.setId(id);
 		ReservationVO revVO = new ReservationVO();
 		revVO.setRevTime(revTime);
