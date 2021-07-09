@@ -113,10 +113,11 @@ public class RestaurantController {
 	 */
 	@PostMapping("restaurant/registerRestaurant")
 	public String registerRestaurant(RestaurantVO rvo, MultipartHttpServletRequest request,
-			@RequestParam("resImage") MultipartFile mFile) {
+			@RequestParam("restaurantImage") MultipartFile mFile) {
 		try {
-			String uploadPath = request.getServletContext().getRealPath("/Resupload/");
+			String uploadPath = request.getServletContext().getRealPath("/ResUpload/");
 			mFile.transferTo(new File(uploadPath + mFile.getOriginalFilename()));
+			System.out.println("--->"+mFile.getOriginalFilename());
 			MemberVO mvo = (MemberVO)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			rvo.setMemberVO(mvo);
 			rvo.setResImage(mFile.getOriginalFilename());
@@ -130,7 +131,7 @@ public class RestaurantController {
 	
 	@RequestMapping("restaurant/registerRes")
 	public String registerRes() {
-		return "restaurant/registerResResult";
+		return "restaurant/registerResResult.tiles";
 	}
 	/** 사장 식당 등록 **/
 }

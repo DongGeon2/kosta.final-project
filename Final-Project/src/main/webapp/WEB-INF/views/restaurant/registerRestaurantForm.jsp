@@ -2,9 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
-<!-- <!doctype html>
-<html lang="en">
-
+<!-- 
 <head>
     Required meta tags
     <meta charset="utf-8">
@@ -98,7 +96,7 @@
                         <input type="text" placeholder="Closing time" name="endTime" id="w3lName" required="">
                       </div>
                       <!-- <input type="file" name="file" placeholder="Restaurant Image"> -->
-                      <input id="filename" name="resImage"  placeholder="Restaurant Image" type="file" /> 
+                      <input id="filename" name="restaurantImage"  placeholder="Restaurant Image" type="file" /> 
                       <textarea placeholder="Restaurant Infomation" name="resInfo" id="w3lMessage" required=""></textarea>
                       <button type="submit" class="btn btn-style">Register Now</button>
                     </form>
