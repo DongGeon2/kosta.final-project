@@ -111,4 +111,5 @@ public class RestaurantVO {
 				+ ", resInfo=" + resInfo + ", resTel=" + resTel + ", startTime=" + startTime + ", endTime=" + endTime
 				+ ", memberVO=" + memberVO + ", foodType=" + foodType + "]";
 	}
+	
 }

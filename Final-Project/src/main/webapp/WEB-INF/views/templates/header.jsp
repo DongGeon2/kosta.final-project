@@ -35,10 +35,10 @@
 
 			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 				<ul class="navbar-nav ml-lg-auto">
-					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/user/restaurant ">restaurant</a></li>
-               <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/user/recommend">recommend</a></li>
+			   <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/restaurant ">restaurant</a></li>
+               <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/recommend">recommend</a></li>
                <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/owner">사장권한</a></li>
-               <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/admin">관리자권한</a></li>
+               <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin">관리자권한</a></li>
 					<sec:authorize access="isAuthenticated()==false">
 						<li class="nav-item"><a class="nav-link"
 							href="${pageContext.request.contextPath}/login">Login</a></li>
@@ -58,7 +58,7 @@
 								});
 							});
 						</script>
-						<li class="nav-item"><a class="nav-link" href="mypage">mypage</a></li>
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/mypage">mypage</a></li>
 						<li class="nav-item"><a class="nav-link" href="#"
 							id="logoutAction">Logout</a></li>
 						<form id="logoutForm"
@@ -67,11 +67,11 @@
 							<sec:csrfInput />
 						</form>
 						<sec:authorize access="hasRole('ROLE_ADMIN')">
-							<li class="nav-item"><a class="nav-link" href="admin/mypage">Admin</a></li>
+							<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/adminpage">Admin</a></li>
 						</sec:authorize>
 						<sec:authorize access="hasRole('ROLE_OWNER')">
 							<li class="nav-item">
-								<a class="nav-link" href="restaurant/registerRestaurantForm">register</a>
+								<a class="nav-link" href="${pageContext.request.contextPath}/restaurant/registerRestaurantForm">register</a>
 							</li>
 						</sec:authorize>
 					</sec:authorize>
@@ -120,7 +120,7 @@
 					<!-- search button -->
 					<div class="search-right ml-lg-3">
 						<form
-							action="${pageContext.request.contextPath}/user/findRestaurantByName"
+							action="${pageContext.request.contextPath}/findRestaurantByName"
 							method="GET" class="search-box position-relative">
 							<div class="input-search">
 								<input type="search" placeholder="Enter Keyword" name="resName"

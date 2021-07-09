@@ -68,7 +68,7 @@
 
 					</div>
 					<div class="top-inputs d-grid" id="jangwrapper">
-					<button type="submit" class="btn btn-style" onClick="location.href='${pageContext.request.contextPath}/user/registerForm'">
+					<button type="submit" class="btn btn-style" onClick="location.href='${pageContext.request.contextPath}/registerForm'">
 					회원가입	</button>
 						<!-- style="color:white" -->
 <%-- ${pageContext.request.contextPath}/ --%>

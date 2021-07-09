@@ -1,9 +1,7 @@
 package org.kosta.myproject.controller;
 
-import org.kosta.myproject.model.vo.MemberVO;
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -16,7 +14,7 @@ public class HomeController {
 		return "home.tiles";
 	}
 	
-	@RequestMapping("user/restaurant")
+	@RequestMapping("restaurant")
 	public String restaurant() {
 		return "restaurant/restaurant.tiles";
 	}
@@ -59,9 +57,14 @@ public class HomeController {
 	public String accessDeniedView() {
 		return "auth/accessDeniedView";
 	}
-	//@PreAuthorize("hasRole('ROLE_OWNER')")
+	@PreAuthorize("hasRole('ROLE_OWNER')")
 	@RequestMapping("/owner")
 	public String owner() {
 		return "owner.tiles";
+	}
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@RequestMapping("/admin")
+	public String admin() {
+		return "admin.tiles";
 	}
 }

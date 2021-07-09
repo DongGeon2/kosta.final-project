@@ -19,7 +19,7 @@ insert into ko_authorities(id,authority) values('BKS','ROLE_MEMBER');
 insert into ko_authorities(id,authority) values('JYJ','ROLE_MEMBER');
 
 --권한 추가해야할것.
-insert into ko_authorities(id,authority) values('KDG','ROLE_OWNER');
+insert into ko_authorities(id,authority) values('owner','ROLE_OWNER');
 insert into ko_authorities(id,authority) values('KDG','ROLE_MEMBER');
 insert into ko_authorities(id,authority) values('KJS','ROLE_MEMBER');
 
