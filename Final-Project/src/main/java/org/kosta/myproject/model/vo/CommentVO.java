@@ -1,40 +1,40 @@
 package org.kosta.myproject.model.vo;
 
 public class CommentVO {
-	private String comNo;
-	private String comContent;
-	private String comRegdate;
+	private String commentNo;
+	private String commentContent;
+	private String commmentTime;
 	private MemberVO memberVO;
 	private BoardVO boardVO;
 	public CommentVO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public CommentVO(String comNo, String comContent, String comRegdate, MemberVO memberVO, BoardVO boardVO) {
+	public CommentVO(String commentNo, String commentContent, String commmentTime, MemberVO memberVO, BoardVO boardVO) {
 		super();
-		this.comNo = comNo;
-		this.comContent = comContent;
-		this.comRegdate = comRegdate;
+		this.commentNo = commentNo;
+		this.commentContent = commentContent;
+		this.commmentTime = commmentTime;
 		this.memberVO = memberVO;
 		this.boardVO = boardVO;
 	}
-	public String getComNo() {
-		return comNo;
+	public String getCommentNo() {
+		return commentNo;
 	}
-	public void setComNo(String comNo) {
-		this.comNo = comNo;
+	public void setCommentNo(String commentNo) {
+		this.commentNo = commentNo;
 	}
-	public String getComContent() {
-		return comContent;
+	public String getCommentContent() {
+		return commentContent;
 	}
-	public void setComContent(String comContent) {
-		this.comContent = comContent;
+	public void setCommentContent(String commentContent) {
+		this.commentContent = commentContent;
 	}
-	public String getComRegdate() {
-		return comRegdate;
+	public String getCommmentTime() {
+		return commmentTime;
 	}
-	public void setComRegdate(String comRegdate) {
-		this.comRegdate = comRegdate;
+	public void setCommmentTime(String commmentTime) {
+		this.commmentTime = commmentTime;
 	}
 	public MemberVO getMemberVO() {
 		return memberVO;
@@ -50,9 +50,8 @@ public class CommentVO {
 	}
 	@Override
 	public String toString() {
-		return "CommentVO [comNo=" + comNo + ", comContent=" + comContent + ", comRegdate=" + comRegdate + ", memberVO="
-				+ memberVO + ", boardVO=" + boardVO + "]";
+		return "CommentVO [commentNo=" + commentNo + ", commentContent=" + commentContent + ", commmentTime="
+				+ commmentTime + ", memberVO=" + memberVO + ", boardVO=" + boardVO + "]";
 	}
-
 	
 }
