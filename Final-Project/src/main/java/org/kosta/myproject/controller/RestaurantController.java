@@ -1,5 +1,7 @@
 package org.kosta.myproject.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +16,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 @Controller
 public class RestaurantController {
@@ -21,7 +26,7 @@ public class RestaurantController {
 	private RestaurantService restaurantService;
 
 	/** 검색 **/
-	@RequestMapping("user/findRestaurantByName")
+	@RequestMapping("/findRestaurantByName")
 	public String findRestaurantByName(String resName, Model model) {
 		List<RestaurantVO> list = restaurantService.findRestaurantByName(resName);
 		System.out.println(list);
@@ -36,7 +41,7 @@ public class RestaurantController {
 	/** 검색 **/
 
 	/** 메인바검색 **/
-	@RequestMapping("user/findRestaurantByMainBar")
+	@RequestMapping("/findRestaurantByMainBar")
 	public String findRestaurantByMainBar(String foodType, String resLoc, Model model) {
 		List<RestaurantVO> list = restaurantService.findRestaurantByMainBar(foodType, resLoc);
 		System.out.println(list);
@@ -51,7 +56,7 @@ public class RestaurantController {
 	/** 메인바검색 **/
 
 	/** 추천상세 **/
-	@RequestMapping("user/recommend")
+	@RequestMapping("/recommend")
 	public String recommend(Model model, String pageNo) {
 		int totalPostcount = restaurantService.getTotalCount();
 		PagingBean pagingBean = null;
@@ -73,7 +78,7 @@ public class RestaurantController {
 		return "recommend.tiles";
 	}
 
-	@RequestMapping("user/countPage")
+	@RequestMapping("/countPage")
 	public String countPage(Model model, String pageNo) {
 		int totalPostcount = restaurantService.getTotalCount();
 		PagingBean pagingBean = null;
@@ -97,14 +102,29 @@ public class RestaurantController {
 		return "restaurant/registerRestaurantForm.tiles";
 	}
 	
+	/*
+	 * @PostMapping("restaurant/registerRestaurant") public String
+	 * registerRestaurant(RestaurantVO rvo) { System.out.println("하나두울셋"); MemberVO
+	 * mvo =
+	 * (MemberVO)SecurityContextHolder.getContext().getAuthentication().getPrincipal
+	 * (); rvo.setMemberVO(mvo); System.out.println("ResVO:"+rvo+"인증정보 확인:"+mvo);
+	 * rvo.setMemberVO(mvo); restaurantService.registerResForm(rvo); return
+	 * "redirect:registerRes"; }
+	 */
 	@PostMapping("restaurant/registerRestaurant")
-	public String registerRestaurant(RestaurantVO rvo) {
-		System.out.println("하나두울셋");
-		MemberVO mvo = (MemberVO)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		rvo.setMemberVO(mvo);
-		System.out.println("ResVO:"+rvo+"인증정보 확인:"+mvo);
-		rvo.setMemberVO(mvo);
-		restaurantService.registerResForm(rvo);
+	public String registerRestaurant(RestaurantVO rvo, MultipartHttpServletRequest request,
+			@RequestParam("resImage") MultipartFile mFile) {
+		try {
+			String uploadPath = request.getServletContext().getRealPath("/Resupload/");
+			mFile.transferTo(new File(uploadPath + mFile.getOriginalFilename()));
+			MemberVO mvo = (MemberVO)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			rvo.setMemberVO(mvo);
+			rvo.setResImage(mFile.getOriginalFilename());
+			System.out.println("ResVO:"+rvo+"인증정보 확인:"+mvo);
+			restaurantService.registerResForm(rvo); 
+		}catch(IllegalStateException | IOException e) {
+			e.printStackTrace();
+		}
 		return "redirect:registerRes";
 	}
 	

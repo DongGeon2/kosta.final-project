@@ -23,5 +23,5 @@ public interface MemberMapper {
 
 	void updateMember(MemberVO memberVO);
 	
-	void deleteMember(String id); 
+	boolean deleteMember(String id); 
 }

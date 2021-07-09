@@ -71,7 +71,7 @@
               <!-- Register Restaurant-->
               <!--res_name,res_info,res_tel,res_loc,res_image,food_type,end_time,start_time-->
                 <div class="contacts12-main ">
-                    <form action="registerRestaurant" method="post" class="main-input">
+                    <form action="registerRestaurant" method="post" class="main-input" enctype="multipart/form-data">
                     <sec:csrfInput />
                       <input type="text" class="yejin" placeholder="Restaurant Name" name="resName" id="w3lName" required="">
                       <input type="text" class="yejin" placeholder="Restaurant Phone number" name="resTel"  id="w3lName" required="">
@@ -97,7 +97,8 @@
                         <input type="text" placeholder="Opening time" name="startTime" id="w3lName" required="">
                         <input type="text" placeholder="Closing time" name="endTime" id="w3lName" required="">
                       </div>
-                      <input type="file" name="resImage" placeholder="Restaurant Image">
+                      <!-- <input type="file" name="file" placeholder="Restaurant Image"> -->
+                      <input id="filename" name="resImage"  placeholder="Restaurant Image" type="file" /> 
                       <textarea placeholder="Restaurant Infomation" name="resInfo" id="w3lMessage" required=""></textarea>
                       <button type="submit" class="btn btn-style">Register Now</button>
                     </form>

@@ -36,7 +36,11 @@ href="${pageContext.request.contextPath}/resources/css/home2.css" > --%>
             	<sec:csrfInput />
                 	<div class="media-form">
                 		<input type="hidden" name="id" value="${memberVO.id}">
+<<<<<<< HEAD
                 		<input type="hidden" name="resNo" value="${param.resNo}">
+=======
+                		<input type="hidden" name="resNo" value="${resNo}">                		
+>>>>>>> refs/heads/JYJ
                         <input type="text" value="${memberVO.id}" readonly="readonly">
                         <input type="text" value="${resName}" readonly="readonly">
                         <input type="text" name="revTime" required="required" placeholder="예약날짜">

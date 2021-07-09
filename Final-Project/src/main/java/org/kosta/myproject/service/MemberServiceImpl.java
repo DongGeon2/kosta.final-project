@@ -63,7 +63,11 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public void deleteMember(String id) {
-		memberMapper.deleteMember(id);
+	public int deleteMember(String id) {
+		
+		if(memberMapper.deleteMember(id))
+			return 1;
+		else 
+			return 0;
 	}
 }

@@ -8,6 +8,7 @@ import org.kosta.myproject.model.vo.MemberVO;
 import org.kosta.myproject.model.vo.RestaurantVO;
 import org.kosta.myproject.model.vo.ReviewVO;
 import org.kosta.myproject.service.ReviewService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,8 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ReviewController {
 	@Resource
 	private ReviewService reviewService;
-	
-	@PostMapping("/member/registerReview")
+
+	@PreAuthorize("hasRole('ROLE_MEMBER')")
+	@PostMapping("/registerReview")
 	public String registerReview(String message, String id, String title, String resNo) {
 		ReviewVO reviewVO = new ReviewVO();
 		MemberVO memberVO = new MemberVO();
@@ -32,13 +34,15 @@ public class ReviewController {
 		reviewVO.setReviewContent(message);
 		reviewVO.setReviewTitle(title);
 		reviewService.registerReview(reviewVO);
-		return "redirect:/user/detailRestaurant?resNo="+resNo;
+		return "redirect:/detailRestaurant?resNo=" + resNo;
 	}
-	/*
-	 * @RequestMapping("/member/resultReview") public String resultReview(Model
-	 * model, String resNo) { List<ReviewVO> reviewList =
-	 * reviewService.getAllReviewByResNo(resNo); model.addAttribute("reviewVO",
-	 * reviewList); System.out.println(reviewList); return "detailRestaurant.tiles";
-	 * }
-	 */
+	@PreAuthorize("hasRole('ROLE_MEMBER')")
+	@RequestMapping("/resultReview")
+	public String resultReview(Model model, String resNo) {
+		List<ReviewVO> reviewList = reviewService.getAllReviewByResNo(resNo);
+		model.addAttribute("reviewVO", reviewList);
+		System.out.println(reviewList);
+		return "detailRestaurant.tiles";
+	}
+
 }

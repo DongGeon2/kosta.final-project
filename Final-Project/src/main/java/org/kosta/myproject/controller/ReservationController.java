@@ -7,6 +7,7 @@ import org.kosta.myproject.model.vo.ReservationVO;
 import org.kosta.myproject.model.vo.RestaurantVO;
 import org.kosta.myproject.service.ReservationService;
 import org.kosta.myproject.service.RestaurantService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,8 +20,8 @@ public class ReservationController {
 	private ReservationService reservationService;
 	@Resource
 	private RestaurantService restaurantService;
-
-	@RequestMapping("/member/doReservation")
+	@PreAuthorize("hasRole('ROLE_MEMBER')")
+	@RequestMapping("/doReservation")
 	public String doReservation(Model model, String resName, String resNo) {
 		MemberVO pvo = (MemberVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		model.addAttribute("resName", resName);
@@ -30,8 +31,8 @@ public class ReservationController {
 		model.addAttribute("memberVO", pvo);
 		return "reservation/reservation-form.tiles";
 	}
-
-	@PostMapping("/member/doReservation2")
+	@PreAuthorize("hasRole('ROLE_MEMBER')")
+	@PostMapping("/doReservation2")
 	public String doReservation2(String id, String revTime, int headCount, String resNo, Model model) {
 		MemberVO mvo = new MemberVO();
 		RestaurantVO resVO = new RestaurantVO();
@@ -49,8 +50,8 @@ public class ReservationController {
 		return "redirect:registerReservationResult?memberId=" + id + "&resNo=" + resVO.getResNo() + "&revTime="
 				+ revVO.getRevTime() + "&headCount=" + revVO.getHeadCount();
 	}
-
-	@RequestMapping("/member/registerReservationResult")
+	
+	@RequestMapping("/registerReservationResult")
 	public String registerReservationResult(String memberId, String resNo, String revTime, int headCount, Model model) {
 		RestaurantVO restaurantVO = new RestaurantVO();
 		MemberVO memberVO = new MemberVO();

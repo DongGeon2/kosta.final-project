@@ -71,8 +71,23 @@
 				<div class="after"></div>
 			</div>
 			<div class="contacts12-main">
- 
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 				<script type="text/javascript">
+				$.ajaxPrefilter(function(options) {
+
+					let headerName = '${_csrf.headerName}';
+
+					let token = '${_csrf.token}';
+
+					if (options.type.toLowerCase() === 'post') {
+
+					options.headers = {};
+
+					options.headers[headerName] = token;
+
+					}
+
+					});
                 	$(document).ready(function(){
                 		var checkResultId="";		
                 		$("#regForm").submit(function(){				
@@ -94,7 +109,7 @@
                 			$("#idCheckBtn").off('click').on('click',function(){
 	                			$.ajax({
 	                				type:"post",
-	                				url:"${pageContext.request.contextPath}/user/idcheckAjax",				
+	                				url:"${pageContext.request.contextPath}/idcheckAjax",				
 	                				data:"id="+id,	
 	                				beforeSend : function(xhr){  
 	                                    xhr.setRequestHeader("${_csrf.headerName}","${_csrf.token}");
@@ -117,7 +132,7 @@
              	
                 	</script>
 				<form
-					action="${pageContext.request.contextPath}/user/registerMember"
+					action="${pageContext.request.contextPath}/registerMember"
 					id="regForm" method="post" class="main-input">
 					<sec:csrfInput />
 					<div class="col-sm-offset-3 col-sm-6 top-inputs">

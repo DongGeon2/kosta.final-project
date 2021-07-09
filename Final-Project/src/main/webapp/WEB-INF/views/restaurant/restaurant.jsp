@@ -87,7 +87,7 @@
 					</div>
 					<span class="mb-5" style="margin-top: 5px; font-size: 15px">저녁7만원</span>
 				</div>
-				<a href="/member/doReservation" class="btn btn-style mt-5 ml-5">예약하러 가기</a>
+				<a href="/doReservation" class="btn btn-style mt-5 ml-5">예약하러 가기</a>
 			</div>
 		</div>
 	</div>

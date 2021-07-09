@@ -49,7 +49,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			그 외의 요청에는 anyRequest().authenticated()  로그인 인증된 사용자만 접근할 수 있다
 		 */
 		//http.authorizeRequests() .antMatchers("/", "/home", "/assets/**", "/user/**") .permitAll().anyRequest().authenticated();
-		http.authorizeRequests() .antMatchers("/", "/home", "/assets/**", "/user/**").permitAll()
+		http.authorizeRequests() .antMatchers("/", "/home", "/assets/**", "/**").permitAll()
 	      .antMatchers("/member/**").hasRole("MEMBER")
 	      .antMatchers("/admin/**").hasRole("ADMIN")
 	        .antMatchers("/owner/**").hasRole("OWNER")
