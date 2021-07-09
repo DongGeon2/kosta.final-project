@@ -81,7 +81,7 @@
                 <div class="col-lg-4 col-md-6 grids-feature mt-lg-5 mt-4">
                     <div class="area-box">
                         <img src="assets/images/Edit.png" alt="" class="img-fluid">
-                        <h4><a href="updateMemberForm" class="title-head">Edit my account</a></h4>
+                        <h4><a href="updateMemberForm" class="title-head">Edit my profile</a></h4>
                         <p class="">Edit my profile</p>
                     </div>
                 </div>
