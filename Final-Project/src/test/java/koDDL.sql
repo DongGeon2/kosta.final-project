@@ -22,6 +22,7 @@ CREATE TABLE ko_member(
    tel varchar2(10) not null,
    enabled int default 1 not null 
 )
+ALTER TABLE ko_member MODIFY(tel VARCHAR2(100));
 
 select * from ko_member
 --2. 권한 테이블
