@@ -4,75 +4,43 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.kosta.myproject.model.mapper.MemberMapper">
-	<select id="findMemberById" resultType="memberVO">
-	 		SELECT	id,	password,email,	name, tel, enabled
-			FROM	ko_member
-			WHERE 	id=#{value}	
-			AND		enabled=1 		
-	</select>
-	<insert id="registerMember">
-		insert into ko_member(id,password,email,name,tel) 
-		values(#{id},#{password},#{email},#{name},#{tel})
-	</insert>
-	<insert id="registerRole">
-		insert into ko_authorities(id,authority) values(#{id},#{authority})
-	</insert>
-	<select id="getMemberCount" resultType="int">
- 		select count(*) from ko_member
- 	</select>
- 	<select id="idcheck" resultType="int">
-		select count(*) from ko_member where id=#{value}
-	</select>
-	<select id="selectAuthorityByUsername"  resultType="authority">
-		SELECT	id,authority
-		FROM	ko_authorities
-		WHERE	id=#{id}
-	</select>
-	<select id="selectAuthority"  resultType="authority">
-		SELECT	id,authority
-		FROM	ko_authorities
-	</select>
-	<update id="updateMember" parameterType="memberVO">
-		update ko_member set password=#{password},name=#{name},email=#{email},tel=#{tel}
-		where id=#{id}
-	</update>
-	<update id="deleteMember" parameterType="memberVO">
-		update ko_member set enabled=0
-		where id=#{value}
-	</update>
-	<delete id="ownerCancel" parameterType="string">
- 		delete from ko_authorities where id=#{value} and authority='ROLE_OWNER'
- 	</delete>
+   <select id="findMemberById" resultType="memberVO">
+          SELECT   id,   password,email,   name, tel, enabled
+         FROM   ko_member
+         WHERE    id=#{value}   
+         AND      enabled=1       
+   </select>
+   <insert id="registerMember">
+      insert into ko_member(id,password,email,name,tel) 
+      values(#{id},#{password},#{email},#{name},#{tel})
+   </insert>
+   <insert id="registerRole">
+      insert into ko_authorities(id,authority) values(#{id},#{authority})
+   </insert>
+   <select id="getMemberCount" resultType="int">
+       select count(*) from ko_member
+    </select>
+    <select id="idcheck" resultType="int">
+      select count(*) from ko_member where id=#{value}
+   </select>
+   <select id="selectAuthorityByUsername"  resultType="authority">
+      SELECT   id,authority
+      FROM   ko_authorities
+      WHERE   id=#{id}
+   </select>
+   <select id="selectAuthority"  resultType="authority">
+      SELECT   id,authority
+      FROM   ko_authorities
+   </select>
+   <update id="updateMember" parameterType="memberVO">
+      update ko_member set password=#{password},name=#{name},email=#{email},tel=#{tel}
+      where id=#{id}
+   </update>
+   <update id="deleteMember" parameterType="memberVO">
+      update ko_member set enabled=0
+      where id=#{value}
+   </update>
+   <delete id="ownerCancel" parameterType="string">
+       delete from ko_authorities where id=#{value} and authority='ROLE_OWNER'
+    </delete>
 </mapper>
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

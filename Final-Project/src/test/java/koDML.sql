@@ -57,9 +57,10 @@ where b.id=m.id and b.rnum between #{getStartRowNumber} and #{getEndRowNumber}
 --------------------------------------------------------동건
 select * from ko_restaurant
 select * from ko_review
-		select * 
-		from ko_review a, ko_restaurant b
-		where a.res_no=b.res_no and b.res_no=3
+
+select * 
+from ko_review a, ko_restaurant b
+where a.res_no=b.res_no and b.res_no=3
 		
 delete from ko_review where review_grade='4'
 

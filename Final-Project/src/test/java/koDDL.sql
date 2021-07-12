@@ -41,6 +41,7 @@ CREATE TABLE ko_board(
    content clob not null,
    hits number default 0,
    id varchar2(100) not null,
+   img varchar2(100),
    CONSTRAINT ko_board_fk foreign key(id) references ko_member(id) on delete cascade
 )
 CREATE sequence ko_board_seq;
@@ -105,6 +106,7 @@ CREATE TABLE ko_reservation(
 	CONSTRAINT ko_rev_id foreign key(id) references ko_member(id) on delete cascade
 )
 CREATE sequence ko_reservation_seq;
+
 select * from ko_reservation
 
 --8. 예약 리뷰 테이블

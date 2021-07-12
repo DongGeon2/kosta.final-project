@@ -109,9 +109,9 @@
 	<form id="createAuthForm">
 	<sec:csrfInput />
 	 <div class="top-inputs d-grid">
-		 <input type="text" class="yejin" placeholder="아이디" name="id" id="w3lName" required="">
+		 <input type="text"  placeholder="아이디" name="id" id="w3lName" required="" size="5">
 		 </div>
-		<select name="authority" class="yejin_ResSearch yejin" id="exampleFormControlSelect1">
+		<select name="authority" >
                                 <option value="ROLE_OWNER">사장님</option>
                                 <option value="ROLE_ADMIN">관리자</option>
                                 </select>

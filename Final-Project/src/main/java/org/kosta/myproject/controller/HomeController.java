@@ -44,7 +44,7 @@ public class HomeController {
 	@Secured("ROLE_MEMBER")
 	@RequestMapping("mypage")
 	public String mypage() {
-		return "mypage.tiles";
+		return "member/mypage.tiles";
 	}
 
 	@RequestMapping("board")
