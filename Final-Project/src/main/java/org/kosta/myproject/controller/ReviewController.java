@@ -36,7 +36,8 @@ public class ReviewController {
 		reviewService.registerReview(reviewVO);
 		return "redirect:/detailRestaurant?resNo=" + resNo;
 	}
-	@PreAuthorize("hasRole('ROLE_MEMBER')")
+	//@PreAuthorize("hasRole('ROLE_MEMBER')")
+	@Secured("ROLE_MEMBER")
 	@RequestMapping("/resultReview")
 	public String resultReview(Model model, String resNo) {
 		List<ReviewVO> reviewList = reviewService.getAllReviewByResNo(resNo);
