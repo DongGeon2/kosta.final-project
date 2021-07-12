@@ -14,11 +14,11 @@ public class Authority implements Serializable {
 		this.authority = authority;
 	}
   
-	public String getUsername() {
+	public String getId() {
 		return id;
 	}
 
-	public void setUsername(String id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

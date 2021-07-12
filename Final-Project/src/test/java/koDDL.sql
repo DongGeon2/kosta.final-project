@@ -45,6 +45,9 @@ CREATE TABLE ko_board(
 )
 CREATE sequence ko_board_seq;
 
+
+select * from ko_authorities
+
 --4. 자유 게시판 댓글 
 CREATE TABLE ko_board_comment(
    comment_no number primary key,

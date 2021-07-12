@@ -28,6 +28,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM	ko_authorities
 		WHERE	id=#{id}
 	</select>
+	<select id="selectAuthority"  resultType="authority">
+		SELECT	id,authority
+		FROM	ko_authorities
+	</select>
 	<update id="updateMember" parameterType="memberVO">
 		update ko_member set password=#{password},name=#{name},email=#{email},tel=#{tel}
 		where id=#{id}
@@ -36,6 +40,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update ko_member set enabled=0
 		where id=#{value}
 	</update>
+	<delete id="ownerCancel" parameterType="string">
+ 		delete from ko_authorities where id=#{value} and authority='ROLE_OWNER'
+ 	</delete>
 </mapper>
  
  
