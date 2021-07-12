@@ -3,18 +3,18 @@ package org.kosta.myproject.model.vo;
 public class CommentVO {
 	private String commentNo;
 	private String commentContent;
-	private String commmentTime;
+	private String commentTime;
 	private MemberVO memberVO;
 	private BoardVO boardVO;
 	public CommentVO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public CommentVO(String commentNo, String commentContent, String commmentTime, MemberVO memberVO, BoardVO boardVO) {
+	public CommentVO(String commentNo, String commentContent, String commentTime, MemberVO memberVO, BoardVO boardVO) {
 		super();
 		this.commentNo = commentNo;
 		this.commentContent = commentContent;
-		this.commmentTime = commmentTime;
+		this.commentTime = commentTime;
 		this.memberVO = memberVO;
 		this.boardVO = boardVO;
 	}
@@ -30,11 +30,11 @@ public class CommentVO {
 	public void setCommentContent(String commentContent) {
 		this.commentContent = commentContent;
 	}
-	public String getCommmentTime() {
-		return commmentTime;
+	public String getCommentTime() {
+		return commentTime;
 	}
-	public void setCommmentTime(String commmentTime) {
-		this.commmentTime = commmentTime;
+	public void setCommentTime(String commentTime) {
+		this.commentTime = commentTime;
 	}
 	public MemberVO getMemberVO() {
 		return memberVO;
@@ -50,8 +50,9 @@ public class CommentVO {
 	}
 	@Override
 	public String toString() {
-		return "CommentVO [commentNo=" + commentNo + ", commentContent=" + commentContent + ", commmentTime="
-				+ commmentTime + ", memberVO=" + memberVO + ", boardVO=" + boardVO + "]";
+		return "CommentVO [commentNo=" + commentNo + ", commentContent=" + commentContent + ", commentTime="
+				+ commentTime + ", memberVO=" + memberVO + ", boardVO=" + boardVO + "]";
 	}
+
 	
 }
