@@ -33,7 +33,7 @@
 				<div class="after"></div>
 			</div>
 			
-	<div class="container-fluid">	
+	<%-- <div class="container-fluid">	
 	<nav class="navbar navbar-expand-lg stroke">	
 	<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 	<ul class="navbar-nav ml-lg-auto">
@@ -41,7 +41,7 @@
 	
 	<form
 							action="${pageContext.request.contextPath}/user/findRestaurantByName"
-							method="GET" class="search-box position-relative">
+							method="GET" class="search-box position-relative2">
 							<div class="input-search">
 								<input type="search" placeholder="Enter Keyword" name="resName"
 									required="required" autofocus="" class="search-popup">
@@ -61,7 +61,7 @@
 					
 				
 	</div>
-
+ --%>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -100,15 +100,18 @@
 	});
 </script>
 	 <input type="button" value="권한추가하기" id="createBtn"><br>
+	 <div class="contacts12-main ">
 	<form id="createAuthForm">
 	<sec:csrfInput />
-	
+	 <div class="top-inputs d-grid">
 		 <input type="text" class="yejin" placeholder="아이디" name="id" id="w3lName" required="">
+		 </div>
 		<select name="authority" class="yejin_ResSearch yejin" id="exampleFormControlSelect1">
                                 <option value="ROLE_OWNER">사장님</option>
                                 <option value="ROLE_ADMIN">관리자</option>
                                 </select>
 	</form>
+	</div>
 <br>
 	<input type="button" value="권한삭제하기" id="deleteBtn">
 	<input type="text" id="deleteAuth">
