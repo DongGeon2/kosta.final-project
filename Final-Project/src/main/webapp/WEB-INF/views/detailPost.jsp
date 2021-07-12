@@ -65,7 +65,7 @@
                     <nav class="post-navigation row">
                         <sec:authentication property="principal.id" var="memberId"/>
                      <c:if test="${viewDetailPost.memberVO.id==memberId}">
-                        <a href="${pageContext.request.contextPath}/member/deletePosting?boardNo=${viewDetailPost.boardNo}">게시물
+                        <a href="${pageContext.request.contextPath}/member/deletePosting?boardNo=${viewDetailPost.boardNo}" class="name mt-2">게시물
                            삭제</a>
                            </c:if>
 				</nav>
@@ -76,11 +76,11 @@
                         <h3 class="post-content-title">${comment.commentNo}</h3>
                         <div class="media mt-4 bod-1">
                             <div class="img-circle">
-                                <img src="assets/images/team1.jpg" class="img-fluid" alt="...">
+                                <img src="/assets/images/기본프로필.JPG" class="img-fluid">
                             </div>
                             <div class="media-body">
                                 <div class="medi-top mb-2">
-                                    <a href="#URL" class="name mt-0">${comment.memberVO.id}</a>
+                                    <a class="name mt-0">${viewDetailPost.memberVO.id}</a>
                                     <span>${comment.commentTime}</span>
                                 </div>
                                 <p>${comment.commentContent}</p>
