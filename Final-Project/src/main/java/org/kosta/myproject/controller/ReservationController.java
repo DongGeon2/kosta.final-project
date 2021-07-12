@@ -7,6 +7,7 @@ import org.kosta.myproject.model.vo.ReservationVO;
 import org.kosta.myproject.model.vo.RestaurantVO;
 import org.kosta.myproject.service.ReservationService;
 import org.kosta.myproject.service.RestaurantService;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -20,7 +21,8 @@ public class ReservationController {
 	private ReservationService reservationService;
 	@Resource
 	private RestaurantService restaurantService;
-	@PreAuthorize("hasRole('ROLE_MEMBER')")
+	//@PreAuthorize("hasRole('ROLE_MEMBER')")
+	@Secured("ROLE_MEMBER")
 	@RequestMapping("/doReservation")
 	public String doReservation(Model model, String resName, String resNo) {
 		MemberVO pvo = (MemberVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -31,7 +33,8 @@ public class ReservationController {
 		model.addAttribute("memberVO", pvo);
 		return "reservation/reservation-form.tiles";
 	}
-	@PreAuthorize("hasRole('ROLE_MEMBER')")
+	//@PreAuthorize("hasRole('ROLE_MEMBER')")
+	@Secured("ROLE_MEMBER")
 	@PostMapping("/doReservation2")
 	public String doReservation2(String id, String revTime, int headCount, String resNo, Model model) {
 		MemberVO mvo = new MemberVO();
