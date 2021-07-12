@@ -2,24 +2,25 @@ package org.kosta.myproject.model.vo;
 
 public class BoardVO {
 	private String boardNo;
-	private String boardTitle;
-	private String boardContent;
+	private String title;
+	private String content;
 	private MemberVO memberVO;
 	private int hits;
-	private String boardRegdate;
+	private String timePosted;
+	private String img;
 	public BoardVO() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-	public BoardVO(String boardNo, String boardTitle, String boardContent, MemberVO memberVO, int hits,
-			String boardRegdate) {
+	public BoardVO(String boardNo, String title, String content, MemberVO memberVO, int hits, String timePosted,
+			String img) {
 		super();
 		this.boardNo = boardNo;
-		this.boardTitle = boardTitle;
-		this.boardContent = boardContent;
+		this.title = title;
+		this.content = content;
 		this.memberVO = memberVO;
 		this.hits = hits;
-		this.boardRegdate = boardRegdate;
+		this.timePosted = timePosted;
+		this.img = img;
 	}
 	public String getBoardNo() {
 		return boardNo;
@@ -27,17 +28,17 @@ public class BoardVO {
 	public void setBoardNo(String boardNo) {
 		this.boardNo = boardNo;
 	}
-	public String getBoardTitle() {
-		return boardTitle;
+	public String getTitle() {
+		return title;
 	}
-	public void setBoardTitle(String boardTitle) {
-		this.boardTitle = boardTitle;
+	public void setTitle(String title) {
+		this.title = title;
 	}
-	public String getBoardContent() {
-		return boardContent;
+	public String getContent() {
+		return content;
 	}
-	public void setBoardContent(String boardContent) {
-		this.boardContent = boardContent;
+	public void setContent(String content) {
+		this.content = content;
 	}
 	public MemberVO getMemberVO() {
 		return memberVO;
@@ -51,16 +52,22 @@ public class BoardVO {
 	public void setHits(int hits) {
 		this.hits = hits;
 	}
-	public String getBoardRegdate() {
-		return boardRegdate;
+	public String getTimePosted() {
+		return timePosted;
 	}
-	public void setBoardRegdate(String boardRegdate) {
-		this.boardRegdate = boardRegdate;
+	public void setTimePosted(String timePosted) {
+		this.timePosted = timePosted;
+	}
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
 	}
 	@Override
 	public String toString() {
-		return "BoardVO [boardNo=" + boardNo + ", boardTitle=" + boardTitle + ", boardContent=" + boardContent
-				+ ", memberVO=" + memberVO + ", hits=" + hits + ", boardRegdate=" + boardRegdate + "]";
+		return "BoardVO [boardNo=" + boardNo + ", title=" + title + ", content=" + content + ", memberVO=" + memberVO
+				+ ", hits=" + hits + ", timePosted=" + timePosted + ", img=" + img + "]";
 	}
 
 }

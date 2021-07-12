@@ -37,6 +37,7 @@
 				<ul class="navbar-nav ml-lg-auto">
 			   <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/restaurant ">restaurant</a></li>
                <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/recommend">recommend</a></li>
+               <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/postList">Board</a></li>
                <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/owner">사장권한</a></li>
                <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin">관리자권한</a></li>
 					<sec:authorize access="isAuthenticated()==false">

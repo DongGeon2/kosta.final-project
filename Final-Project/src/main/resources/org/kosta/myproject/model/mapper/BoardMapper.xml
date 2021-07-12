@@ -4,7 +4,65 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.kosta.myproject.model.mapper.BoardMapper">
+	<resultMap type='boardVO' id='boardList'>
+		<result column="id" property="memberVO.id"/>
+		<result column="email" property="memberVO.email"/>
+		<result column="name" property="memberVO.name"/>
+		<result column="tel" property="memberVO.tel"/>
+	</resultMap>
+	<select id="postList" resultType="boardVO" resultMap='boardList'> 		
+		select r.board_no,r.title,r.time_posted,r.content,r.id,r.img,
+		m.id,m.password,m.email,m.name,m.tel,m.enabled
+		from 
+			(select row_number() over(order by board_no desc) as rnum,board_no,title,time_posted,
+			content,id,img from ko_board) r, ko_member m 
+		where r.id=m.id and rnum between #{getStartRowNumber} and #{getEndRowNumber}
+	</select>
+	
+        <!-- 글올리기 --> 
+   <insert id="posting" parameterType="boardVO">
+      insert into ko_board(board_no, title, time_posted, content, id,img)
+      values(ko_board_seq.nextval,#{title} ,sysdate,#{content}, #{memberVO.id},#{img})
+   </insert>
+   		<!-- 글올리기 -->
+   
+   <select id="getDetailPostByNo"
+      parameterType='string' resultMap='boardList'>
+      select r.board_no,r.title,r.time_posted,r.content,r.id,r.img,
+      m.id,m.password,m.email,m.name,m.tel,m.enabled
+      from
+      (select row_number() over(order by board_no asc) as
+      rnum,board_no,title,time_posted,
+      content,id,img from ko_board) r, ko_member m
+      where board_no = #{value} and r.id=m.id
+   </select>
+	
+   	<select id="getTotalList" resultType="int">
+		select count(*) from ko_board
+	</select>
 
+	<delete id="deletePosting" parameterType='string'>
+		delete from ko_board
+		where board_no = #{value}
+	</delete>
+   
+   <insert id="postComment" parameterType="commentVO">
+   		insert into ko_board_comment(comment_no,comment_content,comment_time,id,board_no)
+		values(ko_board_comment_seq.nextval ,#{commentContent}, sysdate ,#{memberVO.id},#{boardVO.boardNo})
+   </insert>
+   
+   <select id="getTotalCommentCount" resultType="int">
+   		select count(*) from ko_board_comment
+   		where board_no = #{boardNo}
+   </select>
+   
+   <select id="getCommentList" resultType="commentVO">
+		select c.comment_no,c.comment_content,c.comment_time,c.id,c.board_no
+		from 
+			(select row_number() over(order by comment_no asc) as rnum,comment_no,comment_content,
+			comment_time,id,board_no from ko_board_comment where board_no=#{boardNo}) c
+		where c.board_no=#{boardNo} and rnum between #{getStartRowNumber} and #{getEndRowNumber}
+   </select>
 </mapper>
  
  
