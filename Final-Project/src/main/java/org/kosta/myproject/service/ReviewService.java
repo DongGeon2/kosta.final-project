@@ -15,4 +15,6 @@ public interface ReviewService {
 
 	int getTotalReviewCount(String resNo);
 	
+	List<ReviewVO> getReviewById(String id);
+
 }

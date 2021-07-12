@@ -1,6 +1,6 @@
 DROP TABLE ko_member cascade constraint;
 DROP TABLE ko_authorities;
-DROP TABLE ko_board;
+DROP TABLE ko_board cascade constraint; 
 DROP sequence ko_board_seq;
 DROP TABLE ko_board_comment
 DROP sequence ko_board_comment_seq;
@@ -46,6 +46,7 @@ CREATE TABLE ko_board(
 )
 CREATE sequence ko_board_seq;
 
+select * from ko_board
 --4. 자유 게시판 댓글 
 CREATE TABLE ko_board_comment(
    comment_no number primary key,

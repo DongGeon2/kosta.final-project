@@ -35,4 +35,9 @@ public class ReviewServiceImpl implements ReviewService {
 	public int getTotalReviewCount(String resNo) {
 		return reviewMapper.getTotalReviewCount(resNo);
 	}
+
+	@Override
+	public List<ReviewVO> getReviewById(String id) {
+		return reviewMapper.getReviewById(id);
+	}
 }

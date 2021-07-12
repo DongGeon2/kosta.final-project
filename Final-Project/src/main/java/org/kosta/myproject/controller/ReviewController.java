@@ -44,5 +44,13 @@ public class ReviewController {
 		System.out.println(reviewList);
 		return "detailRestaurant.tiles";
 	}
-
+	
+	@PreAuthorize("hasRole('ROLE_MEMBER')")
+	@RequestMapping("/myReview")
+	public String myReview(Model model,String id) {
+		List<ReviewVO> rvo=reviewService.getReviewById(id);
+		System.out.println(rvo);
+		model.addAttribute("reviewVO", rvo);
+		return "member/myReview.tiles";
+	}
 }

@@ -15,7 +15,7 @@
 	</section>
 </div>
 <!-- //inner banner -->
-    <section class="w3l-w3l-contacts-12 py-5">
+<section class="w3l-w3l-contacts-12 py-5">
 	<div class="contact-top py-md-5 py-4">
 		<div class="container">
 			<div class="waviy text-center mb-md-5 mb-4">
@@ -40,37 +40,36 @@
 				<div class="before"></div>
 				<div class="after"></div>
 			</div>
+			
 			<div class="contacts12-main">
-			 <sec:authorize access="hasRole('ROLE_MEMBER')">
-	<form method="post" action="${pageContext.request.contextPath}/updateMemberAction"
-					id="updateForm" method="post" class="main-input">
-					<sec:csrfInput />
-					<div class="col-sm-offset-3 col-sm-6 top-inputs">
-						<input type="text"  name="id" id="w3lName"
+			<sec:authorize access="hasRole('ROLE_MEMBER')">
+			<form method="post" action="${pageContext.request.contextPath}/updateMemberAction" id="updateForm" method="post" class="main-input">
+				<sec:csrfInput />
+				<div class="col-sm-offset-3 col-sm-6 top-inputs">
+					<input type="text"  name="id" id="w3lName"
 							required="required" value="<sec:authentication property="principal.id"/>" readonly>
-					</div>
-					<div class="col-sm-offset-3 col-sm-6 top-inputs">
-						<input type="password" name="password" placeholder="password"
-							id="w3lSender" required="required">
-					</div>
-					<div class="col-sm-offset-3 col-sm-6 top-inputs">
-						<input type="text" value="<sec:authentication property="principal.name"/>"  name="name" id="w3lName"
+				</div>
+				<div class="col-sm-offset-3 col-sm-6 top-inputs">
+					<input type="password" name="password" placeholder="password" id="w3lSender" required="required">
+				</div>
+				<div class="col-sm-offset-3 col-sm-6 top-inputs">
+					<input type="text" value="<sec:authentication property="principal.name"/>"  name="name" id="w3lName"
 							required="required">
-					</div>
-					<div class="col-sm-offset-3 col-sm-6 top-inputs">
-						<input type="email" value="<sec:authentication property="principal.email"/>"  name="email" id="w3lName"
+				</div>
+				<div class="col-sm-offset-3 col-sm-6 top-inputs">
+					<input type="email" value="<sec:authentication property="principal.email"/>"  name="email" id="w3lName"
 							required="required">
-					</div>
-					<div class="col-sm-offset-3 col-sm-6 top-inputs">
-						<input type="text"value="<sec:authentication property="principal.tel"/>"  name="tel" id="w3lName"
+				</div>
+				<div class="col-sm-offset-3 col-sm-6 top-inputs">						
+					<input type="text"value="<sec:authentication property="principal.tel"/>"  name="tel" id="w3lName"
 							required="required">
-					</div>
-					<div class="col-sm-offset-3 col-sm-6 top-inputs">
-						<button type="submit" class="btn btn-style">수정완료</button>
-					</div>
+				</div>
+				<div class="col-sm-offset-3 col-sm-6 top-inputs">
+					<button type="submit" class="btn btn-style">수정완료</button>
+				</div>
 				</form>
 				</sec:authorize>
-</div>
-</div>
-</div>
+			</div>
+		</div>
+	</div>
 </section>

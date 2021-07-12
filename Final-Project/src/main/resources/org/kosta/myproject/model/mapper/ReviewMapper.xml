@@ -36,6 +36,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where a.res_no = b.res_no and a.res_no=#{value}
 	</select>
 	
+	<select id="getReviewById" resultType="reviewVO">
+		SELECT res_name,review_title,id,review_regdate
+		FROM ko_review 
+		WHERE id=#{value}
+	</select>
+
 	<!-- 
 	<resultMap type='restaurantVO' id='restaurantList'>
 		<result column="id" property="memberVO.id"/>

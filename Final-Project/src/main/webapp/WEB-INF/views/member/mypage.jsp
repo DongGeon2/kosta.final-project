@@ -4,11 +4,11 @@
 <div class="inner-banner">
 	<div class="w3l-breadcrumb">
 		<div class="container">
-			<h4 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2">MyPage</h4>
+			<h4 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2">My Page</h4>
 			<ul class="breadcrumbs-custom-path">
 				<li><a href="index.html">Home</a></li>
 				<li class="active"><span class="fa fa-chevron-right mx-2"
-					aria-hidden="true"></span>MyPage</li>
+					aria-hidden="true"></span>My Page</li>
 			</ul>
 		</div>
 	</div>
@@ -40,7 +40,7 @@
 				<div class="col-lg-4 col-md-6 grids-feature">
                     <div class="area-box">
                         <img src="assets/images/MyOrder.png" alt="" class="img-fluid">
-                        <h4><a href="#feature" class="title-head">My Order</a></h4>
+                        <h4><a href="MyOrder" class="title-head">My Order</a></h4>
                         <p class="">Unforgettable Time</p><!-- Reservation history /  -->
                     </div>
                 </div>
@@ -54,15 +54,15 @@
                 <div class="col-lg-4 col-md-6 grids-feature mt-lg-0 mt-4">
                     <div class="area-box">
                         <img src="assets/images/MyPost.png" alt="" class="img-fluid">
-                        <h4><a href="#feature" class="title-head">My Post</a></h4>
+                        <h4><a href="myPost" class="title-head">My Post</a></h4>
                         <p class="">General forum</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 grids-feature mt-lg-5 mt-4">
                     <div class="area-box">
                         <img src="assets/images/MyComment.png" alt="" class="img-fluid">
-                        <h4><a href="MyReview" class="title-head">My Review</a></h4>
-                        <p class="">View all review</p>
+                        <h4><a href="myReview" class="title-head">My Review</a></h4>
+                        <p class="">View all my review</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 grids-feature mt-lg-5 mt-4">

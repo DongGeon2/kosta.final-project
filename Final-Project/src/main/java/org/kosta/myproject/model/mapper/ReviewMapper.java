@@ -16,4 +16,5 @@ public interface ReviewMapper {
 
 	int getTotalReviewCount(String resNo);
 
+	List<ReviewVO> getReviewById(String id);
 }
