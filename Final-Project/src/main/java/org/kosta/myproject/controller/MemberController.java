@@ -103,6 +103,7 @@ public class MemberController {
 		System.out.println("Spring Security 세션 수정 후 회원정보:" + pvo);
 		return "member/update_member_result.tiles";
 	}
+	
 	//@PreAuthorize("hasRole('ROLE_MEMBER')")
 	@Secured("ROLE_MEMBER")
 	@RequestMapping("deleteMember")

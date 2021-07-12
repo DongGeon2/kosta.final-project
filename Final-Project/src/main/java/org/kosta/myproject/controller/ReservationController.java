@@ -1,5 +1,7 @@
 package org.kosta.myproject.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.kosta.myproject.model.vo.MemberVO;
@@ -7,6 +9,7 @@ import org.kosta.myproject.model.vo.ReservationVO;
 import org.kosta.myproject.model.vo.RestaurantVO;
 import org.kosta.myproject.service.ReservationService;
 import org.kosta.myproject.service.RestaurantService;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -64,6 +67,15 @@ public class ReservationController {
 		reservationVO.setRestaurantVO(restaurantVO);
 		model.addAttribute("reservation", reservationVO);
 		return "reservation/reservation-result.tiles";
+	}
+	
+	@Secured("ROLE_MEMBER")
+	@RequestMapping("/myOrder")
+	public String myOrder(Model model,String id) {
+		List<ReservationVO> rvo=reservationService.findReservationById(id);
+		System.out.println(rvo);
+		model.addAttribute("reservation", rvo);
+		return "/member/myOrder.tiles";
 	}
 
 }

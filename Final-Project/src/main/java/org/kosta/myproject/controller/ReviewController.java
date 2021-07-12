@@ -56,4 +56,5 @@ public class ReviewController {
 		model.addAttribute("reviewVO", rvo);
 		return "/member/myReview.tiles";
 	}
+	
 }

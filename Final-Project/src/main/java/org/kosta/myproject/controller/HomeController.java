@@ -14,7 +14,6 @@ public class HomeController {
 	@Resource
 	MemberService memberService;
 	
-	
 	@RequestMapping(value = { "/", "home" })
 	public String home() {
 		// db, model 과 연동

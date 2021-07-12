@@ -40,7 +40,7 @@ public class AdminController {
 		System.out.println("Request Method : DELETE"+ id);
 		if (memberService.ownerCancel(id)==0) {
 			return new ResponseEntity(id+" 삭제 불가", HttpStatus.NOT_FOUND);
-		
+			
 		}		
 		return new ResponseEntity(id+" 삭제완료", HttpStatus.OK);
 	}	
