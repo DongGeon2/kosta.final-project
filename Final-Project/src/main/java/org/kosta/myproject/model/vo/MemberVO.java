@@ -2,16 +2,6 @@ package org.kosta.myproject.model.vo;
 
 
 public class MemberVO {
-/**
- * CREATE TABLE ko_member(
-   id varchar2(100) primary key,
-   password varchar2(100) not null,
-   email varchar2(100) not null,
-   name varchar2(100) not null,
-   tel varchar2(10) not null,
-   enabled int default 1 not null 
-)
- */
 	private String id;
 	private String password;
 	private String email;
