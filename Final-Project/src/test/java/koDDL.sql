@@ -102,6 +102,7 @@ CREATE TABLE ko_reservation(
 	CONSTRAINT ko_rev_id foreign key(id) references ko_member(id) on delete cascade
 )
 CREATE sequence ko_reservation_seq;
+
 select * from ko_reservation
 
 --8. 예약 리뷰 테이블

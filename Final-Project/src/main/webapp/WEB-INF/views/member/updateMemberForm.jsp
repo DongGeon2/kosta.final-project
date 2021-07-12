@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@taglib prefix="sec"  uri="http://www.springframework.org/security/tags"%>   
+<%@taglib prefix="sec"  uri="http://www.springframework.org/security/tags"%>   
 <!-- inner banner -->
 <div class="inner-banner">
 	<section class="w3l-breadcrumb">

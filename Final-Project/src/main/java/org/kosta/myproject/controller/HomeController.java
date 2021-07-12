@@ -26,7 +26,7 @@ public class HomeController {
 
 	@RequestMapping("mypage")
 	public String mypage() {
-		return "mypage.tiles";
+		return "member/mypage.tiles";
 	}
 
 	@RequestMapping("board")
