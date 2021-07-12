@@ -20,4 +20,10 @@ public interface MemberService {
 	void updateMember(MemberVO memberVO);
 	
 	int deleteMember(String id);
+
+	List<Authority> selectAuthority();
+
+	int ownerCancel(String id);
+
+	void registerRole(Authority authority);
 }

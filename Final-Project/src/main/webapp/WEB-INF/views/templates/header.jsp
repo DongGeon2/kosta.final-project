@@ -68,7 +68,7 @@
 							<sec:csrfInput />
 						</form>
 						<sec:authorize access="hasRole('ROLE_ADMIN')">
-							<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/adminpage">Admin</a></li>
+							<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/admin_page">Admin</a></li>
 						</sec:authorize>
 						<sec:authorize access="hasRole('ROLE_OWNER')">
 							<li class="nav-item">

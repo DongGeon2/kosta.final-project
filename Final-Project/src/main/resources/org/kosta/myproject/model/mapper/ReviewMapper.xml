@@ -35,11 +35,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from ko_review a, ko_restaurant b 
 		where a.res_no = b.res_no and a.res_no=#{value}
 	</select>
-	
-	<select id="getReviewById" resultType="reviewVO">
-		SELECT res_name,review_title,id,review_regdate
-		FROM ko_review 
-		WHERE id=#{value}
+	<select id="getReviewById" resultMap="reviewRM" parameterType="string">
+		select b.res_name,a.review_title, a.id,a.review_regdate
+		from ko_review a, ko_restaurant b
+		where  a.res_no = b.res_no and b.id=#{value}
 	</select>
 
 	<!-- 

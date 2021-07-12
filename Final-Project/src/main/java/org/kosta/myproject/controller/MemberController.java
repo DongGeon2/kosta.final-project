@@ -2,11 +2,10 @@ package org.kosta.myproject.controller;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.kosta.myproject.model.vo.MemberVO;
 import org.kosta.myproject.service.MemberService;
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -68,14 +67,16 @@ public class MemberController {
 		return memberService.idcheck(id);
 	}
 
-	@PreAuthorize("hasRole('ROLE_MEMBER')")
+	//@PreAuthorize("hasRole('ROLE_MEMBER')")
+	@Secured("ROLE_MEMBER")
 	@GetMapping("getMemberTotalCount")
 	@ResponseBody
 	public int getMemberTotalCount() {
 		return memberService.getMemberCount();
 	}
 
-	@PreAuthorize("hasRole('ROLE_MEMBER')")
+	//@PreAuthorize("hasRole('ROLE_MEMBER')")
+	@Secured("ROLE_MEMBER")
 	@RequestMapping("updateMemberAction")
 	public String updateMemberAction(HttpServletRequest request, MemberVO memberVO) {
 		// 1 회원정보 수정시 권한까지 수정해야 할 경우에는 아래처럼 코딩하면 된다
@@ -102,7 +103,8 @@ public class MemberController {
 		System.out.println("Spring Security 세션 수정 후 회원정보:" + pvo);
 		return "member/update_member_result.tiles";
 	}
-	@PreAuthorize("hasRole('ROLE_MEMBER')")
+	//@PreAuthorize("hasRole('ROLE_MEMBER')")
+	@Secured("ROLE_MEMBER")
 	@RequestMapping("deleteMember")
 	public String deleteMember(RedirectAttributes redirectAttr, SessionStatus sessionStatus) {
 		MemberVO pvo = (MemberVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

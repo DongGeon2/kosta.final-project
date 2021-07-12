@@ -70,4 +70,19 @@ public class MemberServiceImpl implements MemberService {
 		else 
 			return 0;
 	}
+
+	@Override
+	public List<Authority> selectAuthority() {
+		return memberMapper.selectAuthority();
+	}
+
+	@Override
+	public int ownerCancel(String id) {
+		return memberMapper.ownerCancel(id);
+	}
+
+	@Override
+	public void registerRole(Authority authority) {
+		 memberMapper.registerRole(authority);
+	}
 }

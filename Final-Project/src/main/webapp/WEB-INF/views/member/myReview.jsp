@@ -56,7 +56,7 @@
 		</div>
 	</div>
 	<!-- pagination -->
-	<c:set var="pb" value="${requestScope.pagingBean}"></c:set>
+<%-- 	<c:set var="pb" value="${requestScope.pagingBean}"></c:set>
 	<div class="pagination-style text-center mt-5 pt-5">
 		<ul>
 			<!-- 이전 그룹일때 -->
@@ -87,7 +87,7 @@
 				</a></li>
 			</c:if>
 		</ul>
-	</div>
+	</div> --%>
 	<!-- //pagination -->
 </div>
 
