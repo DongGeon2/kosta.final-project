@@ -134,3 +134,8 @@ SELECT a.res_no, a.res_name, a.res_info, a.res_tel, a.res_loc, a.res_image, a.fo
 				a.start_time, a.end_time, b.id, b.email, b.tel, b.name, b.enabled 
 FROM ko_restaurant a, ko_member b
 WHERE a.id=b.id and res_no=4
+
+
+ select AVG(a.review_grade)
+ from ko_review a, ko_restaurant b
+ where a.res_no = b.res_no and a.res_no=3

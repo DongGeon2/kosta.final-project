@@ -7,6 +7,7 @@ import org.kosta.myproject.model.vo.ReservationVO;
 import org.kosta.myproject.model.vo.RestaurantVO;
 import org.kosta.myproject.service.ReservationService;
 import org.kosta.myproject.service.RestaurantService;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

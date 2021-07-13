@@ -49,13 +49,13 @@
 						<div class="col-lg-1"></div>
 						<div class="card">
 							<div class="card-header p-0 position-relative">
-								<a href="/user/detailRestaurant?resNo=${restaurant.resNo}">
+								<a href="/detailRestaurant?resNo=${restaurant.resNo}">
 									<img class="card-img-bottom d-block radius-image-full"
 									src="assets/images/restaurant1.jpg" alt="Card image cap">
 								</a>
 							</div>
 							<div class="card-body blog-details" style="font-size: 15px;">
-								<a href="/user/detailRestaurant?resNo=${restaurant.resNo}">
+								<a href="/detailRestaurant?resNo=${restaurant.resNo}">
 									<span class="label-blue">${restaurant.resName}</span> <%-- <a href="/user/detailRestaurant?resNo=${restaurant.resNo}" class="blog-desc">
 								${restaurant.memberVO.id}<br> --%>
 								</a>
@@ -64,7 +64,7 @@
 										class="img-fluid rounded-circle" />
 									<ul class="blog-meta">
 										<li><a
-											href="/user/detailRestaurant?resNo=${restaurant.resNo}">
+											href="/detailRestaurant?resNo=${restaurant.resNo}">
 												${restaurant.memberVO.name}<br>
 										</a></li>
 

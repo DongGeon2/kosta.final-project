@@ -21,7 +21,13 @@ href="${pageContext.request.contextPath}/resources/css/home2.css" > --%>
     
     <!-- Template CSS Style link -->
     <link rel="stylesheet"   href="${pageContext.request.contextPath}/assets/css/style-liberty.css">
-	   <!-- Js scripts -->
+	
+	<!-- 별점 js, css -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/ratingStar.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	
+	<!-- Js scripts -->
     <!-- move top -->
     <button onclick="topFunction()" id="movetop" title="Go to top">
         <span class="fa fa-level-up" aria-hidden="true"></span>

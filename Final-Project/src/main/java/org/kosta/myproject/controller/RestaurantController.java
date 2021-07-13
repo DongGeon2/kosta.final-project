@@ -51,7 +51,7 @@ public class RestaurantController {
 	/** 메인바검색 **/
 
 	/** 추천상세 **/
-	@RequestMapping("user/recommend")
+	@RequestMapping("/recommend")
 	public String recommend(Model model, String pageNo) {
 		int totalPostcount = restaurantService.getTotalCount();
 		PagingBean pagingBean = null;

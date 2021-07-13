@@ -36,9 +36,11 @@
 			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 				<ul class="navbar-nav ml-lg-auto">
 					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/user/restaurant ">restaurant</a></li>
-               <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/user/recommend">recommend</a></li>
+               <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/recommend">recommend</a></li>
                <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/owner">사장권한</a></li>
                <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/admin">관리자권한</a></li>
+               <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/user/test">test</a></li>
+               <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/user/test2">test2</a></li>
 					<sec:authorize access="isAuthenticated()==false">
 						<li class="nav-item"><a class="nav-link"
 							href="${pageContext.request.contextPath}/login">Login</a></li>

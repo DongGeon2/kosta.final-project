@@ -64,4 +64,9 @@ public class HomeController {
 	public String owner() {
 		return "owner.tiles";
 	}
+	
+	@RequestMapping("/user/test")
+	public String test() {
+		return "test";
+	}
 }

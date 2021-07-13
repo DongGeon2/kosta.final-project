@@ -16,4 +16,6 @@ public interface ReviewMapper {
 
 	int getTotalReviewCount(String resNo);
 
+	String getAvgStar(String resNo);
+
 }
