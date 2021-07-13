@@ -64,6 +64,7 @@ public class HomeController {
 	public String owner() {
 		return "owner.tiles";
 	}
+
 	@Secured("ROLE_ADMIN")
 	@RequestMapping("/admin")
 	public String admin2() {
@@ -76,4 +77,11 @@ public class HomeController {
 		return "admin/admin_page.tiles";
 	}
 	
+
+	
+	@RequestMapping("/user/test")
+	public String test() {
+		return "test";
+	}
+
 }

@@ -53,6 +53,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where r.id=m.id and rnum between #{getStartRowNumber} and #{getEndRowNumber}
 	</select>
 	 -->
+	 
+	 <!-- 별점 평균 -->
+	 <select id="getAvgStar" resultType="string">
+		 select AVG(a.review_grade)
+		 from ko_review a, ko_restaurant b
+		 where a.res_no = b.res_no and a.res_no=#{value}
+	 </select>
 </mapper>
  
  
