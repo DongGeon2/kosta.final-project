@@ -25,4 +25,6 @@ public interface BoardMapper {
 	int getTotalCommentCount(String boardNo);
 	
 	public ArrayList<CommentVO> getCommentList(int getStartRowNumber, int getEndRowNumber,String boardNo);
+
+	public boolean plusHits(String boardNo);
 }
