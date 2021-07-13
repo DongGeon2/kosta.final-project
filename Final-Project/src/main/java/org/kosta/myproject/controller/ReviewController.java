@@ -53,17 +53,6 @@ public class ReviewController {
 		//detailRestaurant
 	}
 
-	//@PreAuthorize("hasRole('ROLE_MEMBER')")
-	@Secured("ROLE_MEMBER")
-	@RequestMapping("/resultReview")
-	public String resultReview(Model model, String resNo) {
-		List<ReviewVO> reviewList = reviewService.getAllReviewByResNo(resNo);
-		model.addAttribute("reviewVO", reviewList);
-		System.out.println(reviewList);
-		return "detailRestaurant.tiles";
-	}
-
-	
 	/*
 	 * @Secured("ROLE_MEMBER")
 	 * @RequestMapping("/resultReview") public String resultReview(Model model,

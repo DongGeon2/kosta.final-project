@@ -40,7 +40,7 @@ public class DetailRestaurantController {
 			double resultAvgStar = Double.parseDouble(avg);
 			resultAvgStar = Math.round(resultAvgStar*10)/10.0;
 			model.addAttribute("avgReviewGrade", resultAvgStar);
-			System.out.println(resultAvgStar);
+			System.out.println("리뷰 평점:"+resultAvgStar);
 			
 			/** 어떤식당에서 예약할껀지 알기위해 해주는거 **/
 			RestaurantVO restaurantVO = restaurantService.findRestaurantByResNo(resNo);

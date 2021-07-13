@@ -45,6 +45,8 @@ CREATE TABLE ko_board(
    CONSTRAINT ko_board_fk foreign key(id) references ko_member(id) on delete cascade
 )
 CREATE sequence ko_board_seq;
+alter table ko_board add img varchar2(100) not null;
+select * from KO_BOARD
 
 
 select * from ko_authorities
