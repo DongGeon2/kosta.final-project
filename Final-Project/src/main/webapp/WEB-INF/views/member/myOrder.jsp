@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="sec"
-	uri="http://www.springframework.org/security/tags"%>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!-- inner banner -->
@@ -36,13 +35,11 @@
 				<c:forEach items="${requestScope.reservation}" var="rvo">
 					<tr class="text-center">
 						<th scope="row"><span class="label-blue">${rvo.revNo}</span>
-						<span hidden="" id="resNo">${rvo.restaurantVO.resNo}</span>
-						<span hidden="" id="id">${rvo.memberVO.id}</span>
 						</th>
 						<td>
-							<%-- <a href="${pageContext.request.contextPath}/member/getDetailPostByNo?boardNo=${rvo.boardNo}">  --%>
-							<span class="label-blue">${rvo.restaurantVO.resName}</span>
-							<!-- 	</a> -->
+							<a href=<%-- "${pageContext.request.contextPath}/member/getDetailPostByNo?boardNo=${rvo.boardNo}" --%>> 
+							<span class="label-blue">${rvo.restaurantVO.resName}</span> <!--  </a> -->
+							</a>
 						</td>
 						<td><span class="label-blue">${rvo.headCount}</span></td>
 						<td><span class="label-blue">${rvo.revTime}</span></td>
@@ -52,7 +49,6 @@
 		</tbody>
 	</table>
 </div>
-
 <%-- <form action="${pageContext.request.contextPath}/findReservationById">
 	<c:forEach items="${requestScope.reservation}" var="rev">
 		${rev.restaurantVO.res_no} ${rev.memberVO.id} <br>
