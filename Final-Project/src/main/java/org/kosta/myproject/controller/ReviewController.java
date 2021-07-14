@@ -54,17 +54,6 @@ public class ReviewController {
 		//detailRestaurant
 	}
 	
-	@Secured("ROLE_MEMBER")
-	@RequestMapping("/myReview")
-	public String myReview(Model model,String id) {
-		MemberVO pvo = (MemberVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		System.out.println(pvo.getId());
-		List<ReviewVO> rvo=reviewService.getReviewById(pvo.getId());
-		System.out.println(rvo);
-		model.addAttribute("reviewVO", rvo);
-		return "member/myReview.tiles";
-	}
-	
 	/*
 	 * @Secured("ROLE_MEMBER")
 	 * @RequestMapping("/resultReview") public String resultReview(Model model,

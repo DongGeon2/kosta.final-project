@@ -29,6 +29,7 @@ public class DetailRestaurantController {
 
 	@RequestMapping("/detailRestaurant")
 	public String detailRestaurant(Model model, String resNo, String pageNo) {
+		model.addAttribute("resTotal", restaurantService.findRestaurantByResNo(resNo));
 		/** 회원이 로그인 했는지 안했는지 먼저 판단하고 로그인 했으면 if문 아래로 쭉 실행 **/
 		Authentication aut = SecurityContextHolder.getContext().getAuthentication();
 		if (!aut.getName().equals("anonymousUser")) {
@@ -46,19 +47,7 @@ public class DetailRestaurantController {
 			RestaurantVO restaurantVO = restaurantService.findRestaurantByResNo(resNo);
 			model.addAttribute("restaurantVO", restaurantVO);
 			
-			/** 리뷰 목록 및 페이징 **/
-			int totalReviewCount = reviewService.getTotalReviewCount(resNo);
-			PagingBean pagingBean = null;
-			
-			if (pageNo == null) {
-				pagingBean = new PagingBean(totalReviewCount);
-			} else {
-				pagingBean = new PagingBean(totalReviewCount, Integer.parseInt(pageNo));
-			}
-			model.addAttribute("pagingBean", pagingBean);
-			model.addAttribute("totalReviewCount", totalReviewCount);
-			List<ReviewVO> getAllReview = reviewService.getAllReviewList(pagingBean, resNo);
-			model.addAttribute("reviewList", getAllReview);
+	
 			
 			
 			/*

@@ -49,13 +49,7 @@
 			</sec:authorize>
 		</tbody>
 	</table>
-<!-- 	<div class="row">
-		<div class="col-auto mr-auto"></div>
-		<div class="col-auto">
-			<a class="btn btn-primary" role="button"
-				href="/member/registerboardForm">글쓰기</a>
-		</div>
-	</div> -->
+
 	<!-- pagination -->
 <%-- 	<c:set var="pb" value="${requestScope.pagingBean}"></c:set>
 	<div class="pagination-style text-center mt-5 pt-5">
