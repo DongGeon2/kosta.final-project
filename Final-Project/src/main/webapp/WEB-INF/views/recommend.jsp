@@ -29,15 +29,15 @@
 	<div class="text-6-mian bottom-space py-5">
 		<div class="container py-md-5 py-4">
 			<div class="waviy text-center mb-sm-5 mb-4 pb-lg-4">
-				<span style="-i: 1">R</span> 
-				<span style="-i: 2">e</span> 
-				<span style="-i: 3">c</span> 
-				<span style="-i: 4">o</span> 
-				<span style="-i: 5">m</span> 
-				<span style="-i: 6">m</span> 
-				<span style="-i: 7">e</span> 
-				<span style="-i: 8">n</span> 
-				<span style="-i: 1">d</span>
+				<span style="--i: 1">R</span> 
+				<span style="--i: 2">e</span> 
+				<span style="--i: 3">c</span> 
+				<span style="--i: 4">o</span> 
+				<span style="--i: 5">m</span> 
+				<span style="--i: 6">m</span> 
+				<span style="--i: 7">e</span> 
+				<span style="--i: 8">n</span> 
+				<span style="--i: 1">d</span>
 			</div>
 
 			<div class="waviy text-center mb-sm-5 mb-4 pb-lg-4">
@@ -74,7 +74,7 @@
 							<div class="card-header p-0 position-relative">
 								<a href="/detailRestaurant?resNo=${restaurant.resNo}">
 									<img class="card-img-bottom d-block radius-image-full"
-									src="/ResUpload/${restaurant.resImage }" alt="Card image cap">
+									src="/ResUpload/${restaurant.resImage}" alt="Card image cap">
 								</a>
 							</div>
 							<div class="card-body blog-details" style="font-size: 15px;">

@@ -2,7 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
-<script type="text/javascript">
+<c:set var="resNo" value="${resTotal.resNo}"></c:set>
+<%-- 로그인 아이디(세션) --%><%-- 
+<sec:authorize access="hasRole('ROLE_MEMBER')">
+	<sec:authentication var="loginUser" property="principal.id" />
+</sec:authorize>
+ --%><script type="text/javascript">
 	$(document).ready(function() {
 		//alert(1);
 		$("#navbarTogglerDemo02 li a[href*=about]").parent().addClass("active");
@@ -101,6 +106,7 @@ $(document).ready(function(){
 	<div class="container py-md-5 py-4">
 		<div class="row w3l-features-photo-7_top align-items-start">
 			<div class="col-lg-6 w3l-features-photo-7_top-right mt-lg-0 mt-sm-5 mt-4">
+				<span hidden="" id="resNo">${restaurant.resNo}</span>
 				<img src="ResUpload/${restaurant.resImage}" class="img-responsive" alt="" 
 				style="display: block; width: 600px;"/>
 				
@@ -120,7 +126,7 @@ $(document).ready(function(){
 			</div>
 			<div class="col-lg-6 w3l-features-photo-7_top-left pl-lg-4">
 				<div class="waviy">
-					<span style="-i: 1">${restaurant.resName }</span>
+					<span style="-i: 1">${restaurant.resName}</span>
 				</div>
 				<div class="d-flex align-items-center mt-3">
                 	<h6 style="font-size: 20px;"><i class="fa fa-clock-o mr-1" aria-hidden="true"></i> ${restaurant.startTime} pm - ${restaurant.endTime} pm</h6>
