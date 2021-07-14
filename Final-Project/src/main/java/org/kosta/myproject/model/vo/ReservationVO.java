@@ -3,6 +3,7 @@ package org.kosta.myproject.model.vo;
 public class ReservationVO {
 	private String revNo;
 	private String revTime;
+	private String revHour;
 	private int headCount;
 	private MemberVO memberVO;
 	private RestaurantVO restaurantVO;
@@ -10,10 +11,12 @@ public class ReservationVO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public ReservationVO(String revNo, String revTime, int headCount, MemberVO memberVO, RestaurantVO restaurantVO) {
+	public ReservationVO(String revNo, String revTime, String revHour, int headCount, MemberVO memberVO,
+			RestaurantVO restaurantVO) {
 		super();
 		this.revNo = revNo;
 		this.revTime = revTime;
+		this.revHour = revHour;
 		this.headCount = headCount;
 		this.memberVO = memberVO;
 		this.restaurantVO = restaurantVO;
@@ -29,6 +32,12 @@ public class ReservationVO {
 	}
 	public void setRevTime(String revTime) {
 		this.revTime = revTime;
+	}
+	public String getRevHour() {
+		return revHour;
+	}
+	public void setRevHour(String revHour) {
+		this.revHour = revHour;
 	}
 	public int getHeadCount() {
 		return headCount;
@@ -50,9 +59,8 @@ public class ReservationVO {
 	}
 	@Override
 	public String toString() {
-		return "ReservationVO [revNo=" + revNo + ", revTime=" + revTime + ", headCount=" + headCount + ", memberVO="
-				+ memberVO + ", restaurantVO=" + restaurantVO + "]";
+		return "ReservationVO [revNo=" + revNo + ", revTime=" + revTime + ", revHour=" + revHour + ", headCount="
+				+ headCount + ", memberVO=" + memberVO + ", restaurantVO=" + restaurantVO + "]";
 	}
-
 	
 }
