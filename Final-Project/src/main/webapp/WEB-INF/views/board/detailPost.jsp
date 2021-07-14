@@ -36,30 +36,16 @@
                         </h3>
                         <ul class="admin-post text-center">
                             <li>
-                                <p><span class="fa fa-clock-o"></span>January 01 2021.</p>
-                            </li>
-                            <li>
-                                <a href="single.html"><span class="fa fa-calendar"></span>7:00 pm - 8:00 pm</a>
-                            </li>
-                            <li>
-                                <a href="single.html"><span class="fa fa-comments-o"></span>Comments (3)</a>
+                                <a href="single.html"><span class="fa fa-calendar"></span>${viewDetailPost.timePosted}</a>
                             </li>
                         </ul>
                         <div class="blg-img">
-                            <img src="/upload/${viewDetailPost.img}" alt=" " class="img-fluid img-fluid">
+                            <img src="/upload/${viewDetailPost.img}"  style='max-width: 50%; height: auto; display: block; margin: 0px auto;'>
                         </div>
                         <div class="btom-cont1 pt-4 mt-md-2">
                             <p class="mb-4">${viewDetailPost.content}</p>
 
 
-                            <div class="sing-post-thumb row">
-                                <div class="col-sm-6">
-                                    <a href="#url"><img src="assets/images/event1.jpg" class="img-fluid" alt=""></a>
-                                </div>
-                                <div class="col-sm-6 mt-sm-0 mt-3">
-                                    <a href="#url"><img src="assets/images/event3.jpg" class="img-fluid" alt=""></a>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <nav class="post-navigation row">

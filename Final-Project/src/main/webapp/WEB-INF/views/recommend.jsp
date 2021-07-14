@@ -5,11 +5,11 @@
 <div class="inner-banner">
 	<section class="w3l-breadcrumb">
 		<div class="container">
-			<h4 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2">Events</h4>
+			<h4 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2">Recommend</h4>
 			<ul class="breadcrumbs-custom-path">
 				<li><a href="index.html">Home</a></li>
 				<li class="active"><span class="fa fa-chevron-right mx-2"
-					aria-hidden="true"></span>Events</li>
+					aria-hidden="true"></span>Recommend</li>
 			</ul>
 		</div>
 	</section>
@@ -29,11 +29,34 @@
 	<div class="text-6-mian bottom-space py-5">
 		<div class="container py-md-5 py-4">
 			<div class="waviy text-center mb-sm-5 mb-4 pb-lg-4">
-				<span style="-i: 1">R</span> <span style="-i: 2">e</span> <span
-					style="-i: 3">c</span> <span style="-i: 4">o</span> <span
-					style="-i: 5">m</span> <span style="-i: 6">m</span> <span
-					style="-i: 7">e</span> <span style="-i: 8">n</span> <span
-					style="-i: 1">d</span>
+				<span style="-i: 1">R</span> 
+				<span style="-i: 2">e</span> 
+				<span style="-i: 3">c</span> 
+				<span style="-i: 4">o</span> 
+				<span style="-i: 5">m</span> 
+				<span style="-i: 6">m</span> 
+				<span style="-i: 7">e</span> 
+				<span style="-i: 8">n</span> 
+				<span style="-i: 1">d</span>
+			</div>
+
+			<div class="waviy text-center mb-sm-5 mb-4 pb-lg-4">
+
+				<c:if test="${param.resName != null}">
+					<ul class="breadcrumbs-custom-path">
+						<li><a href="home" style="color: black;">검색결과</a></li>
+						<li class="active" style="color: black;"><span
+							class="fa fa-chevron-right mx-2" aria-hidden="true"></span> ${param.resName}</li>
+					</ul>
+				</c:if>
+				
+				<c:if test="${param.foodType != null && param.resLoc != null}">
+					<ul class="breadcrumbs-custom-path">
+						<li><a href="home" style="color: black">검색결과</a></li>
+						<li class="active" style="color: black"><span
+							class="fa fa-chevron-right mx-2" aria-hidden="true"></span> ${param.foodType}, ${param.resLoc}</li>
+					</ul>
+				</c:if>
 			</div>
 			<!-- fireworks effect -->
 			<div class="pyro">

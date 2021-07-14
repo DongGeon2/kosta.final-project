@@ -31,10 +31,10 @@ public class RestaurantController {
 		List<RestaurantVO> list = restaurantService.findRestaurantByName(resName);
 		System.out.println(list);
 		if (list == null)
-			return "restaurant/findRestaurantByName_fail.tiles";
+			return "restaurant/search_fail.tiles";
 		else {
-			model.addAttribute("restaurantVOList", list);
-			return "restaurant/findRestaurantByName_ok.tiles";
+			model.addAttribute("restaurantList", list);
+			return "recommend.tiles";
 		}
 	}
 
@@ -46,15 +46,15 @@ public class RestaurantController {
 		List<RestaurantVO> list = restaurantService.findRestaurantByMainBar(foodType, resLoc);
 		System.out.println(list);
 		if (list == null)
-			return "restaurant/findRestaurantByMainBar_fail.tiles";
+			return "restaurant/search_fail.tiles";
 		else {
-			model.addAttribute("restaurantVOList", list);
-			return "restaurant/findRestaurantByMainBar_ok.tiles";
+			model.addAttribute("restaurantList", list);
+			return "recommend.tiles";
 		}
 	}
 
 	/** 메인바검색 **/
-
+	
 	/** 추천상세 **/
 	@RequestMapping("/recommend")
 	public String recommend(Model model, String pageNo) {
