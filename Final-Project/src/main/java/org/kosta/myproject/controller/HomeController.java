@@ -35,6 +35,8 @@ public class HomeController {
 		return "restaurant/restaurant.tiles";
 	}
 	
+
+	
 	@RequestMapping("login")
 	public String login() {
 		return "login.tiles";
@@ -46,25 +48,6 @@ public class HomeController {
 		return "member/mypage.tiles";
 	}
 
-	@RequestMapping("board")
-	public String board() {
-		return "board.tiles";
-	}
-
-	@RequestMapping("boardpost")
-	public String boardpost() {
-		return "boardpost.tiles";
-	}
-
-	@RequestMapping("findRestaurantByNameOk")
-	public String findRestaurantByNameOk() {
-		return "findRestaurantByNameOk.tiles";
-	}
-
-	@RequestMapping("restaurantjinsol")
-	public String restaurantjinsol() {
-		return "restaurantjinsol.tiles";
-	}
 
 	/*
 	 * 로그인 하였으나 권한이 없는 요청을 하였을 경우 보여지는 페이지를 지정 <security:access-denied-handler
@@ -80,6 +63,7 @@ public class HomeController {
 	public String owner() {
 		return "owner.tiles";
 	}
+
 	@Secured("ROLE_ADMIN")
 	@RequestMapping("/admin")
 	public String admin2() {
@@ -92,4 +76,11 @@ public class HomeController {
 		return "admin/admin_page.tiles";
 	}
 	
+
+	
+	@RequestMapping("/user/test")
+	public String test() {
+		return "test";
+	}
+
 }

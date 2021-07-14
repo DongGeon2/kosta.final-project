@@ -14,6 +14,8 @@ public interface ReviewService {
 	List<ReviewVO> getAllReviewList(PagingBean pagingBean, String resNo);
 
 	int getTotalReviewCount(String resNo);
+
+	String getAvgStar(String resNo);
 	
 	List<ReviewVO> getReviewById(String id);
 

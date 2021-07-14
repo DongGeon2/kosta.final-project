@@ -65,7 +65,7 @@
                     <nav class="post-navigation row">
                         <sec:authentication property="principal.id" var="memberId"/>
                      <c:if test="${viewDetailPost.memberVO.id==memberId}">
-                        <a href="${pageContext.request.contextPath}/member/deletePosting?boardNo=${viewDetailPost.boardNo}" class="name mt-2">게시물
+                        <a href="${pageContext.request.contextPath}/deletePosting?boardNo=${viewDetailPost.boardNo}" class="name mt-2">게시물
                            삭제</a>
                            </c:if>
 				</nav>
@@ -80,7 +80,7 @@
                             </div>
                             <div class="media-body">
                                 <div class="medi-top mb-2">
-                                    <a class="name mt-0">${viewDetailPost.memberVO.id}</a>
+                                    <a class="name mt-0">${comment.memberVO.id} </a>
                                     <span>${comment.commentTime}</span>
                                 </div>
                                 <p>${comment.commentContent}</p>
@@ -95,7 +95,7 @@
 	                    							<!-- 이전 그룹일때 -->
 	                    <c:if test="${pb.previousPageGroup }">
 	                        <li> 
-	                        	<a href="/member/getDetailPostByNo?boardNo=${viewDetailPost.boardNo}&pageNo=${pb.startPageOfPageGroup-1 }" class="not-allowed">
+	                        	<a href="/getDetailPostByNo?boardNo=${viewDetailPost.boardNo}&pageNo=${pb.startPageOfPageGroup-1 }" class="not-allowed">
 	                                <span class="fa fa-angle-double-left" aria-hidden="true"></span>
 	                            </a>
 	                        </li>
@@ -104,17 +104,17 @@
 	                    <c:forEach var="page" begin="${pb.startPageOfPageGroup}" end="${pb.endPageOfPageGroup}">
 	                    <c:choose>
 	                    	<c:when test="${pb.nowPage==page }">
-	                        	<li><a class="active" href="/member/getDetailPostByNo?boardNo=${viewDetailPost.boardNo}&pageNo=${page }">${page }</a></li>
+	                        	<li><a class="active" href="/getDetailPostByNo?boardNo=${viewDetailPost.boardNo}&pageNo=${page }">${page }</a></li>
 	                        </c:when>
 	                        <c:otherwise>
-	                        	<li><a href="/member/getDetailPostByNo?boardNo=${viewDetailPost.boardNo}&pageNo=${page }">${page }</a></li>
+	                        	<li><a href="/getDetailPostByNo?boardNo=${viewDetailPost.boardNo}&pageNo=${page }">${page }</a></li>
 	                        </c:otherwise>
 	                    </c:choose>
 						</c:forEach>
 	                								<!-- 다음 그룹일때 -->
 						<c:if test="${pb.nextPageGroup }">
 	                        <li>
-	                            <a href="/member/getDetailPostByNo?boardNo=${viewDetailPost.boardNo}&pageNo=${pb.endPageOfPageGroup+1 }">
+	                            <a href="/getDetailPostByNo?boardNo=${viewDetailPost.boardNo}&pageNo=${pb.endPageOfPageGroup+1 }">
 	                           		<span class="fa fa-angle-double-right" aria-hidden="true"></span>
 	                            </a>
 	                        </li>
@@ -128,7 +128,7 @@
                     <div class="testi-top mt-5 pt-4">
                         <h3 class="post-content-title">Leave a message</h3>
                         <div class="form-commets mt-4">
-                            <form action="${pageContext.request.contextPath}/member/postComment" method="post">
+                            <form action="${pageContext.request.contextPath}/postComment" method="post">
                                 <sec:csrfInput />
                                 <input type="hidden" name="boardVO.boardNo" value="${viewDetailPost.boardNo}">
                                 <%-- <input type="hidden" name="boardVO.boardNo" value="${viewDetailPost.boardNo}"> --%>

@@ -37,6 +37,11 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
+	public String getAvgStar(String resNo) {
+		return reviewMapper.getAvgStar(resNo);
+	}
+	
+	@Override
 	public List<ReviewVO> getReviewById(String id) {
 		return reviewMapper.getReviewById(id);
 	}

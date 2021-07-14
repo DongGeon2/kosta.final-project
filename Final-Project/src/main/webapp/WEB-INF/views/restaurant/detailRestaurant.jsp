@@ -14,6 +14,70 @@
 		 */
 	})
 </script>
+
+<!-- 별점 javascript -->
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#s1").click(function(){
+		$(".fa-3x").css("color","gray");
+		$("#s1").css("color","#F05522");
+		
+		$("input[name=star5]").removeAttr("value");
+		$("input[name=star4]").removeAttr("value");
+		$("input[name=star3]").removeAttr("value");
+		$("input[name=star2]").removeAttr("value");
+		
+		$("input[name=star1]").attr("value", "1");
+	});
+	$("#s2").click(function(){
+		$(".fa-3x").css("color","gray");
+		$("#s1,#s2").css("color","#F05522");
+		
+		$("input[name=star5]").removeAttr("value");
+		$("input[name=star4]").removeAttr("value");
+		$("input[name=star3]").removeAttr("value");
+		$("input[name=star1]").removeAttr("value");
+		
+		$("input[name=star2]").attr("value", "2");
+	});
+	$("#s3").click(function(){
+		$(".fa-3x").css("color","gray");
+		$("#s1,#s2,#s3").css("color","#F05522");
+		
+		$("input[name=star5]").removeAttr("value");
+		$("input[name=star4]").removeAttr("value");
+		$("input[name=star2]").removeAttr("value");
+		$("input[name=star1]").removeAttr("value");
+		
+		$("input[name=star3]").attr("value", "3");
+	});
+	$("#s4").click(function(){
+		$(".fa-3x").css("color","gray");
+		$("#s1,#s2,#s3,#s4").css("color","#F05522");
+		
+		$("input[name=star5]").removeAttr("value");
+		$("input[name=star1]").removeAttr("value");
+		$("input[name=star3]").removeAttr("value");
+		$("input[name=star2]").removeAttr("value");
+		
+		$("input[name=star4]").attr("value", "4");
+	});
+	$("#s5").click(function(){
+		$(".fa-3x").css("color","gray");
+		$(".fa-3x").css("color","#F05522");
+		
+		$("input[name=star1]").removeAttr("value");
+		$("input[name=star4]").removeAttr("value");
+		$("input[name=star3]").removeAttr("value");
+		$("input[name=star2]").removeAttr("value");
+		
+		$("input[name=star5]").attr("value", "5");
+	});
+});
+</script>
+
+
+
 <!-- inner banner -->
 <div class="inner-banner">
 	<section class="w3l-breadcrumb">
@@ -66,11 +130,20 @@
 				<p style="font-size: 15px; font-weight: bold;">${restaurant.foodType} || ${restaurant.resTel}</p>
 				<div class="row feat_top">
 					<div class="col-auto w3l-features-photo-8-box pt-lg-4">
-						<img src="${pageContext.request.contextPath}/assets/images/별.png" alt="" class="img-fluid pt-5 pb-5 pr-sm-0">
-						<!-- <p>In a diam et dui, orci urna. Donec sed tempus enims.</p> -->
+						<%-- <img src="${pageContext.request.contextPath}/assets/images/별.png" alt="" class="img-fluid pt-5 pb-5 pr-sm-0"> --%>
+						<c:choose>
+						<c:when test="${avgReviewGrade!=0 }">
+						<i class="fas fa-star fa-4x pt-5 pb-5 pr-sm-0 img-fluid" style="color:orange "></i>
+						</c:when>
+						<c:otherwise>
+						<i class="far fa-star fa-4x pt-5 pb-5 pr-sm-0 img-fluid" style="color:orange "></i>
+						</c:otherwise>
+						</c:choose>
+						<!-- <p>In a diam et dui, orci urna. Donec sed tempus enims.</p>#F05522 -->
 					</div>
 												<!-- 별점 -->
-					<span style="margin-top: 32px; font-size: 30px; color: orange">4.8</span>
+					<span style="margin-top: 32px; font-size: 30px; color: orange">${avgReviewGrade }/</span>
+					<span style="margin-top: 38px; font-size: 22px; color: orange">5.0</span>
 					<span style="margin-top: 45px; font-size: 15px">(${totalReviewCount })</span>
 												<!-- -- -->
 				</div>
@@ -84,7 +157,7 @@
 					</div>
 					<span class="mb-5" style="margin-top: 5px; font-size: 15px">저녁7만원</span>
 				</div>
-				<a href="/doReservation?resName=${restaurantVO.resName}&resNo=${restaurantVO.resNo}" class="btn btn-style mt-5 ml-5">예약하러 가기</a>
+				<a href="/member/doReservation?resName=${restaurantVO.resName}&resNo=${restaurantVO.resNo}" class="btn btn-style mt-5 ml-5">예약하러 가기</a>
 			</div>
 		</div>
 	</div>
@@ -106,6 +179,13 @@
                 		<input type="hidden" name="resNo" value="${restaurant.resNo }">
                     	<input type="hidden" name="id" value="${mvo.id }">
                         <input type="text" name="title" required="required" placeholder="Title">
+                        <div class="rating">
+							<i class="fa fa-star fa-3x" id="s1"><input type="hidden" name="star1"></i>
+							<i class="fa fa-star fa-3x" id="s2"><input type="hidden" name="star2"></i>
+							<i class="fa fa-star fa-3x" id="s3"><input type="hidden" name="star3"></i>
+							<i class="fa fa-star fa-3x" id="s4"><input type="hidden" name="star4"></i>
+							<i class="fa fa-star fa-3x" id="s5"><input type="hidden" name="star5"></i>
+						</div>
 					</div>
                     <textarea name="message" required="required" placeholder="Write your comments here"></textarea>
                     <div class="text-right">
@@ -142,6 +222,43 @@
                     	<div class="medi-top mb-2">
                         	<a href="#URL" class="name mt-0">${review.memberVO.id }
                         		<span>${review.reviewTitle }</span>
+                        		<c:choose>
+                        		<c:when test="${review.reviewGrade==1 }">
+                        		<i class="fa fa-star" style="color:#F05522"></i>
+                        		<i class="fa fa-star" style="color:gray"></i>
+                        		<i class="fa fa-star" style="color:gray"></i>
+                        		<i class="fa fa-star" style="color:gray"></i>
+                        		<i class="fa fa-star" style="color:gray"></i>
+                        		</c:when>
+                        		<c:when test="${review.reviewGrade==2 }">
+                        		<i class="fa fa-star" style="color:#F05522"></i>
+                        		<i class="fa fa-star" style="color:#F05522"></i>
+                        		<i class="fa fa-star" style="color:gray"></i>
+                        		<i class="fa fa-star" style="color:gray"></i>
+                        		<i class="fa fa-star" style="color:gray"></i>
+                        		</c:when>
+                        		<c:when test="${review.reviewGrade==3 }">
+                        		<i class="fa fa-star" style="color:#F05522"></i>
+                        		<i class="fa fa-star" style="color:#F05522"></i>
+                        		<i class="fa fa-star" style="color:#F05522"></i>
+                        		<i class="fa fa-star" style="color:gray"></i>
+                        		<i class="fa fa-star" style="color:gray"></i>
+                        		</c:when>
+                        		<c:when test="${review.reviewGrade==4 }">
+                        		<i class="fa fa-star" style="color:#F05522"></i>
+                        		<i class="fa fa-star" style="color:#F05522"></i>
+                        		<i class="fa fa-star" style="color:#F05522"></i>
+                        		<i class="fa fa-star" style="color:#F05522"></i>
+                        		<i class="fa fa-star" style="color:gray"></i>
+                        		</c:when>
+                        		<c:otherwise>
+                        		<i class="fa fa-star" style="color:#F05522"></i>
+                        		<i class="fa fa-star" style="color:#F05522"></i>
+                        		<i class="fa fa-star" style="color:#F05522"></i>
+                        		<i class="fa fa-star" style="color:#F05522"></i>
+                        		<i class="fa fa-star" style="color:#F05522"></i>
+                        		</c:otherwise>
+                        		</c:choose>
                         	</a>
                             <span>${review.reviewRegdate }</span>
                         </div>
@@ -157,7 +274,7 @@
 			
 			<c:if test="${pb.previousPageGroup}">
 			<li>
-				<a disabled="" class="not-allowed" href="/user/detailRestaurant?pageNo=${pb.startPageOfPageGroup-1}&resNo=${restaurantVO.resNo}">
+				<a disabled="" class="not-allowed" href="/detailRestaurant?pageNo=${pb.startPageOfPageGroup-1}&resNo=${restaurantVO.resNo}">
 				<span class="fa fa-angle-double-left" aria-hidden="true"></span>
 				</a>
 			</li>
