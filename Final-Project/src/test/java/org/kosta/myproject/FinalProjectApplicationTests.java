@@ -1,5 +1,7 @@
 package org.kosta.myproject;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.junit.jupiter.api.Test;
@@ -24,15 +26,10 @@ class FinalProjectApplicationTests {
 	MemberService memberService;
 	@Test
 	void contextLoads() {
-		/*
-		 * MemberVO mvo = new MemberVO(); RestaurantVO resVO = new RestaurantVO();
-		 * resVO.setResNo("4"); mvo.setId("java"); ReservationVO revVO = new
-		 * ReservationVO(); revVO.setRevTime("1123"); revVO.setHeadCount(9);
-		 * revVO.setMemberVO(mvo); revVO.setRestaurantVO(resVO);
-		 * System.out.println("예약등록"+revVO);
-		 * reservationService.registerReservation(revVO); System.out.println("완료");
-		 */
-		System.out.println(memberService.ownerCancel("KDG"));
+		List<ReservationVO> reservationDayList = reservationService.getReservationListByDay("2021-07-13","1");
+		for(int i=0; i<reservationDayList.size(); i++) {
+			System.out.println(reservationDayList.get(i));
+		}
 	}
 	/* tettstets */
 }

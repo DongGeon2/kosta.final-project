@@ -5,9 +5,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.kosta.myproject.model.mapper.ReservationMapper">
 	<insert id="registerReservation" parameterType="reservationVO">
-		insert into ko_reservation(rev_no,rev_time,rev_headcount,res_no,id)
-		values(ko_reservation_seq.nextval,#{revTime},#{headCount},#{restaurantVO.resNo},#{memberVO.id})
+		insert into ko_reservation(rev_no, rev_time, rev_hour, rev_headcount, res_no, id)
+		values(ko_reservation_seq.nextval, #{revTime}, #{revHour}, #{headCount}, #{restaurantVO.resNo}, #{memberVO.id})
 	</insert>
+	
+	
+	<resultMap type="reservationVO" id="reservationRM">
+		<result column="res_no"  property="restaurantVO.resNo"/>
+		<result column="id" property="memberVO.id"/>
+	</resultMap>
+	<select id="getReservationListByDay" resultMap="reservationRM" parameterType="string">
+		select a.rev_time, a.rev_hour, b.res_no
+		from ko_reservation a, ko_restaurant b
+		where a.res_no=b.res_no and a.rev_time=#{revTime} and b.res_no=#{resNo}
+	</select>
+	<select id="getReservationListByTime" resultType="string" parameterType="string">
+		select rev_hour
+		from ko_reservation
+		where rev_time=#{value}
+	</select>
 </mapper>
  
  
