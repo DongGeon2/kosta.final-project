@@ -8,6 +8,12 @@ public interface ReservationService {
 
 	void registerReservation(ReservationVO resVO);
 
+
 	List<ReservationVO> findReservationById(String id);
+
+	List<ReservationVO> getReservationListByDay(String revTime, String resNo);
+
+	String getReservationListByTime(String hour);
+
 	
 }

@@ -16,6 +16,7 @@
 <h3>${reservation.memberVO.id }</h3>
 <h3>${reservation.restaurantVO.resNo }</h3>
 <h3>${reservation.revTime }</h3>
+<h3>${reservation.revHour}</h3>
 <h3>${reservation.headCount }</h3>
 </div>
 </body>

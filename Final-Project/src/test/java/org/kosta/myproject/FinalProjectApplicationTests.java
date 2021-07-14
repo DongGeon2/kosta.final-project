@@ -1,8 +1,11 @@
 package org.kosta.myproject;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.junit.jupiter.api.Test;
+import org.kosta.myproject.model.vo.ReservationVO;
 import org.kosta.myproject.model.vo.ReviewVO;
 import org.kosta.myproject.service.MemberService;
 import org.kosta.myproject.service.ReservationService;
@@ -35,6 +38,11 @@ class FinalProjectApplicationTests {
 		//System.out.println(memberService.ownerCancel("KDG"));
 		ReviewVO rvo=new ReviewVO();
 		System.out.println(reviewService.getReviewById("1234"));
+
+		List<ReservationVO> reservationDayList = reservationService.getReservationListByDay("2021-07-13","1");
+		for(int i=0; i<reservationDayList.size(); i++) {
+			System.out.println(reservationDayList.get(i));
+		}
 	}
 	/* tettstets */
 }

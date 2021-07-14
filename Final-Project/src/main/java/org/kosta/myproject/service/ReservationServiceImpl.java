@@ -22,4 +22,13 @@ public class ReservationServiceImpl implements ReservationService{
 	public List<ReservationVO> findReservationById(String id) {
 		return reservationMapper.findReservationById(id);
 	}
+
+	public List<ReservationVO> getReservationListByDay(String revTime, String resNo) {
+		return reservationMapper.getReservationListByDay(revTime,resNo);
+	}
+
+	@Override
+	public String getReservationListByTime(String hour) {
+		return reservationMapper.getReservationListByTime(hour);
+	}
 }
