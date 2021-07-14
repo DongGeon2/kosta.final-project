@@ -1,6 +1,7 @@
 package org.kosta.myproject.model.mapper;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.kosta.myproject.model.vo.BoardVO;
@@ -27,4 +28,6 @@ public interface BoardMapper {
 	public ArrayList<CommentVO> getCommentList(int getStartRowNumber, int getEndRowNumber,String boardNo);
 
 	public boolean plusHits(String boardNo);
+
+	List<BoardVO> getPostById(String id);
 }

@@ -74,6 +74,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
        where board_no = #{boardNo}
     </update>
     <!-- 게시판 조회수 -->
+    
+    <!-- MyPage 내가 쓴 게시글 -->
+    <select id="getPostById" resultMap="boardList" parameterType="string">
+    	SELECT b.board_no,b.title,b.hits,b.time_posted,m.id
+    	FROM ko_board b, ko_member m
+    	WHERE b.id=m.id AND b.id=#{value}
+    </select>
 </mapper>
  
  

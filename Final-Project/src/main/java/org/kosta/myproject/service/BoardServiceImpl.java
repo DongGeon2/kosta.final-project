@@ -65,4 +65,9 @@ public class BoardServiceImpl implements BoardService {
 		return boardMapper.plusHits(boardNo);
 	}
 
+	@Override
+	public List<BoardVO> getPostById(String id) {
+		return boardMapper.getPostById(id);
+	}
+
 }

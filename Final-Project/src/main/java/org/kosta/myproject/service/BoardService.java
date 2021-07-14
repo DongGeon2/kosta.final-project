@@ -1,6 +1,7 @@
 package org.kosta.myproject.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.kosta.myproject.model.vo.BoardVO;
 import org.kosta.myproject.model.vo.CommentVO;
@@ -25,4 +26,6 @@ public interface BoardService {
 	ArrayList<CommentVO> getCommentList(PagingBean pagingBean, String boardNo);
 	
 	public boolean plusHits(String boardNo);
+
+	List<BoardVO> getPostById(String id);
 }

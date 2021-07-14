@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.kosta.myproject.model.vo.BoardVO;
 import org.kosta.myproject.model.vo.MemberVO;
 import org.kosta.myproject.model.vo.ReservationVO;
 import org.kosta.myproject.model.vo.ReviewVO;
@@ -51,4 +52,14 @@ public class MyPageController {
 	}
 	//id랑 식당번호 없어서 vo 들이 null임 그치만 sql 은 됨 
 
+	@Secured("ROLE_MEMBER")
+	@RequestMapping("/myPost")
+	public String myPost(Model model, String id) {
+		MemberVO pvo = (MemberVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		System.out.println(pvo.getId());
+		List<BoardVO> bvo = boardService.getPostById(pvo.getId());
+		System.out.println(bvo);
+		model.addAttribute("boardVO", bvo);
+		return "member/myPost.tiles";
+	}
 }

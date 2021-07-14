@@ -13,7 +13,7 @@
 			<ul class="breadcrumbs-custom-path">
 				<li><a href="index.html">Home</a></li>
 				<li class="active"><span class="fa fa-chevron-right mx-2"
-					aria-hidden="true"></span>My Review</li>
+					aria-hidden="true"></span>My Post</li>
 			</ul>
 		</div>
 	</section>
@@ -32,24 +32,24 @@
         </tr>
         </thead>
         <tbody>
-            <c:forEach items="${postList}" var="list">
+            <c:forEach items="${boardVO}" var="bvo">
         <tr class="text-center">
             <th scope="row">
-                <span class="label-blue">${list.boardNo}</span>
+                <span class="label-blue">${bvo.boardNo}</span>
             </th>
             <td>
-                <a href="${pageContext.request.contextPath}/getDetailPostByNo?boardNo=${list.boardNo}">
-                    <span class="label-blue">${list.title}</span>
+                <a href="${pageContext.request.contextPath}/getDetailPostByNo?boardNo=${bvo.boardNo}">
+                    <span class="label-blue">${bvo.title}</span>
                 </a>
             </td>
             <td>
-                <span class="label-blue">${list.memberVO.id}</span>
+                <span class="label-blue">${bvo.memberVO.id}</span>
             </td>
              <td>
-                <span class="label-blue">${list.hits}</span>
+                <span class="label-blue">${bvo.hits}</span>
             </td>
             <td>
-                <span class="label-blue">${list.timePosted}</span>
+                <span class="label-blue">${bvo.timePosted}</span>
             </td>
         </tr>
         </c:forEach>

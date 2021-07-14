@@ -80,3 +80,7 @@ delete from ko_review where review_grade='4'
 			from ko_restaurant) r, ko_member m 
 		where r.id=m.id and rnum between 1 and 5
 --------------------------------------------------------------------	
+		
+SELECT board_no,title,hits,time_posted,id
+FROM ko_board 
+WHERE id='1234'
