@@ -56,7 +56,7 @@
 				</div>
 				<div class="row">
 					<div class="col-sm-offset-3 col-sm-6 top-inputs ">
-						<input type="text" placeholder="Password" name="password"
+						<input type="password" placeholder="Password" name="password"
 							id="w3lName" required="required">
 					</div>
 				</div>

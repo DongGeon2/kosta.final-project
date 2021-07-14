@@ -68,7 +68,7 @@
                                          <!-- 이전 그룹일때 -->
                     <c:if test="${pb.previousPageGroup }">
                         <li> 
-                           <a href="/member/postList?pageNo=${pb.startPageOfPageGroup-1 }" class="not-allowed">
+                           <a href="/board?pageNo=${pb.startPageOfPageGroup-1 }" class="not-allowed">
                                 <span class="fa fa-angle-double-left" aria-hidden="true"></span>
                             </a>
                         </li>
@@ -77,17 +77,17 @@
                     <c:forEach var="page" begin="${pb.startPageOfPageGroup}" end="${pb.endPageOfPageGroup}">
                     <c:choose>
                        <c:when test="${pb.nowPage==page }">
-                           <li><a class="active" href="/member/postList?pageNo=${page }">${page }</a></li>
+                           <li><a class="active" href="/board?pageNo=${page }">${page }</a></li>
                         </c:when>
                         <c:otherwise>
-                           <li><a href="/member/postList?pageNo=${page }">${page }</a></li>
+                           <li><a href="/board?pageNo=${page }">${page }</a></li>
                         </c:otherwise>
                     </c:choose>
                </c:forEach>
                                         <!-- 다음 그룹일때 -->
                <c:if test="${pb.nextPageGroup }">
                         <li>
-                            <a href="/member/postList?pageNo=${pb.endPageOfPageGroup+1 }">
+                            <a href="/board?pageNo=${pb.endPageOfPageGroup+1 }">
                                  <span class="fa fa-angle-double-right" aria-hidden="true"></span>
                             </a>
                         </li>

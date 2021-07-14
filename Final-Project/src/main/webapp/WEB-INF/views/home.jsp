@@ -138,7 +138,7 @@
                         
 <div class="container">
 
-        <form action="${pageContext.request.contextPath}/user/findRestaurantByMainBar" method="get"">
+        <form action="${pageContext.request.contextPath}/findRestaurantByMainBar" method="get"">
         
             <div class="row">
                 <div class="col-lg-12">
