@@ -101,6 +101,7 @@ CREATE TABLE ko_my_pick(
 CREATE TABLE ko_reservation(
 	rev_no number primary key,
 	rev_time varchar2(100) not null,
+	rev_hour varchar2(100) not null,
 	rev_headcount number not null,
 	res_no number not null,
 	id varchar2(100) not null,
@@ -108,6 +109,10 @@ CREATE TABLE ko_reservation(
 	CONSTRAINT ko_rev_id foreign key(id) references ko_member(id) on delete cascade
 )
 CREATE sequence ko_reservation_seq;
+
+alter table ko_reservation add rev_hour varchar2(100)
+update ko_reservation set rev_hour='3:00 PM'
+alter table ko_reservation modify rev_hour varchar2(100) not null
 
 select * from ko_reservation
 

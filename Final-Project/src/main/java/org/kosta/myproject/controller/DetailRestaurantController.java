@@ -59,34 +59,10 @@ public class DetailRestaurantController {
 			model.addAttribute("totalReviewCount", totalReviewCount);
 			List<ReviewVO> getAllReview = reviewService.getAllReviewList(pagingBean, resNo);
 			model.addAttribute("reviewList", getAllReview);
-			
-			
-			/*
-			 * for(int i=0; i<getAllReview.size(); i++) {
-			 * System.out.println("리뷰 리스트:"+getAllReview.get(i)); }
-			 */
 
-		}
-		/** 어떤식당에서 예약할껀지 알기위해 해주는거 **/
-		RestaurantVO restaurantVO = restaurantService.findRestaurantByResNo(resNo);
-		model.addAttribute("restaurantVO", restaurantVO);
-
-		/** 리뷰 목록 및 페이징 **/
-		int totalReviewCount = reviewService.getTotalReviewCount(resNo);
-		PagingBean pagingBean = null;
-
-		if (pageNo == null) {
-			pagingBean = new PagingBean(totalReviewCount);
-		} else {
-			pagingBean = new PagingBean(totalReviewCount, Integer.parseInt(pageNo));
-		}
-		model.addAttribute("pagingBean", pagingBean);
-		model.addAttribute("totalReviewCount", totalReviewCount);
-		List<ReviewVO> getAllReview = reviewService.getAllReviewList(pagingBean, resNo);
-		model.addAttribute("reviewList", getAllReview);
-
-		for (int i = 0; i < getAllReview.size(); i++) {
-			System.out.println("리뷰 리스트:" + getAllReview.get(i));
+			for(int i=0; i<getAllReview.size(); i++) {
+				System.out.println("리뷰 리스트:"+getAllReview.get(i)); 
+			} 
 		}
 		return "restaurant/detailRestaurant.tiles";
 	}
