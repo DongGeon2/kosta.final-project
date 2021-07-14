@@ -12,7 +12,7 @@ insert into ko_member(id,password,email,name,tel) values('aaaas','a','Y@naver.co
 insert into ko_authorities(id,authority) values('aaaas','ROLE_OWNER');
 
 --권한
-insert into ko_authorities(id,authority) values('aaaas','ROLE_ADMIN');
+insert into ko_authorities(id,authority) values('1234','ROLE_ADMIN');
 insert into ko_authorities(id,authority) values('asdfg','ROLE_OWNER');
 insert into ko_authorities(id,authority) values('aaaas','ROLE_MEMBER');
 insert into ko_authorities(id,authority) values('BKS','ROLE_MEMBER');
@@ -56,7 +56,15 @@ where b.id=m.id and b.rnum between #{getStartRowNumber} and #{getEndRowNumber}
  		
 --------------------------------------------------------동건
 select * from ko_restaurant
-select * from ko_review
+select * from ko_review where id='1234'
+	
+select b.res_name, a.review_title, a.id, a.review_regdate
+from ko_review a, ko_restaurant b
+where  a.res_no = b.res_no and a.id='1234'
+ 
+select a.rev_no, b.res_name, a.rev_headcount, a.rev_time 
+FROM KO_RESERVATION a, KO_RESTAURANT b
+where  a.res_no=b.res_no  AND a.id='1234'
 
 select * 
 from ko_review a, ko_restaurant b

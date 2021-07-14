@@ -69,13 +69,17 @@ public class ReservationController {
 		return "reservation/reservation-result.tiles";
 	}
 	
-	@Secured("ROLE_MEMBER")
-	@RequestMapping("/myOrder")
-	public String myOrder(Model model,String id) {
-		List<ReservationVO> rvo=reservationService.findReservationById(id);
-		System.out.println(rvo);
-		model.addAttribute("reservation", rvo);
-		return "/member/myOrder.tiles";
-	}
-
+	/*
+	 * @Secured("ROLE_MEMBER")
+	 * 
+	 * @RequestMapping("/myOrder") public String myOrder(Model model) { MemberVO pvo
+	 * = (MemberVO)
+	 * SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	 * System.out.println(pvo.getId()); List<ReservationVO>
+	 * rvo=reservationService.findReservationById(pvo.getId());
+	 * //System.out.println(rvo); model.addAttribute("reservation", rvo); return
+	 * "member/myOrder.tiles"; }
+	 */
+// id랑 식당번호 없어서 vo 들이 null임 그치만 sql 은 됨 
+	//마이페이지 컨트롤러 만들어라
 }

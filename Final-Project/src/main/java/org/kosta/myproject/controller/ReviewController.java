@@ -10,6 +10,7 @@ import org.kosta.myproject.model.vo.ReviewVO;
 import org.kosta.myproject.service.ReviewService;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -51,10 +52,12 @@ public class ReviewController {
 	@Secured("ROLE_MEMBER")
 	@RequestMapping("/myReview")
 	public String myReview(Model model,String id) {
-		List<ReviewVO> rvo=reviewService.getReviewById(id);
+		MemberVO pvo = (MemberVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		System.out.println(pvo.getId());
+		List<ReviewVO> rvo=reviewService.getReviewById(pvo.getId());
 		System.out.println(rvo);
 		model.addAttribute("reviewVO", rvo);
-		return "/member/myReview.tiles";
+		return "member/myReview.tiles";
 	}
 	
 }

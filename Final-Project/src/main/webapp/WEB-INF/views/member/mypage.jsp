@@ -40,7 +40,7 @@
 				<div class="col-lg-4 col-md-6 grids-feature">
                     <div class="area-box">
                         <img src="assets/images/MyOrder.png" alt="" class="img-fluid">
-                        <h4><a href="MyOrder" class="title-head">My Order</a></h4>
+                        <h4><a href="myOrder" class="title-head">My Order</a></h4>
                         <p class="">Unforgettable Time</p><!-- Reservation history /  -->
                     </div>
                 </div>

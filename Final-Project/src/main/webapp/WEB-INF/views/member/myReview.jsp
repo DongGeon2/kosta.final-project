@@ -35,26 +35,27 @@
 				<sec:csrfInput />
 				<c:forEach items="${requestScope.reviewVO}" var="rvo">
 					<tr class="text-center">
-						<th scope="row"><span class="label-blue">${rvo.restaurantVO.res_name}</span>
+						<th scope="row"><span class="label-blue">${rvo.restaurantVO.resName}</span>
 						</th>
 						<td>
-							<%--  <a href="${pageContext.request.contextPath}/member/getDetailPostByNo?boardNo=${rvo.boardNo}"> --%>
-							<span class="label-blue">${rvo.review_title}</span> <!--  </a> -->
+							<a href=<%-- "${pageContext.request.contextPath}/member/getDetailPostByNo?boardNo=${rvo.boardNo}" --%>> 
+							<span class="label-blue">${rvo.reviewTitle}</span> <!--  </a> -->
+							</a>
 						</td>
 						<td><span class="label-blue">${rvo.memberVO.id}</span></td>
-						<td><span class="label-blue">${rvo.review_regdate}</span></td>
+						<td><span class="label-blue">${rvo.reviewRegdate}</span></td>
 					</tr>
 				</c:forEach>
 			</sec:authorize>
 		</tbody>
 	</table>
-	<div class="row">
+<!-- 	<div class="row">
 		<div class="col-auto mr-auto"></div>
 		<div class="col-auto">
 			<a class="btn btn-primary" role="button"
 				href="/member/registerboardForm">글쓰기</a>
 		</div>
-	</div>
+	</div> -->
 	<!-- pagination -->
 <%-- 	<c:set var="pb" value="${requestScope.pagingBean}"></c:set>
 	<div class="pagination-style text-center mt-5 pt-5">

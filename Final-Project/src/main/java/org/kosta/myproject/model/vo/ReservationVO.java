@@ -10,11 +10,27 @@ public class ReservationVO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public ReservationVO(String revNo, String revTime, int headCount, RestaurantVO restaurantVO) {
+		super();
+		this.revNo = revNo;
+		this.revTime = revTime;
+		this.headCount = headCount;
+		this.restaurantVO = restaurantVO;
+	}
+
 	public ReservationVO(String revNo, String revTime, int headCount, MemberVO memberVO, RestaurantVO restaurantVO) {
 		super();
 		this.revNo = revNo;
 		this.revTime = revTime;
 		this.headCount = headCount;
+		this.memberVO = memberVO;
+		this.restaurantVO = restaurantVO;
+	}
+	
+	public ReservationVO(String revNo, MemberVO memberVO, RestaurantVO restaurantVO) {
+		super();
+		this.revNo = revNo;
 		this.memberVO = memberVO;
 		this.restaurantVO = restaurantVO;
 	}

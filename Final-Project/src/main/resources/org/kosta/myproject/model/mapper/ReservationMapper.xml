@@ -8,6 +8,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into ko_reservation(rev_no,rev_time,rev_headcount,res_no,id)
 		values(ko_reservation_seq.nextval,#{revTime},#{headCount},#{restaurantVO.resNo},#{memberVO.id})
 	</insert>
+	<select id="findReservationById" resultType="reservationVO">
+		select a.rev_no, b.res_name, a.rev_headcount, a.rev_time 
+FROM KO_RESERVATION a, KO_RESTAURANT b
+where  a.res_no=b.res_no  AND a.id=#{value}
+	</select>	
 </mapper>
  
  
