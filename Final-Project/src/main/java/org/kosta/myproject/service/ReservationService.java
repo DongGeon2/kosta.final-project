@@ -14,5 +14,7 @@ public interface ReservationService {
 
 	String getReservationListByTime(String hour);
 
+	List<ReservationVO> getReservationByIdAndResNo(String id, String resNo);
+
 	
 }

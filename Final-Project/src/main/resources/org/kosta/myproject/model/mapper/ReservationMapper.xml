@@ -34,12 +34,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where rev_time=#{value}
 	</select>
 	
+
 	<select id="findReservationById" resultMap="reservationRM" parameterType="string">
 		SELECT a.rev_no, b.res_name, a.id, a.rev_headcount, a.rev_time 
 		FROM KO_RESERVATION a, KO_RESTAURANT b
 		WHERE  a.res_no=b.res_no  AND a.id=#{value}
 	</select>
 
+	<select id="getReservationByIdAndResNo" resultMap="reservationRM">
+		select a.*, b.*
+		from ko_reservation a, ko_restaurant b
+		where a.res_no=b.res_no and a.id=#{id} and b.res_no=#{resNo}
+	</select>
 </mapper>
  
  
