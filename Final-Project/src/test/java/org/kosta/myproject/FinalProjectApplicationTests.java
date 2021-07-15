@@ -43,6 +43,9 @@ class FinalProjectApplicationTests {
 		for(int i=0; i<reservationDayList.size(); i++) {
 			System.out.println(reservationDayList.get(i));
 		}
+		
+		ReservationVO rsv = new ReservationVO();
+		System.out.println(reservationService.findReservationById("1234"));
 	}
 	/* tettstets */
 }

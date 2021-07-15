@@ -82,6 +82,7 @@
                                 <option>전라도</option>
                                 <option>제주도</option>
                             </select>
+                       <input type="text" placeholder="Detail Location" name="resLoc_detail"  class="yejin"id="w3lName" required="">
                       <select name="foodType" class="yejin_ResSearch yejin" id="exampleFormControlSelect1">
                                 <option>Food Type</option>
                                 <option>한식</option>

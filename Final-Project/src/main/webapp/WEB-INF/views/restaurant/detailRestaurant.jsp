@@ -3,11 +3,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <c:set var="resNo" value="${resTotal.resNo}"></c:set>
-<%-- 로그인 아이디(세션) --%><%-- 
+<%-- 로그인 아이디(세션) --%>
+<%-- 
 <sec:authorize access="hasRole('ROLE_MEMBER')">
 	<sec:authentication var="loginUser" property="principal.id" />
 </sec:authorize>
- --%><script type="text/javascript">
+ --%>
+ <script type="text/javascript">
 	$(document).ready(function() {
 		//alert(1);
 		$("#navbarTogglerDemo02 li a[href*=about]").parent().addClass("active");
@@ -106,7 +108,7 @@ $(document).ready(function(){
 	<div class="container py-md-5 py-4">
 		<div class="row w3l-features-photo-7_top align-items-start">
 			<div class="col-lg-6 w3l-features-photo-7_top-right mt-lg-0 mt-sm-5 mt-4">
-				<span hidden="" id="resNo">${restaurant.resNo}</span>
+                <input type="hidden" name="resNo" value="${restaurant.resNo }">
 				<img src="ResUpload/${restaurant.resImage}" class="img-responsive" alt="" 
 				style="display: block; width: 600px;"/>
 				
@@ -126,6 +128,7 @@ $(document).ready(function(){
 			</div>
 			<div class="col-lg-6 w3l-features-photo-7_top-left pl-lg-4">
 				<div class="waviy">
+					<span hidden="" id="resNo">${restaurant.resNo}				
 					<span style="-i: 1">${restaurant.resName}</span>
 				</div>
 				<div class="d-flex align-items-center mt-3">
@@ -183,9 +186,8 @@ $(document).ready(function(){
             	<form action="/registerReview" method="post">
             	<sec:csrfInput/>
                 	<div class="media-form">
-                		<input type="hidden" name="resNo" value="${restaurant.resNo }">
-                    	<input type="hidden" name="id" value="${mvo.id }">
-                        <input type="text" name="title" required="required" placeholder="Title">
+							<input type="hidden" name="resNo" value="${restaurant.resNo }">
+							<input type="hidden" name="id" value="${mvo.id }"> <input type="text" name="title" required="required" placeholder="Title">
                         <div class="rating">
 							<i class="fa fa-star fa-3x" id="s1"><input type="hidden" name="star1"></i>
 							<i class="fa fa-star fa-3x" id="s2"><input type="hidden" name="star2"></i>

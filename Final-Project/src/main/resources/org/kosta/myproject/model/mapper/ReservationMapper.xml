@@ -11,6 +11,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		
 	<resultMap type="reservationVO" id="reservationRM">
 		<result column="res_no"  property="restaurantVO.resNo"/>
+		<result column="res_name" property="restaurantVO.resName"/>
+<!-- 		<result column="res_loc" property="restaurantVO.resLoc"/>
+		<result column="res_image" property="restaurantVO.resImage"/>
+		<result column="res_info" property="restaurantVO.resInfo"/>
+		<result column="res_tel" property="restaurantVO.resTel"/>
+		<result column="start_time" property="restaurantVO.startTime"/>
+		<result column="end_time" property="restaurantVO.endTime"/>
+		<result column="food_type" property="restaurantVO.foodType"/>	 -->	
 		<result column="id" property="memberVO.id"/>
 	</resultMap>
 	
@@ -26,8 +34,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where rev_time=#{value}
 	</select>
 	
-	<select id="findReservationById" resultType="reservationVO">
-		SELECT a.rev_no, b.res_name, a.rev_headcount, a.rev_time 
+	<select id="findReservationById" resultMap="reservationRM" parameterType="string">
+		SELECT a.rev_no, b.res_name, a.id, a.rev_headcount, a.rev_time 
 		FROM KO_RESERVATION a, KO_RESTAURANT b
 		WHERE  a.res_no=b.res_no  AND a.id=#{value}
 	</select>

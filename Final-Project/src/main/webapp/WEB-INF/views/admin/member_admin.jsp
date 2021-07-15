@@ -4,9 +4,9 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style>
-  .yejin{
-    margin-bottom: 20px;
-  }
+.yejin {
+	margin-bottom: 20px;
+}
 </style>
 
 <!-- inner banner -->
@@ -29,16 +29,18 @@
 	<div class="contact-top py-md-5 py-4">
 		<div class="container">
 			<div class="waviy text-center mb-md-5 mb-4">
-				<span style="-i: 1">회</span> <span style="-i: 2">원</span> <span
-					style="-i: 3">관</span> <span style="-i: 4">리</span>
+				<span style="-i: 1">회</span> 
+				<span style="-i: 2">원</span> 
+				<span style="-i: 3">관</span> 
+				<span style="-i: 4">리</span>
 			</div>
 			<!-- fireworks effect -->
 			<div class="pyro">
 				<div class="before"></div>
 				<div class="after"></div>
 			</div>
-			
-	<%-- <div class="container-fluid">	
+
+			<%-- <div class="container-fluid">	
 	<nav class="navbar navbar-expand-lg stroke">	
 	<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 	<ul class="navbar-nav ml-lg-auto">
@@ -67,20 +69,17 @@
 				
 	</div>
  --%>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		//ajaxSetup(): 실행될 AJAX 요청에 대한 기본 속석 ㅇ정의 
+		//ajaxSetup(): 실행될 AJAX 요청에 대한 기본 속성 정의
 		$.ajaxSetup({
 			beforeSend : function(xhr){   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
                 xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
             },
-
 			success:function(result){
 				alert(result);
 			},
-			
 			error:function (jqXHR){
 				alert("jqXHR status code:"+jqXHR.status+" message:"+jqXHR.responseText);
 			}
@@ -91,7 +90,6 @@
 				type:"post",
 				url:"/authority",
 				data:$("#createAuthForm").serialize(),
-				
 			}).done(function(){ // done - success 와 동일
 				$("#createAuthForm")[0].reset();
 			});//ajax
@@ -104,45 +102,57 @@
 		});//click		
 	});
 </script>
-	 <input type="button" value="권한추가하기" id="createBtn"><br>
-	 <div class="contacts12-main ">
-	<form id="createAuthForm">
-	<sec:csrfInput />
-	 <div class="top-inputs d-grid">
-		 <input type="text"  placeholder="아이디" name="id" id="w3lName" required="" size="5">
-		 </div>
-		<select name="authority" >
-                                <option value="ROLE_OWNER">사장님</option>
-                                <option value="ROLE_ADMIN">관리자</option>
-                                </select>
-	</form>
-	</div>
-<br>
-	<input type="button" value="권한삭제하기" id="deleteBtn">
-	<input type="text" id="deleteAuth">
-
-	<div class="container">	
-  <h2>회원명단</h2>         
-  <table class="table">
-    <thead>
-      <tr>
-        <th>회원 아이디</th>
-        <th>권한 상태</th>
-      </tr>
-    </thead>
-    <tbody>
-    <c:forEach var="list" items="${list }">
-      <tr>
-        <td><a href="/member_authority_detail?id=${list.id }" >${list.id }</a></td>
-    
-        <td>${list.authority }</td>     
-      </tr>
-      </c:forEach>
-    </tbody>	
-  </table>
+<input type="button" value="권한추가하기" id="createBtn"><br>
+<div class="contacts12-main ">
+	<%-- <form id="createAuthForm">
+		<sec:csrfInput />
+		<div class="top-inputs d-grid">
+			<input type="text" placeholder="아이디" name="id" id="w3lName" required="" size="5">
+		</div> --%>
+		<!-- search button -->
+		<nav class="navbar navbar-expand-lg stroke">
+					<div class="search-right ml-lg-3">
+						<form id="createAuthForm" class="search-box position-relative">
+							<div class="input-search">
+								<input type="search" placeholder="Member ID" name="id"
+									required="required" autofocus="" class="search-popup">
+							</div>
+							<button type="submit" class="btn search-btn">
+								<i class="fa fa-search" aria-hidden="true"></i>
+							</button>
+						</form>
+					</div>
+					</nav>
+		<!-- //search button -->
+		<select name="authority">
+			<option value="ROLE_OWNER">사장님</option>		
+			<option value="ROLE_ADMIN">관리자</option>
+		</select>
 </div>
-	
-				
+</div>
+</div>
+<br> 
+<input type="button" value="권한삭제하기" id="deleteBtn">
+<input type="text" id="deleteAuth">
+<div class="container">
+	<h2>회원명단</h2>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>회원 아이디</th>
+					<th>권한 상태</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="list" items="${list }">
+					<tr>
+						<td><a href="/member_authority_detail?id=${list.id }">${list.id }</a></td>
+						<td>${list.authority }</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+</div>
 </section>
 <!-- contact map -->
 <%--   <section class="w3l-contacts-1">

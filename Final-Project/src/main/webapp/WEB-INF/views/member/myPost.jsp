@@ -25,10 +25,10 @@
         <thead class="thead-light">
         <tr class="text-center">
             <th scope="col">No</th>
-            <th scope="col">제목</th>
-            <th scope="col">작성자</th>
-             <th scope="col">조회수</th>
-            <th scope="col">작성일</th>
+            <th scope="col">Title</th>
+            <th scope="col">My Id</th>
+             <th scope="col">Hits</th>
+            <th scope="col">Reporting Date</th>
         </tr>
         </thead>
         <tbody>

@@ -43,14 +43,14 @@ public class MyPageController {
 
 	@Secured("ROLE_MEMBER")
 	@RequestMapping("/myOrder") 
-	public String myOrder(Model model) { 
-	MemberVO pvo = (MemberVO)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-	System.out.println(pvo.getId()); 
-	List<ReservationVO> rvo=reservationService.findReservationById(pvo.getId());
-	//System.out.println(rvo); model.addAttribute("reservation", rvo); 
-	return "member/myOrder.tiles"; 
+	public String myOrder(Model model, String id) { 
+		MemberVO pvo = (MemberVO)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		System.out.println(pvo.getId()); 
+		List<ReservationVO> rvo=reservationService.findReservationById(pvo.getId());
+		System.out.println(rvo); 
+		model.addAttribute("reservationVO", rvo); 
+		return "member/myOrder.tiles"; 
 	}
-	//id랑 식당번호 없어서 vo 들이 null임 그치만 sql 은 됨 
 
 	@Secured("ROLE_MEMBER")
 	@RequestMapping("/myPost")

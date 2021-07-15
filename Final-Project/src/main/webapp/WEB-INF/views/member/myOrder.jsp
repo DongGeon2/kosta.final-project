@@ -25,27 +25,31 @@
 			<tr class="text-center">
 				<th scope="col">Reservation No</th>
 				<th scope="col">Restaurant</th>
+				<th scope="col">My Id</th>
 				<th scope="col">HeadCount</th>
-				<th scope="col">Reservation Time</th>
+				<th scope="col">Reservation Date</th>
 			</tr>
 		</thead>
 		<tbody>
-			<sec:authorize access="hasRole('ROLE_MEMBER')">
-				<sec:csrfInput />
-				<c:forEach items="${requestScope.reservation}" var="rvo">
+			<%-- <sec:authorize access="hasRole('ROLE_MEMBER')">
+				<sec:csrfInput /> --%>
+				<c:forEach items="${reservationVO}" var="rvo">
+				   <%--  <input type="hidden" name="resNo" value="${rvo.restaurantVO.resNo }"> --%>
 					<tr class="text-center">
 						<th scope="row"><span class="label-blue">${rvo.revNo}</span>
 						</th>
 						<td>
-							<a href=<%-- "${pageContext.request.contextPath}/member/getDetailPostByNo?boardNo=${rvo.boardNo}" --%>> 
+						<!-- 이름으로 검색하면 체인점처럼 다른지점도 알 수 있지 않을까요 ㅎㅅㅎ 사실 번호가 null이라 .. ^^ -->
+							<a href="${pageContext.request.contextPath}/findRestaurantByName?resName=${rvo.restaurantVO.resName}"> 
 							<span class="label-blue">${rvo.restaurantVO.resName}</span> <!--  </a> -->
 							</a>
 						</td>
+						<td><span class="label-blue">${rvo.memberVO.id}</span></td>
 						<td><span class="label-blue">${rvo.headCount}</span></td>
 						<td><span class="label-blue">${rvo.revTime}</span></td>
 					</tr>
 				</c:forEach>
-			</sec:authorize>
+	<%-- 		</sec:authorize> --%>
 		</tbody>
 	</table>
 </div>
