@@ -110,6 +110,7 @@ CREATE TABLE ko_reservation(
 )
 CREATE sequence ko_reservation_seq;
 
+--밑에 alter 및 update 하나씩 실행 시켜줘야함(동건)
 alter table ko_reservation add rev_hour varchar2(100)
 update ko_reservation set rev_hour='3:00 PM'
 alter table ko_reservation modify rev_hour varchar2(100) not null
@@ -131,7 +132,26 @@ CREATE TABLE ko_review(
 )
 CREATE sequence ko_review_seq;
 select * from ko_review
---select
+
+--9.예약 기록 테이블(동건 추가)
+CREATE TABLE ko_record(
+	record_no varchar2(100) primary key,
+	record_check varchar2(100) not null,
+	record_time varchar2(100) not null,
+	id varchar2(100) not null,
+	res_no number not null,
+	CONSTRAINT ko_record_res foreign key(res_no) references ko_restaurant(res_no) on delete cascade,
+	CONSTRAINT ko_record_id foreign key(id) references ko_member(id) on delete cascade
+)
+CREATE sequence ko_record_seq;
+
+select * from KO_RECORD
+
+update ko_record
+set record_check=1 
+where id='java2' and res_no='1' and record_time='2021-07-14'
+
+---------------------------------
 
 SELECT * FROM ko_member;
 

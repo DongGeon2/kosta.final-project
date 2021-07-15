@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Sql Mapper -->
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.kosta.myproject.model.mapper.RecordMapper">
+ 	<insert id="registerRecordMember" parameterType="string">
+ 		insert into ko_record(record_no, record_check, record_time, res_no, id)
+ 		values(ko_record_seq.nextval, 1, #{revTime}, #{resNo}, #{id})
+ 	</insert>
+	
+	<resultMap type="recordVO" id="recordRM">
+		<result column="res_no"  property="restaurantVO.resNo"/>
+		<result column="id" property="memberVO.id"/>
+	</resultMap>
+	
+	<!-- 식당예약한 곳 리뷰썼는지 안썼는지 체크하기위한 SQL -->
+	<select id="findRecordByIdAndResNo" parameterType="string" resultMap="recordRM">
+		select record_check, id, res_no, record_time
+		from ko_record
+		where id=#{id} and res_no=#{resNo}
+	</select>
+	
+	<!-- 리뷰 작성하면 record_check를 1->0 으로 업데이트 -->
+	<update id="updateCheck" parameterType="string">
+		update ko_record
+		set record_check=0 
+		where id=#{memberId} and res_no=#{resNo} and record_time=#{recordTime}
+	</update>
+</mapper>

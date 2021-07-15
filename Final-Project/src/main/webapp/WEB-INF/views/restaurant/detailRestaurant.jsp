@@ -112,7 +112,7 @@ $(document).ready(function(){
 				<img src="ResUpload/${restaurant.resImage}" class="img-responsive" alt="" 
 				style="display: block; width: 600px;"/>
 				
-			<!-- 	<div style="float: left; width: 25%">
+			<!-- 	<div style="float: left; width: 25%">`
 					<img src="assets/images/blog1.jpg" class="img-responsive" alt="" />
 				</div>
 				<div style="float: left; width: 25%">
