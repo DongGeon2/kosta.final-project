@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
-<c:set var="resNo" value="${resTotal.resNo}"></c:set>
+<c:set var="resNo" value="${restaurant.resNo }"></c:set>
 <%-- 로그인 아이디(세션) --%>
 <%-- 
 <sec:authorize access="hasRole('ROLE_MEMBER')">
@@ -127,8 +127,7 @@ $(document).ready(function(){
 				
 			</div>
 			<div class="col-lg-6 w3l-features-photo-7_top-left pl-lg-4">
-				<div class="waviy">
-					<span hidden="" id="resNo">${restaurant.resNo}				
+				<div class="waviy">		
 					<span style="-i: 1">${restaurant.resName}</span>
 				</div>
 				<div class="d-flex align-items-center mt-3">
@@ -153,7 +152,18 @@ $(document).ready(function(){
 												<!-- 별점 -->
 					<span style="margin-top: 32px; font-size: 30px; color: orange">${avgReviewGrade }/</span>
 					<span style="margin-top: 38px; font-size: 22px; color: orange">5.0</span>
-					<span style="margin-top: 45px; font-size: 15px">(${totalReviewCount })</span>
+					
+								<!-- 후기 개수 -->
+					<c:set var="TRC" value="${totalReviewCount }"></c:set>
+					<c:choose>
+					<c:when test="${TRC == null }">
+						<span style="margin-top: 45px; font-size: 15px">(0)</span>
+					</c:when>
+					<c:otherwise>
+						<span style="margin-top: 45px; font-size: 15px">(${TRC })</span>
+					</c:otherwise>
+					</c:choose>
+					
 												<!-- -- -->
 				</div>
 				<div class="row feat_top">
