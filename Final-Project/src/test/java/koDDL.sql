@@ -8,6 +8,7 @@ DROP sequence ko_board_comment_seq;
 DROP TABLE ko_restaurant cascade constraint;
 DROP sequence ko_restaurant_no_seq;
 DROP TABLE ko_my_pick;
+DROP sequence ko_my_pick_seq;
 DROP TABLE ko_review;
 DROP sequence ko_review_seq;
 DROP TABLE ko_reservation;
@@ -89,13 +90,15 @@ CREATE sequence ko_restaurant_no_seq;
 select * from ko_restaurant
 --6. 찜 테이블
 CREATE TABLE ko_my_pick(
-   id VARCHAR2(100) not null,
-   res_no number not null,
-   res_pick_date date not null,
-   CONSTRAINT ko_my_pick PRIMARY KEY (id, res_no),
-   CONSTRAINT ko_pick_id foreign key(id) references ko_member(id) on delete cascade,
-   CONSTRAINT ko_pick_resno foreign key(res_no) references ko_restaurant(res_no) on delete cascade
+	pick_no number primary key,
+    id VARCHAR2(100) not null,
+    res_no number not null,
+    CONSTRAINT ko_pick_id foreign key(id) references ko_member(id) on delete cascade,
+    CONSTRAINT ko_pick_resno foreign key(res_no) references ko_restaurant(res_no) on delete cascade
 )
+CREATE sequence ko_my_pick_seq;
+
+select * from KO_MY_PICK
 
 --7. 예약 테이블
 CREATE TABLE ko_reservation(

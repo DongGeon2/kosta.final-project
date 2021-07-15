@@ -111,18 +111,19 @@
 		</div> --%>
 		<!-- search button -->
 		<nav class="navbar navbar-expand-lg stroke">
-					<div class="search-right ml-lg-3">
-						<form id="createAuthForm" class="search-box position-relative">
-							<div class="input-search">
-								<input type="search" placeholder="Member ID" name="id"
-									required="required" autofocus="" class="search-popup">
-							</div>
-							<button type="submit" class="btn search-btn">
-								<i class="fa fa-search" aria-hidden="true"></i>
-							</button>
-						</form>
+			<div class="container-fluid">
+			<div class="search-right ml-lg-3">
+				<form id="createAuthForm" class="search-box position-relative">
+					<div class="input-search">
+						<input type="search" placeholder="Member ID" name="id" required="required" autofocus="" class="search-popup">
 					</div>
-					</nav>
+					<button type="submit" class="btn search-btn">
+						<i class="fa fa-search" aria-hidden="true"></i>
+					</button>
+				</form>
+			</div>
+			</div>
+		</nav>
 		<!-- //search button -->
 		<select name="authority">
 			<option value="ROLE_OWNER">사장님</option>		

@@ -1,19 +1,19 @@
-package org.kosta.myproject.model.mapper;
+package org.kosta.myproject.service;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Mapper;
 import org.kosta.myproject.model.vo.MyPickVO;
 
-@Mapper
-public interface MyPickMapper {
+public interface MyPickService {
 
    int addMyPick(String id, String resNo);
+   
+   void addMyPick2(String id, String resNo);
 
    List<MyPickVO> findMyPickListById(String id);
 
    int deleteMyPickByIdAndResNo(String id, String resNo);
 
-   
+   void deleteMyPickByIdAndResNo2(String id, String resNo);
 
 }

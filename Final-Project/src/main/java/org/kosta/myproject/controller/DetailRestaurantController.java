@@ -40,13 +40,13 @@ public class DetailRestaurantController {
 		RestaurantVO restaurantVO = restaurantService.findRestaurantByResNo(resNo);
 		model.addAttribute("restaurantVO", restaurantVO);
 
-		/** 별점 평균 **//*
-						 * String avg = reviewService.getAvgStar(resNo); double resultAvgStar =
-						 * Double.parseDouble(avg); resultAvgStar = Math.round(resultAvgStar * 10) /
-						 * 10.0; model.addAttribute("avgReviewGrade", resultAvgStar);
-						 * System.out.println("리뷰 평점:" + resultAvgStar);
-						 */
-
+		/** 별점 평균 **/			  
+		String avg = reviewService.getAvgStar(resNo); 
+		double resultAvgStar = Double.parseDouble(avg); 
+		resultAvgStar = Math.round(resultAvgStar * 10) / 10.0; 
+		model.addAttribute("avgReviewGrade", resultAvgStar);
+		System.out.println("리뷰 평점:" + resultAvgStar);
+						 
 		/** 리뷰 목록 및 페이징 **/
 		int totalReviewCount = reviewService.getTotalReviewCount(resNo);
 		PagingBean pagingBean = null;
