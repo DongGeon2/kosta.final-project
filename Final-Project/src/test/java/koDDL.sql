@@ -97,7 +97,7 @@ CREATE TABLE ko_my_pick(
     CONSTRAINT ko_pick_resno foreign key(res_no) references ko_restaurant(res_no) on delete cascade
 )
 CREATE sequence ko_my_pick_seq;
-
+SELECT * FROM ko_my_pick where id='1234'
 select * from KO_MY_PICK
 
 --7. 예약 테이블

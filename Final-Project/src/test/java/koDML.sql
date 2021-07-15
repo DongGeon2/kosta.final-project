@@ -84,3 +84,9 @@ delete from ko_review where review_grade='4'
 SELECT board_no,title,hits,time_posted,id
 FROM ko_board 
 WHERE id='1234'
+--------------------------------------------------------------------
+SELECT * FROM KO_MY_PICK
+
+SELECT r.res_no, r.res_image, r.res_name, p.id, r.res_loc,r.start_time,r.end_time
+FROM ko_my_pick p, ko_restaurant r 
+WHERE p.res_no=r.res_no AND id='1234'

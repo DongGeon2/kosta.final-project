@@ -9,7 +9,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       <result property="restaurantVO.resName" column="res_name"/>
       <result property="restaurantVO.resLoc" column="res_loc"/>
       <result property="restaurantVO.resImage" column="res_image"/>
-      <result property="restaurantVO.resTel" column="res_tel"></result>
+      <result property="restaurantVO.resTel" column="res_tel"/>
+      <result property="restaurantVO.startTime" column="start_time"/>
+      <result property="restaurantVO.endTime" column="end_time"/>
    </resultMap>
    <insert id="addMyPick">
       insert into ko_my_pick(pick_no,id,res_no)
@@ -17,9 +19,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    </insert>
    
    <select id="findMyPickListById" resultMap="myPickRM">
-      select pick_no, id, res_no
-      from ko_my_pick
-      where id=#{value}
+      SELECT p.res_no, r.res_image, r.res_name, p.id, r.res_loc,r.start_time,r.end_time
+      FROM ko_my_pick p, ko_restaurant r 
+      WHERE p.res_no=r.res_no AND id=#{value}
    </select>
    
    <delete id="deleteMyPick">
@@ -31,6 +33,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       delete from ko_my_pick
       where res_no=#{resNo} and id=#{id}
    </delete>
+
 </mapper>
  
  
