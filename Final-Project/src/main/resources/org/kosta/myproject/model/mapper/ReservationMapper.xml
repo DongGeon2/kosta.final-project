@@ -14,15 +14,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="res_no"  property="restaurantVO.resNo"/>
 		<result column="id" property="memberVO.id"/>
 	</resultMap>
+	
 	<select id="getReservationListByDay" resultMap="reservationRM" parameterType="string">
 		select a.rev_time, a.rev_hour, b.res_no
 		from ko_reservation a, ko_restaurant b
 		where a.res_no=b.res_no and a.rev_time=#{revTime} and b.res_no=#{resNo}
 	</select>
+	
 	<select id="getReservationListByTime" resultType="string" parameterType="string">
 		select rev_hour
 		from ko_reservation
 		where rev_time=#{value}
+	</select>
+	
+	<select id="findReservationById" resultMap="reservationRM">
+		select a.id, b.res_no
+		from ko_reservation a, ko_restaurant b
+		where a.res_no=b.res_no and a.id=#{memberId} and b.res_no=#{resNo}
+	</select>
+	
+	<select id="getReservationByIdAndResNo" resultMap="reservationRM">
+		select a.*, b.*
+		from ko_reservation a, ko_restaurant b
+		where a.res_no=b.res_no and a.id=#{id} and b.res_no=#{resNo}
 	</select>
 </mapper>
  

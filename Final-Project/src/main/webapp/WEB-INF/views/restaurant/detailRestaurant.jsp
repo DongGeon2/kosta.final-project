@@ -103,7 +103,7 @@ $(document).ready(function(){
 			<div class="col-lg-6 w3l-features-photo-7_top-right mt-lg-0 mt-sm-5 mt-4">
 				<img src="${pageContext.request.contextPath}/assets/images/blog1.jpg" class="img-responsive" alt="" />
 				
-			<!-- 	<div style="float: left; width: 25%">
+			<!-- 	<div style="float: left; width: 25%">`
 					<img src="assets/images/blog1.jpg" class="img-responsive" alt="" />
 				</div>
 				<div style="float: left; width: 25%">

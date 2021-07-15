@@ -27,4 +27,14 @@ public class ReservationServiceImpl implements ReservationService{
 	public String getReservationListByTime(String hour) {
 		return reservationMapper.getReservationListByTime(hour);
 	}
+
+	@Override
+	public List<ReservationVO> findReservationById(String memberId, String resNo) {
+		return reservationMapper.findReservationById(memberId, resNo);
+	}
+
+	@Override
+	public List<ReservationVO> getReservationByIdAndResNo(String id, String resNo) {
+		return reservationMapper.getReservationByIdAndResNo(id,resNo);
+	}
 }

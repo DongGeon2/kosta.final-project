@@ -6,10 +6,15 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.kosta.myproject.model.vo.MemberVO;
+import org.kosta.myproject.model.vo.RecordVO;
+import org.kosta.myproject.model.vo.ReservationVO;
 import org.kosta.myproject.model.vo.RestaurantVO;
 import org.kosta.myproject.model.vo.ReviewVO;
+import org.kosta.myproject.service.RecordService;
+import org.kosta.myproject.service.ReservationService;
 import org.kosta.myproject.service.ReviewService;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,10 +24,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ReviewController {
 	@Resource
 	private ReviewService reviewService;
+	@Resource
+	private ReservationService reservationService;
+	@Resource
+	private RecordService recordService;
 
 	@Secured("ROLE_MEMBER")
 	@PostMapping("/registerReview")
 	public String registerReview(String message, String id, String title, String resNo, String star1, String star2, String star3, String star4, String star5) {
+		MemberVO pvo = (MemberVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String memberId = pvo.getId();
+		
 		ArrayList<String> reviewGrade = new ArrayList<String>();
 		reviewGrade.add(star1);
 		reviewGrade.add(star2);
@@ -48,10 +60,33 @@ public class ReviewController {
 		reviewVO.setReviewGrade(grade);
 		reviewVO.setReviewContent(message);
 		reviewVO.setReviewTitle(title);
-		reviewService.registerReview(reviewVO);
-		return "redirect:/detailRestaurant?resNo=" + resNo;
+		
+		/** 리뷰 작성시 식당예약을 한사람은 예약 한번당 리뷰 한개 작성 가능 **/
+		List<RecordVO> recordList = recordService.findRecordByIdAndResNo(memberId,resNo);
+		/** 예약한 기록이 있다면 if문 실행 **/
+		if(!recordList.isEmpty()) {
+			for(int i=0; i<recordList.size(); i++) {
+				/** 작성가능할때 **/
+				if(recordList.get(i).getRecordCheck().equals("1")) {
+					reviewService.registerReview(reviewVO);
+					String recordTime = recordList.get(i).getRecordTime();
+					recordService.updateCheck(memberId,recordTime,resNo);
+					return "redirect:/detailRestaurant?resNo=" + resNo;
+				}
+			}
+		}
+		
+		/** 예약한 기록이 없을때 **/
+		return "redirect:home";
 		//detailRestaurant
 	}
+	
+	/* 식당예약했던 사람만 리뷰가능 (대신 리뷰 무제한으로씀;;)
+	 * List<ReservationVO> reservationIdAndResNo =
+	 * reservationService.findReservationById(memberId,resNo);
+	 * if(reservationIdAndResNo.isEmpty()) { return "redirect:/home"; }
+	 */
+	
 
 	/*
 	 * @Secured("ROLE_MEMBER")

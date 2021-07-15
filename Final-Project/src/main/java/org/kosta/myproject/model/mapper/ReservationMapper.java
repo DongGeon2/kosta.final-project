@@ -14,4 +14,8 @@ public interface ReservationMapper {
 
 	String getReservationListByTime(String hour);
 
+	List<ReservationVO> findReservationById(String memberId, String resNo);
+
+	List<ReservationVO> getReservationByIdAndResNo(String id, String resNo);
+
 }

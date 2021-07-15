@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.kosta.myproject.model.vo.MemberVO;
 import org.kosta.myproject.model.vo.ReservationVO;
 import org.kosta.myproject.model.vo.RestaurantVO;
+import org.kosta.myproject.service.RecordService;
 import org.kosta.myproject.service.ReservationService;
 import org.kosta.myproject.service.RestaurantService;
 import org.springframework.security.access.annotation.Secured;
@@ -22,6 +23,9 @@ public class ReservationController {
 	private ReservationService reservationService;
 	@Resource
 	private RestaurantService restaurantService;
+	@Resource
+	private RecordService recordService;
+	
 	//@PreAuthorize("hasRole('ROLE_MEMBER')")
 	@Secured("ROLE_MEMBER")
 	@RequestMapping("/doReservation")
@@ -51,7 +55,19 @@ public class ReservationController {
 		revVO.setMemberVO(mvo);
 		revVO.setRestaurantVO(resVO);
 		
-		/** 동일한날 동일한 시간에 예약 돼있으면 예약 안됨 **/
+		/** 동일한 사람이 해당날짜에 예약했다면 예약 불가 **/
+		List<ReservationVO> reservationList = reservationService.getReservationByIdAndResNo(id,resNo);
+		/** 해당아이디로 예약하려는 식당에 예약한적이 있다면 if문 실행**/
+		if(!reservationList.isEmpty()) {
+			for(int i=0; i<reservationList.size(); i++) {
+				if(reservationList.get(i).getRevTime().equals(revTime)) {
+					System.out.println("로그인한 본인이 동일한날 동일한식당에 예약한 기록이 있음.");
+					return "redirect:registerReservationFail";
+				}
+			}
+		}
+		
+		/** 서로다른 사람이 동일한날 동일한 시간에 예약 돼있으면 예약 안됨 **/
 		List<ReservationVO> reservationDayList = reservationService.getReservationListByDay(revTime,resNo);
 		for(int i=0; i<reservationDayList.size(); i++) {
 			System.out.println("날짜:"+revTime+" , " +reservationDayList.get(i).getRevTime());
@@ -62,8 +78,10 @@ public class ReservationController {
 			}
 		}
 		
-		System.out.println("예약등록"+revVO);
+		/** recordService는 식당예약한 사람이 그식당에 리뷰한번 쓸수 있게 도와줌 **/
+		recordService.registerRecordMember(id,revTime,resNo);
 		reservationService.registerReservation(revVO);
+		System.out.println("예약등록"+revVO);
 		return "redirect:registerReservationResult?memberId=" + id + "&resNo=" + resVO.getResNo() + "&revTime="
 				+ revVO.getRevTime() + "&headCount=" + revVO.getHeadCount() + "&hour=" + revVO.getRevHour();
 	}
