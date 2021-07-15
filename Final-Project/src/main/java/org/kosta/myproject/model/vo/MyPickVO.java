@@ -1,41 +1,40 @@
 package org.kosta.myproject.model.vo;
 
 public class MyPickVO {
-	private String myRegdate;
-	private MemberVO memberVO;
-	private RestaurantVO restaurantVO;
-	public MyPickVO() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public MyPickVO(String myRegdate, MemberVO memberVO, RestaurantVO restaurantVO) {
-		super();
-		this.myRegdate = myRegdate;
-		this.memberVO = memberVO;
-		this.restaurantVO = restaurantVO;
-	}
-	public String getMyRegdate() {
-		return myRegdate;
-	}
-	public void setMyRegdate(String myRegdate) {
-		this.myRegdate = myRegdate;
-	}
-	public MemberVO getMemberVO() {
-		return memberVO;
-	}
-	public void setMemberVO(MemberVO memberVO) {
-		this.memberVO = memberVO;
-	}
-	public RestaurantVO getRestaurantVO() {
-		return restaurantVO;
-	}
-	public void setRestaurantVO(RestaurantVO restaurantVO) {
-		this.restaurantVO = restaurantVO;
-	}
-	@Override
-	public String toString() {
-		return "MyPickVO [myRegdate=" + myRegdate + ", memberVO=" + memberVO + ", restaurantVO=" + restaurantVO + "]";
-	}
-
-	
+   private String pickNo;
+   private String id;
+   private RestaurantVO restaurantVO;
+   public MyPickVO() {
+      super();
+      
+   }
+   public MyPickVO(String pickNo, String id, RestaurantVO restaurantVO) {
+      super();
+      this.pickNo = pickNo;
+      this.id = id;
+      this.restaurantVO = restaurantVO;
+   }
+   public String getPickNo() {
+      return pickNo;
+   }
+   public void setPickNo(String pickNo) {
+      this.pickNo = pickNo;
+   }
+   public String getId() {
+      return id;
+   }
+   public void setId(String id) {
+      this.id = id;
+   }
+   public RestaurantVO getRestaurantVO() {
+      return restaurantVO;
+   }
+   public void setRestaurantVO(RestaurantVO restaurantVO) {
+      this.restaurantVO = restaurantVO;
+   }
+   @Override
+   public String toString() {
+      return "MyPickVO [pickNo=" + pickNo + ", id=" + id + ", restaurantVO=" + restaurantVO + "]";
+   }
+   
 }

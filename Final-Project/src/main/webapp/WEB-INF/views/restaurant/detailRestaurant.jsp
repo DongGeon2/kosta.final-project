@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="sec"
    uri="http://www.springframework.org/security/tags"%>
-<c:set var="resNo" value="${restaurant.resNo }"></c:set>
+<c:set var="resNo" value="${restaurantVO.resNo }"></c:set>
 <%-- 로그인 아이디(세션) --%>
 <%-- 
 <sec:authorize access="hasRole('ROLE_MEMBER')">
@@ -23,87 +23,90 @@
 	})
 </script>
 
+												<!-- 지훈 찜기능 -->
 <script type="text/javascript">
-   $(document).ready(function() {
-         $.ajaxSetup({
-            success:function(result){               
-               alert(result);
-            },
-            error: function (jqXHR) {
-                   alert("jqXHR status code:"+jqXHR.status+" message:"+jqXHR.responseText);
-               }
-         });//ajaxSetup
-            $(".myPickStar").on("click", "img",function(){
-            //alert($(this).data("state") );
-            let stateInfo=$(this).data("state");
-            //alert(stateInfo);
-            if(stateInfo=="like"){
-               $.ajax({
-                  type:"post",
-                  data:"resNo=${resNo}",
-                  url:"${pageContext.request.contextPath}/my-pick-delete-by-id-resNo",
-                  beforeSend : function(xhr){   //데이터를 전송하기 전에 헤더에 csrf값을 설정한다
-                           xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
-                   },success:function(delResult){
-                            //alert(delResult);
-                            if(delResult == 'ok'){
-                               //alert(1);
-                               $(".myPickStar img").data("state","unlike");
-                               $(".myPickStar img").attr("src","${pageContext.request.contextPath}/assets/images/unlike.png");
-                               
-                            }
-                         }//end function
-               });   
-            }else{
-                  $.ajax({
-                        type:"post",
-                        data:"resNo=${resNo}",
-                        url:"${pageContext.request.contextPath}/my-pick-add",
-                        beforeSend : function(xhr){   //데이터를 전송하기 전에 헤더에 csrf값을 설정한다
-                              xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
-                           },success:function(addResult){
-                              //alert(addResult);
-                              if(addResult == 'ok'){
-                                 //alert(1);
-                                  $(".myPickStar img").data("state","like");
-                                  $(".myPickStar img").attr("src","${pageContext.request.contextPath}/assets/images/like.png");
-                              }
-                              }
-         }); // 좋아요 추가 click
-               }//else
-         });//onclick*/
-         /*$(".myPickStar").on("click", "img",function(){
-            let stateInfo=$(this).data("state");
-            alert(stateInfo);
-            if(stateInfo=="like"){
-               $(this).data("state","unlike");
-                   $(this).attr("src","${pageContext.request.contextPath}/assets/images/unlike.png");
-            }else{
-               $(this).data("state","like");
-                   $(this).attr("src","${pageContext.request.contextPath}/assets/images/like.png");
-            }
-         });
-         /* $(".myPickStar").on("click", "img",function(){
-            let stateInfo=$(this).data("state");
-            $.ajax({
-                  type:"post",
-                  data:"resNo=${resNo}&stateInfo=${stateInfo}",
-                  beforeSend : function(xhr){   //데이터를 전송하기 전에 헤더에 csrf값을 설정한다
-                        xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
-                     }
-            }).done(function(resultLike){ // done - success 와 동일
-                     if(resultLike=='like'){
-                        $(this).data("state","like");
-                         $(this).attr("src","${pageContext.request.contextPath}/assets/images/like.png");
-                     }else{
-                        $(this).data("state","unlike");
-                          $(this).attr("src","${pageContext.request.contextPath}/assets/images/unlike.png");
-                     }
-                  });//resultlike   
-         }); */
-         
-   });//ready function
+$(document).ready(function() {
+    $.ajaxSetup({
+       success:function(result){               
+          alert(result);
+       },
+       error: function (jqXHR) {
+              alert("jqXHR status code:"+jqXHR.status+" message:"+jqXHR.responseText);
+          }
+    });//ajaxSetup
+       $(".myPickStar").on("click", "img",function(){
+       //alert($(this).data("state") );
+       let stateInfo=$(this).data("state");
+       //alert(stateInfo);s
+       if(stateInfo=="like"){
+          $.ajax({
+             type:"post",
+             data:"resNo=${resNo}",
+             url:"${pageContext.request.contextPath}/my-pick-delete-by-id-resNo",
+             beforeSend : function(xhr){   //데이터를 전송하기 전에 헤더에 csrf값을 설정한다
+                      xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+              },success:function(delResult){
+                       //alert(delResult);
+                       if(delResult == 'ok'){
+                          //alert(1);
+                          $(".myPickStar img").data("state","unlike");
+                          $(".myPickStar img").attr("src","${pageContext.request.contextPath}/assets/images/unlike.png");
+                          
+                       }
+                    }//end function
+          });   
+       }else{
+             $.ajax({
+                   type:"post",
+                   data:"resNo=${resNo}",
+                   url:"${pageContext.request.contextPath}/my-pick-add",
+                   beforeSend : function(xhr){   //데이터를 전송하기 전에 헤더에 csrf값을 설정한다
+                         xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+                      },success:function(addResult){
+                         //alert(addResult);
+                         if(addResult == 'ok'){
+                            //alert(1);
+                             $(".myPickStar img").data("state","like");
+                             $(".myPickStar img").attr("src","${pageContext.request.contextPath}/assets/images/like.png");
+                         }
+                         }
+    }); // 좋아요 추가 click
+          }//else
+    });//onclick*/
+    /*$(".myPickStar").on("click", "img",function(){
+       let stateInfo=$(this).data("state");
+       alert(stateInfo);
+       if(stateInfo=="like"){
+          $(this).data("state","unlike");
+              $(this).attr("src","${pageContext.request.contextPath}/assets/images/unlike.png");
+       }else{
+          $(this).data("state","like");
+              $(this).attr("src","${pageContext.request.contextPath}/assets/images/like.png");
+       }
+    });
+    /* $(".myPickStar").on("click", "img",function(){
+       let stateInfo=$(this).data("state");
+       $.ajax({
+             type:"post",
+             data:"resNo=${resNo}&stateInfo=${stateInfo}",
+             beforeSend : function(xhr){   //데이터를 전송하기 전에 헤더에 csrf값을 설정한다
+                   xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+                }
+       }).done(function(resultLike){ // done - success 와 동일
+                if(resultLike=='like'){
+                   $(this).data("state","like");
+                    $(this).attr("src","${pageContext.request.contextPath}/assets/images/like.png");
+                }else{
+                   $(this).data("state","unlike");
+                     $(this).attr("src","${pageContext.request.contextPath}/assets/images/unlike.png");
+                }
+             });//resultlike   
+    }); */
+});//ready function
+</script>
 
+									<!-- 동건 별점기능 -->
+<script type="text/javascript">
    <!-- 별점 javascript -->
    $(document).ready(function(){
       $("#s1").click(function(){
@@ -216,7 +219,7 @@
 			<div class="col-lg-6 w3l-features-photo-7_top-left pl-lg-4">
 				<div class="waviy">		
 					<span style="-i: 1">${restaurant.resName}</span>
-					<sec:authorize access="hasRole('ROLE_MEMBER')">
+				<sec:authorize access="hasRole('ROLE_MEMBER')">
                   <span class="myPickStar"> 
                   	<c:choose>
                         <c:when test="${flag==true}">
@@ -281,6 +284,7 @@
 				</div>
 				<a href="/doReservation?resName=${restaurantVO.resName}&resNo=${restaurantVO.resNo}&startTime=${restaurantVO.startTime}&endTime=${restaurantVO.endTime}" 
 				class="btn btn-style mt-5 ml-5">예약하러 가기</a>
+				
 			</div>
 		</div>
 	</div>
