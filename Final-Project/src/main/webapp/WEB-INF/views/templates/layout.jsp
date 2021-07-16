@@ -32,6 +32,10 @@ href="${pageContext.request.contextPath}/resources/css/home2.css" > --%>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	
+	<!-- 카카오 지도API -->
+  	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0848401af297f632daecd407571ff3f9&libraries=services,clusterer,drawing"></script>
+  	<!-- 카카오 지도API -->
+	
 	<!-- Js scripts -->
     <!-- move top -->
     <button onclick="topFunction()" id="movetop" title="Go to top">
