@@ -38,10 +38,7 @@
 			   <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/restaurant ">restaurant</a></li>
                <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/recommend">recommend</a></li>
                <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/board">Board</a></li>
-               <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/owner">사장권한</a></li>
-               <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin">관리자권한</a></li>
-               <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/admin">관리자권한</a></li>
-					<sec:authorize access="isAuthenticated()==false">
+              	<sec:authorize access="isAuthenticated()==false">
 						<li class="nav-item"><a class="nav-link"
 							href="${pageContext.request.contextPath}/login">Login</a></li>
 						<sec:csrfInput />

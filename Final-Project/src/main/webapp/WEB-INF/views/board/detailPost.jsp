@@ -54,6 +54,11 @@
                         <a href="${pageContext.request.contextPath}/deletePosting?boardNo=${viewDetailPost.boardNo}" class="name mt-2">게시물
                            삭제</a>
                            </c:if>
+                       <sec:authentication property="principal.id" var="memberId"/>
+                     <sec:authorize access="hasRole('ROLE_ADMIN')">
+                      <a href="${pageContext.request.contextPath}/deletePosting?boardNo=${viewDetailPost.boardNo}" class="name mt-2">게시물
+                           삭제</a>
+                     </sec:authorize>
 				</nav>
                     
                     <!-- 게시판댓글 -->
