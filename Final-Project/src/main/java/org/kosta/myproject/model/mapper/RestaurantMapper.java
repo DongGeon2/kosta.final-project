@@ -12,9 +12,9 @@ public interface RestaurantMapper {
 
 	ArrayList<RestaurantVO> getReataurantList(int getStartRowNumber, int getEndRowNumber);
 
-	List<RestaurantVO> findRestaurantByName(String resName);
+	List<RestaurantVO> findRestaurantByName(String resName, int getStartRowNumber, int getEndRowNumber);
 
-	List<RestaurantVO> findRestaurantByMainBar(String foodType, String resLoc);
+	List<RestaurantVO> findRestaurantByMainBar(String foodType, String resLoc, int getStartRowNumber, int getEndRowNumber);
 	
 	public int getTotalList();
 	
@@ -23,6 +23,12 @@ public interface RestaurantMapper {
 	RestaurantVO findRestaurantByResNo(String resNo);
 	
 	void registerResForm(RestaurantVO rvo);
+
+	public int getTotalSearchList(String resName);
+
+	public int getTotalSearchMainBarList(String foodType, String resLoc);
+
+	ArrayList<RestaurantVO> getRestaurantListHome();
 
 }
 

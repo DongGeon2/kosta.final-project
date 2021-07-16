@@ -27,33 +27,59 @@ public class RestaurantController {
 
 	/** 검색 **/
 	@RequestMapping("/findRestaurantByName")
-	public String findRestaurantByName(String resName, Model model) {
-		List<RestaurantVO> list = restaurantService.findRestaurantByName(resName);
-		System.out.println(list);
+	public String findRestaurantByName(String resName, Model model, String pageNo) {
+		int totalPostcount = restaurantService.getTotalSearchCount(resName);
+		System.out.println(totalPostcount);
+		PagingBean pagingBean = null;
+
+		if (pageNo == null) {
+			pagingBean = new PagingBean(totalPostcount);
+		} else {
+			pagingBean = new PagingBean(totalPostcount, Integer.parseInt(pageNo));
+		}
+		model.addAttribute("pagingBean", pagingBean);
+		
+		List<RestaurantVO> list = restaurantService.findRestaurantByName(resName, pagingBean);
 		if (list == null)
 			return "restaurant/search_fail.tiles";
 		else {
 			model.addAttribute("restaurantList", list);
+			//test
+			model.addAttribute("pagingUrl", "/findRestaurantByName?resName="+resName+"&");
 			return "recommend.tiles";
 		}
 	}
 
 	/** 검색 **/
 
+	
 	/** 메인바검색 **/
 	@RequestMapping("/findRestaurantByMainBar")
-	public String findRestaurantByMainBar(String foodType, String resLoc, Model model) {
-		List<RestaurantVO> list = restaurantService.findRestaurantByMainBar(foodType, resLoc);
-		System.out.println(list);
+	public String findRestaurantByMainBar(String foodType, String resLoc, Model model, String pageNo) {
+		int totalPostcount = restaurantService.getTotalSearchMainBarCount(foodType,resLoc);
+		PagingBean pagingBean = null;
+
+		if (pageNo == null) {
+			pagingBean = new PagingBean(totalPostcount);
+		} else {
+			pagingBean = new PagingBean(totalPostcount, Integer.parseInt(pageNo));
+		}
+		model.addAttribute("pagingBean", pagingBean);
+
+		List<RestaurantVO> list = restaurantService.findRestaurantByMainBar(foodType, resLoc, pagingBean);
 		if (list == null)
 			return "restaurant/search_fail.tiles";
 		else {
 			model.addAttribute("restaurantList", list);
+			model.addAttribute("pagingUrl", "/findRestaurantByMainBar?foodType="+foodType+"&resLoc="+resLoc+"&");
 			return "recommend.tiles";
 		}
 	}
 
 	/** 메인바검색 **/
+
+	
+	
 	
 	/** 추천상세 **/
 	@RequestMapping("/recommend")
@@ -69,9 +95,8 @@ public class RestaurantController {
 		model.addAttribute("pagingBean", pagingBean);
 		ArrayList<RestaurantVO> restaurantList = restaurantService.getRestaurantList(pagingBean);
 		model.addAttribute("restaurantList", restaurantList);
-		for(int i=0; i<restaurantList.size(); i++) {
-			System.out.println(restaurantList.get(i));
-		}
+		model.addAttribute("pagingUrl", "/recommend?");
+		
 		/** 동건 **/
 		//List<RestaurantVO> detailRes = restaurantService.getDetailRestaurant();
 		//model.addAttribute("detailRes", detailRes);
