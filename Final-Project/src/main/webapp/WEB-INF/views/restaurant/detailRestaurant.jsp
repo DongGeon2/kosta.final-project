@@ -3,89 +3,110 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="sec"
    uri="http://www.springframework.org/security/tags"%>
-<c:set var="resNo" value="${resTotal.resNo }"></c:set>
+<c:set var="resNo" value="${restaurantVO.resNo }"></c:set>
+<%-- 로그인 아이디(세션) --%>
+<%-- 
+<sec:authorize access="hasRole('ROLE_MEMBER')">
+	<sec:authentication var="loginUser" property="principal.id" />
+</sec:authorize>
+ --%>
+ <script type="text/javascript">
+	$(document).ready(function() {
+		//alert(1);
+		$("#navbarTogglerDemo02 li a[href*=about]").parent().addClass("active");
+		/*
+		$("#navbarTogglerDemo02 li").click(function() {
+			$(this).addClass("active");
+			alert($(this).text());
+		})
+		 */
+	})
+</script>
 
+												<!-- 지훈 찜기능 -->
 <script type="text/javascript">
-   $(document).ready(function() {
-         $.ajaxSetup({
-            success:function(result){               
-               alert(result);
-            },
-            error: function (jqXHR) {
-                   alert("jqXHR status code:"+jqXHR.status+" message:"+jqXHR.responseText);
-               }
-         });//ajaxSetup
-            $(".myPickStar").on("click", "img",function(){
-            //alert($(this).data("state") );
-            let stateInfo=$(this).data("state");
-            //alert(stateInfo);
-            if(stateInfo=="like"){
-               $.ajax({
-                  type:"post",
-                  data:"resNo=${resNo}",
-                  url:"${pageContext.request.contextPath}/my-pick-delete-by-id-resNo",
-                  beforeSend : function(xhr){   //데이터를 전송하기 전에 헤더에 csrf값을 설정한다
-                           xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
-                   },success:function(delResult){
-                            //alert(delResult);
-                            if(delResult == 'ok'){
-                               //alert(1);
-                               $(".myPickStar img").data("state","unlike");
-                               $(".myPickStar img").attr("src","${pageContext.request.contextPath}/assets/images/unlike.png");
-                               
-                            }
-                         }//end function
-               });   
-            }else{
-                  $.ajax({
-                        type:"post",
-                        data:"resNo=${resNo}",
-                        url:"${pageContext.request.contextPath}/my-pick-add",
-                        beforeSend : function(xhr){   //데이터를 전송하기 전에 헤더에 csrf값을 설정한다
-                              xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
-                           },success:function(addResult){
-                              //alert(addResult);
-                              if(addResult == 'ok'){
-                                 //alert(1);
-                                  $(".myPickStar img").data("state","like");
-                                  $(".myPickStar img").attr("src","${pageContext.request.contextPath}/assets/images/like.png");
-                              }
-                              }
-         }); // 좋아요 추가 click
-               }//else
-         });//onclick*/
-         /*$(".myPickStar").on("click", "img",function(){
-            let stateInfo=$(this).data("state");
-            alert(stateInfo);
-            if(stateInfo=="like"){
-               $(this).data("state","unlike");
-                   $(this).attr("src","${pageContext.request.contextPath}/assets/images/unlike.png");
-            }else{
-               $(this).data("state","like");
-                   $(this).attr("src","${pageContext.request.contextPath}/assets/images/like.png");
-            }
-         });
-         /* $(".myPickStar").on("click", "img",function(){
-            let stateInfo=$(this).data("state");
-            $.ajax({
-                  type:"post",
-                  data:"resNo=${resNo}&stateInfo=${stateInfo}",
-                  beforeSend : function(xhr){   //데이터를 전송하기 전에 헤더에 csrf값을 설정한다
-                        xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
-                     }
-            }).done(function(resultLike){ // done - success 와 동일
-                     if(resultLike=='like'){
-                        $(this).data("state","like");
-                         $(this).attr("src","${pageContext.request.contextPath}/assets/images/like.png");
-                     }else{
-                        $(this).data("state","unlike");
-                          $(this).attr("src","${pageContext.request.contextPath}/assets/images/unlike.png");
-                     }
-                  });//resultlike   
-         }); */
-         
-   });//ready function
+$(document).ready(function() {
+    $.ajaxSetup({
+       success:function(result){               
+          alert(result);
+       },
+       error: function (jqXHR) {
+              alert("jqXHR status code:"+jqXHR.status+" message:"+jqXHR.responseText);
+          }
+    });//ajaxSetup
+       $(".myPickStar").on("click", "img",function(){
+       //alert($(this).data("state") );
+       let stateInfo=$(this).data("state");
+       //alert(stateInfo);s
+       if(stateInfo=="like"){
+          $.ajax({
+             type:"post",
+             data:"resNo=${resNo}",
+             url:"${pageContext.request.contextPath}/my-pick-delete-by-id-resNo",
+             beforeSend : function(xhr){   //데이터를 전송하기 전에 헤더에 csrf값을 설정한다
+                      xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+              },success:function(delResult){
+                       //alert(delResult);
+                       if(delResult == 'ok'){
+                          //alert(1);
+                          $(".myPickStar img").data("state","unlike");
+                          $(".myPickStar img").attr("src","${pageContext.request.contextPath}/assets/images/unlike.png");
+                          
+                       }
+                    }//end function
+          });   
+       }else{
+             $.ajax({
+                   type:"post",
+                   data:"resNo=${resNo}",
+                   url:"${pageContext.request.contextPath}/my-pick-add",
+                   beforeSend : function(xhr){   //데이터를 전송하기 전에 헤더에 csrf값을 설정한다
+                         xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+                      },success:function(addResult){
+                         //alert(addResult);
+                         if(addResult == 'ok'){
+                            //alert(1);
+                             $(".myPickStar img").data("state","like");
+                             $(".myPickStar img").attr("src","${pageContext.request.contextPath}/assets/images/like.png");
+                         }
+                         }
+    }); // 좋아요 추가 click
+          }//else
+    });//onclick*/
+    /*$(".myPickStar").on("click", "img",function(){
+       let stateInfo=$(this).data("state");
+       alert(stateInfo);
+       if(stateInfo=="like"){
+          $(this).data("state","unlike");
+              $(this).attr("src","${pageContext.request.contextPath}/assets/images/unlike.png");
+       }else{
+          $(this).data("state","like");
+              $(this).attr("src","${pageContext.request.contextPath}/assets/images/like.png");
+       }
+    });
+    /* $(".myPickStar").on("click", "img",function(){
+       let stateInfo=$(this).data("state");
+       $.ajax({
+             type:"post",
+             data:"resNo=${resNo}&stateInfo=${stateInfo}",
+             beforeSend : function(xhr){   //데이터를 전송하기 전에 헤더에 csrf값을 설정한다
+                   xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+                }
+       }).done(function(resultLike){ // done - success 와 동일
+                if(resultLike=='like'){
+                   $(this).data("state","like");
+                    $(this).attr("src","${pageContext.request.contextPath}/assets/images/like.png");
+                }else{
+                   $(this).data("state","unlike");
+                     $(this).attr("src","${pageContext.request.contextPath}/assets/images/unlike.png");
+                }
+             });//resultlike   
+    }); */
+});//ready function
+</script>
 
+									<!-- 동건 별점기능 -->
+<script type="text/javascript">
    <!-- 별점 javascript -->
    $(document).ready(function(){
       $("#s1").click(function(){
@@ -174,33 +195,33 @@
 <c:set var="restaurant" value="${restaurantVO}"></c:set>
 <!-- about section -->
 <section class="w3l-features-photo-7 py-5">
-   <div class="container py-md-5 py-4">
-      <div class="row w3l-features-photo-7_top align-items-start">
-         <div
-            class="col-lg-6 w3l-features-photo-7_top-right mt-lg-0 mt-sm-5 mt-4">
-            <img src="ResUpload/${restaurant.resImage}" class="img-responsive"
-               alt="" />
-
-            <!--    <div style="float: left; width: 25%">
-               <img src="assets/images/blog1.jpg" class="img-responsive" alt="" />
-            </div>
-            <div style="float: left; width: 25%">
-               <img src="assets/images/blog1.jpg" class="img-responsive" alt="" />
-            </div>
-            <div style="float: left; width: 25%">
-               <img src="assets/images/blog1.jpg" class="img-responsive" alt="" />
-            </div>
-            <div style="float: left; width: 25%">
-               <img src="assets/images/blog1.jpg" class="img-responsive" alt="" />
-            </div> -->
-
-         </div>
-         <div class="col-lg-6 w3l-features-photo-7_top-left pl-lg-4">
-            <div class="waviy">
-               <span hidden="" style="color: white;" id="resNo">${restaurant.resNo }
-               </span> <span style="-i: 1">${restaurant.resName } </span>
-               <sec:authorize access="hasRole('ROLE_MEMBER')">
-                  <span class="myPickStar"> <c:choose>
+	<div class="container py-md-5 py-4">
+		<div class="row w3l-features-photo-7_top align-items-start">
+			<div class="col-lg-6 w3l-features-photo-7_top-right mt-lg-0 mt-sm-5 mt-4">
+                <input type="hidden" name="resNo" value="${restaurant.resNo }">
+				<img src="ResUpload/${restaurant.resImage}" class="img-responsive" alt="" 
+				style="display: block; width: 600px;"/>
+				
+			<!-- 	<div style="float: left; width: 25%">`
+					<img src="assets/images/blog1.jpg" class="img-responsive" alt="" />
+				</div>
+				<div style="float: left; width: 25%">
+					<img src="assets/images/blog1.jpg" class="img-responsive" alt="" />
+				</div>
+				<div style="float: left; width: 25%">
+					<img src="assets/images/blog1.jpg" class="img-responsive" alt="" />
+				</div>
+				<div style="float: left; width: 25%">
+					<img src="assets/images/blog1.jpg" class="img-responsive" alt="" />
+				</div> -->
+				
+			</div>
+			<div class="col-lg-6 w3l-features-photo-7_top-left pl-lg-4">
+				<div class="waviy">		
+					<span style="-i: 1">${restaurant.resName}</span>
+				<sec:authorize access="hasRole('ROLE_MEMBER')">
+                  <span class="myPickStar"> 
+                  	<c:choose>
                         <c:when test="${flag==true}">
                            <img data-state="like"
                               src="${pageContext.request.contextPath}/assets/images/like.png"
@@ -210,58 +231,63 @@
                            <img data-state="unlike"
                               src="${pageContext.request.contextPath}/assets/images/unlike.png"
                               alt="" class="img-fluid like" id="halfMyPickIcon">
-
                         </c:otherwise>
                      </c:choose>
                   </span>
                </sec:authorize>
-
-            </div>
-            <div class="d-flex align-items-center mt-3">
-               <h6 style="font-size: 20px;">
-                  <i class="fa fa-clock-o mr-1" aria-hidden="true"></i>
-                  ${restaurant.startTime} pm - ${restaurant.endTime} pm
-               </h6>
-               <h6 class="ml-5" style="font-size: 20px;">
-                  <i class="fa fa-calendar mr-2" aria-hidden="true"></i>Dec 31
-               </h6>
-            </div>
-            <p class="pt-lg-4" style="font-weight: bold; font-size: 25px;"
-               align="justify">${restaurant.resInfo}</p>
-            <p style="font-size: 15px; font-weight: bold;">${restaurant.foodType}
-               || ${restaurant.resTel}</p>
-            <div class="row feat_top">
-               <div class="col-auto w3l-features-photo-8-box pt-lg-4">
-                  <img src="${pageContext.request.contextPath}/assets/images/별.png"
-                     alt="" class="img-fluid pt-5 pb-5 pr-sm-0">
-                  <!-- <p>In a diam et dui, orci urna. Donec sed tempus enims.</p> -->
-               </div>
-               <!-- 별점 -->
-               <span style="margin-top: 32px; font-size: 30px; color: orange">4.8</span>
-               <span style="margin-top: 45px; font-size: 15px">(${totalReviewCount })</span>
-               <!-- -- -->
-            </div>
-            <div class="row feat_top">
-               <div class="col-auto w3l-features-photo-8-box pt-lg-4"></div>
-            </div>
-            <div class="row feat_top">
-               <div class="col-auto w3l-features-photo-9-box">
-                  <img src="${pageContext.request.contextPath}/assets/images/해.png"
-                     alt="" class="img-fluid">
-               </div>
-               <span style="margin-top: 5px; font-size: 15px">점심3만원</span>
-               <div class="col-auto w3l-features-photo-9-box">
-                  <img src="${pageContext.request.contextPath}/assets/images/달.png"
-                     alt="" class="img-fluid">
-               </div>
-               <span class="mb-5" style="margin-top: 5px; font-size: 15px">저녁7만원</span>
-            </div>
-            <a
-               href="/doReservation?resName=${restaurantVO.resName}&resNo=${restaurantVO.resNo}"
-               class="btn btn-style mt-5 ml-5">예약하러 가기</a>
-         </div>
-      </div>
-   </div>
+				</div>
+				<div class="d-flex align-items-center mt-3">
+                	<h6 style="font-size: 20px;"><i class="fa fa-clock-o mr-1" aria-hidden="true"></i> ${restaurant.startTime} pm - ${restaurant.endTime} pm</h6>
+                    <h6 class="ml-5" style="font-size: 20px;"><i class="fa fa-calendar mr-2" aria-hidden="true"></i>Dec 31</h6>
+                </div>
+				<p class="pt-lg-4" style="font-weight: bold; font-size: 25px;" align="justify">${restaurant.resInfo}</p>
+				<p style="font-size: 15px; font-weight: bold;">${restaurant.foodType} || ${restaurant.resTel}</p>
+				<div class="row feat_top">
+					<div class="col-auto w3l-features-photo-8-box pt-lg-4">
+						<%-- <img src="${pageContext.request.contextPath}/assets/images/별.png" alt="" class="img-fluid pt-5 pb-5 pr-sm-0"> --%>
+						<c:choose>
+						<c:when test="${avgReviewGrade!=0 }">
+						<i class="fas fa-star fa-4x pt-5 pb-5 pr-sm-0 img-fluid" style="color:orange "></i>
+						</c:when>
+						<c:otherwise>
+						<i class="far fa-star fa-4x pt-5 pb-5 pr-sm-0 img-fluid" style="color:orange "></i>
+						</c:otherwise>
+						</c:choose>
+						<!-- <p>In a diam et dui, orci urna. Donec sed tempus enims.</p>#F05522 -->
+					</div>
+												<!-- 별점 -->
+					<span style="margin-top: 32px; font-size: 30px; color: orange">${avgReviewGrade }/</span>
+					<span style="margin-top: 38px; font-size: 22px; color: orange">5.0</span>
+					
+								<!-- 후기 개수 -->
+					<c:set var="TRC" value="${totalReviewCount }"></c:set>
+					<c:choose>
+					<c:when test="${TRC == null }">
+						<span style="margin-top: 45px; font-size: 15px">(0)</span>
+					</c:when>
+					<c:otherwise>
+						<span style="margin-top: 45px; font-size: 15px">(${TRC })</span>
+					</c:otherwise>
+					</c:choose>
+					
+												<!-- -- -->
+				</div>
+				<div class="row feat_top">
+					<div class="col-auto w3l-features-photo-9-box">
+						<img src="${pageContext.request.contextPath}/assets/images/해.png" alt="" class="img-fluid">
+					</div>
+					<span style="margin-top: 5px; font-size: 15px" >점심3만원</span>
+					<div class="col-auto w3l-features-photo-9-box">
+						<img src="${pageContext.request.contextPath}/assets/images/달.png" alt="" class="img-fluid">
+					</div>
+					<span class="mb-5" style="margin-top: 5px; font-size: 15px">저녁7만원</span>
+				</div>
+				<a href="/doReservation?resName=${restaurantVO.resName}&resNo=${restaurantVO.resNo}&startTime=${restaurantVO.startTime}&endTime=${restaurantVO.endTime}" 
+				class="btn btn-style mt-5 ml-5">예약하러 가기</a>
+				
+			</div>
+		</div>
+	</div>
 </section>
 <!-- //about section -->
 
@@ -289,7 +315,7 @@
 	                  </div>    
                   </div>
                   <textarea name="message" required="required"
-                     placeholder="Write your comments here"></textarea>
+                     placeholder="Please make a reservation and write a review."></textarea>
                   <div class="text-right">
                      <button class="btn btn-primary btn-style" type="submit">Post
                         review</button>
@@ -313,9 +339,14 @@
                             </div>
                         </div> -->
          <!-- ----------------------------리뷰 작성된거 보는 곳---------------------------- -->
-
+		
+		 <c:set var="check" value="${reviewList }"></c:set>
+         
          <div class="comments">
              <h3 class="post-content-title">Review</h3>
+            
+            <c:choose>
+            <c:when test="${check!=null }">
             <c:forEach var="review" items="${reviewList }">
             <div class="media mt-4 bod-1">
                    <div class="img-circle">
@@ -406,9 +437,15 @@
 
                </ul>
             </div>
-
+	
             <!-- pagination -->
-
+            </c:when>
+            <c:otherwise>
+            	<br><br>
+            	<p align="center">Created review does not exist.</p>
+            	<p align="center">Book a restaurant and leave a review!</p>
+            </c:otherwise>
+			</c:choose>
          </div>
 
 

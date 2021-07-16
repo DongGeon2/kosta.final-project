@@ -77,16 +77,16 @@ public class ReviewController {
 		}
 		
 		/** 예약한 기록이 없을때 **/
-		return "redirect:home";
+		return "redirect:reviewFail?id="+id;
 		//detailRestaurant
 	}
 	
-	/* 식당예약했던 사람만 리뷰가능 (대신 리뷰 무제한으로씀;;)
-	 * List<ReservationVO> reservationIdAndResNo =
-	 * reservationService.findReservationById(memberId,resNo);
-	 * if(reservationIdAndResNo.isEmpty()) { return "redirect:/home"; }
-	 */
-	
+	@Secured("ROLE_MEMBER")
+	@RequestMapping("reviewFail")
+	public String reviewFail(String id, Model model) {
+		model.addAttribute("id", id);
+		return "restaurant/review-fail";
+	}
 
 	/*
 	 * @Secured("ROLE_MEMBER")

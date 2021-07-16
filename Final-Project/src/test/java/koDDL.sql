@@ -86,8 +86,8 @@ CREATE sequence ko_restaurant_no_seq;
 --alter table ko_restaurant add start_time;
 --alter table ko_restaurant add end_time;
 
-
 select * from ko_restaurant
+
 --6. 찜 테이블
 CREATE TABLE ko_my_pick(
 	pick_no number primary key,
@@ -99,6 +99,9 @@ CREATE TABLE ko_my_pick(
 CREATE sequence ko_my_pick_seq;
 SELECT * FROM ko_my_pick where id='1234'
 select * from KO_MY_PICK
+
+drop table ko_my_pick
+drop sequence ko_my_pick_seq;
 
 --7. 예약 테이블
 CREATE TABLE ko_reservation(

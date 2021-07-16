@@ -48,13 +48,18 @@
 
                         </div>
                     </div>
-                    <nav class="post-navigation row">
+                  <nav class="post-navigation row">
                         <sec:authentication property="principal.id" var="memberId"/>
                      <c:if test="${viewDetailPost.memberVO.id==memberId}">
                         <a href="${pageContext.request.contextPath}/deletePosting?boardNo=${viewDetailPost.boardNo}" class="name mt-2">게시물
                            삭제</a>
                            </c:if>
-				</nav>
+                       <sec:authentication property="principal.id" var="memberId"/>
+                     <sec:authorize access="hasRole('ROLE_ADMIN')">
+                      <a href="${pageContext.request.contextPath}/deletePosting?boardNo=${viewDetailPost.boardNo}" class="name mt-2">게시물
+                           삭제</a>
+                     </sec:authorize>
+            </nav>
                     
                     <!-- 게시판댓글 -->
                     <c:forEach items="${commentList}" var="comment">

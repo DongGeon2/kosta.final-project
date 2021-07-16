@@ -29,15 +29,15 @@
 	<div class="text-6-mian bottom-space py-5">
 		<div class="container py-md-5 py-4">
 			<div class="waviy text-center mb-sm-5 mb-4 pb-lg-4">
-				<span style="--i: 1">R</span> 
-				<span style="--i: 2">e</span> 
-				<span style="--i: 3">c</span> 
-				<span style="--i: 4">o</span> 
-				<span style="--i: 5">m</span> 
-				<span style="--i: 6">m</span> 
-				<span style="--i: 7">e</span> 
-				<span style="--i: 8">n</span> 
-				<span style="--i: 1">d</span>
+				<span style="-i: 1">R</span> 
+				<span style="-i: 2">e</span> 
+				<span style="-i: 3">c</span> 
+				<span style="-i: 4">o</span> 
+				<span style="-i: 5">m</span> 
+				<span style="-i: 6">m</span> 
+				<span style="-i: 7">e</span> 
+				<span style="-i: 8">n</span> 
+				<span style="-i: 1">d</span>
 			</div>
 
 			<div class="waviy text-center mb-sm-5 mb-4 pb-lg-4">
@@ -74,7 +74,7 @@
 							<div class="card-header p-0 position-relative">
 								<a href="/detailRestaurant?resNo=${restaurant.resNo}">
 									<img class="card-img-bottom d-block radius-image-full"
-									src="/ResUpload/${restaurant.resImage}" alt="Card image cap">
+									src="/ResUpload/${restaurant.resImage }" alt="Card image cap">
 								</a>
 							</div>
 							<div class="card-body blog-details" style="font-size: 15px;">
@@ -83,7 +83,7 @@
 								${restaurant.memberVO.id}<br> --%>
 								</a>
 								<div class="author align-items-center mt-3 mb-1">
-									<img src="assets/images/testi1.jpg" alt=""
+									<img src="assets/images/사장.png" alt=""
 										class="img-fluid rounded-circle" />
 									<ul class="blog-meta">
 										<li><a
@@ -115,39 +115,40 @@
 				</c:forEach>
 			</div>
 			<!-- 식당1 -->
-
+			
 			<!-- pagination -->
 			<c:set var="pb" value="${requestScope.pagingBean}"></c:set>
 			<div class="pagination-style text-center mt-5 pt-5">
 				<ul>
 					<!-- 이전 그룹일때 -->
 					<c:if test="${pb.previousPageGroup }">
-						<li><a href="countPage?pageNo=${pb.startPageOfPageGroup-1 }"
+						<li><a href="${pagingUrl}pageNo=${pb.startPageOfPageGroup-1 }"
 							class="not-allowed"> <span class="fa fa-angle-double-left"
 								aria-hidden="true"></span>
 						</a></li>
 					</c:if>
-
+					
 					<c:forEach var="page" begin="${pb.startPageOfPageGroup}"
 						end="${pb.endPageOfPageGroup}">
 						<c:choose>
 							<c:when test="${pb.nowPage==page }">
-								<li><a class="active" href="countPage?pageNo=${page }">${page }</a></li>
+								<li><a class="active" href="${pagingUrl}pageNo=${page }">${page }</a></li>
 							</c:when>
 							<c:otherwise>
-								<li><a href="countPage?pageNo=${page }">${page }</a></li>
+								<li><a href="${pagingUrl}pageNo=${page }">${page }</a></li>
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
 					<!-- 다음 그룹일때 -->
 					<c:if test="${pb.nextPageGroup }">
-						<li><a href="countPage?pageNo=${pb.endPageOfPageGroup+1 }">
+						<li><a href="${pagingUrl}pageNo=${pb.endPageOfPageGroup+1 }">
 								<span class="fa fa-angle-double-right" aria-hidden="true"></span>
 						</a></li>
 					</c:if>
 				</ul>
 			</div>
 			<!-- //pagination -->
+			
 		</div>
 	</div>
 </section>

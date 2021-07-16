@@ -62,7 +62,7 @@ public class ReservationController {
 			for(int i=0; i<reservationList.size(); i++) {
 				if(reservationList.get(i).getRevTime().equals(revTime)) {
 					System.out.println("로그인한 본인이 동일한날 동일한식당에 예약한 기록이 있음.");
-					return "redirect:registerReservationFail";
+					return "redirect:registerReservationFail?id="+id+"&revTime="+revTime;
 				}
 			}
 		}
@@ -74,7 +74,7 @@ public class ReservationController {
 			System.out.println("시간:"+hour+" , " +reservationDayList.get(i).getRevHour());
 			if(reservationDayList.get(i).getRevTime().equals(revTime) && reservationDayList.get(i).getRevHour().equals(hour)) {
 				System.out.println("예약실패");
-				return "redirect:registerReservationFail";
+				return "redirect:registerReservationFail2?id="+id+"&revTime="+revTime+"&hour="+hour;
 			}
 		}
 		
@@ -104,9 +104,20 @@ public class ReservationController {
 		return "reservation/reservation-result.tiles";
 	}
 
-	/** 예약 실패시 **/
+	/** 동일인이 동일한 식당에 같은날 다시 예약하려 할때 실패 page **/
 	@RequestMapping("registerReservationFail")
-	public String registerReservationFail() {
-		return "home.tiles";
+	public String registerReservationFail(String id, String revTime, Model model) {
+		model.addAttribute("id", id);
+		model.addAttribute("revTime", revTime);
+		return "reservation/reservation-fail";
+	}
+	
+	/** 서로다른 사람이 같은 식당의 동일한 날짜와 시간으로 예약시 실패 page **/
+	@RequestMapping("registerReservationFail2")
+	public String registerReservationFail2(String id, String revTime, String hour, Model model) {
+		model.addAttribute("id", id);
+		model.addAttribute("revTime", revTime);
+		model.addAttribute("hour", hour);
+		return "reservation/reservation-fail2";
 	}
 }
