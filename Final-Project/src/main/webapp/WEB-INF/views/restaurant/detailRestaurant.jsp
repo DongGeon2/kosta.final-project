@@ -315,7 +315,7 @@ $(document).ready(function() {
 	                  </div>    
                   </div>
                   <textarea name="message" required="required"
-                     placeholder="Write your comments here"></textarea>
+                     placeholder="Please make a reservation and write a review."></textarea>
                   <div class="text-right">
                      <button class="btn btn-primary btn-style" type="submit">Post
                         review</button>
@@ -339,9 +339,14 @@ $(document).ready(function() {
                             </div>
                         </div> -->
          <!-- ----------------------------리뷰 작성된거 보는 곳---------------------------- -->
-
+		
+		 <c:set var="check" value="${reviewList }"></c:set>
+         
          <div class="comments">
              <h3 class="post-content-title">Review</h3>
+            
+            <c:choose>
+            <c:when test="${check!=null }">
             <c:forEach var="review" items="${reviewList }">
             <div class="media mt-4 bod-1">
                    <div class="img-circle">
@@ -432,9 +437,15 @@ $(document).ready(function() {
 
                </ul>
             </div>
-
+	
             <!-- pagination -->
-
+            </c:when>
+            <c:otherwise>
+            	<br><br>
+            	<p align="center">Created review does not exist.</p>
+            	<p align="center">Book a restaurant and leave a review!</p>
+            </c:otherwise>
+			</c:choose>
          </div>
 
 
