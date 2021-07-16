@@ -92,4 +92,4 @@ SELECT * FROM KO_MY_PICK
 
 SELECT r.res_no, r.res_image, r.res_name, p.id, r.res_loc,r.start_time,r.end_time
 FROM ko_my_pick p, ko_restaurant r 
-WHERE p.res_no=r.res_no AND id='1234'
+WHERE p.res_no=r.res_no AND p.id='1234'

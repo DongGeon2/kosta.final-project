@@ -26,66 +26,78 @@
 	</section>
 </div>
 <!-- //inner banner -->
+
 <section class="w3l-text-6">
 	<div class="text-6-mian bottom-space py-5">
 		<div class="container py-md-5 py-4">
-			<div class="Yrow top-cont-grid align-items-center">
-				<sec:authorize access="hasRole('ROLE_MEMBER')">
-					<sec:csrfInput />
-					<c:forEach items="${requestScope.myPickVO}" var="pvo">
-						<%-- 	<c:forEach items="${restaurantList}" var="restaurant"> --%>
-						<div class="col-lg-4 col-md-6 item">
-							<div class="col-lg-1"></div>
-							<div class="card">
-								<div class="card-header p-0 position-relative">
-									<a href="/detailRestaurant?resNo=${pvo.restaurantVO.resNo}">
-										<img class="card-img-bottom d-block radius-image-full"
-										src="/ResUpload/${pvo.restaurantVO.resImage}"
-										alt="Card image cap">
-									</a>
-								</div>
-								<div class="card-body blog-details" style="font-size: 15px;">
-									<a href="/detailRestaurant?resNo=${pvo.restaurantVO.resNo}">
-										<span class="label-blue">${pvo.restaurantVO.resName}</span> <%-- <a href="/user/detailRestaurant?resNo=${restaurant.resNo}" class="blog-desc">
+			<div class="container py-md-5 py-4">
+				<div class="waviy text-center mb-md-5 mb-4">
+					<span style="--i: 1">M</span> 
+					<span style="--i: 2">y</span> 
+					<span style="--i: 3"></span> 
+					<span style="--i: 4">P</span> 
+					<span style="--i: 5">i</span> 
+					<span style="--i: 6">c</span> 
+					<span style="--i: 7">k</span>
+				</div>
+				<div class="Yrow top-cont-grid align-items-center">
+					<sec:authorize access="hasRole('ROLE_MEMBER')">
+						<sec:csrfInput />
+						<c:forEach items="${requestScope.myPickVO}" var="pvo">
+							<%-- 	<c:forEach items="${restaurantList}" var="restaurant"> --%>
+							<div class="col-lg-4 col-md-6 item">
+								<div class="col-lg-1"></div>
+								<div class="card">
+									<div class="card-header p-0 position-relative">
+										<a href="/detailRestaurant?resNo=${pvo.restaurantVO.resNo}">
+											<img class="card-img-bottom d-block radius-image-full"
+											src="/ResUpload/${pvo.restaurantVO.resImage}"
+											alt="Card image cap">
+										</a>
+									</div>
+									<div class="card-body blog-details" style="font-size: 15px;">
+										<a href="/detailRestaurant?resNo=${pvo.restaurantVO.resNo}">
+											<span class="label-blue">${pvo.restaurantVO.resName}</span> <%-- <a href="/user/detailRestaurant?resNo=${restaurant.resNo}" class="blog-desc">
 								${restaurant.memberVO.id}<br> --%>
-									</a>
-									<div class="author align-items-center mt-3 mb-1">
-										<img src="assets/images/testi1.jpg" alt=""
-											class="img-fluid rounded-circle" />
-										<ul class="blog-meta">
-											<li><a
-												href="/detailRestaurant?resNo=${pvo.restaurantVO.resNo}">
-													${pvo.memberVO.name}<br>
-											</a></li>
+										</a>
+										<div class="author align-items-center mt-3 mb-1">
+											<img src="assets/images/testi1.jpg" alt=""
+												class="img-fluid rounded-circle" />
+											<ul class="blog-meta">
+												<li><a
+													href="/detailRestaurant?resNo=${pvo.restaurantVO.resNo}">
+														${pvo.memberVO.name}<br>
+												</a></li>
 
-											<li class="meta-item blog-lesson">Location. <span
-												class="meta-value">${pvo.restaurantVO.resLoc}</span>
-											</li>
-											<li class="meta-item blog-lesson">Tel. <span
-												class="meta-value">${pvo.memberVO.tel}</span>
-											</li>
-											<li class="meta-item blog-lesson">
-												<!--   <span class="meta-value">게시날짜</span>. <span
+												<li class="meta-item blog-lesson">Location. <span
+													class="meta-value">${pvo.restaurantVO.resLoc}</span>
+												</li>
+												<li class="meta-item blog-lesson">Tel. <span
+													class="meta-value">${pvo.memberVO.tel}</span>
+												</li>
+												<li class="meta-item blog-lesson">
+													<!--   <span class="meta-value">게시날짜</span>. <span
                                             class="meta-value ml-2"><span class="fa fa-clock-o"></span> 2021/07/05</span> -->
-												<span class="meta-value">Operating Time :
-													${pvo.restaurantVO.startTime} ~ ${pvo.restaurantVO.endTime}</span>
-											</li>
+													<span class="meta-value">Operating Time :
+														${pvo.restaurantVO.startTime} ~
+														${pvo.restaurantVO.endTime}</span>
+												</li>
 
-										</ul>
+											</ul>
+										</div>
 									</div>
 								</div>
+								<!-- 식당 하나자리 -->
+								<br> <br> <br> <br>
 							</div>
-							<!-- 식당 하나자리 -->
-							<br> <br> <br> <br>
-						</div>
-						<div class="col-lg-1"></div>
-					</c:forEach>
-				</sec:authorize>
-			</div>
-			<!-- 식당1 -->
+							<div class="col-lg-1"></div>
+						</c:forEach>
+					</sec:authorize>
+				</div>
+				<!-- 식당1 -->
 
-			<!-- pagination -->
-			<%-- <c:set var="pb" value="${requestScope.pagingBean}"></c:set>
+				<!-- pagination -->
+				<%-- <c:set var="pb" value="${requestScope.pagingBean}"></c:set>
 			<div class="pagination-style text-center mt-5 pt-5">
 				<ul>
 					<!-- 이전 그룹일때 -->
@@ -115,7 +127,8 @@
 					</c:if>
 				</ul>
 			</div> --%>
-			<!-- //pagination -->
+				<!-- //pagination -->
+			</div>
 		</div>
 	</div>
 </section>

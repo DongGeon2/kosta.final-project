@@ -19,71 +19,82 @@
 	</section>
 </div>
 <!-- //inner banner -->
-
-<div class="container">
-	<table class="table">
-		<thead class="thead-light">
-			<tr class="text-center">
-				<th scope="col">Restaurant</th>
-				<th scope="col">Review title</th>
-				<th scope="col">My ID</th>
-				<th scope="col">Register Date</th>
-			</tr>
-		</thead>
-		<tbody>
-			<sec:authorize access="hasRole('ROLE_MEMBER')">
-				<sec:csrfInput />
-				<c:forEach items="${requestScope.reviewVO}" var="rvo">
-					<tr class="text-center">
-						<th scope="row"><span class="label-blue">${rvo.restaurantVO.resName}</span>
-						</th>
-						<td>
-							<a href=<%-- "${pageContext.request.contextPath}/member/getDetailPostByNo?boardNo=${rvo.boardNo}" --%>> 
-							<span class="label-blue">${rvo.reviewTitle}</span> <!--  </a> -->
-							</a>
-						</td>
-						<td><span class="label-blue">${rvo.memberVO.id}</span></td>
-						<td><span class="label-blue">${rvo.reviewRegdate}</span></td>
-					</tr>
+<div class="container py-md-5 py-4">
+	<div class="waviy text-center mb-md-5 mb-4">
+		<span style="--i: 1">M</span> 
+		<span style="--i: 2">y</span> 
+		<span style="--i: 3"></span> 
+		<span style="--i: 4">R</span> 
+		<span style="--i: 5">e</span> 
+		<span style="--i: 6">v</span> 
+		<span style="--i: 7">i</span>
+		<span style="--i: 8">e</span>
+		<span style="--i: 9">w</span>
+	</div>
+	<div class="container">
+		<table class="table">
+			<thead class="thead-light">
+				<tr class="text-center">
+					<th scope="col">Restaurant</th>
+					<th scope="col">Review title</th>
+					<th scope="col">My ID</th>
+					<th scope="col">Register Date</th>
+				</tr>
+			</thead>
+			<tbody>
+				<sec:authorize access="hasRole('ROLE_MEMBER')">
+					<sec:csrfInput />
+					<c:forEach items="${requestScope.reviewVO}" var="rvo">
+						<tr class="text-center">
+							<th scope="row"><span class="label-blue">${rvo.restaurantVO.resName}</span>
+							</th>
+							<td>
+								<a href=<%-- "${pageContext.request.contextPath}/member/getDetailPostByNo?boardNo=${rvo.boardNo}" --%>> 
+								<span class="label-blue">${rvo.reviewTitle}</span> <!--  </a> -->
+								</a>
+							</td>
+							<td><span class="label-blue">${rvo.memberVO.id}</span></td>
+							<td><span class="label-blue">${rvo.reviewRegdate}</span></td>
+						</tr>
+					</c:forEach>
+				</sec:authorize>
+			</tbody>
+		</table>
+	
+		<!-- pagination -->
+	<%-- 	<c:set var="pb" value="${requestScope.pagingBean}"></c:set>
+		<div class="pagination-style text-center mt-5 pt-5">
+			<ul>
+				<!-- 이전 그룹일때 -->
+				<c:if test="${pb.previousPageGroup }">
+					<li><a
+						href="/member/postList?pageNo=${pb.startPageOfPageGroup-1 }"
+						class="not-allowed"> <span class="fa fa-angle-double-left"
+							aria-hidden="true"></span>
+					</a></li>
+				</c:if>
+	
+				<c:forEach var="page" begin="${pb.startPageOfPageGroup}"
+					end="${pb.endPageOfPageGroup}">
+					<c:choose>
+						<c:when test="${pb.nowPage==page }">
+							<li><a class="active" href="/member/postList?pageNo=${page }">${page }</a></li>
+						</c:when>
+						<c:otherwise>
+							<li><a href="/member/postList?pageNo=${page }">${page }</a></li>
+						</c:otherwise>
+					</c:choose>
 				</c:forEach>
-			</sec:authorize>
-		</tbody>
-	</table>
-
-	<!-- pagination -->
-<%-- 	<c:set var="pb" value="${requestScope.pagingBean}"></c:set>
-	<div class="pagination-style text-center mt-5 pt-5">
-		<ul>
-			<!-- 이전 그룹일때 -->
-			<c:if test="${pb.previousPageGroup }">
-				<li><a
-					href="/member/postList?pageNo=${pb.startPageOfPageGroup-1 }"
-					class="not-allowed"> <span class="fa fa-angle-double-left"
-						aria-hidden="true"></span>
-				</a></li>
-			</c:if>
-
-			<c:forEach var="page" begin="${pb.startPageOfPageGroup}"
-				end="${pb.endPageOfPageGroup}">
-				<c:choose>
-					<c:when test="${pb.nowPage==page }">
-						<li><a class="active" href="/member/postList?pageNo=${page }">${page }</a></li>
-					</c:when>
-					<c:otherwise>
-						<li><a href="/member/postList?pageNo=${page }">${page }</a></li>
-					</c:otherwise>
-				</c:choose>
-			</c:forEach>
-			<!-- 다음 그룹일때 -->
-			<c:if test="${pb.nextPageGroup }">
-				<li><a
-					href="/member/postList?pageNo=${pb.endPageOfPageGroup+1 }"> <span
-						class="fa fa-angle-double-right" aria-hidden="true"></span>
-				</a></li>
-			</c:if>
-		</ul>
-	</div> --%>
-	<!-- //pagination -->
+				<!-- 다음 그룹일때 -->
+				<c:if test="${pb.nextPageGroup }">
+					<li><a
+						href="/member/postList?pageNo=${pb.endPageOfPageGroup+1 }"> <span
+							class="fa fa-angle-double-right" aria-hidden="true"></span>
+					</a></li>
+				</c:if>
+			</ul>
+		</div> --%>
+		<!-- //pagination -->
+	</div>
 </div>
-
 
