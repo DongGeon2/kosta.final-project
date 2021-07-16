@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="sec"  uri="http://www.springframework.org/security/tags"%>    
 
-
     <!-- inner banner -->
     <div class="inner-banner">
         <section class="w3l-breadcrumb">
@@ -15,8 +14,7 @@
                 </ul>
             </div>
         </section>
-    </div>
-   
+    </div>   
     <!-- //inner banner -->
  <!-- single page -->
     <section class="w3l-blog-single">

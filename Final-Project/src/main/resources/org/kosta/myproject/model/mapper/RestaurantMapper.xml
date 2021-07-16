@@ -93,6 +93,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into ko_restaurant (res_no,id,res_name,res_info,res_tel,res_loc,res_image,food_type,end_time,start_time)
 		values(ko_restaurant_no_seq.nextval,#{memberVO.id},#{resName},#{resInfo},#{resTel},#{resLoc},#{resImage},#{foodType},#{endTime},#{startTime})
 	</insert>
+	
+	<!-- 식당삭제 지훈 -->
+	<delete id="deleteRestaurant">
+delete from ko_restaurant where res_no=#{value}
+	</delete>
 </mapper>
  
  

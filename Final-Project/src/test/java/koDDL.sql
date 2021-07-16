@@ -64,6 +64,8 @@ CREATE TABLE ko_board_comment(
 )
 
 select * from ko_restaurant
+
+delete from ko_restaurant where res_no='1'
 CREATE sequence ko_board_comment_seq;
 
 --5. 레스토랑 테이블
@@ -81,6 +83,7 @@ CREATE TABLE ko_restaurant(
 	CONSTRAINT fk_ko_restaurant_id foreign key(id) references ko_member(id) on delete cascade
 )
 CREATE sequence ko_restaurant_no_seq;
+
 
 --alter table ko_restaurant drop column res_time;
 --alter table ko_restaurant add start_time;
