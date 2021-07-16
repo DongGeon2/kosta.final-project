@@ -288,12 +288,16 @@ $(document).ready(function() {
 				class="btn btn-style mt-5 ml-5">예약하러 가기</a>
 				
 				 <sec:authentication property="principal.id" var="ownerId"/>
-				 <c:if test="${restaurantVO.memberVO.id==ownerId}">
+				<c:choose>
+				 <c:when test="${restaurantVO.memberVO.id==ownerId}">
 				<a href="/deleteRestaurant?resNo=${restaurantVO.resNo}" class="btn btn-style mt-5 ml-5">게시물 삭제</a> 
-				 </c:if>
+				 </c:when>
+				<c:otherwise>
 				<sec:authorize access="hasRole('ROLE_ADMIN')">
 				<a href="/deleteRestaurant?resNo=${restaurantVO.resNo}" class="btn btn-style mt-5 ml-5">게시물 삭제</a>
-				</sec:authorize>	
+				</sec:authorize>
+				</c:otherwise>
+				</c:choose>	
 			</div>
 		</div>
 	</div>
