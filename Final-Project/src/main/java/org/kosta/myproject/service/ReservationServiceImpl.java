@@ -36,4 +36,9 @@ public class ReservationServiceImpl implements ReservationService{
 	public List<ReservationVO> getReservationByIdAndResNo(String id, String resNo) {
 		return reservationMapper.getReservationByIdAndResNo(id,resNo);
 	}
+	
+	@Override
+	public String findRestaurantDetailLoc(String resNo) {
+		return reservationMapper.findRestaurantDetailLoc(resNo);
+	}
 }

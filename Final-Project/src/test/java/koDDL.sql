@@ -64,6 +64,8 @@ CREATE TABLE ko_board_comment(
 )
 
 select * from ko_restaurant
+
+delete from ko_restaurant where res_no='1'
 CREATE sequence ko_board_comment_seq;
 
 --5. 레스토랑 테이블
@@ -74,6 +76,7 @@ CREATE TABLE ko_restaurant(
 	res_info varchar2(100) not null,
 	res_tel varchar2(100) not null,
 	res_loc varchar2(100) not null,
+	res_detailloc varchar2(100) not null,
 	res_image varchar2(100) not null,
 	food_type varchar2(100) not null,
 	start_time varchar2(100) not null,
@@ -81,6 +84,7 @@ CREATE TABLE ko_restaurant(
 	CONSTRAINT fk_ko_restaurant_id foreign key(id) references ko_member(id) on delete cascade
 )
 CREATE sequence ko_restaurant_no_seq;
+
 
 --alter table ko_restaurant drop column res_time;
 --alter table ko_restaurant add start_time;
@@ -97,7 +101,7 @@ CREATE TABLE ko_my_pick(
     CONSTRAINT ko_pick_resno foreign key(res_no) references ko_restaurant(res_no) on delete cascade
 )
 CREATE sequence ko_my_pick_seq;
-
+SELECT * FROM ko_my_pick where id='1234'
 select * from KO_MY_PICK
 
 drop table ko_my_pick
@@ -160,19 +164,6 @@ where id='java2' and res_no='1' and record_time='2021-07-14'
 ---------------------------------
 
 SELECT * FROM ko_member;
-
-select a.* , b.res_no
-from 
-	(select row_number() over(order by review_no desc) as rnum, review_no, review_title,
-	review_content, review_image, review_regdate, review_grade, res_no, id
-	from KO_REVIEW
-	where res_no=4) a, ko_restaurant b
-where a.res_no = b.res_no and rnum between 1 and 10
-
-SELECT a.res_no, a.res_name, a.res_info, a.res_tel, a.res_loc, a.res_image, a.food_type,
-				a.start_time, a.end_time, b.id, b.email, b.tel, b.name, b.enabled 
-FROM ko_restaurant a, ko_member b
-WHERE a.id=b.id and res_no=4
 
 
  select AVG(a.review_grade)

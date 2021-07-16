@@ -11,6 +11,7 @@ import org.kosta.myproject.model.vo.MemberVO;
 import org.kosta.myproject.model.vo.PagingBean;
 import org.kosta.myproject.model.vo.RestaurantVO;
 import org.kosta.myproject.service.RestaurantService;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -153,10 +154,17 @@ public class RestaurantController {
 		}
 		return "redirect:registerRes";
 	}
-	
+	/** 사장 식당 등록 **/
 	@RequestMapping("restaurant/registerRes")
 	public String registerRes() {
 		return "restaurant/registerResResult.tiles";
 	}
-	/** 사장 식당 등록 **/
+	/** 사장 식당 삭제 **/
+	@Secured("ROLE_MEMBER")
+	@RequestMapping("/deleteRestaurant")
+	public String deleteRestaurant(String resNo) {
+		restaurantService.deleteRestaurant(resNo);
+		return "home.tiles";
+	}
+	
 }

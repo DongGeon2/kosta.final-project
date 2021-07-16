@@ -6,9 +6,11 @@ import javax.annotation.Resource;
 
 import org.kosta.myproject.model.vo.BoardVO;
 import org.kosta.myproject.model.vo.MemberVO;
+import org.kosta.myproject.model.vo.MyPickVO;
 import org.kosta.myproject.model.vo.ReservationVO;
 import org.kosta.myproject.model.vo.ReviewVO;
 import org.kosta.myproject.service.BoardService;
+import org.kosta.myproject.service.MyPickService;
 import org.kosta.myproject.service.ReservationService;
 import org.kosta.myproject.service.RestaurantService;
 import org.kosta.myproject.service.ReviewService;
@@ -28,6 +30,8 @@ public class MyPageController {
 	ReservationService reservationService;
 	@Resource
 	BoardService boardService;
+	@Resource
+	MyPickService myPickService;
 	
 
 	@Secured("ROLE_MEMBER")
@@ -61,5 +65,16 @@ public class MyPageController {
 		System.out.println(bvo);
 		model.addAttribute("boardVO", bvo);
 		return "member/myPost.tiles";
+	}
+	
+	@Secured("ROLE_MEMBER")
+	@RequestMapping("/myPick")
+	public String myPick(Model model, String id) {
+		MemberVO mvo=(MemberVO)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		System.out.println(mvo.getId());
+		List<MyPickVO> pvo=myPickService.findMyPickListById(mvo.getId());
+		System.out.println(pvo);
+		model.addAttribute("myPickVO", pvo);
+		return "member/myPick.tiles";
 	}
 }

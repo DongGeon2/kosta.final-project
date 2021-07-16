@@ -47,7 +47,7 @@
                 <div class="col-lg-4 col-md-6 grids-feature mt-md-0 mt-4">
                     <div class="area-box">
                         <img src="assets/images/MyPick.png" alt="" class="img-fluid">
-                        <h4><a href="#feature" class="title-head">My pick</a></h4>
+                        <h4><a href="myPick" class="title-head">My pick</a></h4>
                         <p class="">My Collection</p>
                     </div>
                 </div>

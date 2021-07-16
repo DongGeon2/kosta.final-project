@@ -14,6 +14,4 @@ public interface MyPickMapper {
 
    int deleteMyPickByIdAndResNo(String id, String resNo);
 
-   
-
 }
