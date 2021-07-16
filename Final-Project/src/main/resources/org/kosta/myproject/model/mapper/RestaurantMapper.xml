@@ -4,19 +4,36 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.kosta.myproject.model.mapper.RestaurantMapper">
+
+<resultMap type='restaurantVO' id='restaurantList'>
+		<result column="id" property="memberVO.id"/>
+	    <result column="email" property="memberVO.email"/>
+	    <result column="name" property="memberVO.name"/>
+	    <result column="tel" property="memberVO.tel"/>    
+	    <result column="enabled " property="memberVO.enabled"/>    
+	</resultMap>
+
 	<!-- 검색 -->
-<select id="findRestaurantByName" resultType="restaurantVO">
-	SELECT res_no,res_name,res_info,res_tel,res_loc,res_image,food_type
-	FROM ko_restaurant 
-	WHERE res_name LIKE '%'|| #{resName} ||'%'
+<select id="findRestaurantByName" resultType="restaurantVO" resultMap='restaurantList'>
+	select r.res_no,r.res_name,r.res_info,r.res_tel,r.res_loc,r.res_image,r.food_type,
+		r.end_time,r.start_time,m.id,m.password,m.email,m.name,m.tel,m.enabled
+		from 
+			(select row_number() over(order by res_no desc) as rnum, id, res_no,
+			res_name,res_info,res_tel,res_loc,res_image,food_type,end_time,start_time
+			from ko_restaurant) r, ko_member m 
+		where r.id=m.id and r.res_name LIKE '%'|| #{resName} ||'%' and rnum between #{getStartRowNumber} and #{getEndRowNumber}
 </select>
  	<!-- 검색 -->
  	
 	<!-- 메인바검색 -->
-<select id="findRestaurantByMainBar" resultType="restaurantVO">
-	SELECT res_no,res_name,res_info,res_tel,res_loc,res_image,food_type
-	FROM ko_restaurant 
-	WHERE food_type=#{foodType} AND res_loc=#{resLoc}
+<select id="findRestaurantByMainBar" resultType="restaurantVO" resultMap='restaurantList'>
+	select r.res_no,r.res_name,r.res_info,r.res_tel,r.res_loc,r.res_image,r.food_type,
+		r.end_time,r.start_time,m.id,m.password,m.email,m.name,m.tel,m.enabled
+		from 
+			(select row_number() over(order by res_no desc) as rnum, id, res_no,
+			res_name,res_info,res_tel,res_loc,res_image,food_type,end_time,start_time
+			from ko_restaurant) r, ko_member m
+	WHERE r.id=m.id and r.food_type=#{foodType} AND r.res_loc=#{resLoc} and rnum between #{getStartRowNumber} and #{getEndRowNumber}
 </select>
  	<!-- 메인바검색 -->
  	 	
@@ -25,13 +42,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(*) from ko_restaurant
 	</select>
 	
-	<resultMap type='restaurantVO' id='restaurantList'>
-		<result column="id" property="memberVO.id"/>
-	    <result column="email" property="memberVO.email"/>
-	    <result column="name" property="memberVO.name"/>
-	    <result column="tel" property="memberVO.tel"/>    
-	    <result column="enabled " property="memberVO.enabled"/>    
-	</resultMap>
+	<!-- 검색페이징카운트 --> 	
+ 	<select id="getTotalSearchList" resultType="int" >
+ 		select count(*)
+		from ko_restaurant
+		where res_name LIKE '%'|| #{resName} ||'%'
+	</select>
+	
+	<!-- 검색메인바페이징카운트 --> 	
+ 	<select id="getTotalSearchMainBarList" resultType="int">
+		select count(*) 
+		FROM ko_restaurant 
+		WHERE food_type=#{foodType} AND res_loc=#{resLoc}	
+	</select>
+	
+	
 	<select id="getRestaurantList" resultType="restaurantVO" parameterType="int" resultMap='restaurantList'> 		
 		select r.res_no,r.res_name,r.res_info,r.res_tel,r.res_loc,r.res_image,r.food_type,
 		r.end_time,r.start_time,m.id,m.password,m.email,m.name,m.tel,m.enabled
@@ -43,10 +68,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	<!-- 추천상세 --> 
 	
+	<select id="getRestaurantListHome" resultType="restaurantVO" resultMap='restaurantList'> 		
+		select r.res_no,r.res_name,r.res_info,r.res_tel,r.res_loc,r.res_image,r.food_type,
+		r.end_time,r.start_time,m.id,m.password,m.email,m.name,m.tel,m.enabled
+		from 
+			(select row_number() over(order by res_no desc) as rnum, id, res_no,
+			res_name,res_info,res_tel,res_loc,res_image,food_type,end_time,start_time
+			from ko_restaurant) r, ko_member m 
+		where r.id=m.id 
+	</select>
+	
+	
 	<!-- 식당상세 동건 -->
 	<select id="findRestaurantByResNo" resultType="restaurantVO" resultMap="restaurantList">
 		SELECT a.res_no, a.res_name, a.res_info, a.res_tel, a.res_loc, a.res_image, a.food_type,
 				a.start_time, a.end_time, b.id, b.email, b.tel, b.name, b.enabled 
+				
 		FROM ko_restaurant a, ko_member b
 		WHERE a.id=b.id and res_no=#{value}
 	</select>

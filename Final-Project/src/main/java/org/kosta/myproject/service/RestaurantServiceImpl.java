@@ -11,7 +11,7 @@ import org.kosta.myproject.model.vo.RestaurantVO;
 import org.springframework.stereotype.Service;
 
 @Service
-public class RestaurantImpl implements RestaurantService {
+public class RestaurantServiceImpl implements RestaurantService {
 	@Resource
 	private RestaurantMapper restaurantMapper;
 	/*
@@ -22,17 +22,19 @@ public class RestaurantImpl implements RestaurantService {
 	
 /** 검색 **/
 	@Override
-	public List<RestaurantVO> findRestaurantByName(String resName) {
-		System.out.println(restaurantMapper.findRestaurantByName(resName));
-		return restaurantMapper.findRestaurantByName(resName);
+	public List<RestaurantVO> findRestaurantByName(String resName, PagingBean pagingBean) {
+		int getStartRowNumber = pagingBean.getStartRowNumber();
+		int getEndRowNumber = pagingBean.getEndRowNumber();
+		return restaurantMapper.findRestaurantByName(resName,getStartRowNumber, getEndRowNumber);
 	}
 /** 검색 **/
 
 /** 메인바검색 **/
 	@Override
-	public List<RestaurantVO> findRestaurantByMainBar(String foodType, String resLoc) {
-		System.out.println(restaurantMapper.findRestaurantByMainBar(foodType, resLoc));
-		return restaurantMapper.findRestaurantByMainBar(foodType, resLoc);
+	public List<RestaurantVO> findRestaurantByMainBar(String foodType, String resLoc, PagingBean pagingBean) {
+		int getStartRowNumber = pagingBean.getStartRowNumber();
+		int getEndRowNumber = pagingBean.getEndRowNumber();
+		return restaurantMapper.findRestaurantByMainBar(foodType, resLoc, getStartRowNumber, getEndRowNumber);
 	}
 /** 메인바검색 **/
 	
@@ -60,5 +62,19 @@ public class RestaurantImpl implements RestaurantService {
 	public void registerResForm(RestaurantVO rvo) {
 		restaurantMapper.registerResForm(rvo);
 	}
-	
+
+	@Override
+	public int getTotalSearchCount(String resName) {
+		return restaurantMapper.getTotalSearchList(resName);
+	}
+
+	@Override
+	public int getTotalSearchMainBarCount(String foodType, String resLoc) {
+		return restaurantMapper.getTotalSearchMainBarList(foodType, resLoc);	
+		}
+
+	@Override
+	public ArrayList<RestaurantVO> getRestaurantListHome() {
+		return restaurantMapper.getRestaurantListHome();
+	}
 }

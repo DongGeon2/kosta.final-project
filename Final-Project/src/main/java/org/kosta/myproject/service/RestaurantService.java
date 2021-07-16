@@ -9,10 +9,10 @@ import org.kosta.myproject.model.vo.RestaurantVO;
 public interface RestaurantService {
 	
 	/** 검색 **/
-	List<RestaurantVO> findRestaurantByName(String resName);
+	List<RestaurantVO> findRestaurantByName(String resName, PagingBean pagingBean);
 
 	/** 메인바검색 **/
-	List<RestaurantVO> findRestaurantByMainBar(String foodType, String resLoc);
+	List<RestaurantVO> findRestaurantByMainBar(String foodType, String resLoc, PagingBean pagingBean);
 
 	/** 추천상세 **/
 	int getTotalCount();
@@ -26,7 +26,10 @@ public interface RestaurantService {
 	/** 식당등록 **/
 	void registerResForm(RestaurantVO rvo);
 
+	int getTotalSearchCount(String resName);
 
+	int getTotalSearchMainBarCount(String foodType, String resLoc);
 
+	ArrayList<RestaurantVO> getRestaurantListHome();
 
 }
