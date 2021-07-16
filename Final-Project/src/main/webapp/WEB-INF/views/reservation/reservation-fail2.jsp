@@ -12,7 +12,7 @@
 <title>Insert title here</title>
 </head>
 <script type="text/javascript">
-	alert("${id}님 해당 식당의 ${revTime} ${hour}에 예약이 차있습니다.")
+	alert("${id}님 해당 식당의 ${revTime} ${hour}에 예약이 차있습니다. 다른시간을 선택해주세요.")
 	location.href="home"
 </script>
 </html>
