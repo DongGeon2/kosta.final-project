@@ -46,6 +46,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from ko_reservation a, ko_restaurant b
 		where a.res_no=b.res_no and a.id=#{id} and b.res_no=#{resNo}
 	</select>
+	
+	<select id="findRestaurantDetailLoc" resultType="String">
+		SELECT res_detailloc FROM ko_restaurant
+		WHERE res_no=#{value}
+	</select>
 </mapper>
  
  

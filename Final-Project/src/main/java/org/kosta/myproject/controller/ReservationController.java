@@ -100,6 +100,7 @@ public class ReservationController {
 		reservationVO.setRevHour(hour);
 		reservationVO.setMemberVO(memberVO);
 		reservationVO.setRestaurantVO(restaurantVO);
+		model.addAttribute("restaurantDetailLoc", reservationService.findRestaurantDetailLoc(resNo));
 		model.addAttribute("reservation", reservationVO);
 		return "reservation/reservation-result.tiles";
 	}
