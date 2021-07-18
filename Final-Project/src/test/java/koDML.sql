@@ -12,8 +12,8 @@ insert into ko_member(id,password,email,name,tel) values('aaaas','a','Y@naver.co
 insert into ko_authorities(id,authority) values('aaaas','ROLE_OWNER');
 
 --권한
-insert into ko_authorities(id,authority) values('1234','ROLE_ADMIN');
-insert into ko_authorities(id,authority) values('1234','ROLE_OWNER');
+insert into ko_authorities(id,authority) values('java','ROLE_ADMIN');
+insert into ko_authorities(id,authority) values('java3','ROLE_OWNER');
 insert into ko_authorities(id,authority) values('aaaas','ROLE_MEMBER');
 insert into ko_authorities(id,authority) values('BKS','ROLE_MEMBER');
 insert into ko_authorities(id,authority) values('JYJ','ROLE_MEMBER');

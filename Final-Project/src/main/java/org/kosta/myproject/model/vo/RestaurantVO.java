@@ -11,12 +11,13 @@ public class RestaurantVO {
 	private String endTime;
 	private MemberVO memberVO;
 	private String foodType;
+	private String resDetailloc;
 	public RestaurantVO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public RestaurantVO(String resNo, String resName, String resLoc, String resImage, String resInfo, String resTel,
-			String startTime, String endTime, MemberVO memberVO, String foodType) {
+			String startTime, String endTime, MemberVO memberVO, String foodType, String resDetailloc) {
 		super();
 		this.resNo = resNo;
 		this.resName = resName;
@@ -28,21 +29,7 @@ public class RestaurantVO {
 		this.endTime = endTime;
 		this.memberVO = memberVO;
 		this.foodType = foodType;
-		this.startTime = startTime;
-		this.endTime = endTime;
-	}
-	
-	public RestaurantVO(String resName, String resLoc, String resImage, String resInfo, String resTel, String startTime,
-			String endTime, String foodType) {
-		super();
-		this.resName = resName;
-		this.resLoc = resLoc;
-		this.resImage = resImage;
-		this.resInfo = resInfo;
-		this.resTel = resTel;
-		this.startTime = startTime;
-		this.endTime = endTime;
-		this.foodType = foodType;
+		this.resDetailloc = resDetailloc;
 	}
 	public String getResNo() {
 		return resNo;
@@ -104,12 +91,18 @@ public class RestaurantVO {
 	public void setFoodType(String foodType) {
 		this.foodType = foodType;
 	}
-
+	public String getResDetailloc() {
+		return resDetailloc;
+	}
+	public void setResDetailloc(String resDetailloc) {
+		this.resDetailloc = resDetailloc;
+	}
 	@Override
 	public String toString() {
 		return "RestaurantVO [resNo=" + resNo + ", resName=" + resName + ", resLoc=" + resLoc + ", resImage=" + resImage
 				+ ", resInfo=" + resInfo + ", resTel=" + resTel + ", startTime=" + startTime + ", endTime=" + endTime
-				+ ", memberVO=" + memberVO + ", foodType=" + foodType + "]";
+				+ ", memberVO=" + memberVO + ", foodType=" + foodType + ", resDetailloc=" + resDetailloc + "]";
 	}
+
 	
 }

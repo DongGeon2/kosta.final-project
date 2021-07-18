@@ -38,7 +38,7 @@
                <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/recommend">recommend</a></li>
                <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/board">Board</a></li>
 					<sec:authorize access="isAuthenticated()==false">
-						<li class="nav-item"><a class="nav-link"
+					<li class="nav-item"><a class="nav-link"
 							href="${pageContext.request.contextPath}/login">Login</a></li>
 						<sec:csrfInput />
 					</sec:authorize>

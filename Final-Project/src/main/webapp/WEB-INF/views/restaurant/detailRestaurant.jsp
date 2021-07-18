@@ -254,6 +254,8 @@ $(document).ready(function() {
 						</c:otherwise>
 						</c:choose>
 						<!-- <p>In a diam et dui, orci urna. Donec sed tempus enims.</p>#F05522 -->
+						 <nav class="post-navigation row">
+						 
 					</div>
 												<!-- 별점 -->
 					<span style="margin-top: 32px; font-size: 30px; color: orange">${avgReviewGrade }/</span>
@@ -285,6 +287,17 @@ $(document).ready(function() {
 				<a href="/doReservation?resName=${restaurantVO.resName}&resNo=${restaurantVO.resNo}&startTime=${restaurantVO.startTime}&endTime=${restaurantVO.endTime}" 
 				class="btn btn-style mt-5 ml-5">예약하러 가기</a>
 				
+				 <sec:authentication property="principal.id" var="ownerId"/>
+				<c:choose>
+				 <c:when test="${restaurantVO.memberVO.id==ownerId}">
+				<a href="/deleteRestaurant?resNo=${restaurantVO.resNo}" class="btn btn-style mt-5 ml-5">게시물 삭제</a> 
+				 </c:when>
+				<c:otherwise>
+				<sec:authorize access="hasRole('ROLE_ADMIN')">
+				<a href="/deleteRestaurant?resNo=${restaurantVO.resNo}" class="btn btn-style mt-5 ml-5">게시물 삭제</a>
+				</sec:authorize>
+				</c:otherwise>
+				</c:choose>	
 			</div>
 		</div>
 	</div>

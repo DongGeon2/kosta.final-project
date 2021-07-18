@@ -19,5 +19,5 @@ public interface ReservationMapper {
 
 	List<ReservationVO> getReservationByIdAndResNo(String id, String resNo);
 
-
+	String findRestaurantDetailLoc(String resNo);
 }

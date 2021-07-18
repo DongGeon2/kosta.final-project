@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="sec"  uri="http://www.springframework.org/security/tags"%>    
 
-
     <!-- inner banner -->
     <div class="inner-banner">
         <section class="w3l-breadcrumb">
@@ -15,8 +14,7 @@
                 </ul>
             </div>
         </section>
-    </div>
-   
+    </div>   
     <!-- //inner banner -->
  <!-- single page -->
     <section class="w3l-blog-single">
@@ -50,15 +48,19 @@
                     </div>
                   <nav class="post-navigation row">
                         <sec:authentication property="principal.id" var="memberId"/>
-                     <c:if test="${viewDetailPost.memberVO.id==memberId}">
+                    <c:choose>
+                     <c:when test="${viewDetailPost.memberVO.id==memberId}">
                         <a href="${pageContext.request.contextPath}/deletePosting?boardNo=${viewDetailPost.boardNo}" class="name mt-2">게시물
                            삭제</a>
-                           </c:if>
+                           </c:when>
+                           <c:otherwise>
                        <sec:authentication property="principal.id" var="memberId"/>
                      <sec:authorize access="hasRole('ROLE_ADMIN')">
                       <a href="${pageContext.request.contextPath}/deletePosting?boardNo=${viewDetailPost.boardNo}" class="name mt-2">게시물
                            삭제</a>
                      </sec:authorize>
+                     </c:otherwise>
+                     </c:choose>
             </nav>
                     
                     <!-- 게시판댓글 -->
