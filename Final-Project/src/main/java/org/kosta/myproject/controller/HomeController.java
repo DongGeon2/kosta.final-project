@@ -1,10 +1,13 @@
 package org.kosta.myproject.controller;
 
+import java.util.ArrayList;
+
 import javax.annotation.Resource;
 
+import org.kosta.myproject.model.vo.RestaurantVO;
 import org.kosta.myproject.service.MemberService;
+import org.kosta.myproject.service.RestaurantService;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,12 +16,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
 	@Resource
 	MemberService memberService;
+	@Resource
+	private RestaurantService restaurantService;
 	
 	@RequestMapping(value = { "/", "home" })
-	public String home() {
+	public String home(Model model) {
 		// db, model 과 연동
 		// tiles-config.xml 에 정의된 definition name인 home.tiles를 이용해
 		// view를 제공
+		ArrayList<RestaurantVO> restaurantList = restaurantService.getHomeRestaurantList();
+		model.addAttribute("restaurantList", restaurantList);
+		
 		return "home.tiles";
 	}
 	
