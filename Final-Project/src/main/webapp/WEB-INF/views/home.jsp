@@ -149,7 +149,7 @@
 					<section class="container-fluid">
 
 						<!-- search box css start here -->
-						<style>
+<style>
 .search-sec {
 	background: #1A4668;
 	padding: 2rem;
@@ -176,53 +176,87 @@
 	height: calc(3rem + 2px) !important;
 	border-radius: 0;
 }
+.search-bar {
+	width: 100%;
+	font-size: 16px;
+	font-weight: 400;
+	height: calc(3rem + 30px) !important;
+	border-radius: 30px 0px 0px 30px;
+	background-color: #ffffff;
+	opacity: 0.6;
+}
+
+.search-mid-bar {
+	width: 100%;
+	font-size: 16px;
+	font-weight: 400;
+	height: calc(3rem + 30px) !important;
+	border-radius: 0px 0px 0px 0px;
+	background-color: #ffffff;
+	opacity: 0.6;
+}
+
+.search-button-bar {
+	width: 100%;
+	font-size: 16px;
+	font-weight: 400;
+	height: calc(3rem + 29px) !important;
+	border-radius: 0px 30px 30px 0px;
+	background-color: #ffd700;
+	opacity: 0.7;
+	border: none;
+}
+
+.container_ks {
+	/* display: grid;
+	grid-template-columns: 2fr 2fr 2fr; */
+	display: flex;
+	align-items: center;  
+}
+.container_ks .typebox {
+	width: 33%
+}
+.container_ks .typebox select {
+	text-align-last: center;
+}
+.container_ks .btnbox {
+	width: 34%
+}
 </style>
 						<!-- css적용 -->
 
-						<div class="container">
-
-							<form
-								action="${pageContext.request.contextPath}/findRestaurantByMainBar"
-								method="get"">
-
-								<div class="row">
-									<div class="col-lg-12">
-										<div class="row">
-											<div class="col-lg-3 col-md-3 col-sm-12 p-0">
-												<select name="foodType" class="form-control search-slt"
-													id="exampleFormControlSelect1">
-													<option>Food Type</option>
-													<option>한식</option>
-													<option>중식</option>
-													<option>일식</option>
-													<option>양식</option>
-													<option>아시안</option>
-													<option>디저트</option>
-												</select>
-											</div>
-											<div class="col-lg-3 col-md-3 col-sm-12 p-0">
-												<select name="resLoc" class="form-control search-slt"
-													id="exampleFormControlSelect1">
-													<option>Location</option>
-													<option>서울</option>
-													<option>경기</option>
-													<option>강원</option>
-													<option>부산</option>
-													<option>전라도</option>
-													<option>제주도</option>
-												</select>
-											</div>
-
-											
-											<div class="col-lg-3 col-md-3 col-sm-12 p-0">
-												<button type="submit" class="btn btn-primary wrn-btn">Search</button>
-											</div>
-										</div>
-									</div>
-								</div>
-							</form>
+					<form action="${pageContext.request.contextPath}/findRestaurantByMainBar" method="get">
+						<div class="container_ks">
+							<div class="typebox">
+								<select name="foodType" class="search-bar"
+									id="exampleFormControlSelect1">
+									<option>Food Type</option>
+									<option>한식</option>
+									<option>중식</option>
+									<option>일식</option>
+									<option>양식</option>
+									<option>아시안</option>
+									<option>디저트</option>
+								</select>
+							</div>
+							<div class="typebox">
+								<select name="resLoc" class="search-mid-bar"
+									id="exampleFormControlSelect1">
+									<option>Location</option>
+									<option>서울</option>
+									<option>경기</option>
+									<option>강원</option>
+									<option>부산</option>
+									<option>전라도</option>
+									<option>제주도</option>
+								</select>
+							</div>
+							<div class="btnbox">
+								<button type="submit" class="search-button-bar">Search</button>
+							</div>
 						</div>
-					</section>
+					</form>					
+				</section>
 
 					<!-- fireworks effect -->
 					<div class="pyro pyro-2 position-relative">
