@@ -1,43 +1,83 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<style>
+.res-img {
+	width: 340.95px;
+	height: 220px;
+}
+
+.v-scroll {
+	overflow-x: auto;
+	padding-bottom: 14px;
+	margin: 0 -30px -14px;
+}
+
+.v-scroll .v-scroll-inner {
+	padding: 0 30px;
+	display: inline-block;
+}
+
+.restaurant-list {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.restaurant-list .restaurant-list-item {
+    display: block;
+    flex: 0 0 auto;
+    margin-right: 10px;
+}
+
+
+.container.gutter-sm .v-scroll-inner {
+    padding: 0 20px;
+}
+.v-scroll .v-scroll-inner {
+    padding: 0 30px;
+    display: inline-block;
+}
+</style>
+
 
 <!-- banner section -->
-    <section class="w3l-main-slider" id="home">
-        <div class="banner-content">
-            <div id="demo-1"
-                data-zs-src='["assets/images/banner4.jpg", "assets/images/banner2.jpg","assets/images/banner3.jpg", "assets/images/banner5.jpg"]'
-                data-zs-overlay="dots">
-                <div class="demo-inner-content">
-                    <div class="container">
-                        <div class="banner-infhny">
-                            <!-- fireworks effect -->
-                            <div class="pyro">
-                                <div class="before"></div>
-                                <div class="after"></div>
-                            </div>
-                            <div></div>
-                            <!-- first text effect -->
-                            <section>
-                                <div id="Text8">
-                                    <h1>
-                           <section>
-                              <div id="Text8">
-                                 <h1>
-                                    <span>I</span> <span>t</span> <span>'</span> <span>s</span>
-                                    <span> </span> <span>T</span> <span>i</span> <span>m</span>
-                                    <span>e</span> <span> </span> <span>T</span> <span>o</span>
-                                    <span> </span> <span>K</span> <span>o</span> <span>c</span>
-                                    <span>h</span> <span>e</span> <span>l</span> <span>i</span>
-                                    <span>n</span> 
-                                 </h1>
-                              </div>
-                           </section>
+<section class="w3l-main-slider" id="home">
+	<div class="banner-content">
+		<div id="demo-1"
+			data-zs-src='["assets/images/banner4.jpg", "assets/images/banner2.jpg","assets/images/banner3.jpg", "assets/images/banner5.jpg"]'
+			data-zs-overlay="dots">
+			<div class="demo-inner-content">
+				<div class="container">
+					<div class="banner-infhny">
+						<!-- fireworks effect -->
+						<div class="pyro">
+							<div class="before"></div>
+							<div class="after"></div>
+						</div>
+						<div></div>
+						<!-- first text effect -->
+						<section>
+							<div id="Text8">
+								<h1>
+									<section>
+										<div id="Text8">
+											<h1>
+												<span>I</span> <span>t</span> <span>'</span> <span>s</span>
+												<span> </span> <span>T</span> <span>i</span> <span>m</span>
+												<span>e</span> <span> </span> <span>T</span> <span>o</span>
+												<span> </span> <span>K</span> <span>o</span> <span>c</span>
+												<span>h</span> <span>e</span> <span>l</span> <span>i</span>
+												<span>n</span>
+											</h1>
+										</div>
+									</section>
 
-                                    </h1>
-                                </div>
-                            </section>
-                           </div>
-                           <!-- 
+								</h1>
+							</div>
+						</section>
+					</div>
+					<!-- 
                             <div id="new-year"><svg id="new-year-svg" version="1.1" xmlns="http://www.w3.org/2000/svg"
                                     xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 200">
                                     <defs>
@@ -106,548 +146,419 @@
                                         d="M333.5,87.125c-11.25,4.625-13.25,26.375-10.188,34.812c2.441,6.726,5.553,7.938,8.625,7.938c4.188,0,7.059-6.344,8.188-9c4.438-10.438,4.572-15.379,7.875-24c6.25-16.312,12.625-9.312,12.625-9.312s-8.263,9.086-9.688,16.25c-2.125,10.688-5.125,26.438,2.062,22.125c3.727-2.236,4.544-11.855,7.312-19.625c3.805-10.68,8.938-19.875,8.938-19.875s-4.625,30.812-1.438,37.562s6.846,5.672,8.438,4.5c9.25-6.812,8.562-39.625,3.438-44.062s13.178,10.246,18,5.812c3.875-3.562-0.931,5.241-1.438,11.875c-0.785,10.278-2.375,23.625,2.562,26.312c2.147,1.169,10.688-8.938,12.438-9.604c2.574-0.98,8.726,13.833,10.917,13.833c0.833,0,0.25-7.25,0.25-7.25s11.25-4.167,11.25-4.167l3.75-60.167L424,63.156l0.25,6.094l-0.156,2.594L424,74.25l-2,44" />
                                 </svg>
                             </div> -->
-                              <section class="container-fluid">
+					<section class="container-fluid">
 
-    <!-- search box css start here -->
-<style>
-.search-sec{
-    background: #1A4668;padding: 2rem;
+						<!-- search box css start here -->
+						<style>
+.search-sec {
+	background: #1A4668;
+	padding: 2rem;
 }
-.search-slt{
-    display: block;
-    width: 100%;
-    font-size: 0.875rem;
-    line-height: 1.5;
-    color: #55595c;
-    background-color: #fff;
-    background-image: none;
-    border: 1px solid #ccc;
-    height: calc(3rem + 2px) !important;
-    border-radius:0;
+
+.search-slt {
+	display: block;
+	width: 100%;
+	font-size: 0.875rem;
+	line-height: 1.5;
+	color: #55595c;
+	background-color: #fff;
+	background-image: none;
+	border: 1px solid #ccc;
+	height: calc(3rem + 2px) !important;
+	border-radius: 0;
 }
-.wrn-btn{
-    width: 100%;
-    font-size: 16px;
-    font-weight: 400;
-    text-transform: capitalize;
-     height: calc(3rem + 2px) !important;
-     border-radius:0;
+
+.wrn-btn {
+	width: 100%;
+	font-size: 16px;
+	font-weight: 400;
+	text-transform: capitalize;
+	height: calc(3rem + 2px) !important;
+	border-radius: 0;
 }
 </style>
-   <!-- css적용 -->                              
-                        
-<div class="container">
+						<!-- css적용 -->
 
-        <form action="${pageContext.request.contextPath}/findRestaurantByMainBar" method="get"">
-        
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                            <select name="foodType" class="form-control search-slt" id="exampleFormControlSelect1">
-                                <option>Food Type</option>
-                                <option>한식</option>
-                                <option>중식</option>
-                                <option>일식</option>
-                                <option>양식</option>
-                                <option>아시안</option>
-                                <option>디저트</option>
-                            </select> 
-                        </div>
-                         <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                            <select name="resLoc" class="form-control search-slt" id="exampleFormControlSelect1">
-                                <option>Location</option>
-                                <option>서울</option>
-                                <option>경기</option>
-                                <option>강원</option>
-                                <option>부산</option>
-                                <option>전라도</option>
-                                <option>제주도</option>
-                            </select>
-                        </div>
-                                        
-                          <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                            <select class="form-control search-slt" id="exampleFormControlSelect1">
-                                <option>날짜</option>
-                                <option>7/2(금)</option>
-                                <option>7/3(토)</option>
-                                <option>7/4(일)</option>
-                                <option>7/5(월)</option>
-                                <option>7/6(화)</option>
-                                <option>7/7(수)</option>
-                                
-                            </select>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                            <button type="submit" class="btn btn-primary wrn-btn">Search</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
+						<div class="container">
+
+							<form
+								action="${pageContext.request.contextPath}/findRestaurantByMainBar"
+								method="get"">
+
+								<div class="row">
+									<div class="col-lg-12">
+										<div class="row">
+											<div class="col-lg-3 col-md-3 col-sm-12 p-0">
+												<select name="foodType" class="form-control search-slt"
+													id="exampleFormControlSelect1">
+													<option>Food Type</option>
+													<option>한식</option>
+													<option>중식</option>
+													<option>일식</option>
+													<option>양식</option>
+													<option>아시안</option>
+													<option>디저트</option>
+												</select>
+											</div>
+											<div class="col-lg-3 col-md-3 col-sm-12 p-0">
+												<select name="resLoc" class="form-control search-slt"
+													id="exampleFormControlSelect1">
+													<option>Location</option>
+													<option>서울</option>
+													<option>경기</option>
+													<option>강원</option>
+													<option>부산</option>
+													<option>전라도</option>
+													<option>제주도</option>
+												</select>
+											</div>
+
+											
+											<div class="col-lg-3 col-md-3 col-sm-12 p-0">
+												<button type="submit" class="btn btn-primary wrn-btn">Search</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</section>
+
+					<!-- fireworks effect -->
+					<div class="pyro pyro-2 position-relative">
+						<div class="before"></div>
+						<div class="after"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
 </section>
+<!-- //banner section -->
+
+<!-- blog section -->
+<div class="blog-section py-5">
+	<div class="container py-md-5 py-4">
+		<div class="waviy text-center mb-md-5 mb-4">
+			<span style="-i: 1">R</span> 
+			<span style="-i: 2">e</span> 
+			<span style="-i: 3">s</span> 
+			<span style="-i: 4">t</span>
+			<span style="-i: 4">a</span>
+			<span style="-i: 4">u</span>
+			<span style="-i: 4">r</span>
+			<span style="-i: 4">a</span>
+			<span style="-i: 4">n</span>
+			<span style="-i: 4">t</span>
+		</div>
+		<!-- 식당1 -->
+		<%-- ${restaurantList} --%>
+		
+		
+		<div class="v-scroll">
+						<div class="restaurant-list restaurant-list-sm">
+						<c:forEach items="${restaurantList}" var="restaurant">
+						<div class="restaurant-list-item">
+							<div class="card">
+								<div class="card-header p-0 position-relative">
+									<a href="/detailRestaurant?resNo=${restaurant.resNo}"> <img
+										class="card-img-bottom res-img"
+										src="/ResUpload/${restaurant.resImage }" alt="Card image cap">
+									</a>
+								</div>
+								<div class="card-body blog-details" style="font-size: 15px;">
+									<a href="/detailRestaurant?resNo=${restaurant.resNo}"> <span
+										class="label-blue">${restaurant.resName}</span> <%-- <a href="/user/detailRestaurant?resNo=${restaurant.resNo}" class="blog-desc">
+								${restaurant.memberVO.id}<br> --%>
+									</a>
+									<div class="author align-items-center mt-3 mb-1">
+										<img src="assets/images/사장.png" alt=""
+											class="img-fluid rounded-circle" />
+										<ul class="blog-meta">
+											<li><a
+												href="/detailRestaurant?resNo=${restaurant.resNo}">
+													${restaurant.memberVO.name}<br>
+											</a></li>
+
+											<li class="meta-item blog-lesson">Location. <span
+												class="meta-value">${restaurant.resLoc}</span>
+											</li>
+											<li class="meta-item blog-lesson">Tel. <span
+												class="meta-value">${restaurant.memberVO.tel}</span>
+											</li>
+											<li class="meta-item blog-lesson">
+												<!--   <span class="meta-value">게시날짜</span>. <span
+                                            class="meta-value ml-2"><span class="fa fa-clock-o"></span> 2021/07/05</span> -->
+												<span class="meta-value">Operating Time :
+													${restaurant.startTime} ~ ${restaurant.endTime}</span>
+											</li>
+
+										</ul>
+									</div>
+								</div>
+							</div>
+							</div>
+							</c:forEach>
+							<!-- 식당 하나자리 -->
+					</div>
+				</div>
+		
+	</div>
+	<!-- 식당1 -->
 
 
-                            <!-- fireworks effect -->
-                           <div class="pyro pyro-2 position-relative">
-                                <div class="before"></div>
-                                <div class="after"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- //banner section -->
+</div>
+</div>
+<!-- //blog section -->
 
- <!-- blog section -->
-    <div class="blog-section py-5">
-        <div class="container py-md-5 py-4">
-            <div class="waviy text-center mb-md-5 mb-4">
-                <span style="--i:1">식</span>
-                <span style="--i:2">당</span>
-                <span style="--i:3">추</span>
-                <span style="--i:4">천</span>
-               
-            </div>
 
-            <div class="row">
-                <div class="col-lg-4 col-md-6 item">
-                    <div class="card">
-                        <div class="card-header p-0 position-relative">
-                            <a href="single.html">
-                                <img class="card-img-bottom d-block radius-image-full" src="assets/images/restaurant1.jpg"
-                                    alt="Card image cap">
-                            </a>
-                        </div>
-                        <div class="card-body blog-details">
-                            <span class="label-blue">코스타소고기</span>
-                            <a href="single.html" class="blog-desc">24시간 영업, 회식 30자리까지 환영합니다. 예약 많이 해주세요
-                            </a>
-                            <div class="author align-items-center mt-3 mb-1">
-                                <img src="assets/images/testi1.jpg" alt="" class="img-fluid rounded-circle" />
-                                <ul class="blog-meta">
-                                    <li>
-                                        <a href="single.html">Isabella ava</a> </a>
-                                    </li>
-                                    <li class="meta-item blog-lesson">
-                                        <span class="meta-value"> Jan 28 2021 </span>. <span
-                                            class="meta-value ml-2"><span class="fa fa-clock-o"></span> 1 min</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mt-md-0 mt-sm-5 mt-4">
-                    <div class="card">
-                        <div class="card-header p-0 position-relative">
-                            <a href="single.html">
-                                <img class="card-img-bottom d-block radius-image-full" src="assets/images/blog3.jpg"
-                                    alt="Card image cap">
-                            </a>
-                        </div>
-                        <div class="card-body blog-details">
-                            <span class="label-blue">Celebrations</span>
-                            <a href="single.html" class="blog-desc">Eaque ipsa quae ab illo remos dez inve ntore
-                            </a>
-                            <div class="author align-items-center mt-3 mb-1">
-                                <img src="assets/images/testi2.jpg" alt="" class="img-fluid rounded-circle" />
-                                <ul class="blog-meta">
-                                    <li>
-                                        <a href="single.html">Charlotte mia</a> </a>
-                                    </li>
-                                    <li class="meta-item blog-lesson">
-                                        <span class="meta-value"> Jan 13, 2021 </span>. <span
-                                            class="meta-value ml-2"><span class="fa fa-clock-o"></span> 1 min</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mt-lg-0 mt-4">
-                    <div class="card">
-                        <div class="card-header p-0 position-relative">
-                            <a href="single.html">
-                                <img class="card-img-bottom d-block radius-image-full" src="assets/images/blog2.jpg"
-                                    alt="Card image cap">
-                            </a>
-                        </div>
-                        <div class="card-body blog-details">
-                            <span class="label-blue">New Year</span>
-                            <a href="single.html" class="blog-desc">Quasi archi tecto bea dicta sunt expl icab
-                            </a>
-                            <div class="author align-items-center mt-3 mb-1">
-                                <img src="assets/images/testi3.jpg" alt="" class="img-fluid rounded-circle" />
-                                <ul class="blog-meta">
-                                    <li>
-                                        <a href="single.html">Charlotte mia</a> </a>
-                                    </li>
-                                    <li class="meta-item blog-lesson">
-                                        <span class="meta-value">Jan 06 2021 </span>. <span
-                                            class="meta-value ml-2"><span class="fa fa-clock-o"></span> 1 min</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- //blog section -->
 
-    <!-- services section -->
-    <section class="w3l-content-11-main position-relative">
-        <div class="content-design-11 py-5">
-            <div class="container py-md-5 py-4">
-                <h3 class="title-style text-center mb-md-5 mb-4">We Provide Best Services</h3>
-                <div class="content-sec-11">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="services-single d-flex p-sm-5 p-4">
-                                <div class="service-icon mr-sm-4 mr-3">
-                                    <img src="assets/images/s3.png" alt="" class="img-fluid">
-                                </div>
-                                <div class="services-content">
-                                    <h5><a href="services.html">Awesome Design</a></h5>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean egestas magna at
-                                        porttitor vehicula nullam augue ipsum dolor.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="services-single d-flex p-sm-5 p-4">
-                                <div class="service-icon mr-sm-4 mr-3">
-                                    <img src="assets/images/s1.png" alt="" class="img-fluid">
-                                </div>
-                                <div class="services-content">
-                                    <h5><a href="services.html">Organised</a></h5>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean egestas magna at
-                                        porttitor vehicula nullam augue ipsum dolor.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="services-single d-flex p-sm-5 p-4 mb-lg-0">
-                                <div class="service-icon mr-sm-4 mr-3">
-                                    <img src="assets/images/s2.png" alt="" class="img-fluid">
-                                </div>
-                                <div class="services-content">
-                                    <h5><a href="services.html">We are the best</a></h5>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean egestas magna at
-                                        porttitor vehicula nullam augue ipsum dolor.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="services-single d-flex p-sm-5 p-4 mb-0">
-                                <div class="service-icon mr-sm-4 mr-3">
-                                    <img src="assets/images/s4.png" alt="" class="img-fluid">
-                                </div>
-                                <div class="services-content">
-                                    <h5><a href="services.html">Creativity</a></h5>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean egestas magna at
-                                        porttitor vehicula nullam augue ipsum dolor.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-5 text-center">
-                        <a class="btn btn-style" href="services.html">Learn More Services</a>
-                    </div>
-                </div>
-            </div>
-            <!-- balloon animation -->
-            <div class="circle">
+<!-- //services section -->
 
-            </div>
-            <!-- balloon animation -->
-            <div class="animation-2">
+<!-- team sections -->
+<section class="w3l-team-main" id="team">
+	<div class="team py-5">
+		<div class="container py-md-5 py-4">
+			<div class="waviy white-text text-center mb-sm-5 mb-4">
+				<span style="-i: 1">M</span> <span style="-i: 2">e</span> <span
+					style="-i: 3">n</span> <span style="-i: 4">u</span> <span
+					style="-i: 9"></span> <span style="-i: 9"></span> <span
+					style="-i: 5">B</span> <span style="-i: 6">e</span> <span
+					style="-i: 7">s</span> <span style="-i: 8">t</span>
 
-            </div>
-        </div>
-    </section>
-    <!-- //services section -->
 
-    <!-- team sections -->
-    <section class="w3l-team-main" id="team">
-        <div class="team py-5">
-            <div class="container py-md-5 py-4">
-                <div class="waviy white-text text-center mb-sm-5 mb-4">
-                    <span style="--i:1">O</span>
-                    <span style="--i:2">u</span>
-                    <span style="--i:3">r</span>
-                    <span style="--i:4"></span>
-                    <span style="--i:5">T</span>
-                    <span style="--i:6">e</span>
-                    <span style="--i:7">a</span>
-                    <span style="--i:8">m</span>
-                    <span style="--i:9"></span>
-                    <span style="--i:10">M</span>
-                    <span style="--i:11">e</span>
-                    <span style="--i:12">m</span>
-                    <span style="--i:13">b</span>
-                    <span style="--i:14">e</span>
-                    <span style="--i:15">r</span>
-                    <span style="--i:16">s</span>
-                </div>
-                <!-- fireworks effect -->
-                <div class="pyro">
-                    <div class="before"></div>
-                    <div class="after"></div>
-                </div>
-                <div class="row team-row mt-md-5 mt-4">
-                    <div class="col-lg-3 col-6 team-wrap">
-                        <div class="team-member text-center">
-                            <div class="team-img">
-                                <img src="assets/images/team1.jpg" alt="" class="radius-image">
-                            </div>
-                            <a href="#url" class="team-title">Lyn Victor</a>
-                            <div class="team-details text-center">
-                                <div class="socials mt-20">
-                                    <a href="#url">
-                                        <span class="fa fa-facebook-f"></span>
-                                    </a>
-                                    <a href="#url">
-                                        <span class="fa fa-twitter"></span>
-                                    </a>
-                                    <a href="#url">
-                                        <span class="fa fa-instagram"></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end team member -->
-                    <div class="col-lg-3 col-6 team-wrap">
-                        <div class="team-member text-center">
-                            <div class="team-img">
-                                <img src="assets/images/team2.jpg" alt="" class="radius-image">
-                            </div>
-                            <a href="#url" class="team-title">Meyer Lson</a>
-                            <div class="team-details text-center">
-                                <div class="socials mt-20">
-                                    <a href="#url">
-                                        <span class="fa fa-facebook-f"></span>
-                                    </a>
-                                    <a href="#url">
-                                        <span class="fa fa-twitter"></span>
-                                    </a>
-                                    <a href="#url">
-                                        <span class="fa fa-instagram"></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end team member -->
-                    <div class="col-lg-3 col-6 team-wrap mt-lg-0 mt-5">
-                        <div class="team-member last text-center">
-                            <div class="team-img">
-                                <img src="assets/images/team3.jpg" alt="" class="radius-image">
-                            </div>
-                            <a href="#url" class="team-title">Lyn Meyer</a>
-                            <div class="team-details text-center">
-                                <div class="socials mt-20">
-                                    <a href="#url">
-                                        <span class="fa fa-facebook-f"></span>
-                                    </a>
-                                    <a href="#url">
-                                        <span class="fa fa-twitter"></span>
-                                    </a>
-                                    <a href="#url">
-                                        <span class="fa fa-instagram"></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end team member -->
-                    <div class="col-lg-3 col-6 team-wrap mt-lg-0 mt-5">
-                        <div class="team-member last text-center">
-                            <div class="team-img">
-                                <img src="assets/images/team4.jpg" alt="" class="radius-image">
-                            </div>
-                            <a href="#url" class="team-title">Sam Mills</a>
-                            <div class="team-details text-center">
-                                <div class="socials mt-20">
-                                    <a href="#url">
-                                        <span class="fa fa-facebook-f"></span>
-                                    </a>
-                                    <a href="#url">
-                                        <span class="fa fa-twitter"></span>
-                                    </a>
-                                    <a href="#url">
-                                        <span class="fa fa-instagram"></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end team member -->
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- //team sections -->
+			</div>
+			<!-- fireworks effect -->
+			<div class="pyro">
+				<div class="before"></div>
+				<div class="after"></div>
+			</div>
 
-    <!-- testimonials -->
-    <section class="w3l-clients-1" id="testimonials">
-        <div class="cusrtomer-layout py-5">
-            <div class="container py-md-5 py-4">
-                <div class="waviy text-center mb-sm-5 mb-4">
-                    <span style="--i:1">W</span>
-                    <span style="--i:2">h</span>
-                    <span style="--i:3">a</span>
-                    <span style="--i:4">t</span>
-                    <span style="--i:5"></span>
-                    <span style="--i:6">P</span>
-                    <span style="--i:7">e</span>
-                    <span style="--i:8">o</span>
-                    <span style="--i:1">p</span>
-                    <span style="--i:2">l</span>
-                    <span style="--i:3">e</span>
-                    <span style="--i:4"></span>
-                    <span style="--i:5">S</span>
-                    <span style="--i:6">a</span>
-                    <span style="--i:7">y</span>
-                </div>
-                <div class="testimonial-row">
-                    <div id="owl-demo2" class="owl-two owl-carousel owl-theme mb-md-3 mb-sm-5 mb-4">
-                        <div class="item">
-                            <div class="testimonial-content">
-                                <div class="testimonial">
-                                    <blockquote>
-                                        <q>Lorem ipsum dolor sit amet int consectetur adipisicing elit. Velita beatae
-                                            laudantium Quas minima sunt natus tempore, maiores aliquid modi felis vitae
-                                            facere aperiam sequi optio lacinia id ipsum non velit, culpa.
-                                            voluptate rem ullam dolore nisi est quasi, doloribus tempora.
-                                            est elit. Non quae, fugiat ad libero justo sed amet.</q>
-                                    </blockquote>
-                                    <div class="testi-des">
-                                        <a href="#url" class="testi-img">
-                                            <img src="assets/images/testi1.jpg" alt="" class="radius-image img-fluid">
-                                        </a>
-                                        <div class="peopl align-self">
-                                            <h3>Dennis wilson</h3>
-                                            <p class="identity">Customer </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimonial-content">
-                                <div class="testimonial">
-                                    <blockquote>
-                                        <q>Lorem ipsum dolor sit amet int consectetur adipisicing elit. Velita beatae
-                                            laudantium Quas minima sunt natus tempore, maiores aliquid modi felis vitae
-                                            facere aperiam sequi optio lacinia id ipsum non velit, culpa.
-                                            voluptate rem ullam dolore nisi est quasi, doloribus tempora.
-                                            est elit. Non quae, fugiat ad libero justo sed amet.</q>
-                                    </blockquote>
-                                    <div class="testi-des">
-                                        <a href="#url" class="testi-img">
-                                            <img src="assets/images/testi2.jpg" alt="" class="radius-image img-fluid">
-                                        </a>
-                                        <div class="peopl align-self">
-                                            <h3>Tommy sakura</h3>
-                                            <p class="identity">Customer </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimonial-content">
-                                <div class="testimonial">
-                                    <blockquote>
-                                        <q>Lorem ipsum dolor sit amet int consectetur adipisicing elit. Velita beatae
-                                            laudantium Quas minima sunt natus tempore, maiores aliquid modi felis vitae
-                                            facere aperiam sequi optio lacinia id ipsum non velit, culpa.
-                                            voluptate rem ullam dolore nisi est quasi, doloribus tempora.
-                                            est elit. Non quae, fugiat ad libero justo sed amet.</q>
-                                    </blockquote>
-                                    <div class="testi-des">
-                                        <a href="#url" class="testi-img">
-                                            <img src="assets/images/testi3.jpg" alt="" class="radius-image img-fluid">
-                                        </a>
-                                        <div class="peopl align-self">
-                                            <h3>Roy Linderson</h3>
-                                            <p class="identity">Customer</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimonial-content">
-                                <div class="testimonial">
-                                    <blockquote>
-                                        <q>Lorem ipsum dolor sit amet int consectetur adipisicing elit. Velita beatae
-                                            laudantium Quas minima sunt natus tempore, maiores aliquid modi felis vitae
-                                            facere aperiam sequi optio lacinia id ipsum non velit, culpa.
-                                            voluptate rem ullam dolore nisi est quasi, doloribus tempora.
-                                            est elit. Non quae, fugiat ad libero justo sed amet.</q>
-                                    </blockquote>
-                                    <div class="testi-des">
-                                        <a href="#url" class="testi-img">
-                                            <img src="assets/images/testi2.jpg" alt="" class="radius-image img-fluid">
-                                        </a>
-                                        <div class="peopl align-self">
-                                            <h3>Mike Thyson</h3>
-                                            <p class="identity">Customer</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- //testimonials -->
 
-    <!-- call section -->
-    <section class="w3l-call-to-action-6">
-        <div class="call-sec-style py-5">
-            <div class="container py-md-4 py-3">
-                <div class="row align-items-center">
-                    <div class="col-md-5 col-float-lt">
-                        <h3 class="title-big">Register now !</h3>
-                        <p>Wanna Join in, please call us today</p>
-                    </div>
-                    <div class="col-md-7 float-rt text-md-right align-items-center mt-md-0 mt-4">
-                        <ul class="buttons">
-                            <li class="phone-sec"><span class="fa fa-volume-control-phone mr-1"
-                                    aria-hidden="true"></span>
-                                <a class="call-style-w3" href="tel:+1(23) 456 789 0000">+1(23) 456 789 0000</a>
-                            </li>
-                            <li class="green">Or</li>
-                            <li><a href="contact.html" class="btn btn-style">Get in touch</a> </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- //call section -->
+			<div class="row team-row mt-md-5 mt-4">
+				<div class="col-lg-3 col-6 team-wrap">
+					<div class="team-member text-center">
+						<div class="team-img ">
+							<img src="assets/images/한식.jpeg" alt="" class="radius-image">
+						</div>
+						<a href="#url" class="team-title">한식</a>
+						<div class="team-details text-center">
+							<div class="socials mt-20">
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- end team member -->
+				<div class="col-lg-3 col-6 team-wrap">
+					<div class="team-member text-center">
+						<div class="team-img ">
+							<img src="assets/images/양식.jpeg" alt="" class="radius-image">
+						</div>
+						<a href="#url" class="team-title">양식</a>
+						<div class="team-details text-center">
+							<div class="socials mt-20">
 
-  
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- end team member -->
+				<div class="col-lg-3 col-6 team-wrap mt-lg-0 mt-5">
+					<div class="team-member last text-center">
+						<div class="team-img ">
+							<img src="assets/images/일식.png" alt="" class="radius-image">
+						</div>
+						<a href="#url" class="team-title">일식</a>
+						<div class="team-details text-center">
+							<div class="socials mt-20">
 
-    <!-- Js scripts -->
-    <!-- move top -->
-    <button onclick="topFunction()" id="movetop" title="Go to top">
-        <span class="fa fa-level-up" aria-hidden="true"></span>
-    </button>
-    <script>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- end team member -->
+				<div class="col-lg-3 col-6 team-wrap mt-lg-0 mt-5">
+					<div class="team-member last text-center">
+						<div class="team-img ">
+							<img src="assets/images/중식.jpg" alt="" class="radius-image">
+						</div>
+						<a href="#url" class="team-title">중식</a>
+						<div class="team-details text-center">
+							<div class="socials mt-20">
+
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- end team member -->
+			</div>
+		</div>
+	</div>
+
+
+</section>
+<!-- //team sections -->
+
+<!-- testimonials -->
+<section class="w3l-clients-1" id="testimonials">
+	<div class="cusrtomer-layout py-5">
+		<div class="container py-md-5 py-4">
+			<div class="waviy text-center mb-sm-5 mb-4">
+				<span style="-i: 1">W</span> <span style="-i: 2">h</span> <span
+					style="-i: 3">a</span> <span style="-i: 4">t</span> <span
+					style="-i: 5"></span> <span style="-i: 6">P</span> <span
+					style="-i: 7">e</span> <span style="-i: 8">o</span> <span
+					style="-i: 1">p</span> <span style="-i: 2">l</span> <span
+					style="-i: 3">e</span> <span style="-i: 4"></span> <span
+					style="-i: 5">S</span> <span style="-i: 6">a</span> <span
+					style="-i: 7">y</span>
+			</div>
+			<div class="testimonial-row">
+				<div id="owl-demo2"
+					class="owl-two owl-carousel owl-theme mb-md-3 mb-sm-5 mb-4">
+					<div class="item">
+						<div class="testimonial-content">
+							<div class="testimonial">
+								<blockquote>
+									<q>Lorem ipsum dolor sit amet int consectetur adipisicing
+										elit. Velita beatae laudantium Quas minima sunt natus tempore,
+										maiores aliquid modi felis vitae facere aperiam sequi optio
+										lacinia id ipsum non velit, culpa. voluptate rem ullam dolore
+										nisi est quasi, doloribus tempora. est elit. Non quae, fugiat
+										ad libero justo sed amet.</q>
+								</blockquote>
+								<div class="testi-des">
+									<a href="#url" class="testi-img"> <img
+										src="assets/images/testi1.jpg" alt=""
+										class="radius-image img-fluid">
+									</a>
+									<div class="peopl align-self">
+										<h3>Dennis wilson</h3>
+										<p class="identity">Customer</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<div class="testimonial-content">
+							<div class="testimonial">
+								<blockquote>
+									<q>Lorem ipsum dolor sit amet int consectetur adipisicing
+										elit. Velita beatae laudantium Quas minima sunt natus tempore,
+										maiores aliquid modi felis vitae facere aperiam sequi optio
+										lacinia id ipsum non velit, culpa. voluptate rem ullam dolore
+										nisi est quasi, doloribus tempora. est elit. Non quae, fugiat
+										ad libero justo sed amet.</q>
+								</blockquote>
+								<div class="testi-des">
+									<a href="#url" class="testi-img"> <img
+										src="assets/images/testi2.jpg" alt=""
+										class="radius-image img-fluid">
+									</a>
+									<div class="peopl align-self">
+										<h3>Tommy sakura</h3>
+										<p class="identity">Customer</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<div class="testimonial-content">
+							<div class="testimonial">
+								<blockquote>
+									<q>Lorem ipsum dolor sit amet int consectetur adipisicing
+										elit. Velita beatae laudantium Quas minima sunt natus tempore,
+										maiores aliquid modi felis vitae facere aperiam sequi optio
+										lacinia id ipsum non velit, culpa. voluptate rem ullam dolore
+										nisi est quasi, doloribus tempora. est elit. Non quae, fugiat
+										ad libero justo sed amet.</q>
+								</blockquote>
+								<div class="testi-des">
+									<a href="#url" class="testi-img"> <img
+										src="assets/images/testi3.jpg" alt=""
+										class="radius-image img-fluid">
+									</a>
+									<div class="peopl align-self">
+										<h3>Roy Linderson</h3>
+										<p class="identity">Customer</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<div class="testimonial-content">
+							<div class="testimonial">
+								<blockquote>
+									<q>Lorem ipsum dolor sit amet int consectetur adipisicing
+										elit. Velita beatae laudantium Quas minima sunt natus tempore,
+										maiores aliquid modi felis vitae facere aperiam sequi optio
+										lacinia id ipsum non velit, culpa. voluptate rem ullam dolore
+										nisi est quasi, doloribus tempora. est elit. Non quae, fugiat
+										ad libero justo sed amet.</q>
+								</blockquote>
+								<div class="testi-des">
+									<a href="#url" class="testi-img"> <img
+										src="assets/images/testi2.jpg" alt=""
+										class="radius-image img-fluid">
+									</a>
+									<div class="peopl align-self">
+										<h3>Mike Thyson</h3>
+										<p class="identity">Customer</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- //testimonials -->
+
+<!-- call section -->
+<section class="w3l-call-to-action-6">
+	<div class="call-sec-style py-5">
+		<div class="container py-md-4 py-3">
+			<div class="row align-items-center">
+				<div class="col-md-5 col-float-lt">
+					<h3 class="title-big">Register now !</h3>
+					<p>Wanna Join in, please call us today</p>
+				</div>
+				<div
+					class="col-md-7 float-rt text-md-right align-items-center mt-md-0 mt-4">
+					<ul class="buttons">
+						<li class="phone-sec"><span
+							class="fa fa-volume-control-phone mr-1" aria-hidden="true"></span>
+							<a class="call-style-w3" href="tel:+1(23) 456 789 0000">+1(23)
+								456 789 0000</a></li>
+						<li class="green">Or</li>
+						<li><a href="contact.html" class="btn btn-style">Get in
+								touch</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- //call section -->
+
+
+
+<!-- Js scripts -->
+<!-- move top -->
+<button onclick="topFunction()" id="movetop" title="Go to top">
+	<span class="fa fa-level-up" aria-hidden="true"></span>
+</button>
+<script>
         // When the user scrolls down 20px from the top of the document, show the button
         window.onscroll = function () {
             scrollFunction()
@@ -667,22 +578,22 @@
             document.documentElement.scrollTop = 0;
         }
     </script>
-    <!-- //move top -->
+<!-- //move top -->
 
-    <!-- common jquery plugin -->
-    <script src="assets/js/jquery-3.3.1.min.js"></script>
-    <!-- //common jquery plugin -->
+<!-- common jquery plugin -->
+<script src="assets/js/jquery-3.3.1.min.js"></script>
+<!-- //common jquery plugin -->
 
-    <!-- slider-js -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/modernizr-2.6.2.min.js"></script>
-    <script src="assets/js/jquery.zoomslider.min.js"></script>
-    <!-- //slider-js -->
+<!-- slider-js -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/modernizr-2.6.2.min.js"></script>
+<script src="assets/js/jquery.zoomslider.min.js"></script>
+<!-- //slider-js -->
 
-    <!-- owl carousel -->
-    <script src="assets/js/owl.carousel.js"></script>
-    <!-- script for tesimonials carousel slider -->
-    <script>
+<!-- owl carousel -->
+<script src="assets/js/owl.carousel.js"></script>
+<!-- script for tesimonials carousel slider -->
+<script>
         $(document).ready(function () {
             $("#owl-demo2").owlCarousel({
                 loop: true,
@@ -707,11 +618,11 @@
             })
         })
     </script>
-    <!-- //script for tesimonials carousel slider -->
+<!-- //script for tesimonials carousel slider -->
 
-    <!-- theme switch js (light and dark)-->
-    <script src="assets/js/theme-change.js"></script>
-    <script>
+<!-- theme switch js (light and dark)-->
+<script src="assets/js/theme-change.js"></script>
+<script>
         function autoType(elementClass, typingSpeed) {
             var thhis = $(elementClass);
             thhis.css({
@@ -746,10 +657,10 @@
             autoType(".type-js", 200);
         });
     </script>
-    <!-- //theme switch js (light and dark)-->
+<!-- //theme switch js (light and dark)-->
 
-    <!-- MENU-JS -->
-    <script>
+<!-- MENU-JS -->
+<script>
         $(window).on("scroll", function () {
             var scroll = $(window).scrollTop();
 
@@ -775,20 +686,20 @@
             });
         });
     </script>
-    <!-- //MENU-JS -->
+<!-- //MENU-JS -->
 
-    <!-- disable body scroll which navbar is in active -->
-    <script>
+<!-- disable body scroll which navbar is in active -->
+<script>
         $(function () {
             $('.navbar-toggler').click(function () {
                 $('body').toggleClass('noscroll');
             })
         });
     </script>
-    <!-- //disable body scroll which navbar is in active -->
+<!-- //disable body scroll which navbar is in active -->
 
-    <!--bootstrap-->
-    <script src="assets/js/bootstrap.min.js"></script>
-    <!-- //bootstrap-->
-    <!-- //Js scripts -->
+<!--bootstrap-->
+<script src="assets/js/bootstrap.min.js"></script>
+<!-- //bootstrap-->
+<!-- //Js scripts -->
 </body>

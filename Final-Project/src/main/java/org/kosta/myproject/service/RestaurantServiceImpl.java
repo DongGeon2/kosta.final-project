@@ -82,4 +82,9 @@ public class RestaurantServiceImpl implements RestaurantService {
 	public void deleteRestaurant(String resNo) {
 		 restaurantMapper.deleteRestaurant(resNo);
 	}
+
+	@Override
+	public ArrayList<RestaurantVO> getHomeRestaurantList() {
+		return restaurantMapper.getHomeRestaurantList();	
+	}
 }

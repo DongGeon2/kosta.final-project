@@ -34,4 +34,6 @@ public interface RestaurantService {
 
 	void deleteRestaurant(String resNo);
 
+	ArrayList<RestaurantVO> getHomeRestaurantList();
+
 }

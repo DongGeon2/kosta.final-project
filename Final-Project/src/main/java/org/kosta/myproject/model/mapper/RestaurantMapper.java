@@ -32,6 +32,8 @@ public interface RestaurantMapper {
 
 	void deleteRestaurant(String resNo);
 
+	ArrayList<RestaurantVO> getHomeRestaurantList();
+
 }
 
 
