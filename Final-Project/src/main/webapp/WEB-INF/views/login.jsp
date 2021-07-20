@@ -82,25 +82,43 @@
 </section>
 <!-- contact map -->
 <section class="w3l-contacts-1">
-	<div class="contacts">
-		<div class="contacts-content">
-			<iframe
-				src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d158858.47340002653!2d-0.24168120642536509!3d51.52855824164916!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondon%2C+UK!5e0!3m2!1sen!2sin!4v1562822037850!5m2!1sen!2sin"
-				width="100%" height="650" frameborder="0" style="border: 0"
-				allowfullscreen></iframe>
-			<div class="contact-info">
-				<h3>Get in touch with us</h3>
-				<p class="mb-4">If you have any questions about the site or need
-					support, please fill out the form above, and we will respond to
-					your request as quickly as possible.</p>
-				<a href="#link" class="btn btn-style-2 btn-style">Read More</a>
-			</div>
-			<address>
-				<h4>London</h4>
-				<a href="mailto:hello@w3layouts.com">Email: hello@w3layouts.com</a>
-				<a href="tel:8-800-999-800">Tel: 8-800-999-800</a>
-			</address>
-		</div>
-	</div>
+	<div id="resPosition" style="width: 100%; height: 600px;"></div>
 </section>
 <!-- //contact -->
+<script>
+	var mapContainer = document.getElementById('resPosition'), // 지도를 표시할 div 
+	mapOption = {
+		center : new kakao.maps.LatLng(37.338, 127.109), // 지도의 중심좌표
+		level : 4
+	// 지도의 확대 레벨
+	};
+
+	// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+	var map = new kakao.maps.Map(mapContainer, mapOption);
+
+	//일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
+	var mapTypeControl = new kakao.maps.MapTypeControl();
+
+	// 지도에 컨트롤을 추가해야 지도위에 표시됩니다
+	// kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
+	map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+
+	// 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
+	var zoomControl = new kakao.maps.ZoomControl();
+	map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+
+	//마커가 표시될 위치입니다 
+	var markerPosition = new kakao.maps.LatLng(37.338849, 127.109344);
+
+	//마커를 생성합니다
+	var marker = new kakao.maps.Marker({
+		position : markerPosition
+	});
+
+	//마커가 지도 위에 표시되도록 설정합니다
+	marker.setMap(map);
+
+	//마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
+	infowindow.open(map);
+	//아래 코드는 인포윈도우를 지도에서 제거합니다
+</script>
