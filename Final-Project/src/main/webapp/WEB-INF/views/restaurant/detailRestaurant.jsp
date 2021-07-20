@@ -286,15 +286,16 @@ $(document).ready(function() {
 				</div>
 				<a href="/doReservation?resName=${restaurantVO.resName}&resNo=${restaurantVO.resNo}&startTime=${restaurantVO.startTime}&endTime=${restaurantVO.endTime}" 
 				class="btn btn-style mt-5 ml-5">예약하러 가기</a>
-				
-				 <sec:authentication property="principal.id" var="ownerId"/>
+				<sec:authorize access="hasRole('ROLE_MEMBER')">
+				<sec:authentication property="principal.id" var="ownerId"/>
+				</sec:authorize>
 				<c:choose>
 				 <c:when test="${restaurantVO.memberVO.id==ownerId}">
-				<a href="/deleteRestaurant?resNo=${restaurantVO.resNo}" class="btn btn-style mt-5 ml-5">게시물 삭제</a> 
+				<a href="/deleteRestaurant?resNo=${restaurantVO.resNo}" class="btn btn-style mt-5 ml-5">식당 삭제</a> 
 				 </c:when>
 				<c:otherwise>
 				<sec:authorize access="hasRole('ROLE_ADMIN')">
-				<a href="/deleteRestaurant?resNo=${restaurantVO.resNo}" class="btn btn-style mt-5 ml-5">게시물 삭제</a>
+				<a href="/deleteRestaurant?resNo=${restaurantVO.resNo}" class="btn btn-style mt-5 ml-5">식당 삭제</a>
 				</sec:authorize>
 				</c:otherwise>
 				</c:choose>	
@@ -317,8 +318,10 @@ $(document).ready(function() {
                   <sec:csrfInput />
                   <div class="media-form">
                      <input type="hidden" name="resNo" value="${restaurant.resNo }">
-                     <input type="hidden" name="id" value="${mvo.id }"> <input
-                        type="text" name="title" required="required" placeholder="Title">
+                     <c:if test="${mvo ne null }">
+                     <input type="hidden" name="id" value="${mvo.id }"> 
+                     </c:if>
+                     <input type="text" name="title" required="required" placeholder="Title">
 	                  <div class="rating">
 	                     <i class="fa fa-star fa-3x" id="s1"><input type="hidden" name="star1"></i>
 	                     <i class="fa fa-star fa-3x" id="s2"><input type="hidden" name="star2"></i>

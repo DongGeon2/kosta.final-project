@@ -33,6 +33,11 @@ public class ReviewController {
 	@PostMapping("/registerReview")
 	public String registerReview(String message, String id, String title, String resNo, String star1, String star2, String star3, String star4, String star5) {
 		MemberVO pvo = (MemberVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		System.out.println(id);
+		System.out.println(pvo);
+		if(id==null || id=="") {
+			return "redirect:reviewFail2";
+		}
 		String memberId = pvo.getId();
 		
 		ArrayList<String> reviewGrade = new ArrayList<String>();
@@ -88,6 +93,11 @@ public class ReviewController {
 		return "restaurant/review-fail";
 	}
 
+	@Secured("ROLE_MEMBER")
+	@RequestMapping("reviewFail2")
+	public String reviewFail2() {
+		return "restaurant/review-fail2";
+	}
 	/*
 	 * @Secured("ROLE_MEMBER")
 	 * @RequestMapping("/resultReview") public String resultReview(Model model,
