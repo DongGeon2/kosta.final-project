@@ -413,7 +413,12 @@ $(document).ready(function() {
                             <span>${review.reviewRegdate }</span>
                         </div>
                         <p>${review.reviewContent }</p>
+             	<%--식당사장한테만 reply 버튼 보이게하기 --%>
+				<c:choose>
+				 <c:when test="${restaurantVO.memberVO.id==ownerId}"> 
                         <a href="#reply" class="rep mt-3">Reply</a>
+                         </c:when>
+                        </c:choose> 
                </div>
                 </div>
             </c:forEach>
