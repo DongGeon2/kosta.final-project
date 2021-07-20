@@ -31,7 +31,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       select r.board_no,r.title,r.time_posted,r.content,r.id,r.img,
       m.id,m.password,m.email,m.name,m.tel,m.enabled
       from
-      (select row_number() over(order by board_no asc) as
+      (select row_number() over(order by board_no asc) as    
       rnum,board_no,title,time_posted,
       content,id,img from ko_board) r, ko_member m
       where board_no = #{value} and r.id=m.id
@@ -81,6 +81,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     	FROM ko_board b, ko_member m
     	WHERE b.id=m.id AND b.id=#{value}
     </select>
+    <delete id="deleteCommentByNo">
+    	DELETE FROM ko_board_comment 
+    	WHERE board_no=#{boardNo} and comment_no=#{commentNo}
+    </delete>
 </mapper>
  
  

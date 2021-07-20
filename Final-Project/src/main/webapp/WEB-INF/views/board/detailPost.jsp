@@ -74,7 +74,7 @@
                             <div class="media-body">
                                 <div class="medi-top mb-2">
                                     <a class="name mt-0">${comment.memberVO.id} </a>
-                                    <span>${comment.commentTime}</span>
+                                    <span>${comment.commentTime}  |<a href="${pageContext.request.contextPath}/deleteCommentByNo?boardNo=${viewDetailPost.boardNo}&commentNo=${comment.commentNo}">  삭제</a></span>
                                 </div>
                                 <p>${comment.commentContent}</p>
                             </div>

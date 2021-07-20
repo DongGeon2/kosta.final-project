@@ -70,4 +70,9 @@ public class BoardServiceImpl implements BoardService {
 		return boardMapper.getPostById(id);
 	}
 
+	@Override
+	public void deleteCommentByNo(String boardNo, String commentNo) {
+		boardMapper.deleteCommentByNo(boardNo, commentNo);		
+	}
+
 }

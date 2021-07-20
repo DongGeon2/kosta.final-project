@@ -122,6 +122,12 @@ public class BoardController {
 	}
 	/* 게시판 댓글 */
 	
-	
+	@Secured("ROLE_MEMBER")
+	@RequestMapping("/deleteCommentByNo")
+	public String deleteCommentByNo(String boardNo, String commentNo) {
+		System.out.println("boardNo: "+boardNo+" commentNo: "+commentNo);
+		boardService.deleteCommentByNo(boardNo, commentNo);
+		return "redirect:getDetailPostByNo?boardNo="+boardNo;
+	}
 
 }

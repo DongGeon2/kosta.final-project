@@ -28,4 +28,6 @@ public interface BoardService {
 	public boolean plusHits(String boardNo);
 
 	List<BoardVO> getPostById(String id);
+	
+	void deleteCommentByNo(String boardNo, String commentNo);
 }
