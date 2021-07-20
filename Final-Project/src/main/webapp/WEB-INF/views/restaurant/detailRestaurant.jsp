@@ -253,8 +253,6 @@ $(document).ready(function() {
 						<i class="far fa-star fa-4x pt-5 pb-5 pr-sm-0 img-fluid" style="color:orange "></i>
 						</c:otherwise>
 						</c:choose>
-						<!-- <p>In a diam et dui, orci urna. Donec sed tempus enims.</p>#F05522 -->
-						 <nav class="post-navigation row">
 						 
 					</div>
 												<!-- 별점 -->
@@ -286,7 +284,7 @@ $(document).ready(function() {
 				</div>
 				<a href="/doReservation?resName=${restaurantVO.resName}&resNo=${restaurantVO.resNo}&startTime=${restaurantVO.startTime}&endTime=${restaurantVO.endTime}" 
 				class="btn btn-style mt-5 ml-5">예약하러 가기</a>
-				<sec:authorize access="hasRole('ROLE_MEMBER')">
+				<sec:authorize access="hasRole('ROLE_OWNER')">
 				<sec:authentication property="principal.id" var="ownerId"/>
 				</sec:authorize>
 				<c:choose>
