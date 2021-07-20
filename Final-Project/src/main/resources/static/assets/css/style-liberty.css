@@ -16605,9 +16605,10 @@ ul.blog-meta li a {
 .w3l-team-main .team-img img {
   transition: all .2s ease-in-out;
   overflow: hidden;
-  width: 100%;
+  width: 250px;
+  height: 200px;
   border-radius: 50%;
-  border: 7px solid #fff;
+  border: 5px solid #fff;
 }
 
 .w3l-team-main .team-member,
