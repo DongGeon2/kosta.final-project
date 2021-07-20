@@ -18,6 +18,7 @@
 		</div>
 	</section>
 </div>
+
 <!-- //inner banner -->
 <div class="container py-md-5 py-4">
 	<div class="waviy text-center mb-md-5 mb-4">
@@ -30,6 +31,11 @@
 		<span style="--i: 7">e</span>
 		<span style="--i: 8">r</span>
 	</div>
+	<!-- fireworks effect -->
+	<div class="pyro">
+		<div class="before"></div>
+		<div class="after"></div>
+	</div>	
 	<div class="container">
 		<table class="table">
 			<thead class="thead-light">
@@ -37,8 +43,9 @@
 					<th scope="col">Reservation No</th>
 					<th scope="col">Restaurant</th>
 					<th scope="col">My Id</th>
-					<th scope="col">HeadCount</th>
 					<th scope="col">Reservation Date</th>
+					<th scope="col">Reservation Time</th>
+					<th scope="col">Check</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -50,15 +57,16 @@
 						<th scope="row"><span class="label-blue">${rvo.revNo}</span>
 						</th>
 						<td>
-							<!-- 이름으로 검색하면 체인점처럼 다른지점도 알 수 있지 않을까요 ㅎㅅㅎ 사실 번호가 null이라 .. ^^ -->
-							<a
-							href="${pageContext.request.contextPath}/findRestaurantByName?resName=${rvo.restaurantVO.resName}">
+							<a href="${pageContext.request.contextPath}/findRestaurantByName?resName=${rvo.restaurantVO.resName}">
 								<span class="label-blue">${rvo.restaurantVO.resName}</span> <!--  </a> -->
 						</a>
 						</td>
 						<td><span class="label-blue">${rvo.memberVO.id}</span></td>
-						<td><span class="label-blue">${rvo.headCount}</span></td>
 						<td><span class="label-blue">${rvo.revTime}</span></td>
+						<td><span class="label-blue">${rvo.revHour}</span>
+						<td><a href="${pageContext.request.contextPath}/deleteReservation?revNo=${rvo.revNo}">
+							<span class="label-blue">삭제</span></a></td>
+						
 					</tr>
 				</c:forEach>
 				<%-- 		</sec:authorize> --%>

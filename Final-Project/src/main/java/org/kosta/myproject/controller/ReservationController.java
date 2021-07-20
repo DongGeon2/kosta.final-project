@@ -121,4 +121,17 @@ public class ReservationController {
 		model.addAttribute("hour", hour);
 		return "reservation/reservation-fail2";
 	}
+	
+	@RequestMapping("/deleteReservation")
+	public String deleteReservation(String revNo) {
+		reservationService.deleteReservation(revNo);
+		/* return "redirect:deleteReservationRecord"; */
+		return "redirect:myOrder";
+	}
+	/*
+	 * @RequestMapping("/deleteReservationRecord") public String
+	 * deleteReservationRecord(String record_no) {
+	 * reservationService.deleteReservationRecord(record_no); return
+	 * "myOrder.tiles"; }
+	 */
 }

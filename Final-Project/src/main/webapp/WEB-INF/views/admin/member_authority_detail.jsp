@@ -22,10 +22,12 @@
 <section class="w3l-w3l-contacts-12 py-5">
 	<div class="contact-top py-md-5 py-4">
 		<div class="container">
-		<!--  	<div class="waviy text-center mb-md-5 mb-4">
-				<span style="-i: 1">회</span> <span style="-i: 2">원</span> <span
-					style="-i: 3">관</span> <span style="-i: 4">리</span>
-			</div>-->
+		 	<div class="waviy text-center mb-md-5 mb-4">
+				<span style="--i: 1">회</span> 
+				<span style="--i: 2">원</span> 
+				<span style="--i: 3">관</span> 
+				<span style="--i: 4">리</span>
+			</div>
 			<!-- fireworks effect -->
 			<div class="pyro">
 				<div class="before"></div>
@@ -38,11 +40,9 @@
 						<th>${lista.id }권한 상태</th>
 					</tr>
 				</thead>
-				<tbody>
-				
+				<tbody>	
 					<tr>
-						
-						<td>${lista.authority }</td>
+						<td>${lista.authority}</td>
 					</tr>
 				</c:forEach>
 				<tr>
@@ -52,9 +52,9 @@
 				</div>
 				</td>
 				<td>
-				<!-- <div class="col-sm-offset-3 col-sm-6 top-inputs">
+				<div class="col-sm-offset-3 col-sm-6 top-inputs">
 				<input type="button" value="사장권한취소" id="AuthDeleteBtn" class="btn btn-style">
-				</div> -->
+				</div>
 				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 				<script type="text/javascript">
 							$(document).ready(function() {

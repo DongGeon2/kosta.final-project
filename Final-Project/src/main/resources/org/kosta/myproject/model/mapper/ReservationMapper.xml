@@ -34,11 +34,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where rev_time=#{value}
 	</select>
 	
-
 	<select id="findReservationById" resultMap="reservationRM" parameterType="string">
-		SELECT a.rev_no, b.res_name, a.id, a.rev_headcount, a.rev_time 
+		SELECT a.rev_no, b.res_name, a.id, a.rev_headcount, a.rev_time, a.rev_hour 
 		FROM KO_RESERVATION a, KO_RESTAURANT b
-		WHERE  a.res_no=b.res_no AND a.id=#{value}
+		WHERE  a.res_no=b.res_no AND a.id=#{value} 
 	</select>
 
 	<select id="getReservationByIdAndResNo" resultMap="reservationRM">
@@ -51,6 +50,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT res_detailloc FROM ko_restaurant
 		WHERE res_no=#{value}
 	</select>
+	
+	<delete id="deleteReservation" parameterType="string">
+		delete from ko_reservation
+		where rev_no = #{value}
+	</delete>
+	
 </mapper>
  
  

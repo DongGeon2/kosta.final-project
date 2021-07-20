@@ -18,7 +18,7 @@
 <section class="w3l-w3l-contacts-12 py-5">
 	<div class="contact-top py-md-5 py-4">
 		<div class="container">
- <h3 align="center"><sec:authentication property="principal.name"/>님 회원정보수정되었습니다. </h3>
+ <h3 align="center"><sec:authentication property="principal.name"/>님 회원정보 수정되었습니다. </h3>
  </div>
  </div>
  </section>

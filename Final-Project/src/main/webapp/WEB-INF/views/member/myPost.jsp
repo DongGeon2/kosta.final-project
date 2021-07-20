@@ -18,6 +18,11 @@
 		</div>
 	</section>
 </div>
+	<!-- fireworks effect -->
+		<div class="pyro">
+			<div class="before"></div>
+			<div class="after"></div>
+		</div>
 <!-- //inner banner -->
 <div class="container py-md-5 py-4">
 	<div class="waviy text-center mb-md-5 mb-4">

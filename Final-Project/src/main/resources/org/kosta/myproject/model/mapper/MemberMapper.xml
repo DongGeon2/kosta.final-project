@@ -14,7 +14,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       insert into ko_member(id,password,email,name,tel) 
       values(#{id},#{password},#{email},#{name},#{tel})
    </insert>
-   <insert id="registerRole">
+   <insert id="registerRole" parameterType="authority">
       insert into ko_authorities(id,authority) values(#{id},#{authority})
    </insert>
    <select id="getMemberCount" resultType="int">

@@ -7,6 +7,7 @@
 .yejin {
 	margin-bottom: 20px;
 }
+
 </style>
 
 <!-- inner banner -->
@@ -29,10 +30,10 @@
 	<div class="contact-top py-md-5 py-4">
 		<div class="container">
 			<div class="waviy text-center mb-md-5 mb-4">
-				<span style="-i: 1">회</span> 
-				<span style="-i: 2">원</span> 
-				<span style="-i: 3">관</span> 
-				<span style="-i: 4">리</span>
+				<span style="--i: 1">회</span> 
+				<span style="--i: 2">원</span> 
+				<span style="--i: 3">관</span> 
+				<span style="--i: 4">리</span>
 			</div>
 			<!-- fireworks effect -->
 			<div class="pyro">
@@ -40,103 +41,82 @@
 				<div class="after"></div>
 			</div>
 
-			<%-- <div class="container-fluid">	
-	<nav class="navbar navbar-expand-lg stroke">	
-	<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-	<ul class="navbar-nav ml-lg-auto">
-	<div class="search-right ml-lg-3">
-	
-	<form
-							action="${pageContext.request.contextPath}/user/findRestaurantByName"
-							method="GET" class="search-box position-relative2">
-							<div class="input-search">
-								<input type="search" placeholder="Enter Keyword" name="resName"
-									required="required" autofocus="" class="search-popup">
-							</div>
-							<button type="submit" class="btn search-btn">
-								<i class="fa fa-search" aria-hidden="true"></i>
-							</button>
-						</form>
-					
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+			<script type="text/javascript">
+				$(document).ready(function(){
+					//ajaxSetup(): 실행될 AJAX 요청에 대한 기본 속성 정의
+					$.ajaxSetup({
+						beforeSend : function(xhr){   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+			                xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+			            },
+						success:function(result){
+							alert(result);
+						},
+						error:function (jqXHR){
+							alert("jqXHR status code:"+jqXHR.status+" message:"+jqXHR.responseText);
+						}
+					});//setup
+					$("#createBtn").click(function(){	
+						//alert(1);
+						 $.ajax({
+							type:"post",
+							url:"/authority",
+							data:$("#createAuthForm").serialize(),
+						}).done(function(){ // done - success 와 동일
+							$("#createAuthForm")[0].reset();
+						});//ajax
+					});//click	
+					$("#deleteBtn").click(function(){			
+						$.ajax({
+							type:"delete",
+							url:"/authority/"+$("#deleteAuth").val()
+						});//ajax
+					});//click		
+				});
+			</script>
+			<form id="createAuthForm" style="margin-left: 240px;">
+				<sec:csrfInput />
+				<div class="row">
+					<div class="col-lg-3 col-md-3 col-sm-12 p-0">
+						<select name="authority" class="form-control search-slt"
+							id="exampleFormControlSelect1">
+							<option>권한</option>
+							<option value="ROLE_OWNER">사장님</option>
+							<option value="ROLE_ADMIN">관리자</option>
+						</select>
 					</div>
+					<div class="col-lg-3 col-md-3 col-sm-12 p-0">
+						<input type="text" placeholder="아이디" name="id" id="w3lName"
+							required="required" class="form-control search-slt">
 					</div>
-					</ul>
-					</nav>
-					</div>	
+					<div class="col-lg-3 col-md-3 col-sm-12 p-0">
+						<button type="submit"
+							class="btn btn-primary wrn-btn form-control search-slt"
+							id="createBtn" style="padding: 10px 0px 0px 90px;">권한추가하기</button>
 					</div>
-					
-					
-				
-	</div>
- --%>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript">
-	$(document).ready(function(){
-		//ajaxSetup(): 실행될 AJAX 요청에 대한 기본 속성 정의
-		$.ajaxSetup({
-			beforeSend : function(xhr){   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
-                xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
-            },
-			success:function(result){
-				alert(result);
-			},
-			error:function (jqXHR){
-				alert("jqXHR status code:"+jqXHR.status+" message:"+jqXHR.responseText);
-			}
-		});//setup
-		$("#createBtn").click(function(){	
-			//alert(1);
-			 $.ajax({
-				type:"post",
-				url:"/authority",
-				data:$("#createAuthForm").serialize(),
-			}).done(function(){ // done - success 와 동일
-				$("#createAuthForm")[0].reset();
-			});//ajax
-		});//click	
-		$("#deleteBtn").click(function(){			
-			$.ajax({
-				type:"delete",
-				url:"/authority/"+$("#deleteAuth").val()
-			});//ajax
-		});//click		
-	});
-</script>
-<input type="button" value="권한추가하기" id="createBtn"><br>
-<div class="contacts12-main ">
-	<%-- <form id="createAuthForm">
-		<sec:csrfInput />
-		<div class="top-inputs d-grid">
-			<input type="text" placeholder="아이디" name="id" id="w3lName" required="" size="5">
-		</div> --%>
-		<!-- search button -->
-		<nav class="navbar navbar-expand-lg stroke">
-			<div class="container-fluid">
-			<div class="search-right ml-lg-3">
-				<form id="createAuthForm" class="search-box position-relative">
-					<div class="input-search">
-						<input type="search" placeholder="Member ID" name="id" required="required" autofocus="" class="search-popup">
-					</div>
-					<button type="submit" class="btn search-btn">
-						<i class="fa fa-search" aria-hidden="true"></i>
-					</button>
+				</div>
 				</form>
-			</div>
-			</div>
-		</nav>
-		<!-- //search button -->
-		<select name="authority">
-			<option value="ROLE_OWNER">사장님</option>		
-			<option value="ROLE_ADMIN">관리자</option>
-		</select>
-</div>
-</div>
-</div>
-<br> 
-<input type="button" value="권한삭제하기" id="deleteBtn">
-<input type="text" id="deleteAuth">
-<div class="container">
-	<h2>회원명단</h2>
+				<br> <br>
+				
+				<div class="row" style="margin-left: 350px;">
+					<div class="col-lg-3 col-md-3 col-sm-12 p-0">
+						<input type="text" placeholder="아이디" name="id" id="deleteAuth"
+							required="required" class="form-control search-slt" style="width:240px">
+					</div>
+					<div class="col-lg-3 col-md-3 col-sm-12 p-0">
+						<button type="submit"
+							class="btn btn-primary wrn-btn form-control search-slt"
+							id="deleteBtn" style="padding: 10px 0px 0px 90px; width:240px">권한삭제하기</button>
+					</div>
+				</div>
+			
+		</div>
+	</div>
+</section>
+
+<section>
+	<div class="container">
+		<h2>회원명단</h2>
 		<table class="table">
 			<thead>
 				<tr>
@@ -153,7 +133,7 @@
 				</c:forEach>
 			</tbody>
 		</table>
-</div>
+	</div>
 </section>
 <!-- contact map -->
 <%--   <section class="w3l-contacts-1">

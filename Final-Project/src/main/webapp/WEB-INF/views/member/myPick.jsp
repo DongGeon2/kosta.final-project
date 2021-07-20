@@ -40,6 +40,11 @@
 					<span style="--i: 6">c</span> 
 					<span style="--i: 7">k</span>
 				</div>
+					<!-- fireworks effect -->
+		<div class="pyro">
+			<div class="before"></div>
+			<div class="after"></div>
+		</div>
 				<div class="Yrow top-cont-grid align-items-center">
 					<sec:authorize access="hasRole('ROLE_MEMBER')">
 						<sec:csrfInput />

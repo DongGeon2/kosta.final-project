@@ -31,7 +31,7 @@ public class AdminController {
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@PostMapping(value = "/authority")
 	public ResponseEntity registerProduct( Authority authority) {
-		System.out.println("Request Method : POST");
+		System.out.println("Request Method : POST"+ authority);
 		memberService.registerRole(authority);	
 		return new ResponseEntity(authority.getId()+" "+authority.getAuthority()+" 권한추가완료", HttpStatus.OK);
 	}

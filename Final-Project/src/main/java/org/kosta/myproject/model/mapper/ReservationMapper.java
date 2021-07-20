@@ -10,7 +10,6 @@ public interface ReservationMapper {
 
 	void registerReservation(ReservationVO resVO);
 
-
 	List<ReservationVO> findReservationById(String id);
 
 	List<ReservationVO> getReservationListByDay(String revTime, String resNo);
@@ -20,4 +19,8 @@ public interface ReservationMapper {
 	List<ReservationVO> getReservationByIdAndResNo(String id, String resNo);
 
 	String findRestaurantDetailLoc(String resNo);
+	
+	void deleteReservation(String revNo);
+
+	void deleteReservationRecord(String record_no);
 }

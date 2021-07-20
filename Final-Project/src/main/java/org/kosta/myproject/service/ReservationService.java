@@ -17,4 +17,8 @@ public interface ReservationService {
 	List<ReservationVO> getReservationByIdAndResNo(String id, String resNo);
 
 	String findRestaurantDetailLoc(String resNo);
+
+	void deleteReservation(String revNo);
+	
+	void deleteReservationRecord(String record_no);
 }

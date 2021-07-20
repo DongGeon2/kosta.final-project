@@ -41,4 +41,14 @@ public class ReservationServiceImpl implements ReservationService{
 	public String findRestaurantDetailLoc(String resNo) {
 		return reservationMapper.findRestaurantDetailLoc(resNo);
 	}
+
+	@Override
+	public void deleteReservation(String revNo) {
+		reservationMapper.deleteReservation(revNo);
+	}
+
+	@Override
+	public void deleteReservationRecord(String record_no) {
+		reservationMapper.deleteReservationRecord(record_no);
+	}
 }
