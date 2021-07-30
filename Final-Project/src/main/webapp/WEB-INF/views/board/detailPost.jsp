@@ -66,7 +66,7 @@
                     <!-- 게시판댓글 -->
                     <c:forEach items="${commentList}" var="comment">
                     <div class="comments">
-                        <h3 class="post-content-title">${comment.commentNo}</h3>
+                       <%--  <h3 class="post-content-title">${comment.commentNo}</h3> --%>
                         <div class="media mt-4 bod-1">
                             <div class="img-circle">
                                 <img src="/assets/images/기본프로필.JPG" class="img-fluid">

@@ -64,7 +64,7 @@
 						<td><span class="label-blue">${rvo.memberVO.id}</span></td>
 						<td><span class="label-blue">${rvo.revTime}</span></td>
 						<td><span class="label-blue">${rvo.revHour}</span>
-						<td><a href="${pageContext.request.contextPath}/deleteReservation?revNo=${rvo.revNo}">
+						<td><a href="${pageContext.request.contextPath}/deleteReservation?revNo=${rvo.revNo}&revTime=${rvo.revTime}&id=${rvo.memberVO.id}&resNo=${rvo.restaurantVO.resNo}">
 							<span class="label-blue">삭제</span></a></td>
 						
 					</tr>

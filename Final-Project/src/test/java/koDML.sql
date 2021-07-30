@@ -7,13 +7,18 @@ insert into ko_member(id,password,email,name,tel) values('JYJ','1','Y@naver.com'
 
 select * from ko_member
 
+select * from KO_AUTHORITIES
+
+insert into ko_authorities(id,authority) values('1234',#{authority})
 --예진 사장 식당 등록 test
 insert into ko_member(id,password,email,name,tel) values('aaaas','a','Y@naver.com','정예진','0105');
-insert into ko_authorities(id,authority) values('aaaas','ROLE_OWNER');
+insert into ko_authorities(id,authority) values('1234','ROLE_OWNER');
 
 --권한
 insert into ko_authorities(id,authority) values('java','ROLE_ADMIN');
-insert into ko_authorities(id,authority) values('java3','ROLE_OWNER');
+insert into ko_authorities(id,authority) values('java','ROLE_OWNER');
+insert into ko_authorities(id,authority) values('양양크랩','ROLE_OWNER');
+insert into ko_authorities(id,authority) values('h541_owner','ROLE_OWNER');
 insert into ko_authorities(id,authority) values('aaaas','ROLE_MEMBER');
 insert into ko_authorities(id,authority) values('BKS','ROLE_MEMBER');
 insert into ko_authorities(id,authority) values('JYJ','ROLE_MEMBER');
@@ -93,3 +98,8 @@ SELECT * FROM KO_MY_PICK
 SELECT r.res_no, r.res_image, r.res_name, p.id, r.res_loc,r.start_time,r.end_time
 FROM ko_my_pick p, ko_restaurant r 
 WHERE p.res_no=r.res_no AND p.id='1234'
+
+select * from ko_reservation
+select * from ko_reservation_record
+delete from ko_reservation
+where rev_no='7' cascade constraint

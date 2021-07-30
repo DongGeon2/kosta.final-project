@@ -55,9 +55,11 @@
 								<div class="card">
 									<div class="card-header p-0 position-relative">
 										<a href="/detailRestaurant?resNo=${pvo.restaurantVO.resNo}">
-											<img class="card-img-bottom d-block radius-image-full"
+											<img style=" width: 300px; height: 220px;  margin: auto;"
+                          					 src="/ResUpload/${pvo.restaurantVO.resImage }" alt="Card image cap">
+										<%-- 	<img class="card-img-bottom d-block radius-image-full"
 											src="/ResUpload/${pvo.restaurantVO.resImage}"
-											alt="Card image cap">
+											alt="Card image cap"> --%>
 										</a>
 									</div>
 									<div class="card-body blog-details" style="font-size: 15px;">
@@ -102,7 +104,7 @@
 				<!-- 식당1 -->
 
 				<!-- pagination -->
-				<%-- <c:set var="pb" value="${requestScope.pagingBean}"></c:set>
+			<%-- 	<c:set var="pb" value="${requestScope.pagingBean}"></c:set>
 			<div class="pagination-style text-center mt-5 pt-5">
 				<ul>
 					<!-- 이전 그룹일때 -->

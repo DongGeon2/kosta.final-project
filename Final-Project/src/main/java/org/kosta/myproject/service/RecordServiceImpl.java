@@ -28,4 +28,10 @@ public class RecordServiceImpl implements RecordService{
 		recordMapper.updateCheck(memberId,recordTime,resNo);
 	}
 
+	@Override
+	public void deleteRecord(String revTime, String id, String resNo) {
+		recordMapper.deleteRecord(revTime,id,resNo);
+		
+	}
+
 }

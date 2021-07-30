@@ -73,8 +73,8 @@
 						<div class="card">
 							<div class="card-header p-0 position-relative">
 								<a href="/detailRestaurant?resNo=${restaurant.resNo}">
-									<img class="card-img-bottom d-block radius-image-full"
-									src="/ResUpload/${restaurant.resImage }" alt="Card image cap">
+									<img style=" width: 313.33px; height: 220px;  margin: auto;"
+                           src="/ResUpload/${restaurant.resImage }" alt="Card image cap">
 								</a>
 							</div>
 							<div class="card-body blog-details" style="font-size: 15px;">

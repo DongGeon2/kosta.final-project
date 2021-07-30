@@ -12,4 +12,6 @@ public interface RecordService {
 
 	void updateCheck(String memberId, String recordTime, String resNo);
 
+	void deleteRecord(String revTime, String id, String resNo);
+
 }

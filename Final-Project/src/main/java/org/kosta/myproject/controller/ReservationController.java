@@ -123,8 +123,9 @@ public class ReservationController {
 	}
 	
 	@RequestMapping("/deleteReservation")
-	public String deleteReservation(String revNo) {
+	public String deleteReservation(String revNo, String revTime, String id, String resNo) {
 		reservationService.deleteReservation(revNo);
+		recordService.deleteRecord(revTime, id, resNo);
 		/* return "redirect:deleteReservationRecord"; */
 		return "redirect:myOrder";
 	}

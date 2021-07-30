@@ -23,41 +23,26 @@
 <section class="w3l-bottom-grids-6 w3l-services py-5" id="services">
 	<div class="container py-md-5 py-4">
 		<div class="waviy text-center mb-md-5 mb-4">
-			<!--            <span style="--i:1">B</span>
-                <span style="--i:2">e</span>
-                <span style="--i:3">s</span>
-                <span style="--i:4">t</span>
-                <span style="--i:5"> </span>
-                <span style="--i:6">S</span>
-                <span style="--i:7">e</span>
-                <span style="--i:8">r</span>
-                <span style="--i:1">v</span>
-                <span style="--i:2">i</span>
-                <span style="--i:3">c</span>
-                <span style="--i:4">e</span>
-                <span style="--i:5">s</span> -->
-			<span style="--i: 1">M</span>
-			 <span style="--i: 2">y</span> 
-			 <span	style="--i: 3"></span> 
-			 <span style="--i: 4">P</span> 
-			 <span style="--i: 5">a</span> 
-			<span style="--i: 6">g</span> 
-			<span style="--i: 7">e</span>
+			 <span style="--i: 1">A</span>
+			 <span style="--i: 2">D</span> 
+			 <span style="--i: 3">M</span> 
+			 <span style="--i: 4">I</span> 
+			 <span style="--i: 5">N</span> 
 		</div>
 		<!-- fireworks effect -->
 		<div class="pyro">
 			<div class="before"></div>
 			<div class="after"></div>
 		</div>
-		<div class="grids-area-hny main-cont-wthree-fea row">	
-				<div class="col-lg-4 col-md-6 grids-feature">
+		<!-- <div class="grids-area-hny main-cont-wthree-fea row">	 -->
+				<div class="col-lg-4 col-md-6 grids-feature" style="margin-left: 380px;">
                     <div class="area-box">
-                        <img src="assets/images/MyOrder.png" alt="" class="img-fluid">
+                        <img src="/assets/images/025-hand.png" alt="" class="img-fluid">
                         <h4><a href="/admin/member_admin" class="title-head">회원관리</a></h4>
                         <p class="">회원 삭제, 권한 업데이트</p><!-- Reservation history /  -->
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 grids-feature mt-md-0 mt-4">
+               <!--  <div class="col-lg-4 col-md-6 grids-feature mt-md-0 mt-4">
                     <div class="area-box">
                         <img src="assets/images/MyPick.png" alt="" class="img-fluid">
                         <h4><a href="#feature" class="title-head">My pick</a></h4>
@@ -91,7 +76,7 @@
                         <h4><a href="deleteMember" class="title-head" onclick="Unsubscribe()">Unsubscribe account</a></h4>
                         <p class="">Don't Unsubscribe Our Website</p>
                     </div>
-                </div>
+                </div> -->
 		</div>
 	</div>
 </section>

@@ -13,14 +13,19 @@ DROP TABLE ko_review;
 DROP sequence ko_review_seq;
 DROP TABLE ko_reservation;
 DROP sequence ko_reservation_seq;
+DROP TABLE ko_record;
+DROP sequence ko_record_seq;
+DROP TABLE ko_reservation_record;
+DROP sequence ko_reservation_record_seq;
 
+select * from KO_RESERVATION
 --1. 회원 테이블
 CREATE TABLE ko_member(
    id varchar2(100) primary key,
    password varchar2(100) not null,
    email varchar2(100) not null,
    name varchar2(100) not null,
-   tel varchar2(10) not null,
+   tel varchar2(100) not null,
    enabled int default 1 not null 
 )
 ALTER TABLE ko_member MODIFY(tel VARCHAR2(100));
@@ -33,6 +38,7 @@ CREATE TABLE ko_authorities(
    CONSTRAINT fk_ko_authorities foreign key(id) references ko_member(id) on delete cascade,
    CONSTRAINT ko_member_authorities primary key(id,authority)
 )
+select * from ko_authorities
 
 --3.자유 게시판 테이블
 CREATE TABLE ko_board(
@@ -153,9 +159,14 @@ CREATE TABLE ko_record(
 	CONSTRAINT ko_record_res foreign key(res_no) references ko_restaurant(res_no) on delete cascade,
 	CONSTRAINT ko_record_id foreign key(id) references ko_member(id) on delete cascade
 )
+ALTER TABLE ko_record ADD(rev_no number); 
+ALTER TABLE ko_record ADD CONSTRAINTS rev_no_fk FOREIGN KEY (rev_no) REFERENCES ko_reservation(rev_no)on delete cascade;
 CREATE sequence ko_record_seq;
 
+select * from KO_RESERVATION
 select * from KO_RECORD
+delete from ko_record where record_check='1'
+delete from ko_reservation where id='java'
 
 update ko_record
 set record_check=1 

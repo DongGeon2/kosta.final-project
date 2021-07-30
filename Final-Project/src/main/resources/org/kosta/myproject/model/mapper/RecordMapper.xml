@@ -27,4 +27,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		set record_check=0 
 		where id=#{memberId} and res_no=#{resNo} and record_time=#{recordTime}
 	</update>
+	
+	<delete id="deleteRecord" parameterType="string">
+		delete from ko_record
+		where record_time=#{revTime} and id=#{id} and res_no=#{resNo}
+	</delete>
 </mapper>
