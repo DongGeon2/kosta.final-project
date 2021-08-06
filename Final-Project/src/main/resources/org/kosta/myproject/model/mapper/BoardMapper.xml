@@ -85,6 +85,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     	DELETE FROM ko_board_comment 
     	WHERE board_no=#{boardNo} and comment_no=#{commentNo}
     </delete>
+    <!-- 게시판 수정 -->
+    <update id="updatePost">
+    	update ko_board
+		set content=#{boardVO.content}, title=#{boardVO.title}, img=#{boardVO.img}
+		where board_no=#{boardNo}
+    </update>
 </mapper>
  
  

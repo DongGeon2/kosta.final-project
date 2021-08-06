@@ -76,6 +76,36 @@ public class BoardController {
 	}
 	
 	@Secured("ROLE_MEMBER")
+	@RequestMapping("/updateForm")
+	public String updateForm(String boardNo, Model model) {
+		model.addAttribute("boardNo", boardNo);
+		return "board/updateForm.tiles";
+	}
+	
+	@Secured("ROLE_MEMBER")
+	@PostMapping("/update")
+	public String update(BoardVO boardVO, MultipartHttpServletRequest request,
+			@RequestParam("uploadImg") MultipartFile mFile) {
+		try {
+			String uploadPath = request.getServletContext().getRealPath("/upload/");
+			mFile.transferTo(new File(uploadPath + mFile.getOriginalFilename()));
+			// System.out.println("--->"+mFile.getOriginalFilename());
+			MemberVO mvo = (MemberVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			boardVO.setMemberVO(mvo);
+			boardVO.setImg(mFile.getOriginalFilename());
+			System.out.println("boardVO:" + boardVO + "boardNo:" + boardVO.getBoardNo());
+
+			boardService.updatePost(boardVO.getBoardNo(), boardVO);
+			System.out.println("여기가 안먹나?");
+		} catch (IllegalStateException | IOException e) {
+			e.printStackTrace();
+		}
+		// Spring Security 에 저장된 인증 정보(회원객체)를 반환
+		return "redirect:board";
+
+	}
+	
+	@Secured("ROLE_MEMBER")
 	@RequestMapping("/getDetailPostByNo")
 	public String getDetailPostByNo(String boardNo, Model model,String pageNo) {
 		System.out.println("getDetailPostByNo");

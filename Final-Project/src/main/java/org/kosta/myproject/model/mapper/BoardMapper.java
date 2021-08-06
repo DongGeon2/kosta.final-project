@@ -32,4 +32,6 @@ public interface BoardMapper {
 	List<BoardVO> getPostById(String id);
 	
 	void deleteCommentByNo(String boardNo, String commentNo);
+	
+	void updatePost(String boardNo, BoardVO boardVO);
 }

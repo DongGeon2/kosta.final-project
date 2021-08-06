@@ -50,8 +50,13 @@
                         <sec:authentication property="principal.id" var="memberId"/>
                     <c:choose>
                      <c:when test="${viewDetailPost.memberVO.id==memberId}">
-                        <a href="${pageContext.request.contextPath}/deletePosting?boardNo=${viewDetailPost.boardNo}" class="name mt-2">게시물
+                     <div>
+                        <a href="${pageContext.request.contextPath}/deletePosting?boardNo=${viewDetailPost.boardNo}" class="name mt-2">&emsp;게시물
                            삭제</a>
+                           </div>
+                           <div>
+                           <a href="${pageContext.request.contextPath}/updateForm?boardNo=${viewDetailPost.boardNo}" class="name mt-2">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;게시물 수정</a>
+                           </div>
                            </c:when>
                            <c:otherwise>
                        <sec:authentication property="principal.id" var="memberId"/>

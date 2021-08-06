@@ -75,4 +75,9 @@ public class BoardServiceImpl implements BoardService {
 		boardMapper.deleteCommentByNo(boardNo, commentNo);		
 	}
 
+	@Override
+	public void updatePost(String boardNo, BoardVO boardVO) {
+		boardMapper.updatePost(boardNo, boardVO);
+	}
+
 }
