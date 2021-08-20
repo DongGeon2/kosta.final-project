@@ -4,7 +4,7 @@ DROP TABLE ko_board;
 DROP sequence ko_board_seq;
 DROP TABLE ko_board_comment
 DROP sequence ko_board_comment_seq;
-
+  
 DROP TABLE ko_restaurant cascade constraint;
 DROP sequence ko_restaurant_no_seq;
 DROP TABLE ko_my_pick;
